@@ -13,7 +13,7 @@ const { items } = Astro.props;
       <div class="container">
         <h2 id="related-h">Related Services</h2>
         <div class="cards">
-          {items.map((i) => <div class="card"><h3><a href={i.href}>{i.label}</a></h3></div>)}
+          {items.map((i) => <a class="card card-link" href={i.href}>{i.label}</a>)}
         </div>
       </div>
     </section>

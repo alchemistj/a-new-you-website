@@ -36,7 +36,12 @@
 
   /* Device fonts (SOP section 5): no download, no reflow. */
   --font-sans: system-ui, -apple-system, 'Segoe UI', 'Noto Sans', Roboto, sans-serif;
-  --font-heading: Georgia, 'Times New Roman', 'Noto Serif', serif;
+  /* Headings: self-hosted Oswald (the live site's heading font), one variable Latin WOFF2, swap, no preload. */
+  --font-heading: 'Oswald', 'Oswald Fallback', 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif;
+  --color-lav: #f3e8f4;
+  --color-teal-tint: #e6f2f2;
+  /* Steel blue from the Elementor kit (#5C849C): hero bottom fade only. */
+  --color-steel: #5c849c;
 }
 
 @media (min-width: 768px) {

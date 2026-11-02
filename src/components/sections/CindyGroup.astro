@@ -1,0 +1,27 @@
+---
+// Consecutive list sections marked source: 'cindy' collapse into one band: a responsive grid of
+// small cards, each with its heading and checklist (so five of them are not five full sections).
+import { rich } from '../../lib/rich';
+
+interface Props {
+  lists: { id?: string; heading?: string; intro?: string; items: string[]; outro?: string }[];
+}
+const { lists } = Astro.props;
+---
+
+<section class="section" id={lists[0]?.id}>
+  <div class="container">
+    <div class:list={['cindy-grid', lists.length >= 3 && 'three']}>
+      {
+        lists.map((l) => (
+          <div class="cindy-card" id={l.id}>
+            {l.heading && <h3>{l.heading}</h3>}
+            {l.intro && <p class="small" set:html={rich(l.intro)} />}
+            <ul class="checklist">{l.items.map((i) => <li set:html={rich(i)} />)}</ul>
+            {l.outro && <p class="small" set:html={rich(l.outro)} />}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

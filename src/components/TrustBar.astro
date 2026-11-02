@@ -1,25 +1,23 @@
 ---
 // Trust bar directly under the hero (Rule 9). Credentials come from the brief only; no star
-// ratings, review counts or unconfirmed claims. Second line: serving area, CTA, click-to-call.
-import { site, cityConfig } from '../data/site';
+// ratings or review counts. One line on desktop: credentials, serving line, one call link.
+// Phones get two short lines: name, then the call link.
+import { site, cityConfig, awards } from '../data/site';
 
 const area = cityConfig.serviceArea;
 const areaText = `${area.slice(0, -1).join(', ')} & ${area[area.length - 1]}`;
 ---
 
 <section class="trust-bar" aria-label="About the clinic">
-  <div class="container">
-    <ul class="trust-items">
-      <li>{site.founder.name}</li>
-      <li>{site.founder.yearsHealthcare} years in healthcare</li>
-      <li>{site.founder.yearsWomensHealth} years in women's health</li>
-    </ul>
-    <p class="trust-line">
-      <span>Serving {areaText}</span>
-      <a href={site.booking.href} target="_blank" rel="noopener">{site.booking.label}</a>
-      <a class="trust-phone" href={site.phone.tel}>
-        Call {site.founder.shortName}<span class="hidden md:inline">: {site.phone.display}</span>
-      </a>
-    </p>
+  <div class="trust-inner">
+    {awards.map((a) => <span class="award-pill">{a.label}</span>)}
+    <span class="dot md-only" aria-hidden="true">&middot;</span>
+    <span class="strong">{site.founder.name}</span>
+    <span class="dot md-only" aria-hidden="true">&middot;</span>
+    <span class="md-only">Serving {areaText}</span>
+    <span class="dot md-only" aria-hidden="true">&middot;</span>
+    <a class="trust-phone" href={site.phone.tel}>
+      Call&nbsp;<span class="md:hidden">{site.founder.shortName}</span><span class="hidden md:inline">{site.phone.display}</span>
+    </a>
   </div>
 </section>

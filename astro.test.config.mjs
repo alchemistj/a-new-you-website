@@ -9,5 +9,8 @@ export default defineConfig({
   outDir: process.env.FF_OUT_DIR || '.test-dist',
   trailingSlash: 'always',
   build: { inlineStylesheets: 'always' },
-  vite: { plugins: [tailwindcss()] },
+  vite: {
+    plugins: [tailwindcss()],
+    assetsInclude: [/src\/assets\/blog\/[^/]+\/[^./]+$/],
+  },
 });

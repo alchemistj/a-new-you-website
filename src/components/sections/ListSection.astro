@@ -20,7 +20,7 @@ const { id, heading, intro, items, outro, image, side } = Astro.props;
     <Split image={image} side={side}>
       {heading && <h2>{heading}</h2>}
       {intro && <p class="intro" set:html={rich(intro)} />}
-      <ul class="checklist">{items.map((i) => <li set:html={rich(i)} />)}</ul>
+      <ul class:list={['checklist', !image && items.length >= 6 && 'cols-2']}>{items.map((i) => <li set:html={rich(i)} />)}</ul>
       {outro && <p set:html={rich(outro)} />}
     </Split>
   </div>

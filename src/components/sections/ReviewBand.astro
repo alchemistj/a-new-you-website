@@ -4,11 +4,12 @@ interface Props {
   quote: string;
   name: string;
   city?: string;
+  onTeal?: boolean;
 }
-const { quote, name, city } = Astro.props;
+const { quote, name, city, onTeal = false } = Astro.props;
 ---
 
-<section class="band band-review" aria-label="Customer review">
+<section class:list={['band', 'band-review', onTeal && 'on-teal']} aria-label="Customer review">
   <div class="container">
     <blockquote class="review">
       <p>{quote}</p>

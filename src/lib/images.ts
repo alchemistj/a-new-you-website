@@ -61,6 +61,10 @@ function parsePosition(pos?: string): [number, number] {
   return [Math.min(100, Math.max(0, x)) / 100, Math.min(100, Math.max(0, y)) / 100];
 }
 
+async function avifHeight(buf: Buffer): Promise<number> {
+  return (await sharp(buf).metadata()).height ?? HERO_H;
+}
+
 const cache = new Map<string, Promise<HeroImage>>();
 const diskCache = path.resolve(process.cwd(), 'node_modules/.cache/ff-hero');
 
@@ -69,27 +73,31 @@ async function encode(file: string, position?: string): Promise<HeroImage> {
   const key = crypto
     .createHash('sha1')
     .update(input)
-    .update(`${position ?? ''}|${HERO_W}x${HERO_H}|${MAX_BYTES}|v2`)
+    .update(`${position ?? ''}|${HERO_W}|${MAX_BYTES}|v3`)
     .digest('hex');
   const cached = path.join(diskCache, `${key}.avif`);
   if (fs.existsSync(cached)) {
     const buf = fs.readFileSync(cached);
-    return toHero(buf);
+    return toHero(buf, await avifHeight(buf));
   }
 
   const meta = await sharp(input).rotate().metadata();
   const w = meta.width ?? HERO_W;
   const h = meta.height ?? HERO_H;
-  const scale = Math.max(HERO_W / w, HERO_H / h);
+  // Output aspect follows the source, clamped to 1.6:1..2.2:1, so wide banners are not cropped
+  // down to a narrow centre slice (which cuts heads) and 4:1 sources stay small.
+  const aspect = Math.min(2.2, Math.max(1.6, w / h));
+  const outH = Math.round(HERO_W / aspect);
+  const scale = Math.max(HERO_W / w, outH / h);
   const rw = Math.max(HERO_W, Math.round(w * scale));
-  const rh = Math.max(HERO_H, Math.round(h * scale));
+  const rh = Math.max(outH, Math.round(h * scale));
   const [px, py] = parsePosition(position);
   const left = Math.round((rw - HERO_W) * px);
-  const top = Math.round((rh - HERO_H) * py);
+  const top = Math.round((rh - outH) * py);
   const base = await sharp(input)
     .rotate()
     .resize(rw, rh)
-    .extract({ left, top, width: HERO_W, height: HERO_H })
+    .extract({ left, top, width: HERO_W, height: outH })
     .toBuffer();
 
   const enc = (quality: number) =>
@@ -107,14 +115,14 @@ async function encode(file: string, position?: string): Promise<HeroImage> {
   }
   fs.mkdirSync(diskCache, { recursive: true });
   fs.writeFileSync(cached, best);
-  return toHero(best);
+  return toHero(best, outH);
 }
 
-function toHero(buf: Buffer): HeroImage {
+function toHero(buf: Buffer, height = HERO_H): HeroImage {
   return {
     uri: `data:image/avif;base64,${buf.toString('base64')}`,
     width: HERO_W,
-    height: HERO_H,
+    height,
     bytes: buf.length,
   };
 }

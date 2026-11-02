@@ -1,0 +1,25 @@
+---
+// Section-level background band. 'plain' adds nothing. Tinted tones get an inline SVG wave on top
+// (no images), tinted to the band so it blends into the previous band.
+interface Props {
+  tone: 'plain' | 'lav' | 'teal';
+  wave?: boolean;
+  class?: string;
+}
+const { tone, wave = true, class: cls } = Astro.props;
+---
+
+{
+  tone === 'plain' ? (
+    <slot />
+  ) : (
+    <div class:list={['tone', `tone-${tone}`, cls]}>
+      {wave && (
+        <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <path d="M0 60V30C160 6 320 0 520 18c200 18 360 34 560 24 150-8 260-30 360-34v52z" />
+        </svg>
+      )}
+      <slot />
+    </div>
+  )
+}

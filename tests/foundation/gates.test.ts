@@ -106,6 +106,9 @@ describe('built pages', () => {
       htmlFiles.map((f) => '/' + path.relative(dist, f).replace(/index\.html$/, '').replace(/\\/g, '/')),
     );
     for (const f of htmlFiles) {
+      // Blog posts (built alongside the fixtures) link to real service pages the fixtures lack.
+      const rel = path.relative(dist, f).replace(/\\/g, '/');
+      if (!external && !/^(index\.html|springfield\/|about\/|customer-reviews\/)/.test(rel)) continue;
       const h = stripData(read(f));
       for (const m of h.matchAll(/<a\s[^>]*href="(\/[^"#?]*)"/g)) {
         const href = m[1]!;
