@@ -1,0 +1,9 @@
+---
+// Sticky bottom bar on phones (below md): Call + Schedule (Rule 6). Hidden from md up.
+import { site } from '../data/site';
+---
+
+<div class="mobile-bar" role="region" aria-label="Quick actions">
+  <a class="btn btn-outline" href={site.phone.tel}>{site.phone.mobileLabel}</a>
+  <a class="btn btn-primary" href={site.booking.href} target="_blank" rel="noopener">Schedule</a>
+</div>

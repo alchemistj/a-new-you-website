@@ -1,0 +1,14 @@
+---
+// Primary CTA: plain link to the booking page (brief: label "Schedule an Appointment").
+import { site } from '../data/site';
+
+interface Props {
+  class?: string;
+  label?: string;
+  href?: string;
+}
+const { class: cls = 'btn btn-primary', label = site.booking.label, href = site.booking.href } = Astro.props;
+const external = /^https?:\/\//.test(href);
+---
+
+<a class={cls} href={href} {...external ? { target: '_blank', rel: 'noopener' } : {}}>{label}</a>

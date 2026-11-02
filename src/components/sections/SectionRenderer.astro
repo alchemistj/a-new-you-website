@@ -1,0 +1,67 @@
+---
+// Renders a page's sections in order and applies the page-level bands:
+//  - photo sections alternate right, left, right... (Rule 4.2)
+//  - Related band goes before the first FAQ (or before the final CTA when there is no FAQ) (Rule 4.3)
+//  - service area, then the last `cta` section as the final band, always last (Rule 4.3)
+import type { PageCopy, Section } from '../../types/page';
+import ProseSection from './ProseSection.astro';
+import ListSection from './ListSection.astro';
+import CardsSection from './CardsSection.astro';
+import StepsSection from './StepsSection.astro';
+import ReviewBand from './ReviewBand.astro';
+import FaqSection from './FaqSection.astro';
+import PricingSection from './PricingSection.astro';
+import MediaSection from './MediaSection.astro';
+import BadgesSection from './BadgesSection.astro';
+import CtaBand from './CtaBand.astro';
+import RelatedBand from './RelatedBand.astro';
+import ServiceAreaSection from './ServiceAreaSection.astro';
+import { getPublishedPage } from '../../lib/pages';
+import { labelForSlug } from '../../lib/nav';
+
+interface Props {
+  page: PageCopy;
+}
+const { page } = Astro.props;
+
+const lastCtaIdx = page.sections.map((s) => s.kind).lastIndexOf('cta');
+const finalCta = lastCtaIdx >= 0 ? page.sections[lastCtaIdx] : undefined;
+const body: Section[] = page.sections.filter((_, i) => i !== lastCtaIdx);
+
+// Pre-compute photo side per section (alternating over sections that carry an image).
+let photoCount = 0;
+const sides = body.map((s) => {
+  if ('image' in s && s.image) return photoCount++ % 2 === 0 ? ('right' as const) : ('left' as const);
+  return undefined;
+});
+
+const related = (page.related ?? [])
+  .map((slug) => getPublishedPage(slug))
+  .filter((p): p is PageCopy => Boolean(p))
+  .map((p) => ({ label: labelForSlug(p.slug, p.hero.h1), href: p.route }));
+
+const firstFaq = body.findIndex((s) => s.kind === 'faq');
+const relatedAt = firstFaq >= 0 ? firstFaq : body.length;
+---
+
+{
+  body.map((s, i) => (
+    <>
+      {i === relatedAt && <RelatedBand items={related} />}
+      {s.kind === 'prose' && <ProseSection {...s} side={sides[i]} />}
+      {s.kind === 'list' && <ListSection {...s} side={sides[i]} />}
+      {s.kind === 'cards' && <CardsSection {...s} />}
+      {s.kind === 'steps' && <StepsSection {...s} side={sides[i]} />}
+      {s.kind === 'review' && <ReviewBand {...s} />}
+      {s.kind === 'faq' && <FaqSection {...s} />}
+      {s.kind === 'pricing' && <PricingSection {...s} />}
+      {s.kind === 'video' && <MediaSection id={s.id} heading={s.heading} video={s} />}
+      {s.kind === 'embed' && <MediaSection id={s.id} heading={s.heading} intro={s.intro} embed={s.embed} />}
+      {s.kind === 'badges' && <BadgesSection {...s} />}
+      {s.kind === 'cta' && <CtaBand {...s} />}
+    </>
+  ))
+}
+{relatedAt >= body.length && <RelatedBand items={related} />}
+<ServiceAreaSection areas={page.serviceArea ?? []} />
+{finalCta && finalCta.kind === 'cta' && <CtaBand {...finalCta} />}

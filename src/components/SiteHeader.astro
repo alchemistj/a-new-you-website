@@ -1,0 +1,58 @@
+---
+// Two-bar header (Rule 5). Top bar (md/lg+): About, FAQs, Blog, Contact. Main bar: logo, 4 quick
+// links, phone, primary CTA. Below lg: logo, Call, hamburger (native <details>, works without JS).
+// Single city, so there is no city switcher. The hamburger holds the same links in the same order.
+import Logo from './Logo.astro';
+import CallButton from './CallButton.astro';
+import ScheduleButton from './ScheduleButton.astro';
+import { getNav } from '../lib/nav';
+import { site, cityConfig } from '../data/site';
+
+interface Props {
+  path: string;
+}
+const { path } = Astro.props;
+const nav = await getNav();
+const cur = (href: string) => (href === path ? { 'aria-current': 'page' } : {});
+---
+
+<header class="site-header" id="site-header">
+  <div class="topbar">
+    <div class="header-wrap">
+      <p class="topbar-serving">Serving {cityConfig.displayName}</p>
+      <nav aria-label="Secondary" class="topbar-nav">
+        {nav.topBarLinks.map((l) => <a href={l.href} {...cur(l.href)}>{l.label}</a>)}
+      </nav>
+    </div>
+  </div>
+  <div class="mainbar">
+    <div class="header-wrap">
+      <a class="logo-link" href="/" aria-label={`${site.name} home`}><Logo /></a>
+      <nav aria-label="Primary" class="quicknav">
+        {nav.quickLinks.map((l) => <a href={l.href} {...cur(l.href)}>{l.label}</a>)}
+      </nav>
+      <div class="header-actions">
+        <a class="header-phone" href={site.phone.tel}>{site.phone.display}</a>
+        <ScheduleButton class="btn btn-primary header-cta" />
+        <CallButton class="btn btn-outline header-call" />
+        <details class="menu" id="menu">
+          <summary class="menu-btn" aria-label="Menu" aria-controls="menu-panel">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"></path>
+            </svg>
+          </summary>
+          <div class="menu-panel" id="menu-panel">
+            <nav aria-label="Menu">
+              {nav.topBarLinks.map((l) => <a href={l.href} {...cur(l.href)}>{l.label}</a>)}
+              <hr />
+              {nav.quickLinks.map((l) => <a href={l.href} {...cur(l.href)}>{l.label}</a>)}
+              <hr />
+              <a href={site.phone.tel}>{site.phone.display}</a>
+            </nav>
+            <ScheduleButton class="btn btn-primary menu-cta" />
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</header>

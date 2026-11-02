@@ -1,0 +1,16 @@
+---
+// Body photo for a two-column section (Rule 4.2): lazy, explicit dimensions, WebP, sized to the
+// column it shows in (about 1.15x its largest display width of ~420px).
+import { Image } from 'astro:assets';
+import type { ImageRef } from '../../types/page';
+import { resolveBodyImage } from '../../lib/images';
+
+interface Props {
+  image: ImageRef;
+  width?: number;
+}
+const { image, width = 480 } = Astro.props;
+const meta = await resolveBodyImage(image);
+---
+
+<Image src={meta} alt={image.alt} width={width} format="webp" quality={72} loading="lazy" decoding="async" />

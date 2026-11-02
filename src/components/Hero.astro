@@ -1,0 +1,27 @@
+---
+// Hero text block. The photo itself is the first element in <body> (BaseLayout), so this only
+// renders the scrim, eyebrow, the page's single H1, subhead and CTAs.
+import type { PageCopy } from '../types/page';
+import CallButton from './CallButton.astro';
+import ScheduleButton from './ScheduleButton.astro';
+import { site } from '../data/site';
+
+interface Props {
+  hero: PageCopy['hero'];
+  photo: boolean;
+}
+const { hero, photo } = Astro.props;
+const cta = hero.primaryCta ?? { label: site.booking.label, href: site.booking.href };
+---
+
+<section class:list={['hero', photo ? 'hero--photo' : 'hero--plain']}>
+  <div class="hero-inner">
+    {hero.eyebrow && <p class="eyebrow">{hero.eyebrow}</p>}
+    <h1>{hero.h1}</h1>
+    {hero.subhead && <p class="subhead">{hero.subhead}</p>}
+    <div class="hero-ctas">
+      <ScheduleButton class="btn btn-light" label={cta.label} href={cta.href} />
+      <CallButton class="btn btn-ghost" />
+    </div>
+  </div>
+</section>

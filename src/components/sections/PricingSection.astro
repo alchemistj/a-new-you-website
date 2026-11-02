@@ -1,0 +1,31 @@
+---
+// Prices render exactly as the copy file gives them (memberships keep the live site's numbers).
+import { rich } from '../../lib/rich';
+
+interface Props {
+  id?: string;
+  heading?: string;
+  intro?: string;
+  plans: { name: string; lines: string[] }[];
+  note?: string;
+}
+const { id, heading, intro, plans, note } = Astro.props;
+---
+
+<section class="section" id={id}>
+  <div class="container">
+    {heading && <h2>{heading}</h2>}
+    {intro && <p class="intro" set:html={rich(intro)} />}
+    <div class="plans">
+      {
+        plans.map((p) => (
+          <div class="plan">
+            <h3>{p.name}</h3>
+            {p.lines.map((l) => <p set:html={rich(l)} />)}
+          </div>
+        ))
+      }
+    </div>
+    {note && <p class="note" set:html={rich(note)} />}
+  </div>
+</section>

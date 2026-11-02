@@ -1,0 +1,23 @@
+---
+// Logos/badges row. Images are local (resolved from src/assets), never remote.
+import { Image } from 'astro:assets';
+import type { ImageRef } from '../../types/page';
+import { resolveBodyImage } from '../../lib/images';
+
+interface Props {
+  id?: string;
+  heading?: string;
+  badges: ImageRef[];
+}
+const { id, heading, badges } = Astro.props;
+const metas = await Promise.all(badges.map((b) => resolveBodyImage(b)));
+---
+
+<section class="section" id={id}>
+  <div class="container">
+    {heading && <h2>{heading}</h2>}
+    <div class="badges">
+      {metas.map((m, i) => <Image src={m} alt={badges[i]!.alt} height={96} format="webp" loading="lazy" decoding="async" />)}
+    </div>
+  </div>
+</section>

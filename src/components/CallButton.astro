@@ -1,0 +1,25 @@
+---
+// Click-to-call (Rules 7.1, 7.2): always the NAP number in a native tel: link. Short label on
+// phones, digits from md up. `digits` forces digits at every width (footer, contact page).
+import { site } from '../data/site';
+
+interface Props {
+  class?: string;
+  digits?: boolean;
+  label?: string;
+}
+const { class: cls = 'btn btn-outline', digits = false, label = site.phone.mobileLabel } = Astro.props;
+---
+
+<a class={cls} href={site.phone.tel}>
+  {
+    digits ? (
+      <span>{site.phone.display}</span>
+    ) : (
+      <>
+        <span class="md:hidden">{label}</span>
+        <span class="hidden md:inline">{site.phone.display}</span>
+      </>
+    )
+  }
+</a>

@@ -1,0 +1,24 @@
+---
+// Home (template 'home'). Renders the published page whose template is 'home'. With no page
+// data yet it renders a bare shell so the site still builds.
+import PageTemplate from '../components/PageTemplate.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { publishedPages } from '../lib/pages';
+import { site } from '../data/site';
+
+const page = publishedPages.find((p) => p.template === 'home' || p.route === '/');
+---
+
+{
+  page ? (
+    <PageTemplate page={page} />
+  ) : (
+    <BaseLayout title={site.name} description={site.name} path="/" noindex>
+      <section class="section">
+        <div class="container">
+          <h1>{site.name}</h1>
+        </div>
+      </section>
+    </BaseLayout>
+  )
+}
