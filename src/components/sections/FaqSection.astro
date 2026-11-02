@@ -1,0 +1,25 @@
+---
+// Native <details>: every answer is in the server HTML, nothing loads on click.
+import { rich } from '../../lib/rich';
+
+interface Props {
+  id?: string;
+  heading?: string;
+  items: { q: string; a: string[] }[];
+}
+const { id, heading, items } = Astro.props;
+---
+
+<section class="section faq" id={id}>
+  <div class="container">
+    {heading && <h2>{heading}</h2>}
+    {
+      items.map((it) => (
+        <details>
+          <summary>{it.q}</summary>
+          <div class="answer">{it.a.map((p) => <p set:html={rich(p)} />)}</div>
+        </details>
+      ))
+    }
+  </div>
+</section>

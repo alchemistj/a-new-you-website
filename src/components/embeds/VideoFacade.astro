@@ -1,0 +1,16 @@
+---
+// STUB owned by helper D (seo-embeds). Replace with the real click-to-load facade.
+// Contract: <VideoFacade provider videoId title />. No third-party request on page load.
+interface Props {
+  provider: 'youtube' | 'vimeo';
+  videoId: string;
+  title: string;
+}
+const { provider, videoId, title } = Astro.props;
+const watch =
+  provider === 'youtube' ? `https://www.youtube.com/watch?v=${videoId}` : `https://vimeo.com/${videoId}`;
+---
+
+<div class="video-facade" style="aspect-ratio:16/9">
+  <a href={watch} rel="noopener">Watch: {title}</a>
+</div>

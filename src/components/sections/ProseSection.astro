@@ -1,0 +1,24 @@
+---
+// Body text on the page background: H2 then paragraphs, plain (Rule 4.1). Optional photo beside.
+import Split from './Split.astro';
+import { rich } from '../../lib/rich';
+import type { ImageRef } from '../../types/page';
+
+interface Props {
+  id?: string;
+  heading?: string;
+  paragraphs: string[];
+  image?: ImageRef;
+  side?: 'left' | 'right';
+}
+const { id, heading, paragraphs, image, side } = Astro.props;
+---
+
+<section class="section" id={id}>
+  <div class="container">
+    <Split image={image} side={side}>
+      {heading && <h2>{heading}</h2>}
+      {paragraphs.map((p) => <p set:html={rich(p)} />)}
+    </Split>
+  </div>
+</section>

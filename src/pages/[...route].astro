@@ -1,0 +1,23 @@
+---
+// Every published page except the home page, rendered by template. Blog routes belong to
+// src/pages/blog/ and src/pages/[post]/ (helper B), so only published page routes are produced here.
+import PageTemplate from '../components/PageTemplate.astro';
+import type { PageCopy } from '../types/page';
+import { publishedPages } from '../lib/pages';
+
+export function getStaticPaths() {
+  return publishedPages
+    .filter((p) => p.route !== '/' && !p.route.startsWith('/blog/'))
+    .map((page) => ({
+      params: { route: page.route.replace(/^\/|\/$/g, '') },
+      props: { page },
+    }));
+}
+
+interface Props {
+  page: PageCopy;
+}
+const { page } = Astro.props;
+---
+
+<PageTemplate page={page} />

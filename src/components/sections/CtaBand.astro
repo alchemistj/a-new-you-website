@@ -1,0 +1,25 @@
+---
+// Final CTA band (Rule 4.3): strong brand color, headline, optional copy, the primary CTA and
+// click-to-call. Always the last section before the footer.
+import ScheduleButton from '../ScheduleButton.astro';
+import CallButton from '../CallButton.astro';
+import { rich } from '../../lib/rich';
+
+interface Props {
+  id?: string;
+  heading: string;
+  paragraphs?: string[];
+}
+const { id, heading, paragraphs = [] } = Astro.props;
+---
+
+<section class="band band-cta" id={id}>
+  <div class="container">
+    <h2>{heading}</h2>
+    {paragraphs.map((p) => <p set:html={rich(p)} />)}
+    <div class="cta-actions">
+      <ScheduleButton class="btn btn-light" />
+      <CallButton class="btn btn-ghost" digits />
+    </div>
+  </div>
+</section>

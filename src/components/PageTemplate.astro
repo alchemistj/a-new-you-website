@@ -1,0 +1,42 @@
+---
+// One template for every published PageCopy (home, service, company, contact, faq, reviews).
+// The trust bar sits directly under the hero (Rule 9). The contact template adds the NAP block.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from './TrustBar.astro';
+import SectionRenderer from './sections/SectionRenderer.astro';
+import type { PageCopy } from '../types/page';
+import { pageJsonLd } from '../lib/jsonld';
+import { site } from '../data/site';
+
+interface Props {
+  page: PageCopy;
+}
+const { page } = Astro.props;
+---
+
+<BaseLayout
+  title={page.seo.title}
+  description={page.seo.description}
+  path={page.route}
+  hero={page.hero}
+  jsonLd={pageJsonLd(page)}
+>
+  <TrustBar slot="after-hero" />
+  {
+    page.template === 'contact' && (
+      <section class="section" id="contact-details">
+        <div class="container contact-details">
+          <p>
+            <a class="contact-phone" href={site.phone.tel}>{site.phone.display}</a>
+          </p>
+          <address>
+            {site.address.street}<br />
+            {site.address.city}, {site.address.region} {site.address.postalCode}
+          </address>
+          <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        </div>
+      </section>
+    )
+  }
+  <SectionRenderer page={page} />
+</BaseLayout>

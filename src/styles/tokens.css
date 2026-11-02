@@ -1,0 +1,54 @@
+/*
+ * Brand tokens. Source: the Elementor kit on https://anewyouwoman.com
+ * (wp-content/uploads/elementor/css/post-*.css, global colors, pulled 2 Nov 2026):
+ *   --e-global-color-primary    #8E3393  (purple)
+ *   --e-global-color-secondary  #3A989C  (teal; also the "accent" kit slot is #383838)
+ *   --e-global-color-accent     #383838  (charcoal)
+ * Rule 4 allows four colors only: dark, white, primary, accent. Everything else below is a
+ * derived shade or tint of those four, used for contrast or quiet bands.
+ */
+:root {
+  --color-dark: #383838;
+  --color-white: #ffffff;
+  --color-primary: #8e3393;
+  --color-accent: #3a989c;
+
+  /* Derived (not new brand colors). */
+  /* Accent fails 4.5:1 for small text on white (3.4:1); this darker shade is 5.5:1. */
+  --color-accent-ink: #2b7377;
+  /* Primary darkened for hover and the final CTA band (white text 9.5:1). */
+  --color-primary-deep: #6f2673;
+  /* Quiet tint bands. */
+  --color-primary-tint: color-mix(in srgb, var(--color-primary) 7%, white);
+  --color-accent-tint: color-mix(in srgb, var(--color-accent) 9%, white);
+  /* Body copy grey, 6.7:1 on white. */
+  --color-text: #4a4a4a;
+  --color-line: color-mix(in srgb, var(--color-dark) 14%, white);
+
+  /* Layout (Rule 4). */
+  --content-max: 900px;
+  --content-pad: 24px;
+  --header-max: 1240px;
+  --header-top-h: 0px;
+  --header-main-h: 64px;
+  --header-h: calc(var(--header-top-h) + var(--header-main-h));
+  --bottom-bar-h: 64px;
+
+  /* Device fonts (SOP section 5): no download, no reflow. */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', 'Noto Sans', Roboto, sans-serif;
+  --font-heading: Georgia, 'Times New Roman', 'Noto Serif', serif;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --bottom-bar-h: 0px;
+  }
+}
+
+/* Desktop header (two bars) from 1024px; below that: logo, Call, hamburger. */
+@media (min-width: 1024px) {
+  :root {
+    --header-top-h: 34px;
+    --header-main-h: 76px;
+  }
+}

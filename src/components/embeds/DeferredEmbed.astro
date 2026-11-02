@@ -1,0 +1,17 @@
+---
+// STUB owned by helper D (seo-embeds). Replace with the real deferred loader.
+// Contract: <DeferredEmbed embed="ghl-form|ghl-quiz|cherry|map" /> with reserved height,
+// <noscript> link, loads on first interaction or when in view. No third-party src in server HTML.
+import { site } from '../../data/site';
+
+interface Props {
+  embed: 'ghl-form' | 'ghl-quiz' | 'cherry' | 'map';
+}
+const { embed } = Astro.props;
+const heights: Record<Props['embed'], number> = { 'ghl-form': 720, 'ghl-quiz': 640, cherry: 360, map: 380 };
+const noscriptHref = embed === 'map' ? site.integrations.mapEmbed : site.booking.href;
+---
+
+<div class="deferred-embed" data-embed={embed} style={`min-height:${heights[embed]}px`}>
+  <noscript><a href={noscriptHref} rel="noopener">Open in a new page</a></noscript>
+</div>
