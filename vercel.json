@@ -194,6 +194,56 @@
       "statusCode": 301
     },
     {
+      "source": "/unveiling-the-ppotential-of-ppeptides-for-wweight-lloss/",
+      "destination": "/unveiling-the-potential-of-peptides-for-weight-loss/",
+      "statusCode": 301
+    },
+    {
+      "source": "/unveiling-the-ppotential-of-ppeptides-for-wweight-lloss",
+      "destination": "/unveiling-the-potential-of-peptides-for-weight-loss/",
+      "statusCode": 301
+    },
+    {
+      "source": "/botox%ef%b8%8f-botulinum-toxin-type-a-why-inject-poison-into-your-body/",
+      "destination": "/botox-botulinum-toxin-type-a-why-inject-poison-into-your-body/",
+      "statusCode": 301
+    },
+    {
+      "source": "/botox%ef%b8%8f-botulinum-toxin-type-a-why-inject-poison-into-your-body",
+      "destination": "/botox-botulinum-toxin-type-a-why-inject-poison-into-your-body/",
+      "statusCode": 301
+    },
+    {
+      "source": "/botox️-botulinum-toxin-type-a-why-inject-poison-into-your-body/",
+      "destination": "/botox-botulinum-toxin-type-a-why-inject-poison-into-your-body/",
+      "statusCode": 301
+    },
+    {
+      "source": "/botox️-botulinum-toxin-type-a-why-inject-poison-into-your-body",
+      "destination": "/botox-botulinum-toxin-type-a-why-inject-poison-into-your-body/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cryolipolysis-coolsculpting%ef%b8%8f-is-it-right-for-me/",
+      "destination": "/cryolipolysis-coolsculpting-is-it-right-for-me/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cryolipolysis-coolsculpting%ef%b8%8f-is-it-right-for-me",
+      "destination": "/cryolipolysis-coolsculpting-is-it-right-for-me/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cryolipolysis-coolsculpting️-is-it-right-for-me/",
+      "destination": "/cryolipolysis-coolsculpting-is-it-right-for-me/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cryolipolysis-coolsculpting️-is-it-right-for-me",
+      "destination": "/cryolipolysis-coolsculpting-is-it-right-for-me/",
+      "statusCode": 301
+    },
+    {
       "source": "/upcoming-events/",
       "destination": "/",
       "statusCode": 301
@@ -825,16 +875,6 @@
     },
     {
       "source": "/author/:path*",
-      "destination": "/blog/",
-      "statusCode": 301
-    },
-    {
-      "source": "/blog/page/:n(\\d+)",
-      "destination": "/blog/",
-      "statusCode": 301
-    },
-    {
-      "source": "/blog/page/:n(\\d+)/",
       "destination": "/blog/",
       "statusCode": 301
     },

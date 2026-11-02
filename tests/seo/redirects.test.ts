@@ -53,10 +53,11 @@ describe('redirect map', () => {
     for (const r of redirects) expect(r.to.endsWith('/') || r.to === '/sitemap.xml').toBe(true);
   });
 
-  it('blog redirects (helper B), when present, point into /blog/', () => {
+  it('blog redirects (helper B), when present, point to root post URLs', () => {
     for (const r of blogRedirects) {
       expect(r.from.startsWith('/')).toBe(true);
-      expect(r.to.startsWith('/blog/')).toBe(true);
+      expect(/^\/[^/]+\/$/.test(r.to), r.to).toBe(true);
+      expect(r.to.startsWith('/blog/')).toBe(false);
     }
   });
 

@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { canonicalRoutes, redirects } from '../../src/data/redirects';
 import { buildVercelConfig, escapeSource } from '../../src/lib/seo/redirect-core';
+import blogRedirects from '../../src/data/redirects-blog.json';
 
 interface Rule {
   source: string;
@@ -79,9 +80,10 @@ describe('vercel.json', () => {
 
   it('every target is a known route', () => {
     const known = new Set([...liveRoutes, '/sitemap.xml']);
+    const blogTargets = new Set(blogRedirects.map((b) => b.to));
     for (const r of redirects) {
-      // Blog post targets are validated by helper B's tests; the index and pages must be known.
-      if (/^\/blog\/[^/]+\/$/.test(r.to)) continue;
+      // Blog post targets (root URLs) are validated by helper B's tests against the collection.
+      if (blogTargets.has(r.to)) continue;
       expect(known.has(r.to), `${r.from} -> ${r.to}`).toBe(true);
     }
   });

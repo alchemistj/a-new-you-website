@@ -31,7 +31,7 @@ export const pageRedirects: Redirect[] = pageRedirectsFrom(publishedPages);
 
 // If the new blog serves /blog/page/N/ itself, B lists those paths in redirects-blog.json as live
 // routes and this catch-all should be removed (see tests/seo/redirects.test.ts).
-const blogPaginationLive = false;
+const blogPaginationLive = true;
 
 export const redirects: Redirect[] = mergeRedirects(
   pageRedirects,
