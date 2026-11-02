@@ -1,0 +1,10 @@
+{
+  "name": "migrate-blog",
+  "private": true,
+  "type": "module",
+  "description": "One-off export of the A New You WordPress blog to Markdown. Run: npm install && node migrate.mjs",
+  "dependencies": {
+    "turndown": "7.2.0",
+    "turndown-plugin-gfm": "1.0.2"
+  }
+}
