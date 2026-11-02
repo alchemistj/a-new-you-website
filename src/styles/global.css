@@ -422,12 +422,12 @@ a.card-photo:hover h3 { color: var(--color-primary); }
   z-index: 40;
   height: var(--bottom-bar-h);
   display: flex;
-  gap: 12px;
-  padding: 8px 12px;
+  gap: 8px;
+  padding: 8px 10px;
   background: var(--color-white);
   box-shadow: 0 -1px 0 var(--color-line);
 }
-.mobile-bar .btn { flex: 1; }
+.mobile-bar .btn { flex: 1 1 0; min-width: 0; padding-inline: 8px; white-space: nowrap; }
 @media (min-width: 768px) { .mobile-bar { display: none; } }
 
 /* Quiz / embed bands: tinted band with a sensible reserved height instead of a giant empty box. */
