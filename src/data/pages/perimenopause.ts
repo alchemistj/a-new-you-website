@@ -13,6 +13,11 @@ export const page: PageCopy = {
   },
   hero: {
     h1: 'Perimenopause',
+    image: {
+      src: 'pages/perimenopause/hero.jpg',
+      alt: 'A gray-haired provider in black scrubs talks with a blonde patient in a treatment room',
+    },
+    imagePosition: 'center 40%',
     primaryCta: {
       label: 'Schedule an Appointment',
       href: 'https://anewyouwomensclinic.myaestheticrecord.com/online-booking',
@@ -60,7 +65,7 @@ export const page: PageCopy = {
     'The live closing line appeared twice (a paragraph and an H4); it is kept once, as the final CTA heading. "schedule an appointment" button is the hero and CTA booking button.',
     'Kept the live paragraphs word for word, including their odd wording and stray commas ("slow, metabolism", "loss of breast, fullness", "is the sensation of menstrual cycles"). These look like garbled text, but fixing them would mean guessing. Josh to decide.',
     'Added Cindy\'s Perimenopause & Menopause Evaluation concerns word for word.',
-    'No hero image: the page had only template icon images. Needs a photo choice (open question).',
+    'Hero photo is the live media-library file named Perimenopausal-and-Menopausal-Symptoms (not in the page HTML; the live page had only template icons). Josh to confirm.',
     'Title and description kept as live.',
   ],
 };

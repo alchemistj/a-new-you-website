@@ -59,6 +59,10 @@ export const page: PageCopy = {
         'Vaginal rejuvenation is a way to restore how your body feels, functions, and connects—with yourself and with those you love. These aren’t problems you have to “just live with.” They’re signals. And we’re here to help you respond to them with clarity and care.',
         'Vaginal rejuvenation refers to treatments that restore vaginal health, structure, and function.',
       ],
+      image: {
+        src: 'pages/vaginal-wellness/consultation.jpg',
+        alt: 'Two women talk across a white desk in a bright consultation room',
+      },
     },
     {
       kind: 'list',
@@ -237,6 +241,10 @@ export const page: PageCopy = {
         'Personalized care—you’ll never feel like a number',
         'EmpowerRF technology for deeper, more comprehensive results',
       ],
+      image: {
+        src: 'pages/vaginal-wellness/total-feminine-care.jpg',
+        alt: 'Three smiling women in black scrubs stand together in front of a teal wall',
+      },
     },
     {
       kind: 'prose',
@@ -266,7 +274,7 @@ export const page: PageCopy = {
     'Process step numbers ("1.", "2.") dropped from titles; step 3 bullets joined into one line with periods.',
     'The cost price range "$1,500 to $3,500" and "Payment plans are available." are kept exactly as live.',
     'Book-a-consultation block is the final CTA band; the "Call (417) 605-2153" and "book online here" links are replaced by the standard call and Schedule an Appointment buttons (live booking link went to /book-appointment).',
-    'Left out the two small Group-1.png icon images (placeholder icon, 223px).',
+    'Left out the two small Group-1.png icon images (placeholder icon, 223px). Body photos (consultation, total-feminine-care) are page photos from the live media library; the live page set them as Elementor backgrounds, so they are not in the page HTML.',
     'Kept "We’ve helped hundreds of women" and "Most women notice improvements in 2–4 weeks, with full results developing over 3 months." as live copy; they are claims, flagged for Josh.',
   ],
 };

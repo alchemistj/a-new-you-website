@@ -16,7 +16,7 @@ export const page: PageCopy = {
     subhead: 'Backed by Science, Led with Compassion',
     image: {
       src: 'pages/weight-loss/hero.jpg',
-      alt: 'A provider in purple gloves holds a handheld body-contouring device against a patient’s abdomen',
+      alt: 'Six smiling women stand together outdoors under trees',
     },
     imagePosition: 'center 40%',
     primaryCta: {
@@ -39,6 +39,10 @@ export const page: PageCopy = {
       paragraphs: [
         'Our weight loss clinic takes a whole-woman approach. We don’t throw you into a generic program or shame you into another restrictive meal plan. Instead, we create a tailored treatment strategy using semaglutide, tirzepatide, and other weight loss peptides, matched to your labs, body composition, hormone levels, and lifestyle — delivered through weight loss injections designed around you, not a one-size-fits-all plan',
       ],
+      image: {
+        src: 'pages/weight-loss/tailored-strategy.jpg',
+        alt: 'A provider in a white coat talks with a woman beside shelves of products and a white body scanner column',
+      },
     },
     {
       kind: 'list',
@@ -231,6 +235,10 @@ export const page: PageCopy = {
       intro: 'We don’t guess—we measure what matters. Using the Styku 3D Body Scanner, we analyze:',
       items: ['Your exact body fat percentage', 'Where fat is stored (and where it’s leaving!)', 'Posture, waist-hip ratio, and more'],
       outro: 'This means you see progress beyond the scale, and we adjust your plan with precision.',
+      image: {
+        src: 'pages/weight-loss/body-scan.jpg',
+        alt: 'A woman in a black tank top stands on a 3D body scanner platform',
+      },
     },
     {
       kind: 'list',
@@ -287,7 +295,7 @@ export const page: PageCopy = {
     'Live FAQ questions were accordion titles; they are now FAQ items with the same words.',
     'The live closing section "Start Your Journey: Free Weight Loss Consultation" is the final CTA band; its four lines are kept as its paragraphs.',
     'Left out the Group-1.png, weight-loss.png and wellness.png template icons (tiny placeholder icons).',
-    'Hero photo is the page\'s live OG image. It shows a body-contouring handpiece on an abdomen, not weight-loss medication; flagged under Rule 8. No other real photos exist on the live page.',
+    'Photos come from the live media library (the live page sets them as Elementor backgrounds, so they are not in the page HTML). The live OG image shows a body-contouring handpiece, so it is not used; the hero is the six-women group photo named for medical weight loss. Josh to confirm the choice.',
     'Title and description kept as live (already correct).',
     'Mentions of the Styku 3D scanner are kept as plain live text; no link to the held /styku/ page.',
   ],

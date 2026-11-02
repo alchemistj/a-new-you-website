@@ -121,6 +121,10 @@ export const page: PageCopy = {
         'Injections or topicals — for men who prefer more control or flexibility',
         'Lifestyle + nutrition coaching — because testosterone doesn’t work alone',
       ],
+      image: {
+        src: 'pages/mens-health/testosterone.jpg',
+        alt: 'A paramedic in a white uniform speaks into a radio from the cab of an ambulance',
+      },
     },
     {
       kind: 'review',
@@ -163,6 +167,10 @@ export const page: PageCopy = {
         'Body composition scans (not just the scale)',
       ],
       outro: 'Most clients lose weight without experiencing muscle loss or fatigue, and regain clarity, drive, and confidence.',
+      image: {
+        src: 'pages/mens-health/weight-loss.jpg',
+        alt: 'Four smiling men stand outdoors with their arms around each other',
+      },
     },
     {
       kind: 'list',
@@ -176,6 +184,10 @@ export const page: PageCopy = {
         'Sleep, stress, libido, focus metrics',
       ],
       outro: 'You’ll leave with more than lab results. You’ll leave with clarity and direction.',
+      image: {
+        src: 'pages/mens-health/labs.jpg',
+        alt: 'A woman in scrubs shakes hands with a smiling man in a camouflage uniform beside a blonde woman',
+      },
     },
     {
       kind: 'list',
@@ -217,6 +229,6 @@ export const page: PageCopy = {
     'The repeated "Book an Appointment" / "Schedule an appointment today!" buttons are dropped; the hero and the final CTA carry booking. The live "Call us at (417) 605-2153" link is replaced by the standard call button. The live H3 "Serving Men in Springfield, Nixa, Ozark, Republic, and Surrounding Areas" is dropped as a heading and carried as serviceArea (Springfield, Nixa, Ozark, Republic).',
     'Two testimonials became review bands. "Jesse S. Paramedic" is shown as "Jesse S."; the other live attribution is "Construction Company Owner" (no person name), kept as live and flagged.',
     'Kept live claims as written: "we\'ve helped hundreds of men", "What we test, no one else does (or they charge triple for it)" and "Most clients lose weight without experiencing muscle loss or fatigue...". Flagged for Josh.',
-    'Left out the two Group-1.png template icons.',
+    'Left out the two Group-1.png template icons. Body photos come from the live media library (Elementor backgrounds, not in the page HTML).',
   ],
 };

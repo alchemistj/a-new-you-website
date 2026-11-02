@@ -16,6 +16,11 @@ export const page: PageCopy = {
     h1: 'Semaglutide in Springfield, MO',
     subhead:
       'A New You Women’s Clinic provides medically supervised semaglutide treatment for women in Springfield. Lucinda Sparks, MSN, CNM, APRN, leads our team with 23 years in healthcare and 13 years focused on women’s health.',
+    image: {
+      src: 'pages/semaglutide/hero.jpg',
+      alt: 'A provider in a white coat holds a clipboard facing a smiling woman with red hair seated in a treatment chair',
+    },
+    imagePosition: 'center 40%',
     primaryCta: {
       label: 'Schedule an Appointment',
       href: 'https://anewyouwomensclinic.myaestheticrecord.com/online-booking',
@@ -58,6 +63,10 @@ export const page: PageCopy = {
         'Every patient begins with a full medical assessment. We review your health history, current medications, past weight loss efforts, and what you want to accomplish.',
         'Providers generally prescribe semaglutide for adults with a BMI of 30 or higher, or 27 or higher with a weight-related health condition. Those numbers don’t tell us everything. Our medical team decides whether semaglutide fits your health or whether another approach makes more sense.',
       ],
+      image: {
+        src: 'pages/semaglutide/consultation.jpg',
+        alt: 'A gray-haired provider in a white coat sits facing a smiling patient in a yellow floral dress',
+      },
     },
     {
       kind: 'review',
@@ -96,6 +105,10 @@ export const page: PageCopy = {
         'You deserve to know the cost before you commit.',
         'Semaglutide medication starts at $100 for 1 mL, depending on your prescribed dose and formulation. We bill medication separately from the $99 monthly Weight Loss Membership, so a typical starting month runs about $199.',
       ],
+      image: {
+        src: 'pages/semaglutide/costs.jpg',
+        alt: 'A provider holds a tablet showing a 3D body scan report',
+      },
     },
     {
       kind: 'list',
@@ -161,7 +174,7 @@ export const page: PageCopy = {
     'Added Cindy\'s GLP-1 Medical Weight Management block word for word (medication options and concerns).',
     'Four live testimonials became single review bands with live names (Autumn S., Debra S., Kimberly C., Janet M.). The "Google Review" labels and trailing commas are dropped. Brief says reviews come from the reviews list only for moves between pages; these stay on this page.',
     'The live closing "Schedule an Appointment" button is the final CTA band (heading is the button label; no invented text).',
-    'Left out the template icon images (Group-1, aftercare-icon, consultation-icon, weight-loss). No hero photo: the live page has no real photo (open question).',
+    'Left out the template icon images (Group-1, aftercare-icon, consultation-icon, weight-loss). Photos come from the live media library files named for semaglutide (Elementor backgrounds, not in the page HTML).',
     'Kept FAQ answers and the "$100 for 1 mL" and "$99 monthly" figures exactly as live. The FAQ answer "Many patients lose around 20 pounds over three to six months." is a live outcome claim, flagged for Josh.',
     'Page was an orphan on the live site; it is now linked from weight-loss through the GLP-1 card.',
   ],
