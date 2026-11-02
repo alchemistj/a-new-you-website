@@ -24,7 +24,7 @@ describe('flat URLs (no city segment)', () => {
     expect(route('vaginal-wellness')).toBe('/vaginal-rejuvenation/');
     expect(route('memberships')).toBe('/subscription-plans/');
     expect(route('cryolipolysis')).toBe('/cryolipolysis/');
-    expect(route('female-sexual-dysfunction')).toBe('/female-sexual-dysfunction/');
+    expect(route('female-sexual-dysfunction')).toBe('/female-sexual-dysfunction-disorder/');
     expect(route('contact')).toBe('/contact/');
     expect(route('faq')).toBe('/faq/');
   });

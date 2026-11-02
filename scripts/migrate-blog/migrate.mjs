@@ -69,7 +69,7 @@ const PAGE_MAP = {
   '/pcos-management/': '/menopause/',
   '/perimenopause/': '/perimenopause/',
   '/vaginal-rejuvenation/': '/vaginal-rejuvenation/',
-  '/female-sexual-disfunction-disorder/': '/female-sexual-dysfunction/',
+  '/female-sexual-disfunction-disorder/': '/female-sexual-dysfunction-disorder/',
   '/mens-health/': '/mens-health/',
   '/biote/': '/biote/',
   '/subscription-plans/': '/subscription-plans/',
@@ -93,7 +93,7 @@ const PHRASES = [
   ['/perimenopause/', /\bperimenopause\b/i],
   ['/menopause/', /\bmenopause\b/i],
   ['/vaginal-rejuvenation/', /\b(vaginal wellness|vaginal rejuvenation|Empower ?RF|Empower by InMode)\b/i],
-  ['/female-sexual-dysfunction/', /\bfemale sexual dysfunction\b/i],
+  ['/female-sexual-dysfunction-disorder/', /\bfemale sexual dysfunction\b/i],
   ['/aesthetics/', /\bMorpheus ?8\b/i],
   ['/biote/', /\bBio-?TE\b/i],
 ];

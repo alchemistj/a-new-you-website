@@ -34,7 +34,7 @@ const SERVICE_LABELS: Record<string, string> = {
   '/menopause/': 'Menopause',
   '/perimenopause/': 'Perimenopause',
   '/vaginal-rejuvenation/': 'Vaginal Wellness',
-  '/female-sexual-dysfunction/': 'Female Sexual Dysfunction',
+  '/female-sexual-dysfunction-disorder/': 'Female Sexual Dysfunction',
   '/mens-health/': "Men's Health",
   '/biote/': 'Biote',
 };

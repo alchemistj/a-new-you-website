@@ -18,7 +18,7 @@ export const FALLBACK_PAGE_REDIRECTS: Redirect[] = [
   { from: '/cryolypolysis/', to: '/cryolipolysis/' },
   { from: '/thyroid-optimization/', to: '/menopause/' },
   { from: '/pcos-management/', to: '/menopause/' },
-  { from: '/female-sexual-disfunction-disorder/', to: '/female-sexual-dysfunction/' },
+  { from: '/female-sexual-disfunction-disorder/', to: '/female-sexual-dysfunction-disorder/' },
 ];
 
 /** Dropped pages: events (index + 6 children), placeholder and ticket pages. All go to "/". */

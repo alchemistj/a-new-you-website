@@ -2,7 +2,7 @@ import type { PageCopy } from '../../types/page';
 
 export const page: PageCopy = {
   slug: 'female-sexual-dysfunction',
-  route: '/female-sexual-dysfunction/',
+  route: '/female-sexual-dysfunction-disorder/',
   template: 'service',
   publish: true,
   oldUrls: ['/female-sexual-disfunction-disorder/'],
