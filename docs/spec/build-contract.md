@@ -78,6 +78,29 @@ their `scripts/` folder.
 Until another helper's files exist on `astro-rebuild`, code against these interfaces. Write a minimal
 local stub only if the build needs it to run, and say so in your report so the stubs get reconciled.
 
+## Design QA (required before Josh sees anything)
+
+Josh needs the site to *feel right*. It doesn't have to match the old site, but it can never look worse.
+The architect runs this check on every build before sending a link. Helpers run it on their own pages
+before reporting done.
+
+1. Screenshot every published page, old and new, at 390 px and 1440 px: above the fold plus the full page.
+2. Above the fold:
+   - The hero photo is present, a real photo from that page, cropped well, with the subject's face visible.
+   - The H1 and subhead read clearly over the photo.
+   - Logo, header and buttons look finished at both widths.
+3. Full page:
+   - No missing, stretched, blurry or tiny images.
+   - Photo sections alternate sides.
+   - No walls of unbroken text and no awkward empty gaps.
+   - Cards line up, and text contrast is AA.
+   - Section rhythm feels deliberate.
+4. Feel:
+   - Same brand: purple `#8E3393`, teal `#3A989C`, her logo, her real photos.
+   - Warm and clinical, not generic.
+   - Anything the old page had above the fold (a photo or a key CTA) is still above the fold, unless it was junk.
+5. Log every issue found and fixed. Josh gets the link plus that list.
+
 ## Workflow
 
 - Base branch: `astro-rebuild`. Work in your own git worktree on your own branch. Never commit to `main` or
