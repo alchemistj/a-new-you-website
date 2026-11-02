@@ -52,12 +52,12 @@ const sideOf = (s: Section) =>
 
 // Background tones: bandable sections cycle plain, lavender, plain, teal. Reviews and CTA are
 // their own bands; a review takes whichever tint its neighbours are not.
-type Tone = 'plain' | 'lav' | 'teal';
-const cycle: Tone[] = ['plain', 'lav', 'plain', 'teal'];
+type ToneName = 'plain' | 'lav' | 'teal';
+const cycle: ToneName[] = ['plain', 'lav', 'plain', 'teal'];
 const isReview = (b: Block) => b.type === 'one' && b.s.kind === 'review';
 let bandIdx = 0;
-const tones: Tone[] = blocks.map((b) => (isReview(b) ? 'plain' : cycle[bandIdx++ % 4]!));
-const reviewTone = (i: number): Tone => {
+const tones: ToneName[] = blocks.map((b) => (isReview(b) ? 'plain' : cycle[bandIdx++ % 4]!));
+const reviewTone = (i: number): ToneName => {
   const near = [tones[i - 1], tones[i + 1]];
   return near.includes('teal') ? 'lav' : 'teal';
 };
