@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Client side of <DeferredEmbed>. Loads each embed on the first scroll, wheel, touchstart, pointerdown
 // or keydown, or when that embed nears the viewport, whichever comes first (Rule 10).
 import { CHERRY_INIT, EMBEDS, type EmbedKind } from './embeds';

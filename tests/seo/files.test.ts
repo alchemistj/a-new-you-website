@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { buildLlmsTxt, buildRobotsTxt, buildSitemapXml, isProductionBuild, type RouteLike } from '../../src/lib/seo/files';
 
 const routes: RouteLike[] = [
-  { path: '/springfield/botox/', title: 'Botox in Springfield, MO', kind: 'page' },
+  { path: '/botox/', title: 'Botox in Springfield, MO', kind: 'page' },
   { path: '/', title: "A New You Women's Clinic", kind: 'page' },
   { path: '/blog/', title: 'Blog', kind: 'blog-index' },
   { path: '/blog/a&b/', title: 'A & B', kind: 'blog' },

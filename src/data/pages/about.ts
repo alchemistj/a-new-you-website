@@ -5,7 +5,7 @@ export const page: PageCopy = {
   route: '/about/',
   template: 'company',
   publish: true,
-  oldUrls: ['/about/'],
+  oldUrls: [],
   seo: {
     title: "About Us in Springfield, MO | A New You Women's Clinic",
     description:

@@ -41,7 +41,7 @@ describe('blog content', () => {
   });
 
   it('has no slug that clashes with a page route segment or a blog route', () => {
-    const reserved = ['about', 'biote', 'memberships', 'financing', 'customer-reviews', 'springfield', 'blog', 'page', 'contact', 'faq', 'sitemap', 'robots', 'llms', '_astro'];
+    const reserved = ['about', 'biote', 'subscription-plans', 'financing', 'customer-reviews', 'weight-loss', 'semaglutide', 'botox', 'aesthetics', 'cryolipolysis', 'menopause', 'perimenopause', 'vaginal-rejuvenation', 'female-sexual-dysfunction', 'mens-health', 'blog', 'page', 'contact', 'faq', 'sitemap', 'robots', 'llms', '_astro'];
     for (const p of posts) expect(reserved, p.slug).not.toContain(p.slug);
     const pagesDir = join(ROOT, 'src/data/pages');
     if (existsSync(pagesDir)) {
@@ -82,7 +82,7 @@ describe('blog content', () => {
   });
 
   it('links internally only to routes that exist', () => {
-    const service = /^(\/|\/(springfield\/[a-z-]+|biote|memberships|financing|about|customer-reviews|blog)\/(#.*)?)$/;
+    const service = /^(\/|\/(weight-loss|semaglutide|botox|aesthetics|cryolipolysis|menopause|perimenopause|vaginal-rejuvenation|female-sexual-dysfunction|mens-health|contact|faq|biote|subscription-plans|financing|about|customer-reviews|blog)\/(#.*)?)$/;
     for (const p of posts) {
       for (const m of p.body.matchAll(/(?<!!)\[[^\]]*\]\((\/[^)]*)\)/g)) {
         const href = m[1];
@@ -103,11 +103,18 @@ describe('blog content', () => {
 describe('blog redirects', () => {
   const redirects: { from: string; to: string }[] = JSON.parse(readFileSync(join(ROOT, 'src/data/redirects-blog.json'), 'utf8'));
 
+  const pageRoutes = new Set(
+    readdirSync(join(ROOT, 'src/data/pages'))
+      .filter((x) => x.endsWith('.ts') && x !== 'index.ts')
+      .map((f) => /route:\s*['"]([^'"]+)['"]/.exec(readFileSync(join(ROOT, 'src/data/pages', f), 'utf8'))?.[1]),
+  );
+
   it('redirects exactly the posts whose slug changed (the rest keep their live URL)', () => {
     for (const p of posts) {
       const old = JSON.parse(p.front.oldUrl);
       const hit = redirects.find((r) => r.from === old);
-      if (old === `/${p.slug}/`) expect(hit, p.slug).toBeUndefined();
+      // A post whose old URL is now a service page (female-sexual-dysfunction) cannot redirect.
+      if (old === `/${p.slug}/` || pageRoutes.has(old)) expect(hit, p.slug).toBeUndefined();
       else expect(hit?.to, p.slug).toBe(`/${p.slug}/`);
     }
     expect(redirects).toHaveLength(5); // 3 renamed slugs + 2 decoded (U+FE0F) variants

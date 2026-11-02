@@ -10,11 +10,11 @@ heroImage:
   alt: ""
 categories: []
 tags: []
-relatedService: "/springfield/cryolipolysis/"
-addedLinks: [{"phrase":"Cryolipolysis","to":"/springfield/cryolipolysis/"}]
+relatedService: "/cryolipolysis/"
+addedLinks: [{"phrase":"Cryolipolysis","to":"/cryolipolysis/"}]
 ---
 
-Body contouring is an appealing option for anyone hoping to eliminate stubborn fat pockets. [Cryolipolysis](/springfield/cryolipolysis/) is one of the safest nonsurgical body contouring techniques available today. There is no downtime, no surgery, and you get great results. That is, if you are the right candidate.
+Body contouring is an appealing option for anyone hoping to eliminate stubborn fat pockets. [Cryolipolysis](/cryolipolysis/) is one of the safest nonsurgical body contouring techniques available today. There is no downtime, no surgery, and you get great results. That is, if you are the right candidate.
 
 -   Am I the right candidate? Ask yourself the following:
 -   Do I Have at least 1 inch of pinchable subcutaneous fat ?

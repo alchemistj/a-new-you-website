@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { readFileSync } from 'node:fs';
 import { describe, expect, it, vi } from 'vitest';
 import { initDeferredEmbeds } from '../../src/components/embeds/deferred-embed-client';

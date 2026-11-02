@@ -10,17 +10,17 @@ heroImage:
   alt: ""
 categories: []
 tags: []
-relatedService: "/springfield/female-sexual-dysfunction/"
-addedLinks: [{"phrase":"female sexual dysfunction","to":"/springfield/female-sexual-dysfunction/"}]
+relatedService: "/female-sexual-dysfunction/"
+addedLinks: [{"phrase":"female sexual dysfunction","to":"/female-sexual-dysfunction/"}]
 ---
 
-Let’s face it this is the elephant in the room. Every day you see multiple commercials about [mens sexual dysfunction](/springfield/mens-health/) and medications to treat them. What about the women they are having sex with? Where are they getting their treatment?
+Let’s face it this is the elephant in the room. Every day you see multiple commercials about [mens sexual dysfunction](/mens-health/) and medications to treat them. What about the women they are having sex with? Where are they getting their treatment?
 
 ![](../../assets/blog/female-sexual-dysfunction/elephant-room.jpg)
 
 **Today we’re going to face the elephant in the room.**
 
-Many women experience problems with [sexual dissatisfaction](/springfield/vaginal-wellness/) throughout their lives. According to The National Health Institute (NIH), approximately 40% of women suffer from sexual dysfunction and there are few treatment options.
+Many women experience problems with [sexual dissatisfaction](/vaginal-rejuvenation/) throughout their lives. According to The National Health Institute (NIH), approximately 40% of women suffer from sexual dysfunction and there are few treatment options.
 
 [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3008577/](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3008577/)
 
@@ -42,7 +42,7 @@ Untreated anxiety and depression can contribute to sexual dysfunction. Anti-anxi
 
 Relationship conflicts about sex, or even other aspects of your relationship can diminish your responsiveness as well as desire. Religion and cultural issues can often pose problems. Body image can also be a strong contributor to sexual dysfunction.
 
-Women with depression, anxiety, heart disease, neurological conditions, spinal cord injuries, vulvovaginal atrophy, and infections are at an increased risk for Sexual dysfunction. Emotional and psychological stress can increase your risk of [female sexual dysfunction](/springfield/female-sexual-dysfunction/). A history of sexual abuse causes an increase in sexual dysfunction.
+Women with depression, anxiety, heart disease, neurological conditions, spinal cord injuries, vulvovaginal atrophy, and infections are at an increased risk for Sexual dysfunction. Emotional and psychological stress can increase your risk of [female sexual dysfunction](/female-sexual-dysfunction/). A history of sexual abuse causes an increase in sexual dysfunction.
 
 It’s important that you discuss your sexual and medical history with your provider in order to determine if a pelvic exam and blood test are indicated.
 

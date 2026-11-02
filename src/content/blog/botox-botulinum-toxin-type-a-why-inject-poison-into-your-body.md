@@ -10,7 +10,7 @@ heroImage:
   alt: ""
 categories: []
 tags: []
-relatedService: "/springfield/botox/"
+relatedService: "/botox/"
 addedLinks: []
 ---
 

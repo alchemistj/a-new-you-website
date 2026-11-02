@@ -6,7 +6,7 @@ export const page: PageCopy = {
   route: '/about/',
   template: 'company',
   publish: true,
-  oldUrls: ['/about/'],
+  oldUrls: [],
   seo: { title: 'Fixture About | A New You Women\'s Clinic', description: 'Fixture company page used only by foundation tests.' },
   hero: { h1: 'Fixture About Heading', image: { src: 'pages/fixture/hero.jpg', alt: 'Synthetic test gradient' }, imagePosition: 'center top' },
   sections: [

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Delayed third-party tags (SOP section 7, Rule 10).
 //  - GA4 gtag: after window load + 3 s, or on first interaction, whichever comes first.
 //  - LeadConnector chat: first interaction only, never on load.

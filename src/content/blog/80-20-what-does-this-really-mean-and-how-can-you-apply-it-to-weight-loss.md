@@ -7,8 +7,8 @@ author: "Lucinda \"Cindy\" Sparks"
 oldUrl: "/80-20-what-does-this-really-mean-and-how-can-you-apply-it-to-weight-loss/"
 categories: []
 tags: []
-relatedService: "/springfield/semaglutide/"
-addedLinks: [{"phrase":"semaglutide","to":"/springfield/semaglutide/"}]
+relatedService: "/semaglutide/"
+addedLinks: [{"phrase":"semaglutide","to":"/semaglutide/"}]
 ---
 
 The Pareto principle states that for many outcomes, roughly 80% of the return comes from 20% of the effort. The Pareto principle was developed in 1896 by the Italian economist Vilfredo Pareto. He observed that 80% of the land in Italy was owned by 20% of the population. He also witnessed this phenomenon with peas in his garden, where 20% of the plants were bearing 80% of the fruit.
@@ -57,11 +57,11 @@ Now, let’s talk about exercise. We all have busy lives. There are kids, games,
 
 I am more of a “get in there, get the job done, and get out as quickly as I can” kind of person. That is why I love the 30-minute Xpress workout at Planet Fitness. It is a full-body workout, including cardio, that you do 2 to 3 times a week. for me, it’s usually two times a week. This according to MyFitnessPal, burns 316 calories a week (these estimates vary by person). While that doesn’t seem like very much, it brings my total calorie deficit for the week up to 3316. It helps me build lean muscle and is less than 1% of my time.
 
-Three days a week I walk at a moderate pace for 30 minutes Which burns approximately 318 cal bringing my total deficit up to 3634. Again 1% of my time. It’s important to note that rest and recovery along with other self-care. Activities are an important part of any wellness goal and balance, and avoiding extremes in any diet and exercise is the healthiest, most sustainable way to achieve success. The rest of my 20% is achieved with the help of the medication [semaglutide](/springfield/semaglutide/).
+Three days a week I walk at a moderate pace for 30 minutes Which burns approximately 318 cal bringing my total deficit up to 3634. Again 1% of my time. It’s important to note that rest and recovery along with other self-care. Activities are an important part of any wellness goal and balance, and avoiding extremes in any diet and exercise is the healthiest, most sustainable way to achieve success. The rest of my 20% is achieved with the help of the medication [semaglutide](/semaglutide/).
 
 Semaglutide is the generic name of the medication. Ozempic Wegovy,and Rybelsus. It is a GLP – one receptor agonist meaning that it mimics the action of the human peptide to increase insulin secretion and improve glycemic control. It also works in the brain at higher doses to suppress appetite and signal you to feel full when used in conjunction with diet and exercise it can cause significant weight loss.
 
-Side effects can include fatigue, dizziness, gastrointestinal issues, such as diarrhea or constipation gassiness headaches, stomach issues, including nausea, vomiting, pain, or bloating. be sure to consult with your provider before starting any new [weight loss program](/springfield/weight-loss/) and seek medical advice prior to discontinuation of medication.
+Side effects can include fatigue, dizziness, gastrointestinal issues, such as diarrhea or constipation gassiness headaches, stomach issues, including nausea, vomiting, pain, or bloating. be sure to consult with your provider before starting any new [weight loss program](/weight-loss/) and seek medical advice prior to discontinuation of medication.
 
 it’s important to keep in mind that the 80/20 rule is a principle and not a law. For example, if you are building a barn and the framework is 80% of the work and it is completed in the first 20% of the project you’ve still got a put the roof and the walls on or you don’t have a barn.
 

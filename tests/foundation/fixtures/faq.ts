@@ -3,10 +3,10 @@ import type { PageCopy } from '../../../src/types/page';
 
 export const page: PageCopy = {
   slug: 'faq',
-  route: '/springfield/faq/',
+  route: '/faq/',
   template: 'faq',
   publish: true,
-  oldUrls: ['/faq/'],
+  oldUrls: [],
   seo: { title: 'Fixture FAQ | A New You Women\'s Clinic', description: 'Fixture FAQ page used only by foundation tests.' },
   hero: { h1: 'Fixture FAQ Heading' },
   sections: [

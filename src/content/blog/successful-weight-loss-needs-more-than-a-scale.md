@@ -211,7 +211,7 @@ They need to know what matters.\
 They need to know when something needs to be adjusted.\
 They need someone looking at the whole picture.
 
-A good weight loss plan is not just, “[Here is medication, good luck.”](/springfield/weight-loss/)
+A good weight loss plan is not just, “[Here is medication, good luck.”](/weight-loss/)
 
 It should look at nutrition, movement, muscle, fat loss, labs, [hormones](/the-benefits-of-bioidentical-hormone-replacement-therapy/), blood sugar, gut health, inflammation, sleep, stress, and how the person is actually doing in real life.
 
@@ -222,7 +222,7 @@ It is happening while you are working, parenting, caregiving, running errands, p
 A plan has to fit real life, or people will not stick with it.
 
 ## This Is Where Support Changes Everything
-When someone has [regular support](/memberships/), they do not have to carry the whole process alone.
+When someone has [regular support](/subscription-plans/), they do not have to carry the whole process alone.
 
 ![](../../assets/blog/successful-weight-loss-needs-more-than-a-scale/Semaglutide-injections-in-Springfield-MO.jpg)
 

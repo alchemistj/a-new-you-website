@@ -44,153 +44,73 @@
       "statusCode": 301
     },
     {
-      "source": "/subscription-plans/",
-      "destination": "/memberships/",
-      "statusCode": 301
-    },
-    {
-      "source": "/subscription-plans",
-      "destination": "/memberships/",
-      "statusCode": 301
-    },
-    {
-      "source": "/aesthetics/",
-      "destination": "/springfield/aesthetics/",
-      "statusCode": 301
-    },
-    {
-      "source": "/aesthetics",
-      "destination": "/springfield/aesthetics/",
-      "statusCode": 301
-    },
-    {
       "source": "/botox-in-springfield-mo/",
-      "destination": "/springfield/botox/",
+      "destination": "/botox/",
       "statusCode": 301
     },
     {
       "source": "/botox-in-springfield-mo",
-      "destination": "/springfield/botox/",
-      "statusCode": 301
-    },
-    {
-      "source": "/contact/",
-      "destination": "/springfield/contact/",
-      "statusCode": 301
-    },
-    {
-      "source": "/contact",
-      "destination": "/springfield/contact/",
+      "destination": "/botox/",
       "statusCode": 301
     },
     {
       "source": "/cryolypolysis/",
-      "destination": "/springfield/cryolipolysis/",
+      "destination": "/cryolipolysis/",
       "statusCode": 301
     },
     {
       "source": "/cryolypolysis",
-      "destination": "/springfield/cryolipolysis/",
-      "statusCode": 301
-    },
-    {
-      "source": "/faq/",
-      "destination": "/springfield/faq/",
-      "statusCode": 301
-    },
-    {
-      "source": "/faq",
-      "destination": "/springfield/faq/",
+      "destination": "/cryolipolysis/",
       "statusCode": 301
     },
     {
       "source": "/female-sexual-disfunction-disorder/",
-      "destination": "/springfield/female-sexual-dysfunction/",
+      "destination": "/female-sexual-dysfunction/",
       "statusCode": 301
     },
     {
       "source": "/female-sexual-disfunction-disorder",
-      "destination": "/springfield/female-sexual-dysfunction/",
-      "statusCode": 301
-    },
-    {
-      "source": "/menopause/",
-      "destination": "/springfield/menopause/",
-      "statusCode": 301
-    },
-    {
-      "source": "/menopause",
-      "destination": "/springfield/menopause/",
+      "destination": "/female-sexual-dysfunction/",
       "statusCode": 301
     },
     {
       "source": "/thyroid-optimization/",
-      "destination": "/springfield/menopause/",
+      "destination": "/menopause/",
       "statusCode": 301
     },
     {
       "source": "/thyroid-optimization",
-      "destination": "/springfield/menopause/",
+      "destination": "/menopause/",
       "statusCode": 301
     },
     {
       "source": "/pcos-management/",
-      "destination": "/springfield/menopause/",
+      "destination": "/menopause/",
       "statusCode": 301
     },
     {
       "source": "/pcos-management",
-      "destination": "/springfield/menopause/",
-      "statusCode": 301
-    },
-    {
-      "source": "/mens-health/",
-      "destination": "/springfield/mens-health/",
-      "statusCode": 301
-    },
-    {
-      "source": "/mens-health",
-      "destination": "/springfield/mens-health/",
-      "statusCode": 301
-    },
-    {
-      "source": "/perimenopause/",
-      "destination": "/springfield/perimenopause/",
-      "statusCode": 301
-    },
-    {
-      "source": "/perimenopause",
-      "destination": "/springfield/perimenopause/",
+      "destination": "/menopause/",
       "statusCode": 301
     },
     {
       "source": "/semaglutide-in-springfield-mo/",
-      "destination": "/springfield/semaglutide/",
+      "destination": "/semaglutide/",
       "statusCode": 301
     },
     {
       "source": "/semaglutide-in-springfield-mo",
-      "destination": "/springfield/semaglutide/",
-      "statusCode": 301
-    },
-    {
-      "source": "/vaginal-rejuvenation/",
-      "destination": "/springfield/vaginal-wellness/",
-      "statusCode": 301
-    },
-    {
-      "source": "/vaginal-rejuvenation",
-      "destination": "/springfield/vaginal-wellness/",
+      "destination": "/semaglutide/",
       "statusCode": 301
     },
     {
       "source": "/weight-loss-in-springfield/",
-      "destination": "/springfield/weight-loss/",
+      "destination": "/weight-loss/",
       "statusCode": 301
     },
     {
       "source": "/weight-loss-in-springfield",
-      "destination": "/springfield/weight-loss/",
+      "destination": "/weight-loss/",
       "statusCode": 301
     },
     {
@@ -894,6 +814,11 @@
       "statusCode": 301
     },
     {
+      "source": "/aesthetics",
+      "destination": "/aesthetics/",
+      "statusCode": 301
+    },
+    {
       "source": "/biote",
       "destination": "/biote/",
       "statusCode": 301
@@ -904,8 +829,33 @@
       "statusCode": 301
     },
     {
+      "source": "/botox",
+      "destination": "/botox/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cryolipolysis",
+      "destination": "/cryolipolysis/",
+      "statusCode": 301
+    },
+    {
       "source": "/customer-reviews",
       "destination": "/customer-reviews/",
+      "statusCode": 301
+    },
+    {
+      "source": "/faq",
+      "destination": "/faq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/female-sexual-dysfunction",
+      "destination": "/female-sexual-dysfunction/",
       "statusCode": 301
     },
     {
@@ -914,68 +864,38 @@
       "statusCode": 301
     },
     {
-      "source": "/memberships",
-      "destination": "/memberships/",
+      "source": "/menopause",
+      "destination": "/menopause/",
       "statusCode": 301
     },
     {
-      "source": "/springfield/aesthetics",
-      "destination": "/springfield/aesthetics/",
+      "source": "/mens-health",
+      "destination": "/mens-health/",
       "statusCode": 301
     },
     {
-      "source": "/springfield/botox",
-      "destination": "/springfield/botox/",
+      "source": "/perimenopause",
+      "destination": "/perimenopause/",
       "statusCode": 301
     },
     {
-      "source": "/springfield/contact",
-      "destination": "/springfield/contact/",
+      "source": "/semaglutide",
+      "destination": "/semaglutide/",
       "statusCode": 301
     },
     {
-      "source": "/springfield/cryolipolysis",
-      "destination": "/springfield/cryolipolysis/",
+      "source": "/subscription-plans",
+      "destination": "/subscription-plans/",
       "statusCode": 301
     },
     {
-      "source": "/springfield/faq",
-      "destination": "/springfield/faq/",
+      "source": "/vaginal-rejuvenation",
+      "destination": "/vaginal-rejuvenation/",
       "statusCode": 301
     },
     {
-      "source": "/springfield/female-sexual-dysfunction",
-      "destination": "/springfield/female-sexual-dysfunction/",
-      "statusCode": 301
-    },
-    {
-      "source": "/springfield/menopause",
-      "destination": "/springfield/menopause/",
-      "statusCode": 301
-    },
-    {
-      "source": "/springfield/mens-health",
-      "destination": "/springfield/mens-health/",
-      "statusCode": 301
-    },
-    {
-      "source": "/springfield/perimenopause",
-      "destination": "/springfield/perimenopause/",
-      "statusCode": 301
-    },
-    {
-      "source": "/springfield/semaglutide",
-      "destination": "/springfield/semaglutide/",
-      "statusCode": 301
-    },
-    {
-      "source": "/springfield/vaginal-wellness",
-      "destination": "/springfield/vaginal-wellness/",
-      "statusCode": 301
-    },
-    {
-      "source": "/springfield/weight-loss",
-      "destination": "/springfield/weight-loss/",
+      "source": "/weight-loss",
+      "destination": "/weight-loss/",
       "statusCode": 301
     }
   ]

@@ -5,7 +5,7 @@ export const page: PageCopy = {
   route: '/',
   template: 'home',
   publish: true,
-  oldUrls: ['/'],
+  oldUrls: [],
   seo: {
     title: "A New You Women's Clinic | Med Spa in Springfield, MO",
     description:
@@ -21,12 +21,11 @@ export const page: PageCopy = {
     },
     imagePosition: 'center 30%',
     primaryCta: {
-      label: 'Schedule an Appointment',
-      href: 'https://anewyouwomensclinic.myaestheticrecord.com/online-booking',
+      label: 'Take Our Free 2-Minute Quiz',
+      href: 'https://link.aestheticrecord.com/widget/survey/NgxRM6NWFTi1Q8AS8XFU',
     },
   },
   sections: [
-    { kind: 'embed', id: 'quiz', embed: 'ghl-quiz', heading: 'Take Our Free 2-Minute Quiz' },
     {
       kind: 'list',
       heading: 'Are You Tired of ...',
@@ -50,7 +49,7 @@ export const page: PageCopy = {
       cards: [
         {
           title: 'Female Sexual Dysfunction',
-          href: '/springfield/vaginal-wellness/',
+          href: '/vaginal-rejuvenation/',
           image: {
             src: 'pages/home/card-fsd.jpg',
             alt: 'A provider in a white coat holding a clipboard faces a smiling woman with glasses and red hair',
@@ -58,7 +57,7 @@ export const page: PageCopy = {
         },
         {
           title: 'Menopause',
-          href: '/springfield/menopause/',
+          href: '/menopause/',
           image: {
             src: 'pages/home/card-menopause.jpg',
             alt: 'A gray-haired provider in black scrubs talks with a blonde patient in a treatment room',
@@ -66,7 +65,7 @@ export const page: PageCopy = {
         },
         {
           title: 'Weight Loss',
-          href: '/springfield/weight-loss/',
+          href: '/weight-loss/',
           image: {
             src: 'pages/home/card-weight-loss.jpg',
             alt: 'A woman in a black racerback top and patterned tank stands with her back to the camera in front of a body scanner',
@@ -74,7 +73,7 @@ export const page: PageCopy = {
         },
         {
           title: "Men's Health",
-          href: '/springfield/mens-health/',
+          href: '/mens-health/',
           image: {
             src: 'pages/home/card-mens-health.jpg',
             alt: 'A bearded man in a plaid shirt sits on an exam table while a provider in black scrubs talks with him',
@@ -82,7 +81,7 @@ export const page: PageCopy = {
         },
         {
           title: 'Aesthetics',
-          href: '/springfield/aesthetics/',
+          href: '/aesthetics/',
           image: {
             src: 'pages/home/card-aesthetics.jpg',
             alt: 'A gray-haired provider in black scrubs and purple gloves gives an injection to a reclining blonde woman',
@@ -143,11 +142,10 @@ export const page: PageCopy = {
   ],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
-    'Homepage service cards reordered to Cindy\'s priority order: Female Sexual Dysfunction card (which links to the vaginal page on the live site, so it now links to /springfield/vaginal-wellness/) first, then Menopause, Weight Loss, Men\'s Health, Aesthetics. Live order was Weight Loss, Aesthetics, Menopause, Female Sexual Dysfunction, Men\'s Health. Card titles and wording unchanged.',
+    'Homepage service cards reordered to Cindy\'s priority order: Female Sexual Dysfunction card (which links to the vaginal page on the live site, so it now links to /vaginal-rejuvenation/) first, then Menopause, Weight Loss, Men\'s Health, Aesthetics. Live order was Weight Loss, Aesthetics, Menopause, Female Sexual Dysfunction, Men\'s Health. Card titles and wording unchanged.',
     'Removed the "Pounds Lost With A New You" heading and its 0 lbs counter.',
     'Removed the Black Friday coupon text and the "#ShareASale" text (they live in the footer, not in the page content).',
-    'Quiz: the "Take Our Free 2-Minute Quiz" button is now the heading of the ghl-quiz embed section, placed right after the hero where the quiz CTA was.',
-    'Hero primary CTA is the standard "Schedule an Appointment" booking link (brief). The live hero button was the quiz link.',
+    'Quiz: not embedded (Josh, 2 Nov). The hero\'s one button, "Take Our Free 2-Minute Quiz", links to the Aesthetic Record survey, as on the live site. Schedule an Appointment stays in the header and mobile bar.',
     'The live page had two H1s (logo and "Take Control of How You Age"); only the second is kept as the H1.',
     'Live hero subhead was an H2; it is now the hero subhead (same words).',
     'Process step titles lose their typed numbers ("1. ", "2. ") because the steps section numbers itself. Words unchanged.',

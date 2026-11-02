@@ -3,7 +3,7 @@ import type { PageCopy } from '../../../src/types/page';
 
 export const page: PageCopy = {
   slug: 'weight-loss',
-  route: '/springfield/weight-loss/',
+  route: '/weight-loss/',
   template: 'service',
   publish: true,
   oldUrls: ['/weight-loss-in-springfield/'],

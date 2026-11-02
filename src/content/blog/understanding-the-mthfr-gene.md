@@ -44,7 +44,7 @@ While having an MTHFR variant doesn’t guarantee health issues, it can affect c
 ○ When the MTHFR gene doesn’t function optimally, homocysteine levels can build up. Elevated homocysteine is linked to an increased risk of cardiovascular diseases, including heart attacks and stroke. 
 
 ### 2\. Mental Health and Mood Disorders
-○ MTHFR mutations can affect methylation and neurotransmitter production, which are crucial for mood regulation. Some studies suggest a link between MTHFR mutations and an increased risk of depression, anxiety, and other mental health disorders. These effects are particularly important to understand in the context of [men’s health and wellness.](/springfield/mens-health/)
+○ MTHFR mutations can affect methylation and neurotransmitter production, which are crucial for mood regulation. Some studies suggest a link between MTHFR mutations and an increased risk of depression, anxiety, and other mental health disorders. These effects are particularly important to understand in the context of [men’s health and wellness.](/mens-health/)
 
 ### 3\. Reduced Detoxification Capacity
 ○ Methylation is essential for detoxification processes in the liver. An MTHFR mutation may reduce the body’s ability to detoxify, potentially leading to toxin buildup and contributing to various health issues. 

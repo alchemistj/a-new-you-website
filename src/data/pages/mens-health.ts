@@ -2,10 +2,10 @@ import type { PageCopy } from '../../types/page';
 
 export const page: PageCopy = {
   slug: 'mens-health',
-  route: '/springfield/mens-health/',
+  route: '/mens-health/',
   template: 'service',
   publish: true,
-  oldUrls: ['/mens-health/'],
+  oldUrls: [],
   seo: {
     title: "Men’s Health in Springfield, MO | A New You Women's Clinic",
     description:

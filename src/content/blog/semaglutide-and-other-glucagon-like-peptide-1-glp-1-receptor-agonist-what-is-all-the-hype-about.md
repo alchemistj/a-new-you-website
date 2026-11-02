@@ -7,12 +7,12 @@ author: "Lucinda \"Cindy\" Sparks"
 oldUrl: "/semaglutide-and-other-glucagon-like-peptide-1-glp-1-receptor-agonist-what-is-all-the-hype-about/"
 categories: []
 tags: ["ozempic","Semaglutide"]
-relatedService: "/springfield/semaglutide/"
-addedLinks: [{"phrase":"semaglutide","to":"/springfield/semaglutide/"}]
+relatedService: "/semaglutide/"
+addedLinks: [{"phrase":"semaglutide","to":"/semaglutide/"}]
 ---
 
 
-Everyone’s talking about the miracle [weight loss](/latest-medical-treatments-for-weight-loss/) drug [semaglutide](/springfield/semaglutide/) how it’s a **game changer.** What is it? What does it do? Why is it a game changer? These are the questions I ask myself and here’s what I’ve discovered.
+Everyone’s talking about the miracle [weight loss](/latest-medical-treatments-for-weight-loss/) drug [semaglutide](/semaglutide/) how it’s a **game changer.** What is it? What does it do? Why is it a game changer? These are the questions I ask myself and here’s what I’ve discovered.
 
 Semagluetide belongs to a class of medications known as glucagon-like peptide-1 (GLP-1) receptor agonists. These medications mimic hormones in your gastrointestinal tract and target areas in the brain that regulate appetite and food intake. This can help regulate insulin and reduce blood glucose.
 

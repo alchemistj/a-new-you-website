@@ -2,10 +2,10 @@ import type { PageCopy } from '../../types/page';
 
 export const page: PageCopy = {
   slug: 'aesthetics',
-  route: '/springfield/aesthetics/',
+  route: '/aesthetics/',
   template: 'service',
   publish: true,
-  oldUrls: ['/aesthetics/'],
+  oldUrls: [],
   seo: {
     title: "Aesthetic Treatments in Springfield, MO | A New You Women's Clinic",
     description:
@@ -37,7 +37,7 @@ export const page: PageCopy = {
         {
           title: 'Botulinum toxin injections (Botox)',
           text: "is safe and effective for reduction of frown lines, crow's feet, and horizontal forehead lines.",
-          href: '/springfield/botox/',
+          href: '/botox/',
         },
         {
           title: 'Injectable dermal fillers',
@@ -112,7 +112,7 @@ export const page: PageCopy = {
     'Title tag: "A New You Clinic" corrected to "A New You Women\'s Clinic" and set in the standard "[Service] in Springfield, MO | A New You Women\'s Clinic" format. Description unchanged.',
     'Added two list sections from Cindy\'s list, names only and word for word: Facial Aesthetics & Skin Health — Women & Men (Botox & Dysport, Dermal Fillers, Morpheus8 Face & Neck RF Microneedling, Clinical Skin Renewal Facial, HydraFacial, Dermaplaning, Chemical Peels) and Non-Surgical Body Contouring & Skin Tightening — Women & Men (Cryolipolysis, Ultrasonic Cavitation, Laser Lipolysis, Radiofrequency Body Treatments, Morpheus8 Body RF Microneedling, Vacuum Brazilian Booty Lift / Body Contouring). Her all-caps headings are set in title case. Her concern bullets for these are on the Botox and Cryolipolysis pages only.',
     'Live headings "injectable dermal fillers", "RADIO FREQUENCY (RF) Facial" and "ULTRASONIC CAVITATION" are set in title case. The live copy ran "LASER LIPOLYSIS" and "Cryo-lipolysis" inline after the cavitation text; each is now its own heading with the same following words.',
-    'The Botox card text begins with "is safe and effective..." as on the live page (the live heading and sentence were one phrase). The live "Explore Botox Offerings Here" link is the card link to /springfield/botox/.',
+    'The Botox card text begins with "is safe and effective..." as on the live page (the live heading and sentence were one phrase). The live "Explore Botox Offerings Here" link is the card link to /botox/.',
     'Typo fix: closing line "Let us scheduled you a free consultation and body fat analysis" to "Let us schedule you ...". It is the final CTA heading.',
     'Removed the "Home / Aestheics" breadcrumb text and the Group-1 and Group-3 template images.',
     'Kept live claims as written ("safe and effective", "Most of these treatments achieve good outcomes", "removed for good", "no downtime"). Flagged for Josh.',

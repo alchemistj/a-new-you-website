@@ -9,8 +9,8 @@ heroImage:
   alt: ""
 categories: []
 tags: []
-relatedService: "/springfield/menopause/"
-addedLinks: [{"phrase":"menopause","to":"/springfield/menopause/"}]
+relatedService: "/menopause/"
+addedLinks: [{"phrase":"menopause","to":"/menopause/"}]
 ---
 
 ## Incontinence is Common—But It’s Not Your Only Option
@@ -38,7 +38,7 @@ Understanding what type of incontinence you’re dealing with is the first step 
 ## Why It Happens: Beyond the Bladder
 Incontinence isn’t just a bladder issue—it’s often a pelvic floor issue, a hormone issue, or even a nervous system issue. Here are some of the most common root causes:
 
--   Weak pelvic floor muscles (especially after pregnancy or [menopause](/springfield/menopause/))
+-   Weak pelvic floor muscles (especially after pregnancy or [menopause](/menopause/))
 -   Low estrogen levels, which affect tissue integrity and support
 -   Chronic constipation or straining
 -   Neurological conditions like diabetes, MS, or spinal injury

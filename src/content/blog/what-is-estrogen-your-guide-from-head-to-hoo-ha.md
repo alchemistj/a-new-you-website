@@ -9,8 +9,8 @@ heroImage:
   alt: ""
 categories: []
 tags: ["Anti-aging","Functional medicine","Hormone replacement","Menopause"]
-relatedService: "/springfield/menopause/"
-addedLinks: [{"phrase":"menopause","to":"/springfield/menopause/"},{"phrase":"perimenopause","to":"/springfield/perimenopause/"}]
+relatedService: "/menopause/"
+addedLinks: [{"phrase":"menopause","to":"/menopause/"},{"phrase":"perimenopause","to":"/perimenopause/"}]
 ---
 
 ![](../../assets/blog/what-is-estrogen-your-guide-from-head-to-hoo-ha/cindy-in-consult-with-peggy.jpg)
@@ -39,7 +39,7 @@ The three main estrogens are:
 
 -   **Estradiol, or E2:** The main estrogen in the bloodstream during the reproductive years.
 
--   **Estrone, or E1:** A form that becomes more prominent after [menopause](/springfield/menopause/).
+-   **Estrone, or E1:** A form that becomes more prominent after [menopause](/menopause/).
 
 -   **Estriol, or E3:** A form made in large amounts during pregnancy.
 
@@ -105,7 +105,7 @@ Estrogen does not stay at one level from puberty onward.
 
 It rises during puberty and shifts throughout the menstrual cycle. Pregnancy brings another major change.
 
-During [perimenopause](/springfield/perimenopause/), the years leading up to menopause, estrogen can swing up and down. It does not always follow a smooth decline.
+During [perimenopause](/perimenopause/), the years leading up to menopause, estrogen can swing up and down. It does not always follow a smooth decline.
 
 After menopause, estradiol generally stays much lower than it was during the reproductive years.
 
@@ -133,7 +133,7 @@ Estrogen is part of the metabolic picture. So are muscle, sleep, food, movement,
 
 Estrogen therapy is not a weight-loss treatment. A change in weight does not, by itself, prove that you need estrogen.
 
-At our [Springfield, Missouri weight loss clinic](/springfield/weight-loss/), we consider those connections as part of an individual plan.
+At our [Springfield, Missouri weight loss clinic](/weight-loss/), we consider those connections as part of an individual plan.
 
 My [blog about hormone therapy and whole-person health](/hormone-therapy-its-time-to-rethink-what-youve-been-told/) continues that conversation.
 

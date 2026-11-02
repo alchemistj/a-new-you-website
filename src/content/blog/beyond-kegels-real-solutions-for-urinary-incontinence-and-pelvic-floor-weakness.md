@@ -10,17 +10,17 @@ heroImage:
   alt: ""
 categories: []
 tags: []
-relatedService: "/springfield/menopause/"
-addedLinks: [{"phrase":"menopause","to":"/springfield/menopause/"},{"phrase":"perimenopause","to":"/springfield/perimenopause/"}]
+relatedService: "/menopause/"
+addedLinks: [{"phrase":"menopause","to":"/menopause/"},{"phrase":"perimenopause","to":"/perimenopause/"}]
 ---
 
 If you’ve ever leaked a little when you laughed, sneezed, jumped, or tried to make it to the bathroom in time—you’re not alone. Millions of women experience urinary incontinence or pelvic heaviness, yet far too many suffer in silence. Often dismissed with casual advice like “just do more Kegels,” women are left feeling frustrated, ashamed, or resigned to living with discomfort that is *completely treatable*.
 
 But here’s the truth: while Kegels can help, they’re not the whole story.
 
-At **A New You Women’s Clinic**, we believe women deserve [better answers](/springfield/vaginal-wellness/)—and better outcomes. Your pelvic floor is a powerful part of your core, intricately connected to bladder function, sexual health, and daily confidence. When it weakens or becomes dysfunctional, it can impact your quality of life in ways that ripple through everything—from how you move and exercise to how you feel in your own skin.
+At **A New You Women’s Clinic**, we believe women deserve [better answers](/vaginal-rejuvenation/)—and better outcomes. Your pelvic floor is a powerful part of your core, intricately connected to bladder function, sexual health, and daily confidence. When it weakens or becomes dysfunctional, it can impact your quality of life in ways that ripple through everything—from how you move and exercise to how you feel in your own skin.
 
-The good news? Modern medicine has come a long way. There are now evidence-based, non-surgical treatments that go *beyond Kegels* to actually restore and retrain the pelvic floor. Whether you’re newly postpartum, navigating [menopause](/springfield/menopause/), or just tired of feeling held back by bladder leaks or pelvic pressure, you have options—and they work.
+The good news? Modern medicine has come a long way. There are now evidence-based, non-surgical treatments that go *beyond Kegels* to actually restore and retrain the pelvic floor. Whether you’re newly postpartum, navigating [menopause](/menopause/), or just tired of feeling held back by bladder leaks or pelvic pressure, you have options—and they work.
 
 In this post, we’ll explore the underlying causes of pelvic floor weakness, why Kegels alone may not be enough, and how innovative therapies like **VTone**, hormone and peptide support, and functional medicine can help you reclaim strength, control, and confidence.
 
@@ -60,7 +60,7 @@ Pelvic floor weakness doesn’t happen overnight. It’s often the result of cum
 
 -   **Pregnancy and childbirth** – Vaginal delivery can stretch or damage the muscles and nerves of the pelvic floor. Even C-section births place strain on the abdominal wall and pelvic support systems.
 
--   **Hormonal changes** – Estrogen keeps vaginal and urethral tissues thick, elastic, and well-lubricated. When estrogen levels decline (such as during [perimenopause](/springfield/perimenopause/) or menopause), tissues thin out and become more prone to irritation, leakage, and prolapse.
+-   **Hormonal changes** – Estrogen keeps vaginal and urethral tissues thick, elastic, and well-lubricated. When estrogen levels decline (such as during [perimenopause](/perimenopause/) or menopause), tissues thin out and become more prone to irritation, leakage, and prolapse.
 
 -   **Weight fluctuations** – Extra weight increases downward pressure on the pelvic organs and fascia.
 

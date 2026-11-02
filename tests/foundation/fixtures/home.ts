@@ -6,7 +6,7 @@ export const page: PageCopy = {
   route: '/',
   template: 'home',
   publish: true,
-  oldUrls: ['/'],
+  oldUrls: [],
   seo: { title: 'Fixture Home | A New You Women\'s Clinic', description: 'Fixture home page used only by foundation tests.' },
   hero: {
     eyebrow: 'Fixture eyebrow',
@@ -16,7 +16,7 @@ export const page: PageCopy = {
     imagePosition: 'center 30%',
   },
   sections: [
-    { kind: 'prose', heading: 'Fixture Opening Section', paragraphs: ['Fixture paragraph one.', 'Fixture paragraph two with a [link to weight loss](/springfield/weight-loss/).'] },
+    { kind: 'prose', heading: 'Fixture Opening Section', paragraphs: ['Fixture paragraph one.', 'Fixture paragraph two with a [link to weight loss](/weight-loss/).'] },
     { kind: 'prose', heading: 'Fixture Photo Right', paragraphs: ['Fixture paragraph beside a photo.'], image: { src: 'pages/fixture/body.jpg', alt: 'Synthetic test gradient' } },
     { kind: 'review', quote: 'Fixture review quote.', name: 'Jane D.' },
     { kind: 'prose', heading: 'Fixture Photo Left', paragraphs: ['Fixture paragraph beside a photo on the left.'], image: { src: 'pages/fixture/body.jpg', alt: 'Synthetic test gradient' } },

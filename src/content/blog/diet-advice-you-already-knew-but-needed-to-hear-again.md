@@ -12,7 +12,7 @@ categories: ["Weight loss"]
 tags: []
 ---
 
-In the world of health and wellness, obesity is often viewed as a simple issue of “calories in, calories out.” But research increasingly shows that obesity is more complex—a hormonal disorder, not merely a caloric imbalance. It’s driven by the body’s hormonal regulation of fat mass, influenced primarily by insulin and cortisol. So, while healthy eating habits are essential, understanding the role of hormones like insulin and cortisol in obesity can lead to more effective, sustainable approaches for [weight management in men](/springfield/mens-health/) and women. 
+In the world of health and wellness, obesity is often viewed as a simple issue of “calories in, calories out.” But research increasingly shows that obesity is more complex—a hormonal disorder, not merely a caloric imbalance. It’s driven by the body’s hormonal regulation of fat mass, influenced primarily by insulin and cortisol. So, while healthy eating habits are essential, understanding the role of hormones like insulin and cortisol in obesity can lead to more effective, sustainable approaches for [weight management in men](/mens-health/) and women. 
 
 ## Understanding Obesity as a Hormonal Disease
 Contrary to popular belief, obesity isn’t just caused by consuming too many calories. Instead, it’s the result of hormonal dysregulation, where the body’s mechanisms for storing and using fat are out of balance. Think of it this way: the body has a “set weight”—an internal weight thermostat that dictates how much fat it wants to hold. For many people with obesity, this set weight is too high, not because of overeating alone but because of hormonal imbalances, primarily involving insulin and cortisol. 

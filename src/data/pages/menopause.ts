@@ -2,10 +2,10 @@ import type { PageCopy } from '../../types/page';
 
 export const page: PageCopy = {
   slug: 'menopause',
-  route: '/springfield/menopause/',
+  route: '/menopause/',
   template: 'service',
   publish: true,
-  oldUrls: ['/menopause/', '/thyroid-optimization/', '/pcos-management/'],
+  oldUrls: ['/thyroid-optimization/', '/pcos-management/'],
   seo: {
     title: 'Effective Menopause Emotional Symptoms Treatment',
     description:
@@ -71,16 +71,6 @@ export const page: PageCopy = {
         src: 'pages/menopause/hormone-replacement-therapy.jpg',
         alt: 'A provider in a white coat hands a bottle of facial toner to a patient in front of shelves of skincare and supplement products',
       },
-    },
-    {
-      kind: 'cards',
-      id: 'hormone-services',
-      heading: 'Women’s Hormone Optimization & Menopause Care',
-      cards: [
-        { title: 'Perimenopause & Menopause Evaluation', href: '/springfield/perimenopause/' },
-        { title: 'Bioidentical Hormone Replacement Therapy (BHRT)', href: '/biote/' },
-        { title: 'Hormone Laboratory Testing & Monitoring' },
-      ],
     },
     {
       kind: 'list',
@@ -150,6 +140,7 @@ export const page: PageCopy = {
   related: ['perimenopause', 'biote', 'vaginal-wellness'],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
+    'Removed the link-less overview cards section ("Women’s Hormone Optimization & Menopause Care": three service names). The Cindy sections below carry the same headings (Josh, 2 Nov). Perimenopause and Biote stay linked in the Related band.',
     'oldUrls also include /thyroid-optimization/ and /pcos-management/. Both live pages were pure template filler (Lorem ipsum, nutrition coach text) and are not migrated.',
     'Typo fix: "estrogren" to "estrogen".',
     'Inline links in the live copy ("increased risk of heart disease and osteoporosis" to Cleveland Clinic, "hormone replacement therapy" to /biote/) are kept as plain words; prose sections have no inline link field. The sentence "Post-menopausal women are at an increased risk..." is rejoined from the link text.',

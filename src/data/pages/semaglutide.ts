@@ -2,7 +2,7 @@ import type { PageCopy } from '../../types/page';
 
 export const page: PageCopy = {
   slug: 'semaglutide',
-  route: '/springfield/semaglutide/',
+  route: '/semaglutide/',
   template: 'service',
   publish: true,
   oldUrls: ['/semaglutide-in-springfield-mo/'],

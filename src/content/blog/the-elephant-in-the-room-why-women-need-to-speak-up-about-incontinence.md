@@ -10,8 +10,8 @@ heroImage:
   alt: ""
 categories: []
 tags: []
-relatedService: "/springfield/aesthetics/"
-addedLinks: [{"phrase":"Morpheus8","to":"/springfield/aesthetics/"},{"phrase":"menopause","to":"/springfield/menopause/"}]
+relatedService: "/aesthetics/"
+addedLinks: [{"phrase":"Morpheus8","to":"/aesthetics/"},{"phrase":"menopause","to":"/menopause/"}]
 ---
 
 ## The Elephant in the Room: Why Women Need to Speak Up About Incontinence
@@ -28,7 +28,7 @@ First things first: **this is common.** Bladder leakage isn’t just something t
 Yet, despite how common it is, most women suffer in silence. They feel ashamed, embarrassed, or even broken. They hesitate to bring it up with their doctor, even when it impacts their daily lives.
 
 ## Why the Shame?
-Society teaches women to be discreet about their bodies. From an early age, we learn that certain topics—menstruation, [menopause](/springfield/menopause/), and yes, incontinence—are not “polite conversation.” We’re told to “deal with it” or that it’s “just part of being a woman.”
+Society teaches women to be discreet about their bodies. From an early age, we learn that certain topics—menstruation, [menopause](/menopause/), and yes, incontinence—are not “polite conversation.” We’re told to “deal with it” or that it’s “just part of being a woman.”
 
 But silence only fuels the stigma. The more we avoid the topic, the more isolated women feel. And the less likely they are to seek help.
 
@@ -93,7 +93,7 @@ Ideal for women experiencing:\
 ✔ Vaginal laxity post-childbirth or menopause
 
 #### Morpheus8 V: Advanced Collagen Remodeling for Pelvic Health
-[Morpheus8](/springfield/aesthetics/) V is an innovative **microneedling with radiofrequency (RF) treatment** that **tightens and strengthens vaginal and pelvic tissues**. By stimulating deep collagen production, Morpheus8 V improves:\
+[Morpheus8](/aesthetics/) V is an innovative **microneedling with radiofrequency (RF) treatment** that **tightens and strengthens vaginal and pelvic tissues**. By stimulating deep collagen production, Morpheus8 V improves:\
 ✅ **Bladder control** through stronger supportive tissues\
 ✅ **Pelvic floor function** for better muscle support\
 ✅ **Vaginal firmness & elasticity** for enhanced comfort and confidence

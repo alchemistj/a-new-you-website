@@ -48,7 +48,7 @@ export type Template = 'home' | 'service' | 'company' | 'contact' | 'faq' | 'rev
 export interface PageCopy {
   /** File name without extension, e.g. "botox". */
   slug: string;
-  /** New canonical path with trailing slash, e.g. "/springfield/botox/". */
+  /** New canonical path with trailing slash, e.g. "/botox/". */
   route: string;
   template: Template;
   /** false = page is drafted but not published, linked or in the sitemap. */

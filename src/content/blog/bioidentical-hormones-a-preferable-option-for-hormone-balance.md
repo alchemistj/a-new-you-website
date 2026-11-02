@@ -10,13 +10,13 @@ heroImage:
   alt: ""
 categories: ["Health and wellness","Hormone optimization"]
 tags: ["Anti-aging","Bioidentical","Functional medicine","Hormone replacement","Menopause","Peptide therapy"]
-relatedService: "/springfield/menopause/"
-addedLinks: [{"phrase":"menopause","to":"/springfield/menopause/"}]
+relatedService: "/menopause/"
+addedLinks: [{"phrase":"menopause","to":"/menopause/"}]
 ---
 
 Bioidentical hormones have been used in medical practice for several decades, although their popularity and recognition have increased in recent years. The concept of bioidentical hormones emerged in the 1980s when researchers and practitioners began exploring the potential benefits of using hormones that have an identical molecular structure to those naturally produced by the body.
 
-Since then, bioidentical hormones have been widely prescribed and utilized by healthcare professionals to address hormone imbalances and alleviate associated symptoms. They have been used to treat conditions such as [menopause](/springfield/menopause/), perimenopause, andropause (male menopause), adrenal fatigue, thyroid disorders, and more.
+Since then, bioidentical hormones have been widely prescribed and utilized by healthcare professionals to address hormone imbalances and alleviate associated symptoms. They have been used to treat conditions such as [menopause](/menopause/), perimenopause, andropause (male menopause), adrenal fatigue, thyroid disorders, and more.
 
 Here are a few reasons why bioidentical hormones are considered safer than synthetic hormones:
 
