@@ -65,7 +65,11 @@ the live page being migrated.
 | customer-reviews | `/customer-reviews/` | `/customer-reviews/` | reviews |
 | contact | `/springfield/contact/` | `/contact/` | contact |
 | faq | `/springfield/faq/` | `/faq/` | faq |
-| blog | `/blog/`, `/blog/<slug>/` | `/blog/`, `/blog/page/N/`, 45 posts at root | blog |
+| blog | `/blog/` (index, `/blog/page/N/`), posts stay at their current root URL `/<slug>/` | `/blog/`, 45 posts at root | blog |
+
+**Blog posts keep their exact current URLs** (Josh, 2 Nov). Only 3 ugly slugs change, each with a 301:
+`/unveiling-the-ppotential-of-ppeptides-for-wweight-lloss/` and the two `%ef%b8%8f` emoji slugs (Botox,
+cryolipolysis).
 
 **Held. Not built until Cindy answers:** `/styku/`, `/image-skincare/`, `/nutrametrix/`. Don't build pages,
 redirects or links for them yet. Don't link them from the nav, footer or body.

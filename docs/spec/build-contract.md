@@ -56,7 +56,8 @@ their `scripts/` folder.
   main content, the footer and the mobile bar. B and D use it.
 - **Route registry.** A owns `src/lib/routes.ts`, exporting
   `getAllRoutes(): Promise<{ path: string; title: string; kind: 'page' | 'blog' | 'blog-index' }[]>`.
-  It is built from `publishedPages` plus the blog collection. D's sitemap, robots and llms.txt read it.
+  It is built from `publishedPages` plus the blog collection. Blog posts live at the root, `/<slug>/`,
+  and are rendered by B's `src/pages/[post]/index.astro`. The blog index is at `/blog/`. D's sitemap, robots and llms.txt read it.
 - **Embeds.** D exports from `src/components/embeds/`:
   - `<DeferredEmbed embed="ghl-form|ghl-quiz|cherry|map" />` (reserved height, `<noscript>` link, loads
     on first interaction or when in view)
