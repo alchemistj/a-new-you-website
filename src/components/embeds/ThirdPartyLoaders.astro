@@ -1,3 +1,9 @@
 ---
-// STUB owned by helper D (seo-embeds). Replace with the real GA4 delayed loader and chat on first interaction.
+// Render once, in BaseLayout. Loads GA4 after window load + 3 s (or first interaction) and the
+// LeadConnector chat on first interaction. Adds no request during page load.
 ---
+
+<script>
+  import { initThirdPartyLoaders } from './third-party-client';
+  initThirdPartyLoaders(document, window);
+</script>
