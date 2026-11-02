@@ -17,8 +17,18 @@ export interface Cta {
 
 export type Section =
   | { kind: 'prose'; id?: string; heading?: string; paragraphs: string[]; image?: ImageRef }
-  | { kind: 'list'; id?: string; heading?: string; intro?: string; items: string[]; outro?: string; image?: ImageRef }
-  | { kind: 'cards'; id?: string; heading?: string; intro?: string; cards: { title: string; text?: string; href?: string }[] }
+  | {
+      kind: 'list';
+      id?: string;
+      heading?: string;
+      intro?: string;
+      items: string[];
+      outro?: string;
+      image?: ImageRef;
+      /** 'cindy' = a block from Cindy's services list; rendered compactly (grouped, multi-column). */
+      source?: 'cindy';
+    }
+  | { kind: 'cards'; id?: string; heading?: string; intro?: string; cards: { title: string; text?: string; href?: string; image?: ImageRef }[] }
   | { kind: 'steps'; id?: string; heading?: string; intro?: string; steps: { title: string; text?: string }[]; image?: ImageRef }
   /** One review, shown on its own full-width band. name = first name + last initial. */
   | { kind: 'review'; quote: string; name: string; city?: string }
