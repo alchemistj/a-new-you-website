@@ -52,28 +52,27 @@ the live page being migrated.
 | Slug | New route | Old URL(s) | Template |
 |---|---|---|---|
 | home | `/` | `/` | home |
-| weight-loss | `/springfield/weight-loss/` | `/weight-loss-in-springfield/` | service |
-| semaglutide | `/springfield/semaglutide/` | `/semaglutide-in-springfield-mo/` | service |
-| botox | `/springfield/botox/` | `/botox-in-springfield-mo/` | service |
-| aesthetics | `/springfield/aesthetics/` | `/aesthetics/` | service |
-| cryolipolysis | `/springfield/cryolipolysis/` | `/cryolypolysis/` | service |
-| menopause | `/springfield/menopause/` | `/menopause/`, `/thyroid-optimization/`, `/pcos-management/` | service |
-| perimenopause | `/springfield/perimenopause/` | `/perimenopause/` | service |
-| vaginal-wellness | `/springfield/vaginal-wellness/` | `/vaginal-rejuvenation/` | service |
-| female-sexual-dysfunction | `/springfield/female-sexual-dysfunction/` | `/female-sexual-disfunction-disorder/` | service |
-| mens-health | `/springfield/mens-health/` | `/mens-health/` | service |
-| biote | `/biote/` | `/biote/` | company |
-| memberships | `/memberships/` | `/subscription-plans/` | company |
-| financing | `/financing/` | `/financing/` | company |
-| about | `/about/` | `/about/` | company |
-| customer-reviews | `/customer-reviews/` | `/customer-reviews/` | reviews |
-| contact | `/springfield/contact/` | `/contact/` | contact |
-| faq | `/springfield/faq/` | `/faq/` | faq |
+| weight-loss | `/weight-loss/` | `/weight-loss-in-springfield/` | service |
+| semaglutide | `/semaglutide/` | `/semaglutide-in-springfield-mo/` | service |
+| botox | `/botox/` | `/botox-in-springfield-mo/` | service |
+| aesthetics | `/aesthetics/` | (same) | service |
+| cryolipolysis | `/cryolipolysis/` | `/cryolypolysis/` | service |
+| menopause | `/menopause/` | `/thyroid-optimization/`, `/pcos-management/` | service |
+| perimenopause | `/perimenopause/` | (same) | service |
+| vaginal-wellness | `/vaginal-rejuvenation/` | (same) | service |
+| female-sexual-dysfunction | `/female-sexual-dysfunction/` | `/female-sexual-disfunction-disorder/` | service |
+| mens-health | `/mens-health/` | (same) | service |
+| biote | `/biote/` | (same) | company |
+| memberships | `/subscription-plans/` | (same) | company |
+| financing | `/financing/` | (same) | company |
+| about | `/about/` | (same) | company |
+| customer-reviews | `/customer-reviews/` | (same) | reviews |
+| contact | `/contact/` | (same) | contact |
+| faq | `/faq/` | (same) | faq |
 | blog | `/blog/` (index, `/blog/page/N/`), posts stay at their current root URL `/<slug>/` | `/blog/`, 45 posts at root | blog |
 
-**Blog posts keep their exact current URLs** (Josh, 2 Nov). Only 3 ugly slugs change, each with a 301:
-`/unveiling-the-ppotential-of-ppeptides-for-wweight-lloss/` and the two `%ef%b8%8f` emoji slugs (Botox,
-cryolipolysis).
+**No city in URLs (Josh, 2 Nov):** single location, so no `/springfield/` prefix. Pages keep their live URL
+unless it carries the city or a misspelling.
 
 **Held. Not built until Cindy answers:** `/styku/`, `/image-skincare/`, `/nutrametrix/`. Don't build pages,
 redirects or links for them yet. Don't link them from the nav, footer or body.
@@ -87,10 +86,10 @@ redirects or links for them yet. Don't link them from the nav, footer or body.
 ## Navigation (Cindy's priority order)
 
 - Header quick links, in this order:
-  1. Vaginal Wellness → `/springfield/vaginal-wellness/`
-  2. Menopause → `/springfield/menopause/`
-  3. Weight Loss → `/springfield/weight-loss/`
-  4. Men's Health → `/springfield/mens-health/`
+  1. Vaginal Wellness → `/vaginal-rejuvenation/`
+  2. Menopause → `/menopause/`
+  3. Weight Loss → `/weight-loss/`
+  4. Men's Health → `/mens-health/`
 - Top bar: About, FAQs, Blog, Contact.
 - Header phone, and the primary CTA "Schedule an Appointment" linking to the booking URL.
 - Mobile: logo, Call button, hamburger. Bottom bar: Call + Schedule.
