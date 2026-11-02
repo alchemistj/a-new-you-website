@@ -18,9 +18,9 @@ export const page: PageCopy = {
     h1: 'Read What Our Clients Have to Say',
     image: {
       src: 'pages/customer-reviews/hero.jpg',
-      alt: 'A large group of smiling women and a few men gather outdoors under trees',
+      alt: 'Two purple tufted chairs beside a white cabinet in the clinic',
     },
-    imagePosition: 'center 40%',
+    imagePosition: 'center 50%',
     primaryCta: {
       label: 'Schedule an Appointment',
       href: 'https://anewyouwomensclinic.myaestheticrecord.com/online-booking',
@@ -38,5 +38,6 @@ export const page: PageCopy = {
     'H1 "read what our clients have to say" set in title case; "Testimonials" (live H2) is the hero eyebrow.',
     'Hero photo is the live media-library file testimonials-cover (a group photo; I did not confirm who is in it).',
     'The review sections are built from src/data/reviews.ts in this file (an import), so the list stays in one place.',
+    'Hero image changed to the live banner photo (Customer-Reviews, 1920x480) from the group photo (testimonials-cover).',
   ],
 };

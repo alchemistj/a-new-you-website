@@ -53,6 +53,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Bioidentical Hormone Replacement Therapy (BHRT)',
       intro: 'Services may include:',
       items: [

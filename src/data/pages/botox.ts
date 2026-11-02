@@ -83,6 +83,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Botox & Dysport',
       intro: 'Concerns:',
       items: [
