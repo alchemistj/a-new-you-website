@@ -10,8 +10,8 @@ heroImage:
   alt: ""
 categories: []
 tags: []
-relatedService: "/female-sexual-dysfunction/"
-addedLinks: [{"phrase":"female sexual dysfunction","to":"/female-sexual-dysfunction/"}]
+relatedService: "/female-sexual-dysfunction-disorder/"
+addedLinks: [{"phrase":"female sexual dysfunction","to":"/female-sexual-dysfunction-disorder/"}]
 ---
 
 Let’s face it this is the elephant in the room. Every day you see multiple commercials about [mens sexual dysfunction](/mens-health/) and medications to treat them. What about the women they are having sex with? Where are they getting their treatment?
@@ -42,7 +42,7 @@ Untreated anxiety and depression can contribute to sexual dysfunction. Anti-anxi
 
 Relationship conflicts about sex, or even other aspects of your relationship can diminish your responsiveness as well as desire. Religion and cultural issues can often pose problems. Body image can also be a strong contributor to sexual dysfunction.
 
-Women with depression, anxiety, heart disease, neurological conditions, spinal cord injuries, vulvovaginal atrophy, and infections are at an increased risk for Sexual dysfunction. Emotional and psychological stress can increase your risk of [female sexual dysfunction](/female-sexual-dysfunction/). A history of sexual abuse causes an increase in sexual dysfunction.
+Women with depression, anxiety, heart disease, neurological conditions, spinal cord injuries, vulvovaginal atrophy, and infections are at an increased risk for Sexual dysfunction. Emotional and psychological stress can increase your risk of [female sexual dysfunction](/female-sexual-dysfunction-disorder/). A history of sexual abuse causes an increase in sexual dysfunction.
 
 It’s important that you discuss your sexual and medical history with your provider in order to determine if a pelvic exam and blood test are indicated.
 

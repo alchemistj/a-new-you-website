@@ -65,12 +65,12 @@
     },
     {
       "source": "/female-sexual-disfunction-disorder/",
-      "destination": "/female-sexual-dysfunction/",
+      "destination": "/female-sexual-dysfunction-disorder/",
       "statusCode": 301
     },
     {
       "source": "/female-sexual-disfunction-disorder",
-      "destination": "/female-sexual-dysfunction/",
+      "destination": "/female-sexual-dysfunction-disorder/",
       "statusCode": 301
     },
     {
@@ -854,8 +854,8 @@
       "statusCode": 301
     },
     {
-      "source": "/female-sexual-dysfunction",
-      "destination": "/female-sexual-dysfunction/",
+      "source": "/female-sexual-dysfunction-disorder",
+      "destination": "/female-sexual-dysfunction-disorder/",
       "statusCode": 301
     },
     {

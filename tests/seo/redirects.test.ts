@@ -39,7 +39,7 @@ describe('redirect map', () => {
     expect(byFrom.get('/pcos-management/')).toBe('/menopause/');
     expect(byFrom.get('/weight-loss-in-springfield/')).toBe('/weight-loss/');
     expect(byFrom.get('/botox-in-springfield-mo/')).toBe('/botox/');
-    expect(byFrom.get('/female-sexual-disfunction-disorder/')).toBe('/female-sexual-dysfunction/');
+    expect(byFrom.get('/female-sexual-disfunction-disorder/')).toBe('/female-sexual-dysfunction-disorder/');
     expect(byFrom.get('/cryolypolysis/')).toBe('/cryolipolysis/');
     // pages that keep their live URL need no redirect
     for (const live of ['/subscription-plans/', '/vaginal-rejuvenation/', '/menopause/', '/contact/', '/faq/']) {
