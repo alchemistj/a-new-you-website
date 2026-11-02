@@ -1,6 +1,9 @@
 ---
 // One big number with its label (the live homepage's "Pounds Lost With A New You" counter).
-// Rendered as static text: no count-up animation, nothing changes after first paint.
+// The server HTML always holds the FINAL value (no-JS, crawlers, screen readers). A tiny script
+// swaps the visible digits to 0 only when the stat is near the viewport, then counts up once over
+// ~2s (ease-out, requestAnimationFrame). Skipped under prefers-reduced-motion. The digits' width is
+// pinned from the final value first, so nothing shifts while they change.
 interface Props {
   id?: string;
   heading: string;
@@ -8,12 +11,17 @@ interface Props {
   unit?: string;
 }
 const { id, heading, value, unit } = Astro.props;
+const target = Number(value.replace(/[^0-9.]/g, ''));
 ---
 
 <section class="section stat" id={id}>
   <div class="container stat-inner">
     <h2>{heading}</h2>
-    <p class="stat-value">{value}{unit && <span class="stat-unit"> {unit}</span>}</p>
+    <p class="stat-value">
+      <span class="sr-only">{value}{unit ? ` ${unit}` : ''}</span>
+      <span class="stat-num" aria-hidden="true" data-count-to={target} data-final={value}>{value}</span>
+      {unit && <span class="stat-unit" aria-hidden="true"> {unit}</span>}
+    </p>
   </div>
 </section>
 
@@ -27,5 +35,45 @@ const { id, heading, value, unit } = Astro.props;
     color: var(--color-primary);
     margin: 0.25rem 0 0;
   }
+  .stat-num {
+    display: inline-block;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
   .stat-unit { font-size: 0.4em; color: var(--color-dark); }
 </style>
+
+<script>
+  const nodes = document.querySelectorAll<HTMLElement>('.stat-num[data-count-to]');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (nodes.length && !reduce && 'IntersectionObserver' in window) {
+    const fmt = new Intl.NumberFormat('en-US');
+    const run = (el: HTMLElement) => {
+      const to = Number(el.dataset.countTo);
+      const final = el.dataset.final ?? fmt.format(to);
+      // Pin the width to the final number, then start from 0.
+      el.style.minWidth = `${el.getBoundingClientRect().width}px`;
+      el.textContent = '0';
+      const dur = 2000;
+      const t0 = performance.now();
+      const tick = (now: number) => {
+        const p = Math.min(1, (now - t0) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = p >= 1 ? final : fmt.format(Math.round(to * eased));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          io.unobserve(e.target);
+          run(e.target as HTMLElement);
+        }
+      },
+      { rootMargin: '0px 0px 120px 0px', threshold: 0.2 },
+    );
+    nodes.forEach((n) => io.observe(n));
+  }
+</script>

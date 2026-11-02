@@ -34,6 +34,13 @@ export const page: PageCopy = {
       ],
     },
     {
+      kind: 'stat',
+      id: 'pounds-lost',
+      heading: 'Pounds Lost With A New You',
+      value: '1,805',
+      unit: 'lbs',
+    },
+    {
       kind: 'prose',
       heading: 'Medical Weight Loss, Personalized for Women',
       paragraphs: [
@@ -172,13 +179,6 @@ export const page: PageCopy = {
       name: 'Theresa',
     },
     {
-      kind: 'stat',
-      id: 'pounds-lost',
-      heading: 'Pounds Lost With A New You',
-      value: '1,805',
-      unit: 'lbs',
-    },
-    {
       kind: 'list',
       heading: 'Real Women. Real Results.',
       intro: 'We’ve helped hundreds of women feel like themselves again. Many report:',
@@ -289,7 +289,7 @@ export const page: PageCopy = {
   related: ['semaglutide', 'menopause', 'mens-health'],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
-    'Added the homepage "Pounds Lost With A New You" stat (1,805 lbs, from the live homepage counter) before "Real Women. Real Results." at Josh\'s request.',
+    'Added the homepage "Pounds Lost With A New You" stat (1,805 lbs, from the live homepage counter) directly before "Medical Weight Loss, Personalized for Women" (moved up from before "Real Women. Real Results.") at Josh\'s request. The number counts up from 0 on scroll.',
     'Design QA: removed the link-less overview cards of Cindy service names; the same names head the grouped Cindy lists below.',
     'Added Cindy\'s Medically Managed Weight Loss & Metabolic Health section word for word: category heading as a cards overview, then Medical Weight-Loss Evaluation, GLP-1 Medical Weight Management (medication options and concerns), Oral Weight-Management Medications, Weight Loss Membership (Includes and Concerns/goals) and Metabolic & Insulin-Resistance Evaluation. Her all-caps heading is set in title case. Her "Women & Men" wording is kept in the heading.',
     'Cindy\'s Weight Loss Membership list ("Regular check-ins", "Annual laboratory testing") differs from the live $99 membership text ("weekly visits", "labs"). Both are kept as supplied; Josh/Cindy to reconcile.',
