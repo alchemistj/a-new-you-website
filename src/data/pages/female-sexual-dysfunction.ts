@@ -17,9 +17,9 @@ export const page: PageCopy = {
       'Persistent, recurrent problems with sexual response, desire, orgasm or pain that distress you or strains your relationship with your partner —are known as female sexual dysfunction.',
     image: {
       src: 'pages/female-sexual-dysfunction/hero.jpg',
-      alt: 'A provider in a white coat holding a clipboard faces a smiling woman with glasses and red hair',
+      alt: 'A woman lies in bed looking at her phone while a man lies turned away beside her',
     },
-    imagePosition: 'center 30%',
+    imagePosition: 'center 35%',
     primaryCta: {
       label: 'Schedule an Appointment',
       href: 'https://anewyouwomensclinic.myaestheticrecord.com/online-booking',
@@ -37,6 +37,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Vaginal Wellness Consultation & Evaluation',
       intro: 'Concerns:',
       items: [
@@ -137,5 +138,6 @@ export const page: PageCopy = {
     'Hero photo is the live media-library file Female-Sexual-Dysfunction-service (the homepage card photo); it is only 380 px square, so a larger original may be needed.',
     'Title and description kept as live.',
     'Page was an orphan on the live site; the homepage "Female Sexual Dysfunction" card links to vaginal-wellness as live, so this page is reached from the footer and Related bands.',
+    'Hero image changed to the live hero photo (young-unhappy-couple-having-problems-in-relationship, 2000 px stock photo); the 380 px card photo is no longer used.',
   ],
 };

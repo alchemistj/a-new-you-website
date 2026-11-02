@@ -15,9 +15,9 @@ export const page: PageCopy = {
     h1: 'Want to Know More About Weight Loss',
     image: {
       src: 'pages/faq/hero.jpg',
-      alt: 'A smiling gray-haired woman in black scrubs sits at a desk with a laptop',
+      alt: 'A white treatment chair beside a cabinet with a sink in a bright treatment room',
     },
-    imagePosition: 'center 30%',
+    imagePosition: 'center 50%',
     primaryCta: {
       label: 'Schedule an Appointment',
       href: 'https://anewyouwomensclinic.myaestheticrecord.com/online-booking',
@@ -70,5 +70,6 @@ export const page: PageCopy = {
     'Kept live wording exactly (not on the typo list): "glucagon-like-peptide-1 receptor antagonistis", "( Love handles, ...", " ?" spacing in questions. Josh to decide.',
     'Live H3 "Find Your Help From Our Frequently Asked Question" had Lorem text under it, so it is not kept; "Frequently Asked Question" (live H2) is the FAQ heading.',
     'Hero photo is the live media-library file a-new-you-faq (520 px wide, small for a hero).',
+    'Hero image changed to the live banner photo (weighloss-banner, 1920x450); the earlier 520 px photo is replaced.',
   ],
 };

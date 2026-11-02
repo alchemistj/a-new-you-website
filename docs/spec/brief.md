@@ -21,6 +21,10 @@ the live page being migrated.
 - Service area as the live pages show it: Springfield, Nixa, Ozark, Republic, Rogersville.
 - Hours: not shown. Don't add them.
 - Insurance: "We DO NOT TAKE INSURANCE" (FAQ). Keep that FAQ.
+- Award (Josh, 2 Nov 2026; BBB announces it 3 Nov): **2026 BBB Torch Award for Ethics Winner**. Show it
+  first in the trust bar on every page, and in the footer badges. Use text only until Cindy sends the
+  official BBB winner logo; never draw or fake a BBB logo. Confirm the exact wording against BBB's
+  announcement.
 - Women and men: women's health is the focus, but men can use the hormone, weight-loss, metabolic,
   healthy-aging, peptide, aesthetic, skin and body-contouring services. Vaginal wellness is women only.
   (From Cindy's list.)

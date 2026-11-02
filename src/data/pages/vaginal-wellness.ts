@@ -16,9 +16,9 @@ export const page: PageCopy = {
     subhead: 'Non-Surgical Vaginal Tightening, EmpowerRF, and Feminine Wellness at A New You Women’s Clinic',
     image: {
       src: 'pages/vaginal-wellness/hero.jpg',
-      alt: 'Six smiling women stand together outdoors, one wearing a white coat with a stethoscope',
+      alt: 'Three women in black scrubs stand smiling in front of a brick and stone building',
     },
-    imagePosition: 'center 30%',
+    imagePosition: 'center 35%',
     primaryCta: {
       label: 'Schedule an Appointment',
       href: 'https://anewyouwomensclinic.myaestheticrecord.com/online-booking',
@@ -88,6 +88,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Vaginal Wellness Consultation & Evaluation',
       intro: 'Concerns:',
       items: [
@@ -110,6 +111,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'VTone Pelvic Floor Muscle Stimulation',
       intro: 'Concerns:',
       items: [
@@ -125,6 +127,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'FormaV Radiofrequency Treatment',
       intro: 'Concerns:',
       items: [
@@ -139,6 +142,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Morpheus8V RF Microneedling',
       intro: 'Concerns:',
       items: [
@@ -152,6 +156,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Combination EmpowerRF Treatment Plans',
       intro: 'May combine VTone, FormaV and Morpheus8V based on the individual evaluation and treatment plan. Concerns:',
       items: [
@@ -276,5 +281,6 @@ export const page: PageCopy = {
     'Book-a-consultation block is the final CTA band; the "Call (417) 605-2153" and "book online here" links are replaced by the standard call and Schedule an Appointment buttons (live booking link went to /book-appointment).',
     'Left out the two small Group-1.png icon images (placeholder icon, 223px). Body photos (consultation, total-feminine-care) are page photos from the live media library; the live page set them as Elementor backgrounds, so they are not in the page HTML.',
     'Kept "We’ve helped hundreds of women" and "Most women notice improvements in 2–4 weeks, with full results developing over 3 months." as live copy; they are claims, flagged for Josh.',
+    'Hero image changed to the live hero photo (Vaginal-Rejuvenations-Springfield-MO, three women in scrubs at a brick building); the six-woman group photo is no longer used here.',
   ],
 };

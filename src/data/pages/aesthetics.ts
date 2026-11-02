@@ -15,7 +15,7 @@ export const page: PageCopy = {
     h1: 'Aesthetic Treatments in Springfield, MO',
     image: {
       src: 'pages/aesthetics/hero.jpg',
-      alt: 'A provider in a white coat with a stethoscope treats the face of a woman lying back on a treatment bed',
+      alt: 'A provider in black holds a handheld wand to the face of a woman lying back on a treatment bed beside a monitor',
     },
     imagePosition: 'center 40%',
     primaryCta: {
@@ -76,6 +76,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Facial Aesthetics & Skin Health — Women & Men',
       items: [
         'Botox & Dysport',
@@ -89,6 +90,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Non-Surgical Body Contouring & Skin Tightening — Women & Men',
       items: [
         'Cryolipolysis',
@@ -115,5 +117,6 @@ export const page: PageCopy = {
     'Removed the "Home / Aestheics" breadcrumb text and the Group-1 and Group-3 template images.',
     'Kept live claims as written ("safe and effective", "Most of these treatments achieve good outcomes", "removed for good", "no downtime"). Flagged for Josh.',
     'Photos come from the live media library files named for aesthetics (Elementor backgrounds, not in the page HTML). The hero file is 680 px wide; a larger original may be needed.',
+    'Hero image changed to the live banner photo (Aesthetics-Nonsurgical-procedures, 1920x480). The earlier hero (Aesthetics-procedures, 680 px) is no longer used; the body photo is unchanged.',
   ],
 };
