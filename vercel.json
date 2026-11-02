@@ -44,33 +44,13 @@
       "statusCode": 301
     },
     {
-      "source": "/weight-loss-in-springfield/",
-      "destination": "/springfield/weight-loss/",
+      "source": "/subscription-plans/",
+      "destination": "/memberships/",
       "statusCode": 301
     },
     {
-      "source": "/weight-loss-in-springfield",
-      "destination": "/springfield/weight-loss/",
-      "statusCode": 301
-    },
-    {
-      "source": "/semaglutide-in-springfield-mo/",
-      "destination": "/springfield/semaglutide/",
-      "statusCode": 301
-    },
-    {
-      "source": "/semaglutide-in-springfield-mo",
-      "destination": "/springfield/semaglutide/",
-      "statusCode": 301
-    },
-    {
-      "source": "/botox-in-springfield-mo/",
-      "destination": "/springfield/botox/",
-      "statusCode": 301
-    },
-    {
-      "source": "/botox-in-springfield-mo",
-      "destination": "/springfield/botox/",
+      "source": "/subscription-plans",
+      "destination": "/memberships/",
       "statusCode": 301
     },
     {
@@ -84,6 +64,26 @@
       "statusCode": 301
     },
     {
+      "source": "/botox-in-springfield-mo/",
+      "destination": "/springfield/botox/",
+      "statusCode": 301
+    },
+    {
+      "source": "/botox-in-springfield-mo",
+      "destination": "/springfield/botox/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact/",
+      "destination": "/springfield/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact",
+      "destination": "/springfield/contact/",
+      "statusCode": 301
+    },
+    {
       "source": "/cryolypolysis/",
       "destination": "/springfield/cryolipolysis/",
       "statusCode": 301
@@ -91,6 +91,26 @@
     {
       "source": "/cryolypolysis",
       "destination": "/springfield/cryolipolysis/",
+      "statusCode": 301
+    },
+    {
+      "source": "/faq/",
+      "destination": "/springfield/faq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/faq",
+      "destination": "/springfield/faq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/female-sexual-disfunction-disorder/",
+      "destination": "/springfield/female-sexual-dysfunction/",
+      "statusCode": 301
+    },
+    {
+      "source": "/female-sexual-disfunction-disorder",
+      "destination": "/springfield/female-sexual-dysfunction/",
       "statusCode": 301
     },
     {
@@ -124,6 +144,16 @@
       "statusCode": 301
     },
     {
+      "source": "/mens-health/",
+      "destination": "/springfield/mens-health/",
+      "statusCode": 301
+    },
+    {
+      "source": "/mens-health",
+      "destination": "/springfield/mens-health/",
+      "statusCode": 301
+    },
+    {
       "source": "/perimenopause/",
       "destination": "/springfield/perimenopause/",
       "statusCode": 301
@@ -131,6 +161,16 @@
     {
       "source": "/perimenopause",
       "destination": "/springfield/perimenopause/",
+      "statusCode": 301
+    },
+    {
+      "source": "/semaglutide-in-springfield-mo/",
+      "destination": "/springfield/semaglutide/",
+      "statusCode": 301
+    },
+    {
+      "source": "/semaglutide-in-springfield-mo",
+      "destination": "/springfield/semaglutide/",
       "statusCode": 301
     },
     {
@@ -144,53 +184,13 @@
       "statusCode": 301
     },
     {
-      "source": "/female-sexual-disfunction-disorder/",
-      "destination": "/springfield/female-sexual-dysfunction/",
+      "source": "/weight-loss-in-springfield/",
+      "destination": "/springfield/weight-loss/",
       "statusCode": 301
     },
     {
-      "source": "/female-sexual-disfunction-disorder",
-      "destination": "/springfield/female-sexual-dysfunction/",
-      "statusCode": 301
-    },
-    {
-      "source": "/mens-health/",
-      "destination": "/springfield/mens-health/",
-      "statusCode": 301
-    },
-    {
-      "source": "/mens-health",
-      "destination": "/springfield/mens-health/",
-      "statusCode": 301
-    },
-    {
-      "source": "/subscription-plans/",
-      "destination": "/memberships/",
-      "statusCode": 301
-    },
-    {
-      "source": "/subscription-plans",
-      "destination": "/memberships/",
-      "statusCode": 301
-    },
-    {
-      "source": "/contact/",
-      "destination": "/springfield/contact/",
-      "statusCode": 301
-    },
-    {
-      "source": "/contact",
-      "destination": "/springfield/contact/",
-      "statusCode": 301
-    },
-    {
-      "source": "/faq/",
-      "destination": "/springfield/faq/",
-      "statusCode": 301
-    },
-    {
-      "source": "/faq",
-      "destination": "/springfield/faq/",
+      "source": "/weight-loss-in-springfield",
+      "destination": "/springfield/weight-loss/",
       "statusCode": 301
     },
     {
@@ -849,8 +849,28 @@
       "statusCode": 301
     },
     {
+      "source": "/about",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/biote",
+      "destination": "/biote/",
+      "statusCode": 301
+    },
+    {
       "source": "/blog",
       "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/customer-reviews",
+      "destination": "/customer-reviews/",
+      "statusCode": 301
+    },
+    {
+      "source": "/financing",
+      "destination": "/financing/",
       "statusCode": 301
     },
     {
