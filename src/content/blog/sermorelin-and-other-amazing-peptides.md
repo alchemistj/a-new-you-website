@@ -34,7 +34,7 @@ CJC-1295 is a growth hormone releasing hormone (GHRH)receptor agonist that cause
 
 Ipamorelin is a highly potent ghrelin receptor agonist. It increases metabolism and growth hormone regulation. Its results are increase Fat breakdown, and energy released from the body.
 
-MOTS-c is an exercise induced natural peptide that regulates glucose metabolism in muscles and fatty acid breakdown in the liver. This promotes [weight loss](/blog/latest-medical-treatments-for-weight-loss/) prevents weight gain and provides more energy to the body.
+MOTS-c is an exercise induced natural peptide that regulates glucose metabolism in muscles and fatty acid breakdown in the liver. This promotes [weight loss](/latest-medical-treatments-for-weight-loss/) prevents weight gain and provides more energy to the body.
 
 Tesamorelin is a modified synthetic form of GHRH it regulates the release of growth hormone in the body. It can be used to decrease specifically belly fat.
 

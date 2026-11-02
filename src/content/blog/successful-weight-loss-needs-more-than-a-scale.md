@@ -11,7 +11,7 @@ categories: ["Health and wellness","Weight loss"]
 tags: ["Biohacking","Functional medicine","Lean muscle","Semaglutide","Weight loss"]
 ---
 
-In a previous blog, I talked about why “[calories in, calories out](/blog/weight-loss-is-not-about-eating-less-it-is-about-eating-better/)” is missing the point.
+In a previous blog, I talked about why “[calories in, calories out](/weight-loss-is-not-about-eating-less-it-is-about-eating-better/)” is missing the point.
 
 Because it is.
 
@@ -64,7 +64,7 @@ This is why body composition matters.
 
 If someone weighs 194 pounds and has 70% lean mass and 30% body fat, that tells me something very different than if someone weighs 194 pounds and has much lower muscle mass and much higher body fat.
 
-![](../../assets/blog/successful-weight-loss-needs-more-than-a-scale/ProgressReportGIF-2.gif)
+![](../../assets/blog/successful-weight-loss-needs-more-than-a-scale/ProgressReportGIF-2.webp)
 
 The number on the scale may be the same, but the health picture is not the same.
 
@@ -213,7 +213,7 @@ They need someone looking at the whole picture.
 
 A good weight loss plan is not just, “[Here is medication, good luck.”](/springfield/weight-loss/)
 
-It should look at nutrition, movement, muscle, fat loss, labs, [hormones](/blog/the-benefits-of-bioidentical-hormone-replacement-therapy/), blood sugar, gut health, inflammation, sleep, stress, and how the person is actually doing in real life.
+It should look at nutrition, movement, muscle, fat loss, labs, [hormones](/the-benefits-of-bioidentical-hormone-replacement-therapy/), blood sugar, gut health, inflammation, sleep, stress, and how the person is actually doing in real life.
 
 Because weight loss is not happening in a vacuum.
 
@@ -282,7 +282,7 @@ Weight loss works best when the pieces come together.
 -   Support matters
 -   Consistency matters
 
-And yes, [medication can be a helpful tool for the right person](/blog/what-glp-1-medications-wont-fix-but-you-still-have-to-understand/), but it should never be the only piece of the plan.
+And yes, [medication can be a helpful tool for the right person](/what-glp-1-medications-wont-fix-but-you-still-have-to-understand/), but it should never be the only piece of the plan.
 
 The goal is not just to lose weight quickly.
 

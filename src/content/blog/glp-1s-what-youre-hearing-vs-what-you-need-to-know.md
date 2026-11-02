@@ -75,7 +75,7 @@ Because the goal isn’t just to lose weight…
 
 It’s to lose it **well**.
 
-![](../../assets/blog/glp-1s-what-youre-hearing-vs-what-you-need-to-know/ProgressReportGIF-2.gif)
+![](../../assets/blog/glp-1s-what-youre-hearing-vs-what-you-need-to-know/ProgressReportGIF-2.webp)
 
 ## The Benefits Go Far Beyond Weight Loss
 This is the part that doesn’t get talked about enough.

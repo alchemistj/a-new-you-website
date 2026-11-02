@@ -2,7 +2,7 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 /**
- * Blog posts live in src/content/blog/<slug>.md. The file name is the URL slug: /blog/<slug>/.
+ * Blog posts live in src/content/blog/<slug>.md. The file name is the URL slug: posts live at the root, /<slug>/ (same as the live WordPress site).
  * Images referenced in the body are relative paths into src/assets/blog/<slug>/.
  */
 const blog = defineCollection({

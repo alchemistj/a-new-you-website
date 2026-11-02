@@ -216,7 +216,7 @@ function makeTurndown(slug, ctx) {
       if (/(^|\.)anewyouwoman\.com$/.test(u.hostname)) {
         const p = u.pathname.endsWith('/') ? u.pathname : u.pathname + '/';
         if (HELD.has(p)) { ctx.held.push({ href, text: inner }); return inner; }
-        if (slugMap.has(u.pathname) || slugMap.has(p)) out = `/blog/${slugMap.get(slugMap.has(u.pathname) ? u.pathname : p)}/`;
+        if (slugMap.has(u.pathname) || slugMap.has(p)) out = `/${slugMap.get(slugMap.has(u.pathname) ? u.pathname : p)}/`;
         else if (PAGE_MAP[p]) out = PAGE_MAP[p];
         else { ctx.unknown.push(href); out = u.pathname + u.search; }
         out += u.hash;
@@ -233,7 +233,7 @@ function normTitle(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(
 for (const p of posts) {
   const oldPath = oldPathOf(p);
   const slug = slugMap.get(oldPath);
-  if (slug !== p.slug) report.slugChanges.push({ from: oldPath, to: `/blog/${slug}/` });
+  if (slug !== p.slug) report.slugChanges.push({ from: oldPath, to: `/${slug}/` });
   const title = stripTags(p.title.rendered);
   const em = p._embedded || {};
   const ctx = { held: [], unknown: [], selfLinks: new Set() };
@@ -303,10 +303,11 @@ for (const p of posts) {
   fm.push('---', '');
   fs.writeFileSync(path.join(CONTENT_DIR, `${slug}.md`), fm.join('\n') + '\n' + md + '\n');
 
-  redirects.push({ from: oldPath, to: `/blog/${slug}/` });
+  if (slug === p.slug) continue; // posts stay at their live root URL; only changed slugs need a redirect
+  redirects.push({ from: oldPath, to: `/${slug}/` });
   // WordPress also answers the decoded form of the path (with the emoji variation selector)
   const decoded = decodeURIComponent(oldPath);
-  if (decoded !== oldPath) redirects.push({ from: decoded, to: `/blog/${slug}/` });
+  if (decoded !== oldPath) redirects.push({ from: decoded, to: `/${slug}/` });
 }
 
 fs.mkdirSync(path.dirname(REDIRECTS), { recursive: true });

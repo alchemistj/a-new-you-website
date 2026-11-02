@@ -13,7 +13,7 @@ export async function getPosts(): Promise<BlogPost[]> {
   return posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
 
-export const blogPath = (id: string): string => `/blog/${id}/`;
+export const blogPath = (id: string): string => `/${id}/`;
 export const pagePath = (n: number): string => (n <= 1 ? '/blog/' : `/blog/page/${n}/`);
 
 const imageModules = import.meta.glob<{ default: ImageMetadata }>('/src/assets/blog/**/*.{jpg,jpeg,png,webp,avif,gif}');

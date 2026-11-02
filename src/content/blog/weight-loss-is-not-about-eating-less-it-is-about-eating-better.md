@@ -31,7 +31,7 @@ It does not tell us whether it is feeding inflammation.\
 It does not tell us whether it is helping your gut bacteria or wrecking them.\
 It does not tell us whether it is supporting your hormones or throwing them off.
 
-[That is why the old “calories in, calories out” conversation is so incomplete.](/blog/diet-advice-you-already-knew-but-needed-to-hear-again/) It makes weight loss sound like math, when the body is actually biology.
+[That is why the old “calories in, calories out” conversation is so incomplete.](/diet-advice-you-already-knew-but-needed-to-hear-again/) It makes weight loss sound like math, when the body is actually biology.
 
 Think about it this way.
 
@@ -93,7 +93,7 @@ So when your gut is out of balance, weight loss can become much harder.
 
 This is also where we can connect the conversation to GLP-1.
 
-[GLP-1 medications have gotten a lot of attention, and they can be very helpful tools when they are used appropriately.](/blog/glp-1s-what-youre-hearing-vs-what-you-need-to-know/) But GLP-1 itself is not foreign to the body.
+[GLP-1 medications have gotten a lot of attention, and they can be very helpful tools when they are used appropriately.](/glp-1s-what-youre-hearing-vs-what-you-need-to-know/) But GLP-1 itself is not foreign to the body.
 
 Your body already makes GLP-1 naturally.
 

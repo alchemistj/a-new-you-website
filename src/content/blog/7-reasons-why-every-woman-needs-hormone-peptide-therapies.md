@@ -93,7 +93,7 @@ BPC-157 has both gut and soft tissue healing properties.  it can work well in he
 
 These are just some of the Ppeptide. I have personally utilized and have got amazing results.
 
-Related Post: [Sermorelin and other Amazing Peptides](/blog/sermorelin-and-other-amazing-peptides/)
+Related Post: [Sermorelin and other Amazing Peptides](/sermorelin-and-other-amazing-peptides/)
 
 ## Reason #7 : Age with Grace, Ddignity, and Iindependence
 

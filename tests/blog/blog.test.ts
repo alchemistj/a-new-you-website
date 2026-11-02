@@ -27,7 +27,7 @@ function parse(file: string): Post {
 
 const files = readdirSync(CONTENT).filter((f) => f.endsWith('.md'));
 const posts = files.map(parse);
-const routes = new Set(posts.map((p) => `/blog/${p.slug}/`));
+const routes = new Set(posts.map((p) => `/${p.slug}/`));
 
 describe('blog content', () => {
   it('has all 45 posts', () => {
@@ -38,6 +38,18 @@ describe('blog content', () => {
     expect(JSON.parse(p.front.title).trim().length).toBeGreaterThan(0);
     expect(JSON.parse(p.front.description).trim().length).toBeGreaterThan(20);
     expect(p.front.pubDate).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  });
+
+  it('has no slug that clashes with a page route segment or a blog route', () => {
+    const reserved = ['about', 'biote', 'memberships', 'financing', 'customer-reviews', 'springfield', 'blog', 'page', 'contact', 'faq', 'sitemap', 'robots', 'llms', '_astro'];
+    for (const p of posts) expect(reserved, p.slug).not.toContain(p.slug);
+    const pagesDir = join(ROOT, 'src/data/pages');
+    if (existsSync(pagesDir)) {
+      for (const f of readdirSync(pagesDir).filter((x) => x.endsWith('.ts') && x !== 'index.ts')) {
+        const route = /route:\s*['"]([^'"]+)['"]/.exec(readFileSync(join(pagesDir, f), 'utf8'))?.[1];
+        if (route) expect(routes.has(route), `${f} route ${route}`).toBe(false);
+      }
+    }
   });
 
   it('uses clean slugs', () => {
@@ -74,7 +86,7 @@ describe('blog content', () => {
     for (const p of posts) {
       for (const m of p.body.matchAll(/(?<!!)\[[^\]]*\]\((\/[^)]*)\)/g)) {
         const href = m[1];
-        if (href.startsWith('/blog/') && href !== '/blog/') expect(routes.has(href.split('#')[0]), `${p.slug}: ${href}`).toBe(true);
+        if (routes.has(href.split("#")[0])) continue;
         else expect(href, p.slug).toMatch(service);
       }
     }
@@ -91,11 +103,14 @@ describe('blog content', () => {
 describe('blog redirects', () => {
   const redirects: { from: string; to: string }[] = JSON.parse(readFileSync(join(ROOT, 'src/data/redirects-blog.json'), 'utf8'));
 
-  it('covers every post once or more', () => {
+  it('redirects exactly the posts whose slug changed (the rest keep their live URL)', () => {
     for (const p of posts) {
       const old = JSON.parse(p.front.oldUrl);
-      expect(redirects.find((r) => r.from === old)?.to, p.slug).toBe(`/blog/${p.slug}/`);
+      const hit = redirects.find((r) => r.from === old);
+      if (old === `/${p.slug}/`) expect(hit, p.slug).toBeUndefined();
+      else expect(hit?.to, p.slug).toBe(`/${p.slug}/`);
     }
+    expect(redirects).toHaveLength(5); // 3 renamed slugs + 2 decoded (U+FE0F) variants
   });
 
   it('sends every `to` to a generated post route', () => {

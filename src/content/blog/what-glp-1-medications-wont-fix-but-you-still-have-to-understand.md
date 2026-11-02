@@ -28,7 +28,7 @@ If you’ve followed me for any amount of time, you already know this:
 Weight gain is not a willpower problem.\
 **It’s a physiology problem.**
 
-[We’ve talked about this before](/blog/diet-advice-you-already-knew-but-needed-to-hear-again/)—especially how insulin resistance and hormonal imbalance drive fat storage and make weight loss feel impossible
+[We’ve talked about this before](/diet-advice-you-already-knew-but-needed-to-hear-again/)—especially how insulin resistance and hormonal imbalance drive fat storage and make weight loss feel impossible
 
 GLP-1 medications help regulate that system—but they don’t replace the need to support it.
 
@@ -80,7 +80,7 @@ If you don’t:
 
 Your metabolism will slow down over time.
 
-(And yes—[this becomes even more important as we age and fight muscle loss](/blog/the-importance-of-protein-for-preventing-muscle-wasting-as-we-age/) )
+(And yes—[this becomes even more important as we age and fight muscle loss](/the-importance-of-protein-for-preventing-muscle-wasting-as-we-age/) )
 
 ---
 

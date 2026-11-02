@@ -13,7 +13,7 @@ addedLinks: [{"phrase":"semaglutide","to":"/springfield/semaglutide/"}]
 
 *Image by [alphabet gold abc question](https://svgsilh.com/image/2154831.html)“/ [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/?ref=openverse)*
 
-Everyone’s talking about the miracle [weight loss](/blog/latest-medical-treatments-for-weight-loss/) drug [semaglutide](/springfield/semaglutide/) how it’s a **game changer.** What is it? What does it do? Why is it a game changer? These are the questions I ask myself and here’s what I’ve discovered.
+Everyone’s talking about the miracle [weight loss](/latest-medical-treatments-for-weight-loss/) drug [semaglutide](/springfield/semaglutide/) how it’s a **game changer.** What is it? What does it do? Why is it a game changer? These are the questions I ask myself and here’s what I’ve discovered.
 
 Semagluetide belongs to a class of medications known as glucagon-like peptide-1 (GLP-1) receptor agonists. These medications mimic hormones in your gastrointestinal tract and target areas in the brain that regulate appetite and food intake. This can help regulate insulin and reduce blood glucose.
 
@@ -45,7 +45,7 @@ Side effects can include nausea, vomiting, constipation, stomach pain, headaches
 Growth hormone is secreted from the pituitary gland in a pulsatile fashion so it can be low at one time and high at another. The largest peak of growth hormone is during the nighttime about an hour after the onset of sleep, a number of factors affect the secretion of growth hormone, including exercise, diet, age, hormones, and stress . Growth hormone goes to the liver and secretes. Another hormone called insulin like growth factor-1 (IGF-1). IGF-1 peaks at around 20 years of age and rapidly decreases in your 30s.\
 In the 1990s a study published in the New England Journal of Medicine by Dr. Daniel Redman noted that higher levels of growth hormone conferred significant benefits and slowed the aging process. IGF-1 improves lean body mass,decreases fat, increases bone density and increases skin thickness. It also plays an important role in lowering markers of inflammation.
 
-Besides improving IGF-1 sermorelin and [other peptides](/blog/sermorelin-and-other-amazing-peptides/), shrink belly, fat, lower cholesterol and triglycerides, reduce plaque in blood vessels, (decrease risk of stroke )and help with cognition. average weight loss can be up to 20% of body fat.
+Besides improving IGF-1 sermorelin and [other peptides](/sermorelin-and-other-amazing-peptides/), shrink belly, fat, lower cholesterol and triglycerides, reduce plaque in blood vessels, (decrease risk of stroke )and help with cognition. average weight loss can be up to 20% of body fat.
 
 Side effects include nausea, headaches, dizziness, flushing, joint, pain, and fatigue.
 

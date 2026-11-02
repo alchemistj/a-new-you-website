@@ -92,7 +92,7 @@ We focus on:
 -   Muscle preservation
 -   Metabolic health
 
-([And yes—this matters more as we age](/blog/the-importance-of-protein-for-preventing-muscle-wasting-as-we-age/) )
+([And yes—this matters more as we age](/the-importance-of-protein-for-preventing-muscle-wasting-as-we-age/) )
 
 ---
 

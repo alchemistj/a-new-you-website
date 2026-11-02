@@ -135,7 +135,7 @@ Estrogen therapy is not a weight-loss treatment. A change in weight does not, by
 
 At our [Springfield, Missouri weight loss clinic](/springfield/weight-loss/), we consider those connections as part of an individual plan.
 
-My [blog about hormone therapy and whole-person health](/blog/hormone-therapy-its-time-to-rethink-what-youve-been-told/) continues that conversation.
+My [blog about hormone therapy and whole-person health](/hormone-therapy-its-time-to-rethink-what-youve-been-told/) continues that conversation.
 
 ## Understanding Estrogen Gives You Choices
 

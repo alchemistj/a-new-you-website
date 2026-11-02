@@ -6,7 +6,7 @@ updatedDate: 2023-11-28
 author: "Lucinda \"Cindy\" Sparks"
 oldUrl: "/unveiling-the-power-of-glutathione-the-ultimate-antioxidant-peptide/"
 heroImage:
-  src: "blog/unveiling-the-power-of-glutathione-the-ultimate-antioxidant-peptide/IMG_0240.gif"
+  src: "blog/unveiling-the-power-of-glutathione-the-ultimate-antioxidant-peptide/IMG_0240.webp"
   alt: ""
 categories: ["Health and wellness"]
 tags: ["Functional medicine","Peptide therapy","Peptides"]
@@ -16,7 +16,7 @@ tags: ["Functional medicine","Peptide therapy","Peptides"]
 
 In the quest for optimal health and longevity, the importance of antioxidants cannot be overstated. One such remarkable peptide that has gained significant attention in recent years is glutathione. Known as the master antioxidant, glutathione plays a crucial role in maintaining cellular health and combating oxidative stress. In this blog, we will delve into the fascinating world of glutathione, exploring its functions, benefits, natural sources, and how it can be enhanced for therapeutic purposes.
 
-![](../../assets/blog/unveiling-the-power-of-glutathione-the-ultimate-antioxidant-peptide/IMG_0240.gif)
+![](../../assets/blog/unveiling-the-power-of-glutathione-the-ultimate-antioxidant-peptide/IMG_0240.webp)
 
 1.  Understanding Glutathione:
 
