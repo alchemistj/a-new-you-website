@@ -1,0 +1,272 @@
+import type { PageCopy } from '../../types/page';
+
+export const page: PageCopy = {
+  slug: 'vaginal-wellness',
+  route: '/springfield/vaginal-wellness/',
+  template: 'service',
+  publish: true,
+  oldUrls: ['/vaginal-rejuvenation/'],
+  seo: {
+    title: "Vaginal Rejuvenation in Springfield, MO | A New You Women's Clinic",
+    description:
+      'Struggling with leaking, dryness, or discomfort after childbirth or menopause? A New You Women’s Clinic offers vaginal rejuvenation in Springfield, MO.',
+  },
+  hero: {
+    h1: 'Vaginal Rejuvenation In Springfield, MO',
+    subhead: 'Non-Surgical Vaginal Tightening, EmpowerRF, and Feminine Wellness at A New You Women’s Clinic',
+    image: {
+      src: 'pages/vaginal-wellness/hero.jpg',
+      alt: 'Six smiling women stand together outdoors, one wearing a white coat with a stethoscope',
+    },
+    imagePosition: 'center 30%',
+    primaryCta: {
+      label: 'Schedule an Appointment',
+      href: 'https://anewyouwomensclinic.myaestheticrecord.com/online-booking',
+    },
+  },
+  sections: [
+    {
+      kind: 'prose',
+      paragraphs: [
+        'If something just feels off—whether it’s discomfort, leaking, or a quiet disconnection from your body, we understand. We’ve helped hundreds of women just like you rediscover strength, comfort, and confidence through gentle, science-backed care.',
+        'We’re here to help you feel confident, restored, and connected to your body again.',
+      ],
+    },
+    {
+      kind: 'prose',
+      heading: 'Explore EmpowerRF for Feminine Rejuvenation',
+      paragraphs: [
+        'This isn’t just a treatment. It’s a turning point.',
+        'EmpowerRF gives you a path back to the parts of yourself you’ve quietly missed—without surgery, shame, or guesswork.',
+        'This cutting-edge platform combines three non-invasive technologies to restore vaginal tone, improve moisture, treat incontinence, and enhance intimate sensation.',
+      ],
+    },
+    {
+      kind: 'list',
+      intro: 'EmpowerRF Includes:',
+      items: [
+        'Morpheus8V: Internal & external RF microneedling for collagen renewal',
+        'FormaV: Gentle radiofrequency to improve lubrication & elasticity',
+        'VTone: EMS pelvic floor therapy to reduce leaks and improve bladder control',
+      ],
+      outro: 'Each woman’s plan is personalized. You may receive one or a combination of these treatments depending on your needs.',
+    },
+    {
+      kind: 'prose',
+      heading: 'What is Vaginal Rejuvenation?',
+      paragraphs: [
+        'This isn’t about vanity—it’s about vitality.',
+        'Vaginal rejuvenation is a way to restore how your body feels, functions, and connects—with yourself and with those you love. These aren’t problems you have to “just live with.” They’re signals. And we’re here to help you respond to them with clarity and care.',
+        'Vaginal rejuvenation refers to treatments that restore vaginal health, structure, and function.',
+      ],
+    },
+    {
+      kind: 'list',
+      intro: 'Many women experience changes after childbirth or hormonal shifts. You might notice:',
+      items: [
+        'Dryness or discomfort during intimacy',
+        'Less sensation or tightness during sex',
+        'Urinary leaks when coughing, sneezing, or working out',
+      ],
+      outro: 'You’re not imagining it, it’s just that nobody really talks about it. These changes are common, but that doesn’t mean you have to just “accept them.”',
+    },
+    {
+      kind: 'cards',
+      id: 'vaginal-wellness-services',
+      heading: 'Vaginal Wellness, Urinary Incontinence & Sexual Health',
+      cards: [
+        { title: 'Vaginal Wellness Consultation & Evaluation' },
+        { title: 'VTone Pelvic Floor Muscle Stimulation' },
+        { title: 'FormaV Radiofrequency Treatment' },
+        { title: 'Morpheus8V RF Microneedling' },
+        { title: 'Combination EmpowerRF Treatment Plans' },
+      ],
+    },
+    {
+      kind: 'list',
+      heading: 'Vaginal Wellness Consultation & Evaluation',
+      intro: 'Concerns:',
+      items: [
+        'Urinary leakage',
+        'Urinary frequency',
+        'Urinary urgency',
+        'Stress urinary incontinence',
+        'Pelvic floor weakness',
+        'Vaginal dryness',
+        'Painful sex',
+        'Discomfort with intimacy',
+        'Vaginal tissue changes',
+        'Decreased sensation',
+        'Vaginal laxity',
+        'Sexual-health changes',
+        'Low desire',
+        'Postpartum changes',
+        'Menopause-related vaginal changes',
+      ],
+    },
+    {
+      kind: 'list',
+      heading: 'VTone Pelvic Floor Muscle Stimulation',
+      intro: 'Concerns:',
+      items: [
+        'Pelvic floor weakness',
+        'Stress urinary incontinence',
+        'Bladder leakage',
+        'Leaking with coughing',
+        'Leaking with sneezing',
+        'Leaking while laughing',
+        'Leaking during exercise',
+        'Decreased pelvic floor muscle function',
+      ],
+    },
+    {
+      kind: 'list',
+      heading: 'FormaV Radiofrequency Treatment',
+      intro: 'Concerns:',
+      items: [
+        'Vaginal dryness',
+        'Vaginal tissue changes',
+        'Discomfort with intimacy',
+        'Menopause-related vaginal changes',
+        'Postpartum vaginal changes',
+        'Vaginal laxity',
+        'Intimate wellness concerns',
+      ],
+    },
+    {
+      kind: 'list',
+      heading: 'Morpheus8V RF Microneedling',
+      intro: 'Concerns:',
+      items: [
+        'Vaginal and vulvar tissue changes',
+        'Tissue laxity',
+        'Changes associated with aging and menopause',
+        'Postpartum tissue changes',
+        'Intimate wellness concerns',
+        'Sexual-health changes',
+      ],
+    },
+    {
+      kind: 'list',
+      heading: 'Combination EmpowerRF Treatment Plans',
+      intro: 'May combine VTone, FormaV and Morpheus8V based on the individual evaluation and treatment plan. Concerns:',
+      items: [
+        'Urinary leakage combined with vaginal changes',
+        'Pelvic floor weakness',
+        'Stress urinary incontinence',
+        'Vaginal dryness',
+        'Painful or uncomfortable intimacy',
+        'Postpartum changes',
+        'Menopause-related vaginal changes',
+        'Multiple urinary, vaginal or sexual-wellness concerns occurring together',
+      ],
+    },
+    {
+      kind: 'list',
+      heading: 'Common Reasons Women Seek Vaginal Rejuvenation',
+      intro: 'Is this you?',
+      items: [
+        '“I leak urine when I laugh or jump.”',
+        '“I feel looser after having my second child.”',
+        '“Sex has become painful or unenjoyable.”',
+        '“I just don’t feel like myself anymore.”',
+      ],
+      outro: 'Whether your symptoms started postpartum or during menopause, we specialize in helping women feel safe, strong, and empowered to address them.',
+    },
+    {
+      kind: 'review',
+      quote:
+        'I didn’t think I’d ever feel normal again after having my kids. After three VTone sessions, I stopped leaking completely. I actually cried after the first week.',
+      name: 'Jessica',
+    },
+    {
+      kind: 'prose',
+      heading: 'How Much Does Feminine Rejuvenation Cost?',
+      paragraphs: [
+        'Custom Plans That Fit Your Body and Your Budget',
+        'Women often tell us: “I wish I had done this sooner.”',
+        'Because this isn’t just about solving a problem—it’s about reclaiming ease, joy, and intimacy.',
+        'Most personalized treatment plans range from $1,500 to $3,500, depending on the number of sessions and technologies used. Payment plans are available.',
+      ],
+    },
+    {
+      kind: 'list',
+      intro: 'Your consultation includes:',
+      items: [
+        'A full pelvic evaluation',
+        'Lab review (if needed)',
+        'A personalized treatment plan that honors your body and your story',
+      ],
+    },
+    {
+      kind: 'steps',
+      heading: 'What to Expect During Treatment',
+      intro: 'Step-by-Step, so You Feel Comfortable from Start to Finish',
+      steps: [
+        {
+          title: 'Private Consultation',
+          text: 'We discuss your symptoms, goals, and medical history in a confidential, judgment-free space.',
+        },
+        {
+          title: 'Treatment Plan',
+          text: 'You’ll receive a personalized plan that may include Morpheus8V, VTone, or FormaV—or a combination.',
+        },
+        {
+          title: 'Treatment Session',
+          text: 'In-office and comfortable. 30–45 minutes on average. No general anesthesia or downtime.',
+        },
+        {
+          title: 'Recovery & Results',
+          text: 'Most women notice improvements in 2–4 weeks, with full results developing over 3 months.',
+        },
+      ],
+    },
+    {
+      kind: 'review',
+      quote:
+        'I was so scared to talk about what was happening. Lucinda made me feel so safe. It wasn’t just physical healing—it gave me back my confidence.',
+      name: 'Michelle',
+    },
+    {
+      kind: 'list',
+      heading: 'Why Choose A New You Women’s Clinic?',
+      intro: 'A shame-free space for total feminine care.',
+      items: [
+        'Led by Lucinda Sparks, MSN, CNM, APRN with 23 years in healthcare and 13 years in women’s health',
+        'Discreet, spa-like environment designed for emotional and physical comfort',
+        'Personalized care—you’ll never feel like a number',
+        'EmpowerRF technology for deeper, more comprehensive results',
+      ],
+    },
+    {
+      kind: 'prose',
+      heading: 'Serving Women in Springfield, Nixa, Ozark, Rogersville, and Nearby Areas',
+      paragraphs: ['Helping women across Southwest Missouri reclaim comfort, confidence, and connection—one story at a time.'],
+    },
+    {
+      kind: 'cta',
+      heading: 'Book a Private Consultation Today',
+      paragraphs: [
+        'You’re not broken. You’re not alone. You just need care that listens.',
+        'If you’re in or near Springfield, MO and ready to feel like yourself again, we invite you to take the first step today.',
+      ],
+    },
+  ],
+  related: ['female-sexual-dysfunction', 'menopause', 'perimenopause'],
+  serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Rogersville'],
+  changes: [
+    'Removed every ThermiVa mention: the whole "ThermiVa vs. EmpowerRF" section (heading, "What’s the difference?", the intro line, the comparison table and the closing sentence "While both are non-invasive options...").',
+    'Removed every "Laser Vaginal Tightening" mention: the whole "Laser Vaginal Tightening" section (heading, "Convenient, discreet, in-office procedures with no downtime", "We provide EmpowerRF laser-based and radiofrequency-based treatments...", its four bullets and "You can start feeling better...without surgery or shame.").',
+    'Also removed the live intro sentence "At A New You Women’s Clinic in Springfield, MO, we offer FDA-cleared, non-surgical vaginal rejuvenation treatments using the EmpowerRF platform—combining advanced radio frequency therapy, gentle laser treatments, vagina and pelvic floor tightening, and muscle strengthening therapies." because it describes laser treatments and tightening, and a partial edit would mean writing new words. Josh to confirm.',
+    'Added Cindy\'s Vaginal Wellness section word for word: the category heading as a cards overview (her five service names), then Vaginal Wellness Consultation & Evaluation, VTone Pelvic Floor Muscle Stimulation, FormaV Radiofrequency Treatment, Morpheus8V RF Microneedling and Combination EmpowerRF Treatment Plans, each with her "Concerns:" bullets. Her all-caps category heading is set in title case. Her note "This is our highest-priority local SEO service line." is internal and is not shown.',
+    'Title tag: "Woman\'s Clinic" corrected to "Women\'s Clinic". Description unchanged.',
+    'Live H2 "Non-Surgical Vaginal Tightening, EmpowerRF, and Feminine Wellness..." is now the hero subhead (same words).',
+    'Why Choose bullet said "with over 23 years in women’s health"; changed to "with 23 years in healthcare and 13 years in women’s health" to match the brief (the founder bio wording).',
+    'Testimonials split into two single review bands, placed after the sections they support. Names shown as first name only ("Jessica", "Michelle"); the live page gave an age ("37", "52") and no last initial, and I did not invent one. Ages dropped. "Testimonials from Real Women" heading and "Springfield’s trusted clinic for vaginal health" line are dropped because the reviews are now bands.',
+    'Process step numbers ("1.", "2.") dropped from titles; step 3 bullets joined into one line with periods.',
+    'The cost price range "$1,500 to $3,500" and "Payment plans are available." are kept exactly as live.',
+    'Book-a-consultation block is the final CTA band; the "Call (417) 605-2153" and "book online here" links are replaced by the standard call and Schedule an Appointment buttons (live booking link went to /book-appointment).',
+    'Left out the two small Group-1.png icon images (placeholder icon, 223px).',
+    'Kept "We’ve helped hundreds of women" and "Most women notice improvements in 2–4 weeks, with full results developing over 3 months." as live copy; they are claims, flagged for Josh.',
+  ],
+};

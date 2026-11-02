@@ -9,6 +9,7 @@ import re
 import sys
 from html.parser import HTMLParser
 
+INLINE = {"span", "strong", "em", "b", "i", "a", "br", "small", "sup", "u"}
 BLOCK = {"h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "blockquote", "cite"}
 
 
@@ -20,9 +21,24 @@ class Outline(HTMLParser):
         self.tag = None
         self.link = None
         self.skip = 0
+        self.loose = []
+
+    def put(self, text):
+        if self.buf is not None:
+            self.buf.append(text)
+        else:
+            self.loose.append(text)
+
+    def flush_loose(self):
+        text = re.sub(r"\s+", " ", "".join(self.loose)).strip()
+        self.loose = []
+        if text:
+            self.lines.append("T: " + text)
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
+        if tag not in INLINE:
+            self.flush_loose()
         if tag in ("script", "style"):
             self.skip += 1
         if tag in BLOCK:
@@ -35,31 +51,31 @@ class Outline(HTMLParser):
         elif tag == "iframe":
             self.lines.append("IFRAME: %s" % (a.get("src") or a.get("data-src") or ""))
         elif tag == "a":
+            self.put("[")
             self.link = a.get("href", "")
-            if self.buf is None:
-                self.buf = []
-                self.tag = "a"
         elif tag == "br" and self.buf is not None:
             self.buf.append(" ")
         elif tag == "div" and a.get("data-settings") and "youtube" in a.get("data-settings", ""):
             self.lines.append("VIDEO-SETTINGS: %s" % a["data-settings"][:300])
 
     def handle_endtag(self, tag):
+        if tag not in INLINE:
+            self.flush_loose()
         if tag in ("script", "style"):
             self.skip -= 1
-        if tag in BLOCK or tag == "a":
-            if tag == "a":
-                if self.tag == "a":
-                    self.flush(link=self.link)
-                self.link = None
-            else:
-                self.flush(link=None)
+        if tag == "a":
+            self.put("](%s)" % (self.link or ""))
+            self.link = None
+        elif tag in BLOCK:
+            self.flush()
 
     def handle_data(self, data):
         if self.skip:
             return
         if self.buf is not None:
             self.buf.append(data)
+        else:
+            self.loose.append(data)
 
     def flush(self, link=None):
         if self.buf is not None:
@@ -84,6 +100,7 @@ def main():
     o = Outline()
     o.feed(page["content"]["rendered"])
     o.flush()
+    o.flush_loose()
     for line in o.lines:
         print(line)
 
