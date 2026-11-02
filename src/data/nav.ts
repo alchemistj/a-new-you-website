@@ -1,28 +1,26 @@
 // Navigation per docs/spec/brief.md (Cindy's priority order). Links to routes that are not
 // published are dropped at render time by src/lib/nav.ts (Rule 3), so nothing here can 404.
-import { cityConfig } from './site';
 
 export interface NavLink {
   label: string;
   href: string;
 }
 
-const c = `/${cityConfig.slug}`;
 
 /** Header quick links, in this order. */
 export const quickLinks: NavLink[] = [
-  { label: 'Vaginal Wellness', href: `${c}/vaginal-wellness/` },
-  { label: 'Menopause', href: `${c}/menopause/` },
-  { label: 'Weight Loss', href: `${c}/weight-loss/` },
-  { label: "Men's Health", href: `${c}/mens-health/` },
+  { label: 'Vaginal Wellness', href: '/vaginal-rejuvenation/' },
+  { label: 'Menopause', href: '/menopause/' },
+  { label: 'Weight Loss', href: '/weight-loss/' },
+  { label: "Men's Health", href: '/mens-health/' },
 ];
 
 /** Top bar. */
 export const topBarLinks: NavLink[] = [
   { label: 'About', href: '/about/' },
-  { label: 'FAQs', href: `${c}/faq/` },
+  { label: 'FAQs', href: '/faq/' },
   { label: 'Blog', href: '/blog/' },
-  { label: 'Contact', href: `${c}/contact/` },
+  { label: 'Contact', href: '/contact/' },
 ];
 
 /** Short labels for service pages (slug -> label), in footer order. */
@@ -46,7 +44,7 @@ export const footerCompanyLinks: NavLink[] = [
   { label: 'Financing', href: '/financing/' },
   { label: 'Customer Reviews', href: '/customer-reviews/' },
   { label: 'About', href: '/about/' },
-  { label: 'FAQ', href: `${c}/faq/` },
+  { label: 'FAQ', href: '/faq/' },
   { label: 'Blog', href: '/blog/' },
-  { label: 'Contact', href: `${c}/contact/` },
+  { label: 'Contact', href: '/contact/' },
 ];
