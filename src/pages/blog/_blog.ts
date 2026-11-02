@@ -26,16 +26,16 @@ export async function loadImage(src: string | undefined): Promise<ImageMetadata 
 }
 
 const SERVICE_LABELS: Record<string, string> = {
-  '/springfield/weight-loss/': 'Weight Loss',
-  '/springfield/semaglutide/': 'Semaglutide',
-  '/springfield/botox/': 'Botox',
-  '/springfield/aesthetics/': 'Aesthetics',
-  '/springfield/cryolipolysis/': 'Cryolipolysis',
-  '/springfield/menopause/': 'Menopause',
-  '/springfield/perimenopause/': 'Perimenopause',
-  '/springfield/vaginal-wellness/': 'Vaginal Wellness',
-  '/springfield/female-sexual-dysfunction/': 'Female Sexual Dysfunction',
-  '/springfield/mens-health/': "Men's Health",
+  '/weight-loss/': 'Weight Loss',
+  '/semaglutide/': 'Semaglutide',
+  '/botox/': 'Botox',
+  '/aesthetics/': 'Aesthetics',
+  '/cryolipolysis/': 'Cryolipolysis',
+  '/menopause/': 'Menopause',
+  '/perimenopause/': 'Perimenopause',
+  '/vaginal-rejuvenation/': 'Vaginal Wellness',
+  '/female-sexual-dysfunction/': 'Female Sexual Dysfunction',
+  '/mens-health/': "Men's Health",
   '/biote/': 'Biote',
 };
 

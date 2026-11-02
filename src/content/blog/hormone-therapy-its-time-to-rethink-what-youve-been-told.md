@@ -9,8 +9,8 @@ heroImage:
   alt: ""
 categories: ["Health and wellness","Hormone optimization","Weight loss"]
 tags: ["Anti-aging","Biohacking","Bioidentical","Functional medicine","Hormone replacement","Menopause","Weight loss"]
-relatedService: "/springfield/menopause/"
-addedLinks: [{"phrase":"menopause","to":"/springfield/menopause/"}]
+relatedService: "/menopause/"
+addedLinks: [{"phrase":"menopause","to":"/menopause/"}]
 ---
 
 Over the past couple of months, we’ve been talking a lot about weight loss, metabolism, insulin resistance, inflammation, muscle, stress, and the way the body changes as we age.
@@ -142,7 +142,7 @@ Hormones are dangerous.
 
 But that is not the whole story.
 
-[Over time, follow-up analysis and newer studies have helped clarify that age, timing, baseline health, type of hormone therapy, and route of administration all matter.](https://pmc.ncbi.nlm.nih.gov/articles/PMC4834454/) The “timing hypothesis” looks at the idea that hormone therapy may have a different risk-benefit profile when started closer to [menopause](/springfield/menopause/) versus much later in life.
+[Over time, follow-up analysis and newer studies have helped clarify that age, timing, baseline health, type of hormone therapy, and route of administration all matter.](https://pmc.ncbi.nlm.nih.gov/articles/PMC4834454/) The “timing hypothesis” looks at the idea that hormone therapy may have a different risk-benefit profile when started closer to [menopause](/menopause/) versus much later in life.
 
 In other words, a healthy woman in her early menopause transition is not the same clinical picture as someone decades past menopause with existing health risks.
 

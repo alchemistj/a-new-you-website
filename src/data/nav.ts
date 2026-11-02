@@ -42,7 +42,7 @@ export const serviceLabels: Record<string, string> = {
 /** Footer: company links after the service list. */
 export const footerCompanyLinks: NavLink[] = [
   { label: 'Biote', href: '/biote/' },
-  { label: 'Memberships', href: '/memberships/' },
+  { label: 'Memberships', href: '/subscription-plans/' },
   { label: 'Financing', href: '/financing/' },
   { label: 'Customer Reviews', href: '/customer-reviews/' },
   { label: 'About', href: '/about/' },

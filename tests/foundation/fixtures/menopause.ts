@@ -3,10 +3,10 @@ import type { PageCopy } from '../../../src/types/page';
 
 export const page: PageCopy = {
   slug: 'menopause',
-  route: '/springfield/menopause/',
+  route: '/menopause/',
   template: 'service',
   publish: true,
-  oldUrls: ['/menopause/'],
+  oldUrls: [],
   seo: { title: 'Fixture Menopause | A New You Women\'s Clinic', description: 'Second fixture service page, no hero photo.' },
   hero: { h1: 'Fixture Menopause Heading' },
   sections: [

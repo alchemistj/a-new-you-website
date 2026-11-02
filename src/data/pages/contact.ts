@@ -2,10 +2,10 @@ import type { PageCopy } from '../../types/page';
 
 export const page: PageCopy = {
   slug: 'contact',
-  route: '/springfield/contact/',
+  route: '/contact/',
   template: 'contact',
   publish: true,
-  oldUrls: ['/contact/'],
+  oldUrls: [],
   seo: {
     title: "Contact Us in Springfield, MO | A New You Women's Clinic",
     description:

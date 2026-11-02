@@ -2,7 +2,7 @@ import type { PageCopy } from '../../types/page';
 
 export const page: PageCopy = {
   slug: 'botox',
-  route: '/springfield/botox/',
+  route: '/botox/',
   template: 'service',
   publish: true,
   oldUrls: ['/botox-in-springfield-mo/'],
@@ -193,7 +193,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'cards',
-      cards: [{ title: 'Explore all aesthetic services', href: '/springfield/aesthetics/' }],
+      cards: [{ title: 'Explore all aesthetic services', href: '/aesthetics/' }],
     },
     {
       kind: 'prose',
@@ -228,7 +228,7 @@ export const page: PageCopy = {
   changes: [
     'Added Cindy\'s Botox & Dysport concerns word for word as a list section.',
     'Four testimonials ("Mandie Ross", "Jennifer Teague", "Stacey Miller", "Qiying Ma") became single review bands with names as first name + last initial. The live lead-in "Here’s what our patients say about their experience with our team:" is dropped.',
-    'The live "Explore all aesthetic services" link is kept as a one-card link to /springfield/aesthetics/ (prose sections have no link field).',
+    'The live "Explore all aesthetic services" link is kept as a one-card link to /aesthetics/ (prose sections have no link field).',
     'The Botox / Dysport / Xeomin comparison is three small list sections with the live bullets; the results timeline and treatment areas are cards with live titles and text.',
     'The live closing "Call now to schedule" and "book online today" links are replaced by the standard call and Schedule an Appointment buttons in the final CTA.',
     'Title and description kept as live (already correct).',

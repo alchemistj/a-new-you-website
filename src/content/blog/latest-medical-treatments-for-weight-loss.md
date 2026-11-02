@@ -12,9 +12,9 @@ categories: []
 tags: []
 ---
 
-Losing weight isn’t just about willpower—your biology plays a huge role. That’s why at *A New You Women’s Clinic*, our [weight loss treatments](/springfield/weight-loss/) offer cutting-edge, FDA-approved medications that help treat obesity as a medical condition, not a personal failure.
+Losing weight isn’t just about willpower—your biology plays a huge role. That’s why at *A New You Women’s Clinic*, our [weight loss treatments](/weight-loss/) offer cutting-edge, FDA-approved medications that help treat obesity as a medical condition, not a personal failure.
 
-Here’s a closer look at today’s most effective medical weight loss treatments—and how they may be the key to [lasting results for men](/springfield/mens-health/) and women.
+Here’s a closer look at today’s most effective medical weight loss treatments—and how they may be the key to [lasting results for men](/mens-health/) and women.
 
 ## Semaglutide (Wegovy®, Ozempic®, Rybelsus®)
 

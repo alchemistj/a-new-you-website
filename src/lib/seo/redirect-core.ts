@@ -12,21 +12,13 @@ export interface Redirect {
 
 /** Page redirects from the brief's "Pages and URLs" table. Must equal what the page files produce. */
 export const FALLBACK_PAGE_REDIRECTS: Redirect[] = [
-  { from: '/weight-loss-in-springfield/', to: '/springfield/weight-loss/' },
-  { from: '/semaglutide-in-springfield-mo/', to: '/springfield/semaglutide/' },
-  { from: '/botox-in-springfield-mo/', to: '/springfield/botox/' },
-  { from: '/aesthetics/', to: '/springfield/aesthetics/' },
-  { from: '/cryolypolysis/', to: '/springfield/cryolipolysis/' },
-  { from: '/menopause/', to: '/springfield/menopause/' },
-  { from: '/thyroid-optimization/', to: '/springfield/menopause/' },
-  { from: '/pcos-management/', to: '/springfield/menopause/' },
-  { from: '/perimenopause/', to: '/springfield/perimenopause/' },
-  { from: '/vaginal-rejuvenation/', to: '/springfield/vaginal-wellness/' },
-  { from: '/female-sexual-disfunction-disorder/', to: '/springfield/female-sexual-dysfunction/' },
-  { from: '/mens-health/', to: '/springfield/mens-health/' },
-  { from: '/subscription-plans/', to: '/memberships/' },
-  { from: '/contact/', to: '/springfield/contact/' },
-  { from: '/faq/', to: '/springfield/faq/' },
+  { from: '/weight-loss-in-springfield/', to: '/weight-loss/' },
+  { from: '/semaglutide-in-springfield-mo/', to: '/semaglutide/' },
+  { from: '/botox-in-springfield-mo/', to: '/botox/' },
+  { from: '/cryolypolysis/', to: '/cryolipolysis/' },
+  { from: '/thyroid-optimization/', to: '/menopause/' },
+  { from: '/pcos-management/', to: '/menopause/' },
+  { from: '/female-sexual-disfunction-disorder/', to: '/female-sexual-dysfunction/' },
 ];
 
 /** Dropped pages: events (index + 6 children), placeholder and ticket pages. All go to "/". */

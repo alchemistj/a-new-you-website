@@ -10,7 +10,7 @@ heroImage:
   alt: ""
 categories: []
 tags: []
-relatedService: "/springfield/menopause/"
+relatedService: "/menopause/"
 addedLinks: []
 ---
 

@@ -6,7 +6,7 @@ export const page: PageCopy = {
   route: '/customer-reviews/',
   template: 'reviews',
   publish: true,
-  oldUrls: ['/customer-reviews/'],
+  oldUrls: [],
   seo: { title: 'Fixture Reviews | A New You Women\'s Clinic', description: 'Fixture reviews page used only by foundation tests.' },
   hero: { h1: 'Fixture Reviews Heading' },
   sections: [

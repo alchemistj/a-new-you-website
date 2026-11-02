@@ -35,11 +35,16 @@ describe('redirect map', () => {
   });
 
   it('covers every page in the brief table', () => {
-    expect(byFrom.get('/thyroid-optimization/')).toBe('/springfield/menopause/');
-    expect(byFrom.get('/pcos-management/')).toBe('/springfield/menopause/');
-    expect(byFrom.get('/subscription-plans/')).toBe('/memberships/');
-    expect(byFrom.get('/vaginal-rejuvenation/')).toBe('/springfield/vaginal-wellness/');
-    expect(byFrom.get('/cryolypolysis/')).toBe('/springfield/cryolipolysis/');
+    expect(byFrom.get('/thyroid-optimization/')).toBe('/menopause/');
+    expect(byFrom.get('/pcos-management/')).toBe('/menopause/');
+    expect(byFrom.get('/weight-loss-in-springfield/')).toBe('/weight-loss/');
+    expect(byFrom.get('/botox-in-springfield-mo/')).toBe('/botox/');
+    expect(byFrom.get('/female-sexual-disfunction-disorder/')).toBe('/female-sexual-dysfunction/');
+    expect(byFrom.get('/cryolypolysis/')).toBe('/cryolipolysis/');
+    // pages that keep their live URL need no redirect
+    for (const live of ['/subscription-plans/', '/vaginal-rejuvenation/', '/menopause/', '/contact/', '/faq/']) {
+      expect(byFrom.has(live), live).toBe(false);
+    }
   });
 
   it('has no redirect for held pages and never targets them', () => {

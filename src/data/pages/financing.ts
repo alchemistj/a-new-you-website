@@ -5,7 +5,7 @@ export const page: PageCopy = {
   route: '/financing/',
   template: 'company',
   publish: true,
-  oldUrls: ['/financing/'],
+  oldUrls: [],
   seo: {
     title: "Financing in Springfield, MO | A New You Women's Clinic",
     description: "Financing at A New You Women's Clinic in Springfield, MO.",

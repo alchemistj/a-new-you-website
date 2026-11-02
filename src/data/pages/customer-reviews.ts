@@ -8,7 +8,7 @@ export const page: PageCopy = {
   route: '/customer-reviews/',
   template: 'reviews',
   publish: true,
-  oldUrls: ['/customer-reviews/'],
+  oldUrls: [],
   seo: {
     title: "Customer Reviews in Springfield, MO | A New You Women's Clinic",
     description: "Read reviews from clients of A New You Women's Clinic in Springfield, MO.",

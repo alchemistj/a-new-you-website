@@ -45,7 +45,7 @@ The broccoli is completely different. Broccoli gives your body fiber, minerals, 
 
 So yes, they may both be 100 calories, but they are giving your body two completely different messages.
 
-[That is why I do not believe real weight loss is about eating less.](/springfield/weight-loss/)
+[That is why I do not believe real weight loss is about eating less.](/weight-loss/)
 
 ---
 

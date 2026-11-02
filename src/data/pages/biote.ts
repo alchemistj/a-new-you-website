@@ -5,7 +5,7 @@ export const page: PageCopy = {
   route: '/biote/',
   template: 'company',
   publish: true,
-  oldUrls: ['/biote/'],
+  oldUrls: [],
   seo: {
     title: 'Biote Certified Provider - Unlock Hormonal Optimization',
     description:

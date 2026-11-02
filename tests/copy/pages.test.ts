@@ -55,7 +55,7 @@ describe('page copy files', () => {
 
       it('has a valid route and old URLs', () => {
         expect(page.route).toMatch(/^\/([a-z0-9-]+\/)*$/);
-        expect(page.oldUrls.length).toBeGreaterThan(0);
+        expect(Array.isArray(page.oldUrls)).toBe(true);
         for (const u of page.oldUrls) expect(u).toMatch(/^\/([a-z0-9-]+\/)*$/);
       });
 

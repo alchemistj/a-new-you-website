@@ -2,10 +2,10 @@ import type { PageCopy } from '../../types/page';
 
 export const page: PageCopy = {
   slug: 'memberships',
-  route: '/memberships/',
+  route: '/subscription-plans/',
   template: 'company',
   publish: true,
-  oldUrls: ['/subscription-plans/'],
+  oldUrls: [],
   seo: {
     title: 'Subscription Plans for Ozempic & Medspa in Springfield MO',
     description:

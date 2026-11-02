@@ -2,7 +2,7 @@ import type { PageCopy } from '../../types/page';
 
 export const page: PageCopy = {
   slug: 'cryolipolysis',
-  route: '/springfield/cryolipolysis/',
+  route: '/cryolipolysis/',
   template: 'service',
   publish: true,
   oldUrls: ['/cryolypolysis/'],
@@ -114,7 +114,7 @@ export const page: PageCopy = {
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
     'H1 was all lowercase ("cryolipolysis the best way for body slimming"); set in title case. Other all-caps headings ("HOW CRYOLIPOLYSIS WORK?", "RESHAPE YOUR BODY FIGURE", "WHERE DOES THE FAT GO?", "NON-INVASIVE,NON-SURGERY", "MULTIPLE TREATMENT Areas Sculpting The Body") are set in title case; "NON-INVASIVE,NON-SURGERY" gets a space after the comma.',
-    'oldUrl is /cryolypolysis/ (misspelled slug); the new route is /springfield/cryolipolysis/.',
+    'oldUrl is /cryolypolysis/ (misspelled slug); the new route is /cryolipolysis/.',
     'Added Cindy\'s Cryolipolysis concerns word for word as a list section.',
     'The live testimonial (" I received my first treatment yesterday. It was so much more than I expected. I highly recommend ") has no reviewer name on the page, so it is not shown as a review band (reviews need first name + last initial). Josh to supply a name or drop it.',
     'Dropped the quote-marked label "Introduction" and the empty "Treatment Area" heading (no content under them), and the live "Schedule an appointment" button text (kept as the CTA heading "Schedule an Appointment").',

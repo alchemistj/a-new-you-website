@@ -2,10 +2,10 @@ import type { PageCopy } from '../../types/page';
 
 export const page: PageCopy = {
   slug: 'vaginal-wellness',
-  route: '/springfield/vaginal-wellness/',
+  route: '/vaginal-rejuvenation/',
   template: 'service',
   publish: true,
-  oldUrls: ['/vaginal-rejuvenation/'],
+  oldUrls: [],
   seo: {
     title: "Vaginal Rejuvenation in Springfield, MO | A New You Women's Clinic",
     description:

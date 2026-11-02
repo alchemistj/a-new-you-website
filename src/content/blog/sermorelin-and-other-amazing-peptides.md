@@ -38,7 +38,7 @@ MOTS-c is an exercise induced natural peptide that regulates glucose metabolism 
 
 Tesamorelin is a modified synthetic form of GHRH it regulates the release of growth hormone in the body. It can be used to decrease specifically belly fat.
 
-PT 141 a melanocortin, a family of neuropeptides that regulate inflammatory response, fibrosis, melanogenesis, steroidogenesis, energy homeostasis, sexual function, and exocrine gland function. it is widely used in the treatment of [sexual dysfunction in both men](/springfield/mens-health/) and women.
+PT 141 a melanocortin, a family of neuropeptides that regulate inflammatory response, fibrosis, melanogenesis, steroidogenesis, energy homeostasis, sexual function, and exocrine gland function. it is widely used in the treatment of [sexual dysfunction in both men](/mens-health/) and women.
 
 Benefits of peptides include:
 

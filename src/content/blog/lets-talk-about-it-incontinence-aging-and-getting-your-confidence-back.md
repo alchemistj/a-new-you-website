@@ -10,14 +10,14 @@ heroImage:
   alt: ""
 categories: []
 tags: []
-relatedService: "/springfield/perimenopause/"
-addedLinks: [{"phrase":"perimenopause","to":"/springfield/perimenopause/"},{"phrase":"menopause","to":"/springfield/menopause/"}]
+relatedService: "/perimenopause/"
+addedLinks: [{"phrase":"perimenopause","to":"/perimenopause/"},{"phrase":"menopause","to":"/menopause/"}]
 ---
 
 ![](../../assets/blog/lets-talk-about-it-incontinence-aging-and-getting-your-confidence-back/074A8450-Edit.jpg)
 
 ## Understanding Incontinence and Why It Happens
-Incontinence affects millions of women—but that doesn’t mean it’s normal or something you just have to “[live with.](/springfield/vaginal-wellness/)” Whether it’s a light leak when you sneeze, a sudden urge that’s hard to control, or nighttime interruptions, incontinence is a sign that your pelvic floor, bladder, or nervous system needs support.
+Incontinence affects millions of women—but that doesn’t mean it’s normal or something you just have to “[live with.](/vaginal-rejuvenation/)” Whether it’s a light leak when you sneeze, a sudden urge that’s hard to control, or nighttime interruptions, incontinence is a sign that your pelvic floor, bladder, or nervous system needs support.
 
 There are several types of urinary incontinence:\
 
@@ -29,7 +29,7 @@ There are several types of urinary incontinence:\
 
 -   **Overflow or functional incontinence**: due to bladder emptying issues or mobility challenges
 
-For many women, the root cause isn’t just one thing. It could be related to hormone shifts during [menopause](/springfield/menopause/), childbirth injuries, weakened pelvic floor muscles, chronic constipation, or even nerve damage. But no matter the cause, the result is often the same: embarrassment, frustration, and avoiding activities you love
+For many women, the root cause isn’t just one thing. It could be related to hormone shifts during [menopause](/menopause/), childbirth injuries, weakened pelvic floor muscles, chronic constipation, or even nerve damage. But no matter the cause, the result is often the same: embarrassment, frustration, and avoiding activities you love
 
 ## Why Incontinence Happens: A Breakdown of the Root Causes
 Urinary incontinence doesn’t just happen out of the blue—it’s usually the result of gradual changes in your body’s structure, hormone levels, or muscle function over time. Understanding why it happens is the first step toward finding a solution that works for you.\
@@ -38,7 +38,7 @@ Urinary incontinence doesn’t just happen out of the blue—it’s usually the 
 Your pelvic floor is a group of muscles and connective tissue that support the bladder, uterus, and bowel. When these muscles are weakened—often from pregnancy, childbirth, aging, or lack of exercise—they can no longer support the bladder or urethra effectively. This makes leaks more likely during any kind of pressure on the abdomen, like laughing, sneezing, or lifting something heavy.
 
 ### 2\. Hormonal Shifts (Especially During Menopause)
-Estrogen isn’t just about reproduction—it helps maintain the strength and elasticity of the tissues lining your bladder and urethra. As estrogen levels decline during [perimenopause](/springfield/perimenopause/) and menopause, these tissues thin and become less resilient. This loss of support makes it harder to hold urine and can contribute to both stress and urge incontinence.
+Estrogen isn’t just about reproduction—it helps maintain the strength and elasticity of the tissues lining your bladder and urethra. As estrogen levels decline during [perimenopause](/perimenopause/) and menopause, these tissues thin and become less resilient. This loss of support makes it harder to hold urine and can contribute to both stress and urge incontinence.
 
 ### 3\. Nerve Dysfunction
 The bladder and urethral muscles rely on signals from the nervous system to function properly. Neurological conditions like multiple sclerosis, diabetes, spinal injuries, or even chronic inflammation can interrupt these signals, leading to urge incontinence or difficulty emptying the bladder fully (overflow incontinence).

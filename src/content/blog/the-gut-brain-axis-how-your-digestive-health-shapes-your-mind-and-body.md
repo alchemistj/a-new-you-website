@@ -85,7 +85,7 @@ Taking care of your gut health can lead to benefits that ripple through your ent
 6.  **Limit Processed Foods and Sugars\
 **These can harm gut bacteria and contribute to inflammation.
 
-Different people may benefit from tailored strategies based on age, gender, and lifestyle. A New You Clinic can [help men](/springfield/mens-health/) and women optimize their health for mental performance and physical vitality.
+Different people may benefit from tailored strategies based on age, gender, and lifestyle. A New You Clinic can [help men](/mens-health/) and women optimize their health for mental performance and physical vitality.
 
 ## A New Perspective on Health and Well-Being
 

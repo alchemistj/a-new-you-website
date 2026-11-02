@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, expect, it } from 'vitest';
 import type { PageCopy } from '../../src/types/page';
 import {
@@ -10,7 +11,7 @@ import {
 
 const page: PageCopy = {
   slug: 'botox',
-  route: '/springfield/botox/',
+  route: '/botox/',
   template: 'service',
   publish: true,
   oldUrls: ['/botox-in-springfield-mo/'],
@@ -23,7 +24,7 @@ const page: PageCopy = {
 const everything = () =>
   JSON.stringify([
     organizationJsonLd(),
-    breadcrumbJsonLd('/springfield/botox/', 'Botox'),
+    breadcrumbJsonLd('/botox/', 'Botox'),
     faqJsonLd([{ q: 'Q?', a: ['A.'] }]),
     serviceJsonLd(page),
     articleJsonLd({ title: 'T', description: 'D', path: '/blog/x/', datePublished: '2025-01-01' }),
@@ -55,10 +56,10 @@ describe('jsonld', () => {
   });
 
   it('breadcrumbs use absolute canonical URLs', () => {
-    const b = breadcrumbJsonLd('/springfield/botox/', 'Botox') as Record<string, any>;
+    const b = breadcrumbJsonLd('/botox/', 'Botox') as Record<string, any>;
     expect(b.itemListElement.map((i: any) => i.item)).toEqual([
       'https://anewyouwoman.com/',
-      'https://anewyouwoman.com/springfield/botox/',
+      'https://anewyouwoman.com/botox/',
     ]);
     const post = breadcrumbJsonLd('/blog/menowhat/', 'Menowhat') as Record<string, any>;
     expect(post.itemListElement.map((i: any) => i.name)).toEqual(['Home', 'Blog', 'Menowhat']);
@@ -78,7 +79,7 @@ describe('jsonld', () => {
   it('service points at the page and the organization', () => {
     const s = serviceJsonLd(page) as Record<string, any>;
     expect(s['@type']).toBe('Service');
-    expect(s.url).toBe('https://anewyouwoman.com/springfield/botox/');
+    expect(s.url).toBe('https://anewyouwoman.com/botox/');
     expect(s.provider['@id']).toBe('https://anewyouwoman.com/#organization');
     expect(s.areaServed.map((a: any) => a.name)).toContain('Nixa, MO');
   });

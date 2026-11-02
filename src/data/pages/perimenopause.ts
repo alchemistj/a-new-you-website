@@ -2,10 +2,10 @@ import type { PageCopy } from '../../types/page';
 
 export const page: PageCopy = {
   slug: 'perimenopause',
-  route: '/springfield/perimenopause/',
+  route: '/perimenopause/',
   template: 'service',
   publish: true,
-  oldUrls: ['/perimenopause/'],
+  oldUrls: [],
   seo: {
     title: 'Perimenopause Treatment for Sleep Disturbance Disorder',
     description:
