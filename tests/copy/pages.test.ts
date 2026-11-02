@@ -103,6 +103,8 @@ describe('page copy files', () => {
         const hrefs = [...text.matchAll(/"href":"([^"]+)"/g)].map((m) => m[1]);
         for (const h of hrefs) {
           if (h.startsWith('/')) expect(h.endsWith('/'), h).toBe(true);
+          // Blog posts keep root URLs; only the index lives under /blog/.
+          if (h.startsWith('/blog/')) expect(h, h).toBe('/blog/');
         }
       });
     });

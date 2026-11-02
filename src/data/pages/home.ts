@@ -95,15 +95,15 @@ export const page: PageCopy = {
       cards: [
         {
           title: 'What Is Estrogen? Your Guide From Head to Hoo-Ha',
-          href: '/blog/what-is-estrogen-your-guide-from-head-to-hoo-ha/',
+          href: '/what-is-estrogen-your-guide-from-head-to-hoo-ha/',
         },
         {
           title: 'Hormone Therapy: It’s Time to Rethink What You’ve Been Told',
-          href: '/blog/hormone-therapy-its-time-to-rethink-what-youve-been-told/',
+          href: '/hormone-therapy-its-time-to-rethink-what-youve-been-told/',
         },
         {
           title: 'Successful Weight Loss Needs More Than a Scale',
-          href: '/blog/successful-weight-loss-needs-more-than-a-scale/',
+          href: '/successful-weight-loss-needs-more-than-a-scale/',
         },
         { title: 'Read More', href: '/blog/' },
       ],
@@ -123,7 +123,7 @@ export const page: PageCopy = {
     'Process section buttons "Let\'s Get Started Today" (after the service cards) and "Let\'s Start Your Journey Today!" (after the steps) were both booking links. Only the second is kept, as the final CTA band; "Let\'s Get Started Today" is left out because the final CTA is the primary booking button.',
     '"Learn More About A New You Woman\'s Clinic" link label changed to "Women\'s" (name spelling). It is a one-card cards section because prose sections have no link field.',
     'Name spelling fixed to "A New You Women\'s Clinic" in the Free Seminars paragraph ("Woman\'s" on the live page).',
-    '"Latest Info" blog links now point at the new /blog/<slug>/ routes; the "Keep Reading" button labels are dropped because each card is the link.',
+    '"Latest Info" blog links keep their current root URLs (/<slug>/); the "Keep Reading" button labels are dropped because each card is the link.',
     'Left out the Free Seminars photo (education-series-page.jpg) to avoid two photo sections in a row (Rule 4.2).',
     'Left out the logo-icon image above the counter heading and the service card photos (cards have no image field).',
   ],
