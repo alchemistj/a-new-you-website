@@ -75,18 +75,6 @@ export const page: PageCopy = {
       outro: 'You’re not imagining it, it’s just that nobody really talks about it. These changes are common, but that doesn’t mean you have to just “accept them.”',
     },
     {
-      kind: 'cards',
-      id: 'vaginal-wellness-services',
-      heading: 'Vaginal Wellness, Urinary Incontinence & Sexual Health',
-      cards: [
-        { title: 'Vaginal Wellness Consultation & Evaluation' },
-        { title: 'VTone Pelvic Floor Muscle Stimulation' },
-        { title: 'FormaV Radiofrequency Treatment' },
-        { title: 'Morpheus8V RF Microneedling' },
-        { title: 'Combination EmpowerRF Treatment Plans' },
-      ],
-    },
-    {
       kind: 'list',
       source: 'cindy',
       heading: 'Vaginal Wellness Consultation & Evaluation',
@@ -268,6 +256,7 @@ export const page: PageCopy = {
   related: ['female-sexual-dysfunction', 'menopause', 'perimenopause'],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Rogersville'],
   changes: [
+    'Design QA: removed the link-less overview cards of Cindy service names; the same names head the grouped Cindy lists below.',
     'Removed every ThermiVa mention: the whole "ThermiVa vs. EmpowerRF" section (heading, "What’s the difference?", the intro line, the comparison table and the closing sentence "While both are non-invasive options...").',
     'Removed every "Laser Vaginal Tightening" mention: the whole "Laser Vaginal Tightening" section (heading, "Convenient, discreet, in-office procedures with no downtime", "We provide EmpowerRF laser-based and radiofrequency-based treatments...", its four bullets and "You can start feeling better...without surgery or shame.").',
     'Also removed the live intro sentence "At A New You Women’s Clinic in Springfield, MO, we offer FDA-cleared, non-surgical vaginal rejuvenation treatments using the EmpowerRF platform—combining advanced radio frequency therapy, gentle laser treatments, vagina and pelvic floor tightening, and muscle strengthening therapies." because it describes laser treatments and tightening, and a partial edit would mean writing new words. Josh to confirm.',

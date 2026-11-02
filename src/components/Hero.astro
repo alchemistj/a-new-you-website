@@ -17,7 +17,7 @@ const cta = hero.primaryCta ?? { label: site.booking.label, href: site.booking.h
 <section class:list={['hero', photo ? 'hero--photo' : 'hero--plain']}>
   <div class="hero-inner">
     {hero.eyebrow && <p class="eyebrow">{hero.eyebrow}</p>}
-    <h1>{hero.h1}</h1>
+    <h1 class:list={[{ 'h1-long': hero.h1.length > 40 }]}>{hero.h1}</h1>
     {hero.subhead && <p class="subhead">{hero.subhead}</p>}
     <div class="hero-ctas">
       <ScheduleButton class="btn btn-light" label={cta.label} href={cta.href} />

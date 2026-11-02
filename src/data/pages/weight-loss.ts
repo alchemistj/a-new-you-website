@@ -56,18 +56,6 @@ export const page: PageCopy = {
       outro: 'And we do it all in a way that honors your story—not just your symptoms.',
     },
     {
-      kind: 'cards',
-      id: 'weight-services',
-      heading: 'Medically Managed Weight Loss & Metabolic Health — Women & Men',
-      cards: [
-        { title: 'Medical Weight-Loss Evaluation' },
-        { title: 'GLP-1 Medical Weight Management', href: '/springfield/semaglutide/' },
-        { title: 'Oral Weight-Management Medications' },
-        { title: 'Weight Loss Membership' },
-        { title: 'Metabolic & Insulin-Resistance Evaluation' },
-      ],
-    },
-    {
       kind: 'list',
       source: 'cindy',
       heading: 'Medical Weight-Loss Evaluation',
@@ -294,6 +282,7 @@ export const page: PageCopy = {
   related: ['semaglutide', 'menopause', 'mens-health'],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
+    'Design QA: removed the link-less overview cards of Cindy service names; the same names head the grouped Cindy lists below.',
     'Added Cindy\'s Medically Managed Weight Loss & Metabolic Health section word for word: category heading as a cards overview, then Medical Weight-Loss Evaluation, GLP-1 Medical Weight Management (medication options and concerns), Oral Weight-Management Medications, Weight Loss Membership (Includes and Concerns/goals) and Metabolic & Insulin-Resistance Evaluation. Her all-caps heading is set in title case. Her "Women & Men" wording is kept in the heading.',
     'Cindy\'s Weight Loss Membership list ("Regular check-ins", "Annual laboratory testing") differs from the live $99 membership text ("weekly visits", "labs"). Both are kept as supplied; Josh/Cindy to reconcile.',
     'Memberships kept exactly as live: Weight Loss Membership $99/month and Total Wellness Membership $149/month. /subscription-plans/ lists Total Wellness with no price, so no price mismatch is logged here beyond that.',

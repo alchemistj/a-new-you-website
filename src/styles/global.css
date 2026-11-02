@@ -228,6 +228,7 @@ a:hover { color: var(--color-primary-deep); }
 .hero-inner > * { max-width: 36rem; }
 @media (min-width: 1024px) { .hero-inner > * { max-width: 34rem; } }
 .hero h1 { color: var(--color-white); margin-bottom: 0.75rem; text-shadow: 0 2px 12px rgb(0 0 0 / 0.35); }
+.hero h1.h1-long { font-size: clamp(1.9rem, 5vw, 2.6rem); max-width: 22ch; }
 .hero .eyebrow { font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--color-white); }
 .hero .subhead { font-size: 1.15rem; color: rgb(255 255 255 / 0.95); text-shadow: 0 1px 8px rgb(0 0 0 / 0.35); }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
@@ -435,8 +436,8 @@ a.card-photo:hover h3 { color: var(--color-primary); }
 
 /* Footer logo and badges */
 .footer-logo { display: block; width: 150px; height: auto; margin-bottom: 16px; }
-.footer-badges { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 16px; }
-.footer-badges img { height: 72px; width: auto; border-radius: 6px; background: var(--color-white); }
+.footer-badges { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 16px; }
+.footer-badges img { height: 60px; width: auto; border-radius: 6px; background: var(--color-white); }
 
 .award-pill { background: var(--color-accent-ink); color: var(--color-white); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 999px; padding: 4px 12px; min-height: 0 !important; }
 @media (max-width: 767px) { .trust-inner .award-pill { flex-basis: auto; margin: 6px 0 0; } .trust-inner { flex-direction: column; gap: 0; } }

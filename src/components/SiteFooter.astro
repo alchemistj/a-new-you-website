@@ -10,12 +10,19 @@ import { site, fullAddress, awards } from '../data/site';
 const nav = await getNav();
 // Award and BBB badges (helper C saves them under src/assets/pages/home/badges/). Skipped if none.
 const badgeFiles = import.meta.glob<{ default: ImageMetadata }>('/src/assets/pages/home/badges/*.{jpg,jpeg,png,webp,avif}', { eager: true });
+// Real alt text for the known badge files (from the live site's footer); file name as fallback.
+const badgeAlt: Record<string, string> = {
+  'bbb-accredited-business': 'BBB Accredited Business',
+  'best-of-springfield-2024': '2024 Best of Springfield Award',
+  'sacc-proud-member': 'Proud Member of the Springfield Area Chamber of Commerce',
+  'top-3-business-rate': 'Top 3 Business Rating award',
+};
 const badges = Object.entries(badgeFiles)
   .sort(([a], [b]) => a.localeCompare(b))
-  .map(([file, m]) => ({
-    meta: m.default,
-    alt: (file.split('/').pop() ?? '').replace(/\.[a-z]+$/i, '').replace(/[-_]+/g, ' ').trim(),
-  }));
+  .map(([file, m]) => {
+    const base = (file.split('/').pop() ?? '').replace(/\.[a-z]+$/i, '');
+    return { meta: m.default, alt: badgeAlt[base] ?? base.replace(/[-_]+/g, ' ').trim() };
+  });
 const year = new Date().getFullYear();
 ---
 
