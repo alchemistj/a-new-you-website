@@ -27,7 +27,8 @@ async function loadBlogRoutes(): Promise<RouteEntry[]> {
     return [
       { path: '/blog/', title: 'Blog', kind: 'blog-index' },
       ...live.map((p) => ({
-        path: `/blog/${p.id}/`,
+        // Posts live at root URLs (/<slug>/), rendered by helper B's src/pages/[post]/index.astro.
+        path: `/${p.id}/`,
         title: p.data.title ?? p.id,
         kind: 'blog' as const,
       })),

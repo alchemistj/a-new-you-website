@@ -77,17 +77,17 @@ const ld = jsonLd.map((o) => JSON.stringify(o).replace(/</g, '\\u003c'));
     <ThirdPartyLoaders />
     <script is:inline>
       (function () {
-        var h = document.getElementById('site-header');
+        const h = document.getElementById('site-header');
         if (!h) return;
-        var m = document.getElementById('menu');
-        var last = window.scrollY;
-        var up = 0;
-        var ticking = false;
+        const m = document.getElementById('menu');
+        let last = window.scrollY;
+        let up = 0;
+        let ticking = false;
         function show() { h.classList.remove('is-hidden'); up = 0; }
         function update() {
           ticking = false;
-          var y = window.scrollY;
-          var d = y - last;
+          const y = window.scrollY;
+          const d = y - last;
           last = y;
           if ((m && m.open) || h.contains(document.activeElement) || y <= 0) { show(); return; }
           if (d > 0) {
@@ -105,7 +105,7 @@ const ld = jsonLd.map((o) => JSON.stringify(o).replace(/</g, '\\u003c'));
         if (m) {
           m.addEventListener('toggle', function () { if (m.open) show(); });
           m.addEventListener('click', function (e) {
-            var t = e.target;
+            const t = e.target;
             if (t && t.closest && t.closest('a')) m.open = false;
           });
           document.addEventListener('keydown', function (e) {

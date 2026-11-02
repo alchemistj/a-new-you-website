@@ -13,7 +13,7 @@ interface Props {
 }
 const { path } = Astro.props;
 const nav = await getNav();
-const cur = (href: string) => (href === path ? { 'aria-current': 'page' } : {});
+const cur = (href: string) => (href === path ? { 'aria-current': 'page' as const } : {});
 ---
 
 <header class="site-header" id="site-header">

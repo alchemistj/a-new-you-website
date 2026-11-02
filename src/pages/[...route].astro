@@ -1,6 +1,6 @@
 ---
 // Every published page except the home page, rendered by template. Blog routes belong to
-// src/pages/blog/ (helper B), so they are never produced here.
+// src/pages/blog/ and src/pages/[post]/ (helper B), so only published page routes are produced here.
 import PageTemplate from '../components/PageTemplate.astro';
 import type { PageCopy } from '../types/page';
 import { publishedPages } from '../lib/pages';
