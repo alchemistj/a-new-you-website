@@ -14,7 +14,7 @@ interface Props {
 const { id, heading, intro, video, embed } = Astro.props;
 ---
 
-<section class="section" id={id}>
+<section class:list={['section', embed && 'band-embed']} id={id}>
   <div class="container">
     {heading && <h2>{heading}</h2>}
     {intro && <p class="intro" set:html={rich(intro)} />}

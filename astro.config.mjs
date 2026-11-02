@@ -8,5 +8,9 @@ export default defineConfig({
   adapter: vercel(),
   trailingSlash: 'always',
   build: { inlineStylesheets: 'always' },
-  vite: { plugins: [tailwindcss()] },
+  vite: {
+    plugins: [tailwindcss()],
+    // Some migrated blog images (src/assets/blog/*) have no file extension; treat them as assets.
+    assetsInclude: [/src\/assets\/blog\/[^/]+\/[^./]+$/],
+  },
 });

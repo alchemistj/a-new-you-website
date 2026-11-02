@@ -15,6 +15,8 @@ import MediaSection from './MediaSection.astro';
 import BadgesSection from './BadgesSection.astro';
 import CtaBand from './CtaBand.astro';
 import RelatedBand from './RelatedBand.astro';
+import CindyGroup from './CindyGroup.astro';
+import Tone from './Tone.astro';
 import ServiceAreaSection from './ServiceAreaSection.astro';
 import { getPublishedPage } from '../../lib/pages';
 import { labelForSlug } from '../../lib/nav';
@@ -28,40 +30,80 @@ const lastCtaIdx = page.sections.map((s) => s.kind).lastIndexOf('cta');
 const finalCta = lastCtaIdx >= 0 ? page.sections[lastCtaIdx] : undefined;
 const body: Section[] = page.sections.filter((_, i) => i !== lastCtaIdx);
 
-// Pre-compute photo side per section (alternating over sections that carry an image).
-let photoCount = 0;
-const sides = body.map((s) => {
-  if ('image' in s && s.image) return photoCount++ % 2 === 0 ? ('right' as const) : ('left' as const);
-  return undefined;
+type ListSec = Extract<Section, { kind: 'list' }>;
+type Block =
+  | { type: 'one'; s: Section; at: number }
+  | { type: 'cindy'; lists: ListSec[]; at: number };
+
+// Group consecutive source:'cindy' lists into one compact block.
+const blocks: Block[] = [];
+body.forEach((s, at) => {
+  const prev = blocks[blocks.length - 1];
+  if (s.kind === 'list' && s.source === 'cindy' && !s.image) {
+    if (prev && prev.type === 'cindy') prev.lists.push(s);
+    else blocks.push({ type: 'cindy', lists: [s], at });
+  } else blocks.push({ type: 'one', s, at });
 });
+
+// Photo side alternates over sections that carry an image (right, left, right...).
+let photoCount = 0;
+const sideOf = (s: Section) =>
+  'image' in s && s.image ? (photoCount++ % 2 === 0 ? ('right' as const) : ('left' as const)) : undefined;
+
+// Background tones: bandable sections cycle plain, lavender, plain, teal. Reviews and CTA are
+// their own bands; a review takes whichever tint its neighbours are not.
+type Tone = 'plain' | 'lav' | 'teal';
+const cycle: Tone[] = ['plain', 'lav', 'plain', 'teal'];
+const isReview = (b: Block) => b.type === 'one' && b.s.kind === 'review';
+let bandIdx = 0;
+const tones: Tone[] = blocks.map((b) => (isReview(b) ? 'plain' : cycle[bandIdx++ % 4]!));
+const reviewTone = (i: number): Tone => {
+  const near = [tones[i - 1], tones[i + 1]];
+  return near.includes('teal') ? 'lav' : 'teal';
+};
 
 const related = (page.related ?? [])
   .map((slug) => getPublishedPage(slug))
   .filter((p): p is PageCopy => Boolean(p))
   .map((p) => ({ label: labelForSlug(p.slug, p.hero.h1), href: p.route }));
 
-const firstFaq = body.findIndex((s) => s.kind === 'faq');
-const relatedAt = firstFaq >= 0 ? firstFaq : body.length;
+const firstFaq = blocks.findIndex((b) => b.type === 'one' && b.s.kind === 'faq');
+const relatedAt = firstFaq >= 0 ? firstFaq : blocks.length;
 ---
 
 {
-  body.map((s, i) => (
-    <>
-      {i === relatedAt && <RelatedBand items={related} />}
-      {s.kind === 'prose' && <ProseSection {...s} side={sides[i]} />}
-      {s.kind === 'list' && <ListSection {...s} side={sides[i]} />}
-      {s.kind === 'cards' && <CardsSection {...s} />}
-      {s.kind === 'steps' && <StepsSection {...s} side={sides[i]} />}
-      {s.kind === 'review' && <ReviewBand {...s} />}
-      {s.kind === 'faq' && <FaqSection {...s} />}
-      {s.kind === 'pricing' && <PricingSection {...s} />}
-      {s.kind === 'video' && <MediaSection id={s.id} heading={s.heading} video={s} />}
-      {s.kind === 'embed' && <MediaSection id={s.id} heading={s.heading} intro={s.intro} embed={s.embed} />}
-      {s.kind === 'badges' && <BadgesSection {...s} />}
-      {s.kind === 'cta' && <CtaBand {...s} />}
-    </>
-  ))
+  blocks.map((b, i) => {
+    const s = b.type === 'one' ? b.s : undefined;
+    const side = s ? sideOf(s) : undefined;
+    return (
+      <>
+        {i === relatedAt && <RelatedBand items={related} />}
+        {b.type === 'cindy' && (
+          <Tone tone={tones[i]!} wave={i > 0}>
+            <CindyGroup lists={b.lists} />
+          </Tone>
+        )}
+        {s && s.kind === 'review' && (
+          <ReviewBand {...s} onTeal={reviewTone(i) === 'lav'} />
+        )}
+        {s && s.kind !== 'review' && s.kind !== 'cta' && (
+          <Tone tone={tones[i]!} wave={i > 0}>
+            {s.kind === 'prose' && <ProseSection {...s} side={side} />}
+            {s.kind === 'list' && <ListSection {...s} side={side} />}
+            {s.kind === 'cards' && <CardsSection {...s} />}
+            {s.kind === 'steps' && <StepsSection {...s} side={side} />}
+            {s.kind === 'faq' && <FaqSection {...s} />}
+            {s.kind === 'pricing' && <PricingSection {...s} />}
+            {s.kind === 'video' && <MediaSection id={s.id} heading={s.heading} video={s} />}
+            {s.kind === 'embed' && <MediaSection id={s.id} heading={s.heading} intro={s.intro} embed={s.embed} />}
+            {s.kind === 'badges' && <BadgesSection {...s} />}
+          </Tone>
+        )}
+        {s && s.kind === 'cta' && <CtaBand {...s} />}
+      </>
+    );
+  })
 }
-{relatedAt >= body.length && <RelatedBand items={related} />}
+{relatedAt >= blocks.length && <RelatedBand items={related} />}
 <ServiceAreaSection areas={page.serviceArea ?? []} />
 {finalCta && finalCta.kind === 'cta' && <CtaBand {...finalCta} />}

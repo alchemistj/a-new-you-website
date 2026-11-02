@@ -1,17 +1,27 @@
 ---
 // Footer (brief): every published service page, plus Biote, Memberships, Financing, Customer Reviews,
 // About, FAQ, Blog, Contact. Address, phone (digits, also on mobile: Rule 7.2), email, socials, BBB.
+import { Image } from 'astro:assets';
+import logoWhite from '../assets/brand/logo-white.webp';
 import { getNav } from '../lib/nav';
 import { site, fullAddress } from '../data/site';
 
 const nav = await getNav();
+// Award and BBB badges (helper C saves them under src/assets/pages/home/badges/). Skipped if none.
+const badgeFiles = import.meta.glob<{ default: ImageMetadata }>('/src/assets/pages/home/badges/*.{jpg,jpeg,png,webp,avif}', { eager: true });
+const badges = Object.entries(badgeFiles)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([file, m]) => ({
+    meta: m.default,
+    alt: (file.split('/').pop() ?? '').replace(/\.[a-z]+$/i, '').replace(/[-_]+/g, ' ').trim(),
+  }));
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-col">
-      <p class="footer-title">{site.name}</p>
+      <Image class="footer-logo" src={logoWhite} alt={site.name} width={150} loading="lazy" decoding="async" />
       <address>
         {site.address.street}<br />
         {site.address.city}, {site.address.region} {site.address.postalCode}
@@ -23,6 +33,13 @@ const year = new Date().getFullYear();
         <a href={site.social.facebook} rel="noopener" target="_blank">Facebook</a>
         <a href={site.social.bbb} rel="noopener" target="_blank">BBB Profile</a>
       </p>
+      {
+        badges.length > 0 && (
+          <div class="footer-badges">
+            {badges.map((b) => <Image src={b.meta} alt={b.alt} height={72} format="webp" loading="lazy" decoding="async" />)}
+          </div>
+        )
+      }
     </div>
     {
       nav.footerServices.length > 0 && (
