@@ -1,6 +1,13 @@
 // Business facts. Source: docs/spec/brief.md (Facts and Integrations). Do not add facts here
 // that are not in the brief or on the live page being migrated.
 
+import type { ImageRef } from '../types/page';
+
+/** Awards shown first in the trust bar and in the footer. Set `image` to the official logo later. */
+export const awards: { label: string; image?: ImageRef }[] = [
+  { label: '2026 BBB Torch Award for Ethics Winner' },
+];
+
 export const site = {
   name: "A New You Women's Clinic",
   url: 'https://anewyouwoman.com',

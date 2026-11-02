@@ -2,7 +2,7 @@
 // Trust bar directly under the hero (Rule 9). Credentials come from the brief only; no star
 // ratings or review counts. One line on desktop: credentials, serving line, one call link.
 // Phones get two short lines: name, then the call link.
-import { site, cityConfig } from '../data/site';
+import { site, cityConfig, awards } from '../data/site';
 
 const area = cityConfig.serviceArea;
 const areaText = `${area.slice(0, -1).join(', ')} & ${area[area.length - 1]}`;
@@ -10,6 +10,8 @@ const areaText = `${area.slice(0, -1).join(', ')} & ${area[area.length - 1]}`;
 
 <section class="trust-bar" aria-label="About the clinic">
   <div class="trust-inner">
+    {awards.map((a) => <span class="award-pill">{a.label}</span>)}
+    <span class="dot hidden md:inline-flex" aria-hidden="true">&middot;</span>
     <span class="strong">{site.founder.name}</span>
     <span class="hidden md:inline-flex">{site.founder.yearsHealthcare} years in healthcare</span>
     <span class="dot hidden md:inline-flex" aria-hidden="true">&middot;</span>

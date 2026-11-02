@@ -4,7 +4,7 @@
 import { Image } from 'astro:assets';
 import logoWhite from '../assets/brand/logo-white.webp';
 import { getNav } from '../lib/nav';
-import { site, fullAddress } from '../data/site';
+import { site, fullAddress, awards } from '../data/site';
 
 const nav = await getNav();
 // Award and BBB badges (helper C saves them under src/assets/pages/home/badges/). Skipped if none.
@@ -33,6 +33,7 @@ const year = new Date().getFullYear();
         <a href={site.social.facebook} rel="noopener" target="_blank">Facebook</a>
         <a href={site.social.bbb} rel="noopener" target="_blank">BBB Profile</a>
       </p>
+      <p class="footer-awards">{awards.map((a) => <span>{a.label}</span>)}</p>
       {
         badges.length > 0 && (
           <div class="footer-badges">
