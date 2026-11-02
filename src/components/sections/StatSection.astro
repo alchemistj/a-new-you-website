@@ -1,0 +1,31 @@
+---
+// One big number with its label (the live homepage's "Pounds Lost With A New You" counter).
+// Rendered as static text: no count-up animation, nothing changes after first paint.
+interface Props {
+  id?: string;
+  heading: string;
+  value: string;
+  unit?: string;
+}
+const { id, heading, value, unit } = Astro.props;
+---
+
+<section class="section stat" id={id}>
+  <div class="container stat-inner">
+    <h2>{heading}</h2>
+    <p class="stat-value">{value}{unit && <span class="stat-unit"> {unit}</span>}</p>
+  </div>
+</section>
+
+<style>
+  .stat-inner { text-align: center; }
+  .stat-value {
+    font-family: var(--font-heading, inherit);
+    font-weight: 600;
+    font-size: clamp(3.5rem, 12vw, 5.5rem);
+    line-height: 1;
+    color: var(--color-primary);
+    margin: 0.25rem 0 0;
+  }
+  .stat-unit { font-size: 0.4em; color: var(--color-dark); }
+</style>

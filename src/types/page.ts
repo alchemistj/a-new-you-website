@@ -41,6 +41,8 @@ export type Section =
   | { kind: 'embed'; id?: string; embed: 'ghl-form' | 'ghl-quiz' | 'cherry' | 'map'; heading?: string; intro?: string }
   /** Logos/badges row (awards, BBB). Images must be local. */
   | { kind: 'badges'; id?: string; heading?: string; badges: ImageRef[] }
+  /** One big number with a label (e.g. "Pounds Lost With A New You" / "1,805" / "lbs"). Static, no count-up. */
+  | { kind: 'stat'; id?: string; heading: string; value: string; unit?: string }
   | { kind: 'cta'; id?: string; heading: string; paragraphs?: string[] };
 
 export type Template = 'home' | 'service' | 'company' | 'contact' | 'faq' | 'reviews';

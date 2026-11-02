@@ -37,6 +37,13 @@ export const page: PageCopy = {
       ],
     },
     {
+      kind: 'stat',
+      id: 'pounds-lost',
+      heading: 'Pounds Lost With A New You',
+      value: '1,805',
+      unit: 'lbs',
+    },
+    {
       kind: 'prose',
       heading: "It's Time to Take Back Your Health",
       paragraphs: [
@@ -142,6 +149,7 @@ export const page: PageCopy = {
   ],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
+    'Restored the live "Pounds Lost With A New You" counter as a static 1,805 lbs (live Elementor counter data-to-value=1805; it showed 0 only before its JS ran).',
     'Homepage service cards reordered to Cindy\'s priority order: Female Sexual Dysfunction card (which links to the vaginal page on the live site, so it now links to /vaginal-rejuvenation/) first, then Menopause, Weight Loss, Men\'s Health, Aesthetics. Live order was Weight Loss, Aesthetics, Menopause, Female Sexual Dysfunction, Men\'s Health. Card titles and wording unchanged.',
     'Removed the "Pounds Lost With A New You" heading and its 0 lbs counter.',
     'Removed the Black Friday coupon text and the "#ShareASale" text (they live in the footer, not in the page content).',

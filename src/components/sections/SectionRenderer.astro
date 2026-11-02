@@ -13,6 +13,7 @@ import FaqSection from './FaqSection.astro';
 import PricingSection from './PricingSection.astro';
 import MediaSection from './MediaSection.astro';
 import BadgesSection from './BadgesSection.astro';
+import StatSection from './StatSection.astro';
 import CtaBand from './CtaBand.astro';
 import RelatedBand from './RelatedBand.astro';
 import CindyGroup from './CindyGroup.astro';
@@ -97,6 +98,7 @@ const relatedAt = firstFaq >= 0 ? firstFaq : blocks.length;
             {s.kind === 'video' && <MediaSection id={s.id} heading={s.heading} video={s} />}
             {s.kind === 'embed' && <MediaSection id={s.id} heading={s.heading} intro={s.intro} embed={s.embed} />}
             {s.kind === 'badges' && <BadgesSection {...s} />}
+            {s.kind === 'stat' && <StatSection {...s} />}
           </Tone>
         )}
         {s && s.kind === 'cta' && <CtaBand {...s} />}

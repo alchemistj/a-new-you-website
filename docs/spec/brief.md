@@ -100,7 +100,7 @@ redirects or links for them yet. Don't link them from the nav, footer or body.
 
 - Existing copy moves word for word. Allowed cleanup:
   - Remove Lorem ipsum, placeholder text, the placeholder phone `+62 123 456 789` and placeholder logos.
-  - Remove the Black Friday coupon, the "#ShareASale" text and the "0 lbs" counter.
+  - Remove the Black Friday coupon and the "#ShareASale" text. Keep the "Pounds Lost With A New You" counter: it is 1,805 lbs (it only reads 0 before its JS runs).
   - Fix typos ("Perimenopaus", "Disfunction", "Newslater", "LEarn", "Allright", "Want Know More").
   - Fix wrong meta tags (Oklahoma, Rybelsus/Wegovy on /about/, cavitation on /customer-reviews/,
     hormone pellets on /faq/).
