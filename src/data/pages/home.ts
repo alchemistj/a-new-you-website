@@ -17,7 +17,7 @@ export const page: PageCopy = {
       "It's not all in your head. Your symptoms are REAL, and treatment options are available. Your journey to a healthy new you is within reach.",
     image: {
       src: 'pages/home/hero.jpg',
-      alt: 'A smiling woman with dark curly hair and a blue scarf rests her chin on her hand',
+      alt: 'Six women stand close together outdoors and smile, one wearing a white coat with a stethoscope and one in a black headscarf',
     },
     imagePosition: 'center 30%',
     primaryCta: {
@@ -48,11 +48,46 @@ export const page: PageCopy = {
       kind: 'cards',
       id: 'services',
       cards: [
-        { title: 'Female Sexual Dysfunction', href: '/springfield/vaginal-wellness/' },
-        { title: 'Menopause', href: '/springfield/menopause/' },
-        { title: 'Weight Loss', href: '/springfield/weight-loss/' },
-        { title: "Men's Health", href: '/springfield/mens-health/' },
-        { title: 'Aesthetics', href: '/springfield/aesthetics/' },
+        {
+          title: 'Female Sexual Dysfunction',
+          href: '/springfield/vaginal-wellness/',
+          image: {
+            src: 'pages/home/card-fsd.jpg',
+            alt: 'A provider in a white coat holding a clipboard faces a smiling woman with glasses and red hair',
+          },
+        },
+        {
+          title: 'Menopause',
+          href: '/springfield/menopause/',
+          image: {
+            src: 'pages/home/card-menopause.jpg',
+            alt: 'A gray-haired provider in black scrubs talks with a blonde patient in a treatment room',
+          },
+        },
+        {
+          title: 'Weight Loss',
+          href: '/springfield/weight-loss/',
+          image: {
+            src: 'pages/home/card-weight-loss.jpg',
+            alt: 'A woman in a black racerback top and patterned tank stands with her back to the camera in front of a body scanner',
+          },
+        },
+        {
+          title: "Men's Health",
+          href: '/springfield/mens-health/',
+          image: {
+            src: 'pages/home/card-mens-health.jpg',
+            alt: 'A bearded man in a plaid shirt sits on an exam table while a provider in black scrubs talks with him',
+          },
+        },
+        {
+          title: 'Aesthetics',
+          href: '/springfield/aesthetics/',
+          image: {
+            src: 'pages/home/card-aesthetics.jpg',
+            alt: 'A gray-haired provider in black scrubs and purple gloves gives an injection to a reclining blonde woman',
+          },
+        },
       ],
     },
     {
@@ -73,10 +108,6 @@ export const page: PageCopy = {
       paragraphs: [
         'Lucinda Sparks, MSN, CNM, APRN, brings 23 years of experience in healthcare and 13 years focused specifically on women’s health. She and her team offers personalized attention and cutting-edge research to help women overcome struggles with their health. Offering a listening ear and a compassionate heart, Lucinda looks forward to guiding you on your journey to improved health and a better state of living.',
       ],
-      image: {
-        src: 'pages/home/lucinda-sparks.jpg',
-        alt: 'Portrait of Lucinda Sparks, founder of A New You Women\'s Clinic, smiling with glasses and long brown hair',
-      },
     },
     {
       kind: 'cards',
@@ -125,6 +156,7 @@ export const page: PageCopy = {
     'Name spelling fixed to "A New You Women\'s Clinic" in the Free Seminars paragraph ("Woman\'s" on the live page).',
     '"Latest Info" blog links keep their current root URLs (/<slug>/); the "Keep Reading" button labels are dropped because each card is the link.',
     'Left out the Free Seminars photo (education-series-page.jpg) to avoid two photo sections in a row (Rule 4.2).',
+    'Hero is now the team group photo that is the live homepage hero (live Elementor background a-new-you-woman-clinic.jpg, 2000 px). Service cards now carry the live card photos (380 px squares). The founder photo (lucinda-sparks.jpg) is removed: it is a tight face crop of a brown-haired woman with glasses, unlike the gray-haired provider in the clinic photos, so I could not confirm it is Cindy. Award and BBB badge images are in src/assets/pages/home/badges/.',
     'Left out the logo-icon image above the counter heading and the service card photos (cards have no image field).',
   ],
 };

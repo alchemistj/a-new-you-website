@@ -39,12 +39,14 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'GLP-1 Medical Weight Management',
       intro: 'Current medication options include:',
       items: ['Semaglutide', 'Tirzepatide'],
     },
     {
       kind: 'list',
+      source: 'cindy',
       intro: 'Concerns:',
       items: [
         'Obesity or excess weight',

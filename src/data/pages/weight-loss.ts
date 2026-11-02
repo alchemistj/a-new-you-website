@@ -69,6 +69,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Medical Weight-Loss Evaluation',
       intro: 'Concerns:',
       items: [
@@ -85,12 +86,14 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'GLP-1 Medical Weight Management',
       intro: 'Current medication options include:',
       items: ['Semaglutide', 'Tirzepatide'],
     },
     {
       kind: 'list',
+      source: 'cindy',
       intro: 'Concerns:',
       items: [
         'Obesity or excess weight',
@@ -103,6 +106,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Oral Weight-Management Medications',
       intro: 'Used when medically appropriate based on the individual patient. Concerns:',
       items: [
@@ -114,6 +118,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Weight Loss Membership',
       intro: 'Includes:',
       items: [
@@ -128,6 +133,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       intro: 'Concerns/goals:',
       items: [
         'Accountability and ongoing medical support',
@@ -138,6 +144,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Metabolic & Insulin-Resistance Evaluation',
       intro: 'Concerns:',
       items: [

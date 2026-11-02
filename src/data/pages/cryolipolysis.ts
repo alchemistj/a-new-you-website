@@ -16,9 +16,9 @@ export const page: PageCopy = {
     subhead: 'Sit back, relax, and say goodbye to stubborn fat FreezeFats PRO',
     image: {
       src: 'pages/cryolipolysis/hero.jpg',
-      alt: 'A provider in purple gloves positions two cooling applicators on a patient’s abdomen',
+      alt: 'A woman lies on a treatment bed with a cryolipolysis machine and applicator on her abdomen',
     },
-    imagePosition: 'center 40%',
+    imagePosition: 'center 50%',
     primaryCta: {
       label: 'Schedule an Appointment',
       href: 'https://anewyouwomensclinic.myaestheticrecord.com/online-booking',
@@ -48,6 +48,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Cryolipolysis',
       intro: 'Concerns:',
       items: [
@@ -122,5 +123,6 @@ export const page: PageCopy = {
     'Kept the live claim "typically between 20% to 40%" and "gone for good". Flagged for Josh.',
     'Photos come from the live media library files named for cryolipolysis (Elementor backgrounds, not in the page HTML). Hero file is only 680 px wide; a larger original may be needed.',
     'Title and description kept as live.',
+    'Hero image changed to the live banner photo (cryolipolysis-for-body-slimming-1, 1920x480); the old 680 px hero is replaced.',
   ],
 };

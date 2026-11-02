@@ -16,9 +16,9 @@ export const page: PageCopy = {
     subhead: 'Advanced Labs, Real Conversations, and Personalized Protocols Made for You',
     image: {
       src: 'pages/mens-health/hero.jpg',
-      alt: 'A smiling gray-haired man in a blue t-shirt and earbuds jogs on a tree-lined park path',
+      alt: 'Three firefighters in navy uniforms sit on the front bumper of a red fire engine',
     },
-    imagePosition: 'center 25%',
+    imagePosition: 'center 40%',
     primaryCta: {
       label: 'Schedule an Appointment',
       href: 'https://anewyouwomensclinic.myaestheticrecord.com/online-booking',
@@ -60,6 +60,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Men’s Hormone Evaluation',
       intro: 'Concerns:',
       items: [
@@ -76,12 +77,14 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Testosterone Optimization / Testosterone Replacement Therapy',
       intro: 'Services may include:',
       items: ['BioTE testosterone pellet therapy', 'Injectable testosterone', 'Topical testosterone'],
     },
     {
       kind: 'list',
+      source: 'cindy',
       intro: 'Concerns:',
       items: [
         'Low testosterone',
@@ -95,6 +98,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Men’s Laboratory Monitoring & Ongoing Hormone Management',
       intro: 'Concerns:',
       items: [
@@ -230,5 +234,6 @@ export const page: PageCopy = {
     'Two testimonials became review bands. "Jesse S. Paramedic" is shown as "Jesse S."; the other live attribution is "Construction Company Owner" (no person name), kept as live and flagged.',
     'Kept live claims as written: "we\'ve helped hundreds of men", "What we test, no one else does (or they charge triple for it)" and "Most clients lose weight without experiencing muscle loss or fatigue...". Flagged for Josh.',
     'Left out the two Group-1.png template icons. Body photos come from the live media library (Elementor backgrounds, not in the page HTML).',
+    'Hero image changed to the live hero photo (Comprehensive-mens-health-Springfield-MO, three firefighters); the jogger photo is no longer used.',
   ],
 };

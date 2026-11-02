@@ -14,6 +14,11 @@ export const page: PageCopy = {
   hero: {
     h1: 'Memberships',
     subhead: 'Medically Guided Care for Long-Term Health, Vitality, and Results',
+    image: {
+      src: 'pages/memberships/hero.jpg',
+      alt: 'Six smiling women stand together outdoors under trees',
+    },
+    imagePosition: 'center 40%',
     primaryCta: {
       label: 'Schedule an Appointment',
       href: 'https://anewyouwomensclinic.myaestheticrecord.com/online-booking',
@@ -239,6 +244,6 @@ export const page: PageCopy = {
     'Kept live wording and errors exactly ("well being .", "schedule your initial consultation today.", "a exclusive blend", "Lipo- trim", "body‘s").',
     'The Weight Loss Membership list here differs from the $99 membership description on the weight-loss page and from Cindy\'s Weight Loss Membership list; all three kept as supplied.',
     'Cindy\'s "Hormone Optimization / Total Wellness Memberships" blurb was not added (not in the mapping; the live memberships already cover it).',
-    'No hero photo: the live page had none.',
+    'Hero photo added: the live page banner is the same group photo used on weight-loss (medical-weight-loss-in-Springfield-MO).',
   ],
 };

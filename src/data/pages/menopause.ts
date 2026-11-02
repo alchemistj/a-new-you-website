@@ -16,10 +16,10 @@ export const page: PageCopy = {
     subhead:
       "Perimenopause and menopause are normal phases of every woman's life. But that doesn't mean you have to accept the suffering that comes with it.",
     image: {
-      src: 'pages/menopause/what-is-menopause.jpg',
-      alt: 'A provider in a white coat smiles at a patient in a black headscarf across a desk during a consultation',
+      src: 'pages/menopause/hero.jpg',
+      alt: 'Three smiling women in black scrubs stand together outdoors in front of trees',
     },
-    imagePosition: 'center 30%',
+    imagePosition: 'center 40%',
     primaryCta: {
       label: 'Schedule an Appointment',
       href: 'https://anewyouwomensclinic.myaestheticrecord.com/online-booking',
@@ -84,6 +84,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Perimenopause & Menopause Evaluation',
       intro: 'Concerns:',
       items: [
@@ -101,6 +102,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Bioidentical Hormone Replacement Therapy (BHRT)',
       intro: 'Services may include:',
       items: [
@@ -114,6 +116,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       intro: 'Concerns:',
       items: [
         'Menopause and perimenopause symptoms',
@@ -130,6 +133,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      source: 'cindy',
       heading: 'Hormone Laboratory Testing & Monitoring',
       intro: 'Concerns:',
       items: [
@@ -155,5 +159,6 @@ export const page: PageCopy = {
     'Added Cindy\'s Women\'s Hormone Optimization & Menopause Care section word for word: category heading as a cards overview, Perimenopause & Menopause Evaluation concerns, BHRT "Services may include" and "Concerns" lists, Hormone Laboratory Testing & Monitoring concerns. Her all-caps category heading is set in title case. Her "Hormone Optimization / Total Wellness Memberships" blurb is not on this page (not in the mapping).',
     'Images: hero is what-is-menopause (the page\'s OG image); hormone-replacement-therapy photo sits beside the HRT section.',
     'No testimonial quotes were found in this page\'s content, so no review bands.',
+    'Hero image changed to the live hero photo (Perimenopausal-and-Menopausal-Symptoms-1, three women in scrubs outdoors); the what-is-menopause photo is no longer used.',
   ],
 };
