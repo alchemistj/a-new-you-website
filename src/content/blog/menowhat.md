@@ -11,10 +11,9 @@ heroImage:
 categories: []
 tags: []
 relatedService: "/springfield/menopause/"
-addedLinks: [{"phrase":"menopause","to":"/springfield/menopause/"}]
+addedLinks: []
 ---
 
-*Sad tired depressed caucasian senior woman sitting on sofa, suffering from [menopause](/springfield/menopause/), migraine*
 
 Remember when you could eat an entire pizza and have a chocolate brownie and never gain a pound? Remember when you could go on 3 hours of sleep, work all day, and still have energy to chase your three year old toddler? Remember when your hair shined, your face glowed, and not a wrinkle or gray hair was to be found anywhere? Ahhhh those were the days!
 

@@ -11,10 +11,9 @@ heroImage:
 categories: []
 tags: []
 relatedService: "/springfield/botox/"
-addedLinks: [{"phrase":"botox","to":"/springfield/botox/"}]
+addedLinks: []
 ---
 
-*Portrait of young Caucasian woman getting [botox](/springfield/botox/) cosmetic injection in forehead. Beautiful woman gets botox injection in her face.*
 
 Botox is used for temporary improvement in the appearance of vertical lines between the eyebrows (11s, mean mug), fan shaped lines from the corners of the eye (crows feet ),or forehead lines seen with raised eyebrows, when the severity of the facial lines has an important psychological impact in an adult. It can also be used for excessive sweating, overactive bladder, prevention of chronic migraine headaches, and in the treatment of persistent muscle spasms in wrist, hands, ankles eyelid, face neck, and shoulders.
 

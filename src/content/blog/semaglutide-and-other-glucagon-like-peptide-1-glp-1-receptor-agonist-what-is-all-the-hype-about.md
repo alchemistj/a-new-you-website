@@ -11,7 +11,6 @@ relatedService: "/springfield/semaglutide/"
 addedLinks: [{"phrase":"semaglutide","to":"/springfield/semaglutide/"}]
 ---
 
-*Image by [alphabet gold abc question](https://svgsilh.com/image/2154831.html)“/ [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/?ref=openverse)*
 
 Everyone’s talking about the miracle [weight loss](/latest-medical-treatments-for-weight-loss/) drug [semaglutide](/springfield/semaglutide/) how it’s a **game changer.** What is it? What does it do? Why is it a game changer? These are the questions I ask myself and here’s what I’ve discovered.
 
