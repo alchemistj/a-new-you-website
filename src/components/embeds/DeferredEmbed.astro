@@ -1,0 +1,51 @@
+---
+// Third-party embed that loads on first interaction or when it nears the viewport (Rule 10).
+// Server HTML has no iframe and no third-party src: only a reserved box and a <noscript> link.
+import { EMBEDS, type EmbedKind } from './embeds';
+
+interface Props {
+  embed: EmbedKind;
+  /** Anchor id, e.g. so "Schedule" buttons can link to the embed. */
+  id?: string;
+  class?: string;
+}
+
+const { embed, id, class: className } = Astro.props;
+const def = EMBEDS[embed];
+---
+
+<div
+  id={id}
+  class:list={['deferred-embed', className]}
+  data-deferred-embed={embed}
+  aria-busy="true"
+  style={`--embed-h-m:${def.heightMobile}px;--embed-h-d:${def.heightDesktop}px`}
+>
+  <noscript><a href={def.fallback.href}>{def.fallback.label}</a></noscript>
+</div>
+
+<style is:global>
+  .deferred-embed {
+    min-height: var(--embed-h-m);
+    scroll-margin-top: 6rem;
+  }
+  .deferred-embed iframe {
+    display: block;
+    width: 100%;
+    height: var(--embed-h-m);
+    border: 0;
+  }
+  @media (min-width: 768px) {
+    .deferred-embed {
+      min-height: var(--embed-h-d);
+    }
+    .deferred-embed iframe {
+      height: var(--embed-h-d);
+    }
+  }
+</style>
+
+<script>
+  import { initDeferredEmbeds } from './deferred-embed-client';
+  initDeferredEmbeds(document, window);
+</script>
