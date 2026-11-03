@@ -35,12 +35,16 @@ export const serviceLabels: Record<string, string> = {
   botox: 'Botox',
   aesthetics: 'Aesthetics',
   cryolipolysis: 'Cryolipolysis',
+  styku: 'Styku 3D Body Scan',
 };
 
 /** Footer: company links after the service list. */
 export const footerCompanyLinks: NavLink[] = [
   { label: 'Biote', href: '/biote/' },
   { label: 'Memberships', href: '/subscription-plans/' },
+  { label: 'Styku 3D Body Scan', href: '/styku/' },
+  { label: 'Professional Skincare', href: '/image-skincare/' },
+  { label: 'nutraMetrix', href: '/nutrametrix/' },
   { label: 'Financing', href: '/financing/' },
   { label: 'Customer Reviews', href: '/customer-reviews/' },
   { label: 'About', href: '/about/' },

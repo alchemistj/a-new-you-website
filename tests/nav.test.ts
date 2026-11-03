@@ -21,4 +21,15 @@ describe('nav.ts', () => {
   it('header has the four priority quick links', () => {
     expect(nav.quickLinks.map((l) => l.href)).toEqual(['/vaginal-rejuvenation/', '/menopause/', '/weight-loss/', '/mens-health/']);
   });
+
+  it('footer company list includes Styku, professional skincare, and nutraMetrix', () => {
+    const labels = nav.footerCompanyLinks.map((l) => `${l.label} ${l.href}`);
+    expect(labels).toContain('Styku 3D Body Scan /styku/');
+    expect(labels).toContain('Professional Skincare /image-skincare/');
+    expect(labels).toContain('nutraMetrix /nutrametrix/');
+    const biote = nav.footerCompanyLinks.findIndex((l) => l.href === '/biote/');
+    const memberships = nav.footerCompanyLinks.findIndex((l) => l.href === '/subscription-plans/');
+    const styku = nav.footerCompanyLinks.findIndex((l) => l.href === '/styku/');
+    expect(styku).toBeGreaterThan(Math.max(biote, memberships));
+  });
 });
