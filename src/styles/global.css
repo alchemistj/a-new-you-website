@@ -442,4 +442,7 @@ a.card-photo:hover h3 { color: var(--color-primary); }
 
 .award-pill { background: var(--color-accent-ink); color: var(--color-white); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 999px; padding: 4px 12px; min-height: 0 !important; }
 @media (max-width: 767px) { .trust-inner .award-pill { flex-basis: auto; margin: 6px 0 0; } .trust-inner { flex-direction: column; gap: 0; } }
-.footer-awards { font-weight: 700; color: var(--color-white); border-left: 3px solid var(--color-accent); padding-left: 10px; margin-top: 14px; }
+.footer-awards { margin-top: 14px; }
+.footer-awards img { height: 64px; width: auto; }
+.award-logo img { height: 44px; width: auto; display: block; }
+@media (max-width: 767px) { .award-logo { margin-top: 6px; } .award-logo img { height: 52px; } }

@@ -4,6 +4,7 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import logoWhite from '../assets/brand/logo-white.webp';
+import torchWhite from '../assets/brand/torch-award-white.webp';
 import { getNav } from '../lib/nav';
 import { site, fullAddress, awards } from '../data/site';
 
@@ -41,7 +42,7 @@ const year = new Date().getFullYear();
         <a href={site.social.facebook} rel="noopener" target="_blank">Facebook</a>
         <a href={site.social.bbb} rel="noopener" target="_blank">BBB Profile</a>
       </p>
-      <p class="footer-awards">{awards.map((a) => <span>{a.label}</span>)}</p>
+      <p class="footer-awards">{awards.map((a) => <Image src={torchWhite} alt={a.label} height={64} densities={[1, 2]} format="webp" loading="lazy" decoding="async" />)}</p>
       {
         badges.length > 0 && (
           <div class="footer-badges">
