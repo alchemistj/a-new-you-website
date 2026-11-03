@@ -96,6 +96,11 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      intro: 'Hormone Optimization Membership benefits:',
+      items: ['10% off services', '10% off products', 'Option to upgrade to the Total Wellness Membership'],
+    },
+    {
+      kind: 'list',
       heading: 'Total Wellness Membership',
       intro:
         'The Total Wellness Membership is our most comprehensive medical plan. It is designed for individuals seeking a long-term medical partner focused on prevention, vitality, and whole-body optimization. This membership supports coordination across weight management, hormone optimization, anti-aging strategies, and overall metabolic health. Includes:',
@@ -109,16 +114,12 @@ export const page: PageCopy = {
       outro:
         'Does not include: Medications, supplements, in-office procedures, or expanded laboratory testing beyond the included monitoring panel. Member Benefit: 15% off products',
     },
-    {
-      kind: 'list',
-      intro: 'Member Benefits:',
-      items: ['10% off services', '10% off products', 'Option to upgrade to the Total Wellness Membership'],
-    },
     { kind: 'cta', heading: 'Schedule an Appointment' },
   ],
   related: ['weight-loss', 'menopause', 'aesthetics'],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
+    'Design QA: the live "Member Benefits" list (10% off services and products, upgrade option) belongs to the Hormone Optimization Membership; moved it back directly under that plan and labelled it, so it does not read as a Total Wellness perk.',
     '3 Nov 2026, Cindy: removed the legacy subscription offers and their annual and non-member comparisons. Hormone Replacement Therapy Subscription Plan ($200/month) including the "Medication" line and its pricing. Weight Loss Subscription Plans: Semaglutide $333, Bella Plus $309.75, Olympia $337.75, including "includes medication" lines. Aesthetic Services Subscription Plan ($150/month: quarterly Botox, monthly Hydrafacial, annual filler) and its pricing. The earlier note that those prices were kept despite bad math is superseded; the offers are gone, not corrected.',
     '3 Nov 2026: the three core memberships are Weight Loss Membership $99/month, Hormone Optimization Membership $99/month, and Total Wellness Membership $149/month, with Cindy\'s focus sentences on the cards. "$75 setup fee and a three-month minimum commitment" is on the Weight Loss Membership only.',
     'Added Cindy\'s dues sentence word for word immediately after the membership cards: "Membership fees cover the medical management and benefits specified in the selected plan. Medications, hormone pellets, supplements, and separately priced procedures are additional unless expressly included."',
