@@ -29,6 +29,9 @@ const EXPECTED = [
   'customer-reviews',
   'contact',
   'faq',
+  'styku',
+  'image-skincare',
+  'nutrametrix',
 ];
 
 function collectImages(value: unknown, out: { src: string; alt: string }[] = []) {
@@ -42,7 +45,7 @@ function collectImages(value: unknown, out: { src: string; alt: string }[] = [])
 }
 
 describe('page copy files', () => {
-  it('has exactly the 18 published pages and no held pages', () => {
+  it('has exactly the 21 published pages', () => {
     expect(pages.map((p) => p.slug).sort()).toEqual([...EXPECTED].sort());
     for (const p of pages) expect(p.publish).toBe(true);
   });
@@ -50,7 +53,7 @@ describe('page copy files', () => {
   for (const page of pages) {
     describe(page.slug, () => {
       // The changes log legitimately names the removed content, so it is not scanned.
-      const { changes: _changes, ...published } = page;
+      const published = (({ changes: _changes, ...rest }: PageCopy) => rest)(page);
       const text = JSON.stringify(published);
 
       it('has a valid route and old URLs', () => {
@@ -80,9 +83,13 @@ describe('page copy files', () => {
         expect(text).not.toMatch(/aggregateRating|out of 5|stars/i);
       });
 
-      it('does not link to held pages or the old site', () => {
-        expect(text).not.toMatch(/styku\/|image-skincare|nutrametrix/i);
+      it('does not link to the old site', () => {
         expect(text).not.toMatch(/anewyouwoman\.com\//);
+      });
+
+      it('does not point other pages at Styku, skincare, or nutraMetrix', () => {
+        if (page.slug === 'styku' || page.slug === 'image-skincare' || page.slug === 'nutrametrix') return;
+        expect(text).not.toMatch(/styku\/|image-skincare|nutrametrix/i);
       });
 
       it('only uses the NAP phone number', () => {

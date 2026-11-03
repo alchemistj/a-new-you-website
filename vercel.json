@@ -864,6 +864,11 @@
       "statusCode": 301
     },
     {
+      "source": "/image-skincare",
+      "destination": "/image-skincare/",
+      "statusCode": 301
+    },
+    {
       "source": "/menopause",
       "destination": "/menopause/",
       "statusCode": 301
@@ -874,6 +879,11 @@
       "statusCode": 301
     },
     {
+      "source": "/nutrametrix",
+      "destination": "/nutrametrix/",
+      "statusCode": 301
+    },
+    {
       "source": "/perimenopause",
       "destination": "/perimenopause/",
       "statusCode": 301
@@ -881,6 +891,11 @@
     {
       "source": "/semaglutide",
       "destination": "/semaglutide/",
+      "statusCode": 301
+    },
+    {
+      "source": "/styku",
+      "destination": "/styku/",
       "statusCode": 301
     },
     {
