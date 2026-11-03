@@ -105,7 +105,8 @@ export const page: PageCopy = {
       heading: 'Semaglutide Costs in Springfield, MO',
       paragraphs: [
         'You deserve to know the cost before you commit.',
-        'Semaglutide medication starts at $100 for 1 mL, depending on your prescribed dose and formulation. We bill medication separately from the $99 monthly Weight Loss Membership, so a typical starting month runs about $199.',
+        'Semaglutide medication starts at $100 for 1 mL, depending on your prescribed dose and formulation. We bill medication separately from the $99 monthly Weight Loss Membership, plus a $75 setup fee and a three-month minimum commitment.',
+        'Membership fees cover the medical management and benefits specified in the selected plan. Medications, hormone pellets, supplements, and separately priced procedures are additional unless expressly included.',
       ],
       image: {
         src: 'pages/semaglutide/costs.jpg',
@@ -114,7 +115,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
-      intro: 'Your membership covers more than access to medication. It includes:',
+      intro: 'Your membership includes:',
       items: [
         'Medical oversight and follow-up care',
         'Body-composition monitoring',
@@ -156,7 +157,7 @@ export const page: PageCopy = {
         },
         {
           q: 'How Much Is a 30-Day Supply of Semaglutide?',
-          a: ['Medication starts at $100 for 1 mL, depending on your dose and formulation. Add the $99 monthly membership, and a typical starting month runs about $199. Your membership also covers medical oversight, follow-up care, body-composition monitoring, annual lab work, and ongoing education.'],
+          a: ['Medication starts at $100 for 1 mL, depending on your dose and formulation. Add the $99 monthly membership, a $75 setup fee and a three-month minimum commitment. Your membership also covers medical oversight, follow-up care, body-composition monitoring, annual lab work, and ongoing education.'],
         },
       ],
     },
@@ -177,7 +178,9 @@ export const page: PageCopy = {
     'Four live testimonials became single review bands with live names (Autumn S., Debra S., Kimberly C., Janet M.). The "Google Review" labels and trailing commas are dropped. Brief says reviews come from the reviews list only for moves between pages; these stay on this page.',
     'The live closing "Schedule an Appointment" button is the final CTA band (heading is the button label; no invented text).',
     'Left out the template icon images (Group-1, aftercare-icon, consultation-icon, weight-loss). Photos come from the live media library files named for semaglutide (Elementor backgrounds, not in the page HTML).',
-    'Kept FAQ answers and the "$100 for 1 mL" and "$99 monthly" figures exactly as live. The FAQ answer "Many patients lose around 20 pounds over three to six months." is a live outcome claim, flagged for Josh.',
+    'Kept the "$100 for 1 mL" treatment cost. The FAQ answer "Many patients lose around 20 pounds over three to six months." is a live outcome claim, flagged for Josh.',
+    '3 Nov 2026, Cindy: the Weight Loss Membership line is $99 plus a $75 setup fee and a three-month minimum commitment, in the cost section and in the 30-day supply FAQ. Removed "a typical starting month runs about $199" in both places because $100 plus $99 no longer adds up once the setup fee is stated. Added the dues-versus-treatment sentence once, word for word, in the cost section.',
+    'Changed "Your membership covers more than access to medication" to "Your membership includes:" so the membership list does not imply medication is included.',
     'Page was an orphan on the live site; it is now linked from weight-loss through the GLP-1 card.',
   ],
 };

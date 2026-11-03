@@ -10,6 +10,19 @@ const modules = import.meta.glob<{ page: PageCopy }>(['../../src/data/pages/*.ts
 const pages = Object.values(modules).map((m) => m.page);
 const assetsRoot = resolve(__dirname, '../../src/assets');
 
+function publishedText(page: PageCopy) {
+  return JSON.stringify({ ...page, changes: undefined });
+}
+
+function walkStrings(value: unknown, out: string[] = []): string[] {
+  if (typeof value === 'string') out.push(value);
+  else if (Array.isArray(value)) value.forEach((v) => walkStrings(v, out));
+  else if (value && typeof value === 'object') {
+    Object.values(value as Record<string, unknown>).forEach((v) => walkStrings(v, out));
+  }
+  return out;
+}
+
 const EXPECTED = [
   'home',
   'weight-loss',
@@ -50,8 +63,7 @@ describe('page copy files', () => {
   for (const page of pages) {
     describe(page.slug, () => {
       // The changes log legitimately names the removed content, so it is not scanned.
-      const { changes: _changes, ...published } = page;
-      const text = JSON.stringify(published);
+      const text = publishedText(page);
 
       it('has a valid route and old URLs', () => {
         expect(page.route).toMatch(/^\/([a-z0-9-]+\/)*$/);
@@ -122,6 +134,42 @@ describe('page copy files', () => {
     for (const p of pages) {
       for (const s of p.sections) {
         if (s.kind === 'review') expect(s.name).not.toMatch(/\d/);
+      }
+    }
+  });
+});
+
+describe('vaginal wellness technology and current memberships', () => {
+  it('has no laser on the vaginal wellness page and no legacy subscription offers', () => {
+    const vaginal = pages.find((p) => p.slug === 'vaginal-wellness');
+    expect(vaginal).toBeTruthy();
+    expect(publishedText(vaginal!).toLowerCase()).not.toContain('laser');
+
+    const banned = ['ThermiVa', '$333', '$309.75', '$337.75', 'Bella Plus', 'Olympia', '$200 per month'];
+    for (const page of pages) {
+      const text = publishedText(page);
+      for (const needle of banned) expect(text, `${page.slug} contains ${needle}`).not.toContain(needle);
+      expect(text.toLowerCase(), page.slug).not.toContain('thermiva');
+    }
+  });
+
+  it('puts the setup fee and the dues sentence on the memberships page', () => {
+    const memberships = pages.find((p) => p.slug === 'memberships');
+    expect(memberships).toBeTruthy();
+    const text = publishedText(memberships!);
+    expect(text).toContain('$75 setup fee');
+    expect(text).toContain(
+      'Membership fees cover the medical management and benefits specified in the selected plan. Medications, hormone pellets, supplements, and separately priced procedures are additional unless expressly included.',
+    );
+  });
+
+  it('never describes VTone with radiofrequency', () => {
+    for (const page of pages) {
+      const published = { ...page, changes: undefined };
+      for (const s of walkStrings(published)) {
+        if (s.toLowerCase().includes('vtone')) {
+          expect(s.toLowerCase(), `${page.slug}: ${s}`).not.toContain('radiofrequency');
+        }
       }
     }
   });
