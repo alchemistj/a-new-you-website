@@ -45,33 +45,31 @@ export const page: PageCopy = {
       kind: 'cards',
       heading: 'Medical Memberships',
       cards: [
-        { title: 'Total Wellness Membership' },
-        { title: 'Weight Loss Membership' },
-        { title: 'Hormone Optimization Membership' },
-        { title: 'Vaginal Wellness Membership' },
-        { title: 'Peptide Optimization (Add-On)' },
+        {
+          title: 'Weight Loss Membership',
+          text: '$99/month. Medically supervised weight management, follow-up, education, and progress monitoring. $75 setup fee and a three-month minimum commitment.',
+        },
+        {
+          title: 'Hormone Optimization Membership',
+          text: '$99/month. Ongoing hormone management, treatment monitoring, and provider follow-up.',
+        },
+        {
+          title: 'Total Wellness Membership',
+          text: '$149/month. Combined weight-management, hormone-optimization, and broader wellness oversight.',
+        },
       ],
     },
     {
-      kind: 'list',
-      heading: 'Total Wellness Membership',
-      intro:
-        'The Total Wellness Membership is our most comprehensive medical plan. It is designed for individuals seeking a long-term medical partner focused on prevention, vitality, and whole-body optimization. This membership supports coordination across weight management, hormone optimization, anti-aging strategies, and overall metabolic health. Includes:',
-      items: [
-        'Ongoing provider access with scheduled and as-needed visits',
-        'Personalized medical treatment planning',
-        'Primary laboratory panel and routine monitoring',
-        'Laboratory interpretation and medical decision-making',
-        'Clinical oversight and adjustments over time',
+      kind: 'prose',
+      paragraphs: [
+        'Membership fees cover the medical management and benefits specified in the selected plan. Medications, hormone pellets, supplements, and separately priced procedures are additional unless expressly included.',
       ],
-      outro:
-        'Does not include: Medications, supplements, in-office procedures, or expanded laboratory testing beyond the included monitoring panel. Member Benefit: 15% off products',
     },
     {
       kind: 'list',
       heading: 'Weight Loss Membership',
       intro:
-        'Our Weight Loss Membership provides medically supervised weight management focused on metabolic drivers, insulin resistance, inflammation, and hormonal influence. This program is structured for accountability, safety, and sustainable progress. Includes:',
+        '$75 setup fee and a three-month minimum commitment. Our Weight Loss Membership provides medically supervised weight management focused on metabolic drivers, insulin resistance, inflammation, and hormonal influence. This program is structured for accountability, safety, and sustainable progress. Includes:',
       items: [
         'Initial medical evaluation',
         'Ongoing provider oversight and follow-up visits',
@@ -98,150 +96,42 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
+      heading: 'Total Wellness Membership',
+      intro:
+        'The Total Wellness Membership is our most comprehensive medical plan. It is designed for individuals seeking a long-term medical partner focused on prevention, vitality, and whole-body optimization. This membership supports coordination across weight management, hormone optimization, anti-aging strategies, and overall metabolic health. Includes:',
+      items: [
+        'Ongoing provider access with scheduled and as-needed visits',
+        'Personalized medical treatment planning',
+        'Primary laboratory panel and routine monitoring',
+        'Laboratory interpretation and medical decision-making',
+        'Clinical oversight and adjustments over time',
+      ],
+      outro:
+        'Does not include: Medications, supplements, in-office procedures, or expanded laboratory testing beyond the included monitoring panel. Member Benefit: 15% off products',
+    },
+    {
+      kind: 'list',
       intro: 'Member Benefits:',
-      items: [
-        '10% off services',
-        '10% off products',
-        'Option to add Peptide Optimization',
-        'Option to upgrade to the Total Wellness Membership',
-      ],
-    },
-    {
-      kind: 'list',
-      heading: 'Vaginal Wellness Membership',
-      intro:
-        '(Available exclusively to Total Wellness members) This membership supports vaginal tissue health, tone, and functional wellness through medically guided treatment. Includes:',
-      items: [
-        'Quarterly FormaV or VTone sessions',
-        'Access to Morpheus8V at member pricing',
-        'Provider oversight and progress monitoring',
-      ],
-    },
-    {
-      kind: 'prose',
-      heading: 'Peptide Optimization (Add-On)',
-      paragraphs: [
-        'Peptide Optimization is available as an add-on to any medical membership following clinical evaluation. Protocols are individualized, and peptide therapies are billed separately.',
-      ],
-    },
-    {
-      kind: 'cards',
-      heading: 'Aesthetic Memberships',
-      cards: [{ title: 'Skin Health Maintenance Membership' }, { title: 'Advanced Skin Health Membership' }],
-    },
-    {
-      kind: 'list',
-      heading: 'Skin Health Maintenance Membership',
-      intro:
-        'The Skin Health Maintenance Membership is designed for patients focused on prevention, barrier support, and consistent skin care. Includes:',
-      items: [
-        'One Clinical Skin Renewal Facial per month',
-        'Member-only pricing on additional aesthetic services',
-        'Priority scheduling',
-      ],
-      outro:
-        'The Clinical Skin Renewal Facial is included as part of the membership and is not optional. Injectables, advanced devices, and treatment upgrades are billed separately.',
-    },
-    {
-      kind: 'list',
-      heading: 'Advanced Skin Health Membership',
-      intro:
-        'The Advanced Skin Health Membership is structured for patients committed to collagen support, preventative aging, and consistent professional aesthetic care. Includes:',
-      items: [
-        'One Hydrafacial per month',
-        'Botox at a preferred rate of $7 per unit',
-        '10% off aesthetic services',
-        '10% off skincare products',
-        'Priority booking',
-      ],
-      outro:
-        'Botox units, dermal fillers, Morpheus8, RF treatments, body contouring, and Hydrafacial upgrades are not included. Membership discounts do not stack with promotional pricing.',
-    },
-    {
-      kind: 'list',
-      heading: 'Hormone Replacement Therapy Subscription Plan',
-      intro:
-        'Here at a New You Women’s Clinic, we want to help you feel and look your best at ANY AGE without breaking the bank. Therefore, we have teamed up with multiple compounding pharmacies to provide you with the latest in hormone replacement treatments. We have tried and true protocols designed to help you achieve your optimal well being . Each plan is tailored to your specific needs. schedule your initial consultation today. Included in your subscription plan:',
-      items: ['Routine lab work', 'Medication', 'Initial evaluation and all follow up appointments'],
-    },
-    {
-      kind: 'pricing',
-      plans: [
-        { name: 'Subscription cost annual', lines: ['$2,100 /$200 per month'] },
-        { name: 'Non-subscription cost annually', lines: ['$5,025 /$419 per month'] },
-      ],
-    },
-    {
-      kind: 'pricing',
-      heading: 'Weight Loss Subscription Plans',
-      intro:
-        'Here at a New You Women’s Clinic, we want to help you lose weight without breaking the bank. Therefore, we have teamed up with multiple compounding pharmacies to provide you with the latest in weight loss therapy. We have tried and true protocols designed to help you achieve your optimal weight. Each plan is tailored to your specific needs. schedule your initial consultation today.',
-      plans: [
-        {
-          name: 'Semaglutide',
-          lines: [
-            'Semaglutide is a medication that belongs to a class of drugs known as GLP-1 receptor agonists. It is used to treat type 2 diabetes by regulating blood sugar levels. Semaglutide is also FDA-approved for weight loss.',
-            'Monthly Subscription fee includes medication, labs and office visits',
-            '$3,996 yearly / $333.00 per month',
-            'Non-subscription',
-            '$20,700 yearly / $1,725 per month',
-          ],
-        },
-        {
-          name: 'Bella Plus',
-          lines: [
-            'Bella plus is a unique compounded medication designed to control cravings, decrease appetite and increase energy. With a exclusive blend of bupropion / phentermine / topiramate / naltrexone / methylcobalamin',
-            'Monthly Subscription',
-            '$3,345.50 yearly / $309.75 per month',
-            'Non-subscription',
-            '$7,551 yearly / $629.25 per month',
-          ],
-        },
-        {
-          name: 'Olympia weight management therapy program',
-          lines: [
-            'The weight management therapy protocol from Olympia compounding pharmacy provides enhanced fat burning, weight loss, mental clarity, reduced feelings of hunger, decreased appetite, faster recovery from working out, restoration of the body‘s natural sleep cycle, stimulation of the body’s own growth hormone levels, reduction in food cravings, increase metabolism, improved energy levels, and aids in immune support. By utilizing naltrexone, sermorelin, and an exclusive Lipo- trim sublingual spray the weight management therapy protocol helps boost your metabolism and lose large amounts of fat all without feeling hungry.',
-            'Monthly Subscription fee includes medication, labs and office visits',
-            '$4,079 yearly / $337.75 per month',
-            'Non-subscription',
-            '$7,107 yearly / $592.25 per month',
-          ],
-        },
-      ],
-    },
-    {
-      kind: 'list',
-      heading: 'Aesthetic Services Subscription Plan',
-      intro:
-        'Here at a New You Women’s Clinic, we want to help you feel and look your best at ANY AGE without breaking the bank. Therefore, We have developed tried and true protocols designed to help you achieve your optimal well being . Each plan is tailored to your specific needs. schedule your initial consultation today. Included in your subscription plan:',
-      items: [
-        'Initial evaluation and all follow up appointments',
-        'Botox 40 units every three months',
-        'Hydra facial once monthly',
-        'Hyaluronic acid dermal filler, one syringe annually',
-      ],
-    },
-    {
-      kind: 'pricing',
-      plans: [
-        { name: 'Subscription cost annual', lines: ['$1,795 /$150 per month'] },
-        { name: 'Non-subscription cost annually', lines: ['$4,375 /$365 per month'] },
-      ],
+      items: ['10% off services', '10% off products', 'Option to upgrade to the Total Wellness Membership'],
     },
     { kind: 'cta', heading: 'Schedule an Appointment' },
   ],
   related: ['weight-loss', 'menopause', 'aesthetics'],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
-    'PRICES KEPT EXACTLY AS LIVE even where the math is off. Mismatches (monthly x 12 vs stated annual): HRT subscription $200 x 12 = $2,400 but annual shows $2,100; HRT non-subscription $419 x 12 = $5,028 but annual shows $5,025; Bella Plus subscription $309.75 x 12 = $3,717 but annual shows $3,345.50; Olympia subscription $337.75 x 12 = $4,053 but annual shows $4,079; Aesthetic subscription $150 x 12 = $1,800 but annual shows $1,795; Aesthetic non-subscription $365 x 12 = $4,380 but annual shows $4,375. Semaglutide ($3,996 / $333.00; $20,700 / $1,725), Bella Plus non-subscription ($7,551 / $629.25) and Olympia non-subscription ($7,107 / $592.25) reconcile. Not fixed; Josh to confirm with Cindy.',
-    'The weight-loss page lists a $99/month Weight Loss Membership and a $149/month Total Wellness Membership; this page lists those memberships with no price. Both are kept as live. The $7 per unit Botox rate on the Advanced Skin Health Membership is also as live.',
-    'Removed placeholder content: the four logoipsum logos, the four Lorem ipsum blocks, the Group-1 template images, and the second H1 "Hormone Replacement Therapy Subscription Plan" (now a section heading, since a page has one H1).',
+    '3 Nov 2026, Cindy: removed the legacy subscription offers and their annual and non-member comparisons. Hormone Replacement Therapy Subscription Plan ($200/month) including the "Medication" line and its pricing. Weight Loss Subscription Plans: Semaglutide $333, Bella Plus $309.75, Olympia $337.75, including "includes medication" lines. Aesthetic Services Subscription Plan ($150/month: quarterly Botox, monthly Hydrafacial, annual filler) and its pricing. The earlier note that those prices were kept despite bad math is superseded; the offers are gone, not corrected.',
+    '3 Nov 2026: the three core memberships are Weight Loss Membership $99/month, Hormone Optimization Membership $99/month, and Total Wellness Membership $149/month, with Cindy\'s focus sentences on the cards. "$75 setup fee and a three-month minimum commitment" is on the Weight Loss Membership only.',
+    'Added Cindy\'s dues sentence word for word immediately after the membership cards: "Membership fees cover the medical management and benefits specified in the selected plan. Medications, hormone pellets, supplements, and separately priced procedures are additional unless expressly included."',
+    'Held, not published, pending approved prices and terms: Vaginal Wellness Membership, Peptide Optimization (Add-On), Skin Health Maintenance Membership, and Advanced Skin Health Membership. No prices invented. Removed the "Aesthetic Memberships" cards heading with them. Also removed the member-benefits bullet "Option to add Peptide Optimization" because that add-on is held. The $7 per unit Botox rate left with the Advanced Skin Health Membership.',
+    'Kept live benefit bullets that do not promise unlimited labs or included medication. Lab bullets still say "Primary labs and routine monitoring", "Primary laboratory panel and routine monitoring", and "Primary hormone laboratory testing and routine monitoring". The "How Membership Works" section still says expanded testing is billed separately, so these do not read as every panel. Outros that say medications are billed separately or not included were kept.',
+    'The weight-loss page lists a $99/month Weight Loss Membership and a $149/month Total Wellness Membership; this page now shows the same prices.',
+    'Removed placeholder content: the four logoipsum logos, the four Lorem ipsum blocks, the Group-1 template images, and the second H1 "Hormone Replacement Therapy Subscription Plan" (it became a section heading, then the whole offer was removed on 3 Nov 2026).',
     'Live H1 "MEMBERSHIPS" set in title case; all-caps H3 "TOTAL WELLNESS MEMBERSHIP" set in title case.',
     'The three repeated live H2s "Learn More About Our Plans" are dropped (they only introduced the plan blocks).',
-    'The broken bullet pair "Option to add Peptide" / "Optimization" is joined as "Option to add Peptide Optimization" (the live page split one bullet across two list items).',
-    'Description lines such as "Does not include", "Member Benefit" and "Medications such as..." were separate paragraphs; they are the closing text of each list section with the same words. Price lines are kept as live lines under each plan name, including the live labels "Subscription cost annual" and "Non-subscription".',
+    'The broken bullet pair "Option to add Peptide" / "Optimization" was joined as "Option to add Peptide Optimization" (the live page split one bullet across two list items). That bullet was removed on 3 Nov 2026 because the add-on is held.',
+    'Description lines such as "Does not include", "Member Benefit" and "Medications such as..." were separate paragraphs; they are the closing text of each kept list section with the same words. The legacy "Subscription cost annual" and "Non-subscription" price lines were removed on 3 Nov 2026 with those offers.',
     'Title and description kept as live (they mention Ozempic, which the live page used); Josh may want to review.',
-    'Kept live wording and errors exactly ("well being .", "schedule your initial consultation today.", "a exclusive blend", "Lipo- trim", "body‘s").',
+    'Live wording errors in the removed subscription blocks ("well being .", "schedule your initial consultation today.", "a exclusive blend", "Lipo- trim", "body‘s") left with those offers on 3 Nov 2026.',
     'The Weight Loss Membership list here differs from the $99 membership description on the weight-loss page and from Cindy\'s Weight Loss Membership list; all three kept as supplied.',
     'Cindy\'s "Hormone Optimization / Total Wellness Memberships" blurb was not added (not in the mapping; the live memberships already cover it).',
     'Hero photo added: the live page banner is the same group photo used on weight-loss (medical-weight-loss-in-Springfield-MO).',

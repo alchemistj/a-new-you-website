@@ -159,7 +159,8 @@ export const page: PageCopy = {
         {
           name: 'Weight Loss Membership – $99/month',
           lines: [
-            'Includes labs, provider oversight, weekly visits, and body composition tracking.',
+            'Includes provider oversight, weekly visits, and body composition tracking.',
+            '$75 setup fee and a three-month minimum commitment.',
             'Medications such as Semaglutide or Tirzepatide are billed separately based on dose.',
           ],
         },
@@ -167,7 +168,7 @@ export const page: PageCopy = {
           name: 'Total Wellness Membership – $149/month',
           lines: [
             'Combines both Weight Loss and Hormone Optimization for complete metabolic balance and vitality.',
-            'All medical memberships include your lab work and ongoing provider support — you simply pay separately for medications.',
+            'All medical memberships include ongoing provider support — you simply pay separately for medications.',
           ],
         },
       ],
@@ -229,14 +230,15 @@ export const page: PageCopy = {
         'Nutritional guidance',
         'Ongoing accountability and encouragement',
       ],
-      outro: 'Membership ensures you receive ongoing lab work, personalized dosing, and continuous support — not just a prescription.',
+      outro: 'Membership ensures you receive personalized dosing and continuous support — not just a prescription.',
     },
     {
       kind: 'list',
       heading: 'Our Technology: 3D Body Scanning & Data-Driven Plans',
-      intro: 'We don’t guess—we measure what matters. Using the Styku 3D Body Scanner, we analyze:',
-      items: ['Your exact body fat percentage', 'Where fat is stored (and where it’s leaving!)', 'Posture, waist-hip ratio, and more'],
-      outro: 'This means you see progress beyond the scale, and we adjust your plan with precision.',
+      intro:
+        'Styku 3D body scanning helps us track changes in body measurements and estimated body composition over time, giving patients a broader view of their progress than weight alone.',
+      items: ['Your estimated body composition', 'Where fat is stored (and where it’s leaving!)', 'Posture, waist-hip ratio, and more'],
+      outro: 'This means you see progress beyond the scale, and we adjust your plan.',
       image: {
         src: 'pages/weight-loss/body-scan.jpg',
         alt: 'A woman in a black tank top stands on a 3D body scanner platform',
@@ -293,7 +295,10 @@ export const page: PageCopy = {
     'Design QA: removed the link-less overview cards of Cindy service names; the same names head the grouped Cindy lists below.',
     'Added Cindy\'s Medically Managed Weight Loss & Metabolic Health section word for word: category heading as a cards overview, then Medical Weight-Loss Evaluation, GLP-1 Medical Weight Management (medication options and concerns), Oral Weight-Management Medications, Weight Loss Membership (Includes and Concerns/goals) and Metabolic & Insulin-Resistance Evaluation. Her all-caps heading is set in title case. Her "Women & Men" wording is kept in the heading.',
     'Cindy\'s Weight Loss Membership list ("Regular check-ins", "Annual laboratory testing") differs from the live $99 membership text ("weekly visits", "labs"). Both are kept as supplied; Josh/Cindy to reconcile.',
-    'Memberships kept exactly as live: Weight Loss Membership $99/month and Total Wellness Membership $149/month. /subscription-plans/ lists Total Wellness with no price, so no price mismatch is logged here beyond that.',
+    'Membership prices kept: Weight Loss Membership $99/month and Total Wellness Membership $149/month.',
+    '3 Nov 2026, Cindy: added "$75 setup fee and a three-month minimum commitment" on the Weight Loss Membership price only. Not added to Total Wellness.',
+    'Removed lab wording that read as included or unlimited labs: "Includes labs" on the $99 plan, "include your lab work" on the $149 plan, and "ongoing lab work" in the visit outro. Cindy\'s Weight Loss Membership list still says "Annual laboratory testing" and was not expanded. Medications stay "billed separately".',
+    'Styku: "Your exact body fat percentage" is now "Your estimated body composition". Where Styku is introduced, the intro is Cindy\'s sentence word for word. Nothing on the page said a scan replaces a medical evaluation or measures bone density. Dropped "with precision" from the scanner outro so it does not fight "estimated".',
     'Two testimonials (Theresa, Diana) are now single review bands. Live showed first names only; no last initials were invented.',
     'The "Real Women. Real Results." list keeps the live line "Losing 10–20 lbs in the first 6–8 weeks" and the "up to 15% of body weight" claim as live copy; both are outcome claims, flagged for Josh.',
     'Live FAQ questions were accordion titles; they are now FAQ items with the same words.',
