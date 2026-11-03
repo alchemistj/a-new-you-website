@@ -24,7 +24,7 @@ export const page: PageCopy = {
       src: 'pages/image-skincare/hero.jpg',
       alt: 'A provider in a black A New You shirt holds several A New You skincare bottles and jars',
     },
-    imagePosition: 'center 18%',
+    imagePosition: 'center 0%',
     primaryCta: booking,
   },
   sections: [
@@ -41,6 +41,7 @@ export const page: PageCopy = {
   related: ['aesthetics', 'botox'],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
+    'Design QA: hero crop moved to the top of the photo (center 0%) so the face is not cut off at the chin.',
     'H1 replaced the live "A New You Woman\'s Clinic Carries the Image Skincare Line for Your Healthiest Skin" (wrong clinic spelling, and it presents the clinic as carrying the line). New H1 is "Professional Skincare in Springfield, MO". The URL stays /image-skincare/.',
     'Title set to "Professional Skincare in Springfield, MO | A New You Women\'s Clinic". The live title was "Image Skincare - A New You Women\'s Clinic". The live page had no meta description; the description is Cindy’s first sentence (102 characters). Both of her sentences together are 188 characters.',
     'Hero subhead is Cindy’s first sentence, word for word. The next paragraph is her second sentence, word for word, with "Contact the clinic" linked to /contact/.',

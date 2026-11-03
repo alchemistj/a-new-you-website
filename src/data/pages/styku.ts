@@ -35,13 +35,6 @@ export const page: PageCopy = {
       ],
     },
     {
-      kind: 'cards',
-      cards: [
-        { title: 'Weight Loss', href: '/weight-loss/' },
-        { title: 'Memberships', href: '/subscription-plans/' },
-      ],
-    },
-    {
       kind: 'prose',
       heading: 'Assess & Stratify Health Risk',
       paragraphs: ['Body Shape Analysis. Calculate waist circumference and analyze your shape.'],
@@ -94,6 +87,7 @@ export const page: PageCopy = {
   related: ['weight-loss', 'memberships'],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
+    'Design QA: removed the top Weight Loss / Memberships link cards; the Related Services band already links both.',
     'The live page has no H1. Added the specified H1, "Styku 3D Body Scanning in Springfield, MO".',
     'Hero subhead is Cindy’s description, word for word. It is 176 characters, so the meta description uses only her opening clause (108 characters) to stay under the 170-character check.',
     'Title replaced the live "Styku 3D Body Scanner - Transforming Your Wellness Journey" (and its "precision measurements" description) with the H1 plus the clinic name. The live description promised precision.',

@@ -22,14 +22,15 @@ describe('nav.ts', () => {
     expect(nav.quickLinks.map((l) => l.href)).toEqual(['/vaginal-rejuvenation/', '/menopause/', '/weight-loss/', '/mens-health/']);
   });
 
-  it('footer company list includes Styku, professional skincare, and nutraMetrix', () => {
+  it('footer company list includes professional skincare and nutraMetrix', () => {
     const labels = nav.footerCompanyLinks.map((l) => `${l.label} ${l.href}`);
-    expect(labels).toContain('Styku 3D Body Scan /styku/');
     expect(labels).toContain('Professional Skincare /image-skincare/');
     expect(labels).toContain('nutraMetrix /nutrametrix/');
     const biote = nav.footerCompanyLinks.findIndex((l) => l.href === '/biote/');
     const memberships = nav.footerCompanyLinks.findIndex((l) => l.href === '/subscription-plans/');
-    const styku = nav.footerCompanyLinks.findIndex((l) => l.href === '/styku/');
-    expect(styku).toBeGreaterThan(Math.max(biote, memberships));
+    const skincare = nav.footerCompanyLinks.findIndex((l) => l.href === '/image-skincare/');
+    expect(skincare).toBeGreaterThan(Math.max(biote, memberships));
+    // Styku is a service page, so it is listed under Services, not Company.
+    expect(nav.footerCompanyLinks.some((l) => l.href === '/styku/')).toBe(false);
   });
 });

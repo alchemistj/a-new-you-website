@@ -42,7 +42,6 @@ export const serviceLabels: Record<string, string> = {
 export const footerCompanyLinks: NavLink[] = [
   { label: 'Biote', href: '/biote/' },
   { label: 'Memberships', href: '/subscription-plans/' },
-  { label: 'Styku 3D Body Scan', href: '/styku/' },
   { label: 'Professional Skincare', href: '/image-skincare/' },
   { label: 'nutraMetrix', href: '/nutrametrix/' },
   { label: 'Financing', href: '/financing/' },
