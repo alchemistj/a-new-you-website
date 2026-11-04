@@ -30,8 +30,8 @@ const posts = files.map(parse);
 const routes = new Set(posts.map((p) => `/${p.slug}/`));
 
 describe('blog content', () => {
-  it('has all 45 posts', () => {
-    expect(posts).toHaveLength(45);
+  it('has all 45 migrated posts (posts written after launch have no oldUrl)', () => {
+    expect(posts.filter((p) => p.front.oldUrl)).toHaveLength(45);
   });
 
   it.each(posts.map((p) => [p.slug, p] as const))('%s has title, description and pubDate', (_slug, p) => {
@@ -104,7 +104,7 @@ describe('blog redirects', () => {
   const redirects: { from: string; to: string }[] = JSON.parse(readFileSync(join(ROOT, 'src/data/redirects-blog.json'), 'utf8'));
 
   it('redirects exactly the posts whose slug changed (the rest keep their live URL)', () => {
-    for (const p of posts) {
+    for (const p of posts.filter((x) => x.front.oldUrl)) {
       const old = JSON.parse(p.front.oldUrl);
       const hit = redirects.find((r) => r.from === old);
       if (old === `/${p.slug}/`) expect(hit, p.slug).toBeUndefined();

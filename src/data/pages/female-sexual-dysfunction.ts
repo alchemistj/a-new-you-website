@@ -57,12 +57,6 @@ export const page: PageCopy = {
       ],
     },
     {
-      kind: 'video',
-      provider: 'youtube',
-      videoId: 'VhBl3dHT5SY',
-      title: 'Female Sexual Dysfunction Disorder',
-    },
-    {
       kind: 'prose',
       paragraphs: [
         'Sexual dysfunction includes pain during intercourse, involuntary painful contraction (spasm) of the muscles around the vagina, and lack of interest in (desire for) sex and problems with arousal or orgasm. For a sexual dysfunction disorder to be diagnosed, these problems must cause distress to the woman.',
@@ -126,6 +120,7 @@ export const page: PageCopy = {
   related: ['vaginal-wellness', 'menopause', 'perimenopause'],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
+    'Removed the YouTube video VhBl3dHT5SY: it is an ElementsKit (WordPress plugin) promo video left over from the theme template, not a clinic video.',
     'Typo fix: "Disfunction" to "Dysfunction" in the H1. The old slug /female-sexual-disfunction-disorder/ is kept as an oldUrl.',
     'Removed duplicates: the first "Physical conditions..." bullet appeared twice on the live page and is kept once; "A New You Women’s Clinic A New You Women’s Clinic" in the closing paragraph is kept once.',
     'Added Cindy\'s Vaginal Wellness Consultation & Evaluation concerns that are sexual-health or intimacy concerns, word for word (Painful sex, Discomfort with intimacy, Decreased sensation, Sexual-health changes, Low desire). Her other concerns in that list are on the vaginal-wellness page.',

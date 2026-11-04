@@ -52,16 +52,11 @@ export const page: PageCopy = {
         },
       ],
     },
-    {
-      kind: 'video',
-      provider: 'youtube',
-      videoId: 'VhBl3dHT5SY',
-      title: 'A New You Women’s Clinic FAQ video',
-    },
     { kind: 'cta', heading: 'Schedule an Appointment' },
   ],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
+    'Removed the YouTube video VhBl3dHT5SY: it is an ElementsKit (WordPress plugin) promo video left over from the theme template, not a clinic video.',
     'Title and description were wrong (hormone pellets for women). Rewritten: title "FAQs in Springfield, MO | A New You Women\'s Clinic"; description lists only the four questions that are on the page.',
     'Typo fixes: H1 "Want Know More About Weight Loss" to "Want to Know More About Weight Loss"; question "What is cryolipolisis ?" to "What is cryolipolysis ?".',
     'Insurance FAQ kept word for word: "We DO NOT TAKE INSURANCE".',

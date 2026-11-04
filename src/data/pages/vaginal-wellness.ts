@@ -183,12 +183,10 @@ export const page: PageCopy = {
     },
     {
       kind: 'prose',
-      heading: 'How Much Does Feminine Rejuvenation Cost?',
+      heading: 'Custom Plans That Fit Your Body and Your Budget',
       paragraphs: [
-        'Custom Plans That Fit Your Body and Your Budget',
         'Women often tell us: “I wish I had done this sooner.”',
         'Because this isn’t just about solving a problem. After your evaluation, care may help with ease, joy, and intimacy.',
-        'Most personalized treatment plans range from $1,500 to $3,500, depending on the number of sessions and technologies used. Payment plans are available.',
       ],
     },
     {
@@ -272,6 +270,7 @@ export const page: PageCopy = {
   related: ['female-sexual-dysfunction', 'menopause', 'perimenopause'],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Rogersville'],
   changes: [
+    '4 Nov 2026, Cindy: leave pricing off this page for now. Removed the $1,500 to $3,500 range and "Payment plans are available."; the cost heading became the existing live subheading "Custom Plans That Fit Your Body and Your Budget".',
     'Design QA: removed the link-less overview cards of Cindy service names; the same names head the grouped Cindy lists below.',
     'Removed every ThermiVa mention: the whole "ThermiVa vs. EmpowerRF" section (heading, "What’s the difference?", the intro line, the comparison table and the closing sentence "While both are non-invasive options...").',
     'Removed the retired in-office tightening section (heading, "Convenient, discreet, in-office procedures with no downtime", the sentence that described EmpowerRF treatments, its four bullets, and "You can start feeling better...without surgery or shame.").',
