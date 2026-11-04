@@ -120,7 +120,7 @@ export const page: PageCopy = {
         'Provider oversight',
         'Regular check-ins',
         'Body-composition and weight monitoring',
-        'Annual laboratory testing',
+        'Includes one standard weight-loss monitoring laboratory panel per consecutive 12-month membership period, when clinically indicated.',
         'Lipotropic injections',
         'Education and support',
         'Ongoing medical management',
@@ -291,6 +291,7 @@ export const page: PageCopy = {
   related: ['semaglutide', 'menopause', 'mens-health'],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
+    '4 Nov 2026, Cindy: "Annual laboratory testing" replaced with her Weight Loss Membership lab wording, word for word.',
     'Added the homepage "Pounds Lost With A New You" stat (1,805 lbs, from the live homepage counter) directly before "Medical Weight Loss, Personalized for Women" (moved up from before "Real Women. Real Results.") at Josh\'s request. The number counts up from 0 on scroll.',
     'Design QA: removed the link-less overview cards of Cindy service names; the same names head the grouped Cindy lists below.',
     'Added Cindy\'s Medically Managed Weight Loss & Metabolic Health section word for word: category heading as a cards overview, then Medical Weight-Loss Evaluation, GLP-1 Medical Weight Management (medication options and concerns), Oral Weight-Management Medications, Weight Loss Membership (Includes and Concerns/goals) and Metabolic & Insulin-Resistance Evaluation. Her all-caps heading is set in title case. Her "Women & Men" wording is kept in the heading.',

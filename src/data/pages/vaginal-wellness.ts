@@ -13,7 +13,7 @@ export const page: PageCopy = {
   },
   hero: {
     h1: 'Vaginal & Pelvic-Floor Wellness in Springfield, MO',
-    subhead: 'Non-surgical care for leakage, laxity, dryness and intimacy concerns.',
+    subhead: 'Personalized care for bladder leakage, vaginal dryness, laxity and intimacy concerns',
     image: {
       src: 'pages/vaginal-wellness/hero.jpg',
       alt: 'Three women in black scrubs stand smiling in front of a brick and stone building',
@@ -29,7 +29,7 @@ export const page: PageCopy = {
       kind: 'prose',
       paragraphs: [
         'At A New You Women’s Clinic in Springfield, Missouri, vaginal and pelvic-floor wellness begins with a personal consultation. Our EmpowerRF platform includes VTone, FormaV, and Morpheus8V. Your provider evaluates your concerns and recommends an individualized treatment plan, including which treatment, if any, is appropriate for you.',
-        'Many women notice vaginal laxity, leaking or dryness after childbirth or menopause. Depending on your evaluation, treatments such as VTone, FormaV or Morpheus8V may help.',
+        'If you’re noticing bladder leakage, vaginal dryness or a feeling of vaginal looseness, we begin with an evaluation of your symptoms, vaginal tissue health and pelvic-floor function. Together, we’ll discuss appropriate care options based on your needs and goals.',
       ],
     },
     {
@@ -187,6 +187,7 @@ export const page: PageCopy = {
       paragraphs: [
         'Women often tell us: “I wish I had done this sooner.”',
         'Because this isn’t just about solving a problem. After your evaluation, care may help with ease, joy, and intimacy.',
+        'Treatment recommendations and pricing are individualized based on your evaluation, the services selected and the number of sessions recommended. We’ll review your proposed treatment plan and its cost with you before you decide to proceed.',
       ],
     },
     {
@@ -253,7 +254,7 @@ export const page: PageCopy = {
         {
           q: 'Can treatment help with vaginal looseness?',
           a: [
-            'It may. Your provider will evaluate your concerns and explain which treatment, if any, is appropriate for you. Results vary.',
+            'A feeling of vaginal looseness can have different causes. Your provider will evaluate your concerns and discuss which options, if any, are appropriate for you, including their potential benefits, limitations and risks. Recommendations are individualized, and results vary.',
           ],
         },
       ],
@@ -270,6 +271,7 @@ export const page: PageCopy = {
   related: ['female-sexual-dysfunction', 'menopause', 'perimenopause'],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Rogersville'],
   changes: [
+    '4 Nov 2026, Cindy approved via review doc (all word for word): hero subhead, the evaluation-focused sentence after her intro (replaces draft B; device descriptions stay in their own sections), the FAQ answer on vaginal looseness, and the individualized-pricing sentence in the Custom Plans section. Earlier DRAFT notes are superseded.',
     '4 Nov 2026, Cindy: leave pricing off this page for now. Removed the $1,500 to $3,500 range and "Payment plans are available."; the cost heading became the existing live subheading "Custom Plans That Fit Your Body and Your Budget".',
     'Design QA: removed the link-less overview cards of Cindy service names; the same names head the grouped Cindy lists below.',
     'Removed every ThermiVa mention: the whole "ThermiVa vs. EmpowerRF" section (heading, "What’s the difference?", the intro line, the comparison table and the closing sentence "While both are non-invasive options...").',

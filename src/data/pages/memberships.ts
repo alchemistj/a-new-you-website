@@ -36,8 +36,8 @@ export const page: PageCopy = {
       kind: 'prose',
       heading: 'How Membership Works',
       paragraphs: [
-        'Our medical memberships include a primary baseline laboratory panel along with routine monitoring appropriate to the care being provided. These labs establish safety, guide treatment decisions, and allow for adjustments over time.',
-        'If additional or expanded testing is clinically indicated based on symptoms or response to treatment, those labs may be recommended and are billed separately.',
+        'Our medical memberships include the standard laboratory testing described under each plan. Your provider determines which tests are appropriate and when they are needed to guide your care. Additional laboratory panels beyond your plan’s included allowance, or expanded testing outside its standard panels, are billed separately.',
+        'The initial or annual panel counts toward your membership’s laboratory allowance. Follow-up panels are tailored to the care being monitored. Total Wellness has one combined laboratory allowance for hormone and weight-loss care.',
         'All treatment plans are individualized. No two patients follow the same protocol.',
       ],
     },
@@ -74,7 +74,7 @@ export const page: PageCopy = {
         'Initial medical evaluation',
         'Ongoing provider oversight and follow-up visits',
         'Weight and body composition monitoring',
-        'Primary labs and routine monitoring',
+        'Includes one standard weight-loss monitoring laboratory panel per consecutive 12-month membership period, when clinically indicated.',
         'Clinical decision-making and adjustments',
       ],
       outro:
@@ -86,7 +86,7 @@ export const page: PageCopy = {
       intro:
         'The Hormone Optimization Membership supports provider-guided therapy for both women and men experiencing symptoms related to hormonal imbalance. Care is guided by laboratory analysis, symptom tracking, and clinical response. Includes:',
       items: [
-        'Primary hormone laboratory testing and routine monitoring',
+        'Includes up to four standard hormone-monitoring laboratory panels per consecutive 12-month membership period, generally scheduled quarterly according to your treatment plan.',
         'Ongoing hormone level tracking when on therapy',
         'Provider interpretation and dosing adjustments',
         'Follow-up visits and structured medical management',
@@ -107,18 +107,19 @@ export const page: PageCopy = {
       items: [
         'Ongoing provider access with scheduled and as-needed visits',
         'Personalized medical treatment planning',
-        'Primary laboratory panel and routine monitoring',
+        'Includes up to four standard monitoring laboratory panels per consecutive 12-month membership period, coordinated for your hormone and weight-loss care.',
         'Laboratory interpretation and medical decision-making',
         'Clinical oversight and adjustments over time',
       ],
       outro:
-        'Does not include: Medications, supplements, in-office procedures, or expanded laboratory testing beyond the included monitoring panel. Member Benefit: 15% off products',
+        'Does not include: Medications, supplements, in-office procedures, additional laboratory panels beyond the included annual allowance, and expanded testing outside the plan’s standard panels. Member Benefit: 15% off products',
     },
     { kind: 'cta', heading: 'Schedule an Appointment' },
   ],
   related: ['weight-loss', 'menopause', 'aesthetics'],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
+    '4 Nov 2026, Cindy (review doc), word for word: new laboratory intro and allowance note in How Membership Works; per-plan lab allowances (Weight Loss 1 panel, Hormone Optimization up to 4, Total Wellness up to 4 combined per 12-month period); Total Wellness lab exclusion updated. The four held memberships stay held.',
     'Design QA: the live "Member Benefits" list (10% off services and products, upgrade option) belongs to the Hormone Optimization Membership; moved it back directly under that plan and labelled it, so it does not read as a Total Wellness perk.',
     '3 Nov 2026, Cindy: removed the legacy subscription offers and their annual and non-member comparisons. Hormone Replacement Therapy Subscription Plan ($200/month) including the "Medication" line and its pricing. Weight Loss Subscription Plans: Semaglutide $333, Bella Plus $309.75, Olympia $337.75, including "includes medication" lines. Aesthetic Services Subscription Plan ($150/month: quarterly Botox, monthly Hydrafacial, annual filler) and its pricing. The earlier note that those prices were kept despite bad math is superseded; the offers are gone, not corrected.',
     '3 Nov 2026: the three core memberships are Weight Loss Membership $99/month, Hormone Optimization Membership $99/month, and Total Wellness Membership $149/month, with Cindy\'s focus sentences on the cards. "$75 setup fee and a three-month minimum commitment" is on the Weight Loss Membership only.',
