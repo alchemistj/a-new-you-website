@@ -1,13 +1,11 @@
 ---
 // Trust bar directly under the hero (Rule 9). Credentials come from the brief only; no star
-// ratings or review counts. One line on desktop: credentials, serving line, one call link.
+// ratings or review counts. One line on desktop: award, founder, pounds lost, one call link. (Destination clinic: no service-area towns.)
 // Phones get two short lines: name, then the call link.
 import { Image } from 'astro:assets';
-import { site, cityConfig, awards } from '../data/site';
+import { site, awards, poundsLost } from '../data/site';
 import torchColor from '../assets/brand/torch-award-color.webp';
 
-const area = cityConfig.serviceArea;
-const areaText = `${area.slice(0, -1).join(', ')} & ${area[area.length - 1]}`;
 ---
 
 <section class="trust-bar" aria-label="About the clinic">
@@ -20,7 +18,7 @@ const areaText = `${area.slice(0, -1).join(', ')} & ${area[area.length - 1]}`;
     <span class="dot md-only" aria-hidden="true">&middot;</span>
     <span class="strong">{site.founder.name}</span>
     <span class="dot md-only" aria-hidden="true">&middot;</span>
-    <span class="md-only">Serving {areaText}</span>
+    <span class="md-only">{poundsLost} lbs lost with A New You</span>
     <span class="dot md-only" aria-hidden="true">&middot;</span>
     <a class="trust-phone" href={site.phone.tel}>
       Call&nbsp;<span class="md:hidden">{site.founder.shortName}</span><span class="hidden md:inline">{site.phone.display}</span>

@@ -1,4 +1,5 @@
 import type { PageCopy } from '../../types/page';
+import { poundsLost } from '../site';
 
 export const page: PageCopy = {
   slug: 'home',
@@ -40,7 +41,7 @@ export const page: PageCopy = {
       kind: 'stat',
       id: 'pounds-lost',
       heading: 'Pounds Lost With A New You',
-      value: '1,805',
+      value: poundsLost,
       unit: 'lbs',
     },
     {

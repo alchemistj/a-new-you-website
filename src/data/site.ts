@@ -4,6 +4,9 @@
 import type { ImageRef } from '../types/page';
 
 /** Awards shown first in the trust bar and in the footer. Set `image` to the official logo later. */
+/** Pounds lost by patients (live homepage counter). Shown in the trust bar; update with the homepage stat. */
+export const poundsLost = '1,805';
+
 export const awards: { label: string; image?: ImageRef }[] = [
   { label: '2026 BBB Torch Award for Ethics Winner' },
 ];
