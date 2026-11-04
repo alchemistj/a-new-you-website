@@ -2,7 +2,8 @@
 // Renders a page's sections in order and applies the page-level bands:
 //  - photo sections alternate right, left, right... (Rule 4.2)
 //  - Related band goes before the first FAQ (or before the final CTA when there is no FAQ) (Rule 4.3)
-//  - service area, then the last `cta` section as the final band, always last (Rule 4.3)
+//  - the last `cta` section as the final band, always last (Rule 4.3). No service-area band:
+//    A New You is a destination clinic (Josh, 4 Nov 2026).
 import type { PageCopy, Section } from '../../types/page';
 import ProseSection from './ProseSection.astro';
 import ListSection from './ListSection.astro';
@@ -18,7 +19,6 @@ import CtaBand from './CtaBand.astro';
 import RelatedBand from './RelatedBand.astro';
 import CindyGroup from './CindyGroup.astro';
 import Tone from './Tone.astro';
-import ServiceAreaSection from './ServiceAreaSection.astro';
 import { getPublishedPage } from '../../lib/pages';
 import { labelForSlug } from '../../lib/nav';
 
@@ -107,5 +107,4 @@ const relatedAt = firstFaq >= 0 ? firstFaq : blocks.length;
   })
 }
 {relatedAt >= blocks.length && <RelatedBand items={related} />}
-<ServiceAreaSection areas={page.serviceArea ?? []} />
 {finalCta && finalCta.kind === 'cta' && <CtaBand {...finalCta} />}
