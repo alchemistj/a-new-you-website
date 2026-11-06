@@ -20,11 +20,13 @@ const ORDER = [
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 // Copy strings may carry [label](/path/) links and <strong>/<em>/<a href> (see src/lib/rich.ts).
+// Root-relative links become full URLs so they work inside a Google Doc.
+const abs = (href) => (href.startsWith('/') ? `https://anewyouwoman.com${href}` : href);
 const rich = (s) => {
   let h = esc(s);
   h = h.replace(/&lt;(\/?)(strong|em|b|i)&gt;/g, '<$1$2>');
-  h = h.replace(/&lt;a href="([^"]+)"&gt;(.*?)&lt;\/a&gt;/g, (_, href, t) => `<a href="${href}">${t}</a>`);
-  h = h.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, t, href) => `<a href="${href}">${t}</a>`);
+  h = h.replace(/&lt;a href="([^"]+)"&gt;(.*?)&lt;\/a&gt;/g, (_, href, t) => `<a href="${abs(href)}">${t}</a>`);
+  h = h.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, t, href) => `<a href="${abs(href)}">${t}</a>`);
   return h;
 };
 const p = (s) => `<p>${rich(s)}</p>`;
