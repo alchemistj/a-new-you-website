@@ -7,8 +7,10 @@ Rule 14.1).
 
 ## Reference to copy
 
-Copy the pattern from **`alchemistj/sra-roofing-website`** (main). If you can't clone it,
-stop and say so in your report. Don't write a tracker from scratch.
+Copy the pattern from **`alchemistj/sra-roofing-website`** (main). A copy of every file you
+need is in this repo at `docs/reference/sra-journey-tracking/`, with `.txt` added to each
+name; see the README there. Use that copy, not a tracker written from scratch. Delete the
+folder once the port is done.
 
 - `middleware.ts`: sets the `ff_vid` and `ff_sid` cookies, the bot marker and the entry tags
 - `src/lib/measurement/` (`bootstrap.ts`, `collect.ts`, `contract.ts`, `engaged.ts`,

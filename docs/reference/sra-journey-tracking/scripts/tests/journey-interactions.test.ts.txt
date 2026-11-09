@@ -1,0 +1,296 @@
+import assert from "node:assert/strict";
+import { afterEach, describe, it } from "node:test";
+import { Window } from "happy-dom";
+import { captureAttributionOnEntry, clearStoredAttributionForTests } from "../../src/lib/attribution/storage.ts";
+import { submitLead } from "../../src/lib/leads/submitLead.ts";
+import {
+  resetJourneyTrackingForTests,
+  startJourneyTracking,
+} from "../../src/lib/measurement/bootstrap.ts";
+import { resetMeasurementForTests } from "../../src/lib/measurement/collect.ts";
+import {
+  getServiceTitanSchedulerStatus,
+  openServiceTitanScheduler,
+  resetServiceTitanSchedulerForTests,
+} from "../../src/lib/servicetitan/scheduler.ts";
+
+const VISITOR = "visitor-11111111-1111-4111-8111-111111111111";
+const SESSION = "session-11111111-1111-4111-8111-111111111111";
+const SUBMISSION = "11111111-1111-4111-8111-111111111111";
+const PHONE_TEXT = "(417) 840-6715";
+
+type BeaconCall = { url: string; body: string };
+
+const originalFetch = globalThis.fetch;
+
+function installWindow(url: string) {
+  const win = new Window({
+    url,
+    settings: {
+      disableJavaScriptFileLoading: true,
+      handleDisabledFileLoadingAsSuccess: true,
+    },
+  });
+  Object.defineProperty(win.document, "readyState", {
+    configurable: true,
+    get: () => "complete",
+  });
+  Object.defineProperty(win.document, "referrer", {
+    configurable: true,
+    get: () => "",
+  });
+  const calls: BeaconCall[] = [];
+  win.navigator.sendBeacon = (beaconUrl: string | URL, data?: BodyInit | null) => {
+    const call: BeaconCall = {
+      url: String(beaconUrl),
+      body: typeof data === "string" ? data : "",
+    };
+    calls.push(call);
+    if (data instanceof Blob) {
+      void data.text().then((body) => {
+        call.body = body;
+      });
+    }
+    return true;
+  };
+  (globalThis as typeof globalThis & { window: Window }).window = win;
+  (globalThis as typeof globalThis & { document: Document }).document =
+    win.document as unknown as Document;
+  win.localStorage.setItem("sra_visitor_id_v1", VISITOR);
+  win.sessionStorage.setItem("sra_session_id_v1", SESSION);
+  win.document.cookie = `ff_vid=${VISITOR}`;
+  win.document.cookie = `ff_sid=${SESSION}`;
+  return { win, calls };
+}
+
+async function beaconBodies(calls: BeaconCall[]): Promise<Array<Record<string, unknown>>> {
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  return calls.map((call) => JSON.parse(call.body) as Record<string, unknown>);
+}
+
+function leadInput(overrides: { duplicate?: boolean } = {}) {
+  return {
+    name: "Jane Homeowner",
+    phone: "4175550100",
+    email: "jane@example.com",
+    message: "Leak near the chimney.",
+    page_path: "/contact/",
+    form_source: "contact_form",
+    client_submission_id: SUBMISSION,
+    form_started_at: Date.now() - 4_000,
+    website: "",
+    attribution: {
+      landing_page: "/contact/",
+      referrer: null,
+      utm_source: null,
+      utm_medium: null,
+      utm_campaign: null,
+      utm_term: null,
+      utm_content: null,
+      utm_id: null,
+      gclid: null,
+      gbraid: null,
+      wbraid: null,
+      msclkid: null,
+      fbclid: null,
+      captured_at: "2026-11-03T12:00:00.000Z",
+      visitor_id: VISITOR,
+      session_id: SESSION,
+    },
+    ...overrides,
+  };
+}
+
+afterEach(() => {
+  resetJourneyTrackingForTests();
+  resetMeasurementForTests();
+  resetServiceTitanSchedulerForTests();
+  clearStoredAttributionForTests();
+  globalThis.fetch = originalFetch;
+  delete (globalThis as { window?: unknown }).window;
+  delete (globalThis as { document?: unknown }).document;
+});
+
+describe("journey click to call", () => {
+  it("sends one click_to_call per tel tap and never the phone number", async () => {
+    const { win, calls } = installWindow("https://www.sraroofs.com/contact/");
+    captureAttributionOnEntry("/contact/", "");
+    startJourneyTracking();
+    await beaconBodies(calls);
+    calls.length = 0;
+
+    const link = win.document.createElement("a");
+    link.href = "tel:+14178406715";
+    link.setAttribute("data-ff-phone-location", "mobile-bottom-bar");
+    link.textContent = PHONE_TEXT;
+    win.document.body.appendChild(link);
+    link.click();
+    link.click();
+
+    const button = win.document.createElement("button");
+    button.textContent = PHONE_TEXT;
+    win.document.body.appendChild(button);
+    button.click();
+
+    const bodies = (await beaconBodies(calls)).filter((body) => body.event === "click_to_call");
+    assert.equal(bodies.length, 2);
+    assert.equal(bodies[0]?.ctaLocation, "mobile-bottom-bar");
+    assert.equal(bodies[0]?.visitorId, VISITOR);
+    assert.equal(bodies[0]?.sessionId, SESSION);
+    assert.equal(bodies[0]?.currentPath, "/contact/");
+    assert.equal(bodies[0]?.landingPath, "/contact/");
+    assert.equal(bodies[0]?.conversionKind, "interaction");
+    assert.equal(calls[0]?.url, "/api/site-events/");
+    assert.doesNotMatch(JSON.stringify(bodies), /840-6715|8406715|\+14178406715|Jane/);
+    assert.equal("engaged" in (bodies[0] ?? {}), false);
+  });
+
+  it("uses blog-article-body when a tel link inside the article has no location", async () => {
+    const { win, calls } = installWindow("https://www.sraroofs.com/blog/storm-damage/");
+    captureAttributionOnEntry("/blog/storm-damage/", "");
+    startJourneyTracking();
+    await beaconBodies(calls);
+    calls.length = 0;
+
+    const article = win.document.createElement("div");
+    article.className = "blog-article-body";
+    const link = win.document.createElement("a");
+    link.href = "tel:4178406715";
+    const label = win.document.createElement("span");
+    label.textContent = PHONE_TEXT;
+    link.appendChild(label);
+    article.appendChild(link);
+    win.document.body.appendChild(article);
+    label.click();
+
+    const plain = win.document.createElement("a");
+    plain.href = "tel:+14178406715";
+    plain.textContent = "Call";
+    win.document.body.appendChild(plain);
+    plain.click();
+
+    const bodies = (await beaconBodies(calls)).filter((body) => body.event === "click_to_call");
+    assert.equal(bodies.length, 2);
+    assert.equal(bodies[0]?.ctaLocation, "blog-article-body");
+    assert.equal(bodies[1]?.ctaLocation, null);
+    assert.doesNotMatch(JSON.stringify(bodies), /8406715|840-6715/);
+  });
+});
+
+describe("journey scheduler opened", () => {
+  it("counts one open after show() resolves and none before AppReady or on rejection", async () => {
+    const { win, calls } = installWindow("https://www.sraroofs.com/springfield/roof-repair/");
+    captureAttributionOnEntry("/springfield/roof-repair/", "");
+    startJourneyTracking();
+    await beaconBodies(calls);
+    calls.length = 0;
+
+    const schedulerWindow = win as unknown as {
+      _scheduler?: { show: () => Promise<void> };
+      seEventListeners?: Record<string, Array<() => void>>;
+      __sraServiceTitanAppReady?: boolean;
+    };
+
+    openServiceTitanScheduler();
+    await beaconBodies(calls);
+    assert.equal(calls.length, 0);
+
+    schedulerWindow._scheduler = {
+      show: () => Promise.reject(new Error("_scheduler: Could not find iframe.")),
+    };
+    schedulerWindow.__sraServiceTitanAppReady = true;
+    openServiceTitanScheduler();
+    await beaconBodies(calls);
+    assert.equal(calls.length, 0);
+    assert.equal(getServiceTitanSchedulerStatus(), "unavailable");
+
+    resetServiceTitanSchedulerForTests();
+    resetJourneyTrackingForTests();
+    resetMeasurementForTests();
+    startJourneyTracking();
+    await beaconBodies(calls);
+    calls.length = 0;
+
+    openServiceTitanScheduler();
+    await beaconBodies(calls);
+    assert.equal(calls.length, 0);
+
+    schedulerWindow._scheduler = {
+      show: () => Promise.resolve(),
+    };
+    const listeners = schedulerWindow.seEventListeners?.AppReady ?? [];
+    assert.ok(listeners.length > 0);
+    for (const listener of listeners) listener();
+    const bodies = (await beaconBodies(calls)).filter((body) => body.event === "scheduler_opened");
+    assert.equal(bodies.length, 1);
+    assert.equal(bodies[0]?.visitorId, VISITOR);
+    assert.equal(bodies[0]?.sessionId, SESSION);
+    assert.equal(bodies[0]?.currentPath, "/springfield/roof-repair/");
+    assert.equal(bodies[0]?.landingPath, "/springfield/roof-repair/");
+    assert.equal(bodies[0]?.citySlug, "springfield");
+    assert.equal(bodies[0]?.serviceSlug, "roof-repair");
+    assert.equal(bodies[0]?.conversionKind, "booking_open");
+    assert.equal("engaged" in (bodies[0] ?? {}), false);
+    assert.equal(calls[0]?.url, "/api/site-events/");
+  });
+});
+
+describe("journey lead form success", () => {
+  it("sends one lead_form_success for an accepted lead, including a duplicate, and none on failure", async () => {
+    const { win } = installWindow("https://www.sraroofs.com/contact/");
+    Object.defineProperty(win.navigator, "sendBeacon", { configurable: true, value: undefined });
+    const events: Array<Record<string, unknown>> = [];
+    globalThis.fetch = (async (url, init) => {
+      if (String(url).includes("/api/site-events")) {
+        events.push(JSON.parse(String(init?.body)) as Record<string, unknown>);
+        return new Response("{}", { status: 202 });
+      }
+      const duplicate = events.length > 0;
+      return new Response(
+        JSON.stringify({
+          ok: true,
+          id: "22222222-2222-4222-8222-222222222222",
+          duplicate,
+          conversionEligible: !duplicate,
+        }),
+        { status: 200, headers: { "content-type": "application/json" } },
+      );
+    }) as typeof fetch;
+
+    const accepted = await submitLead(leadInput());
+    assert.equal(accepted.ok, true);
+    assert.equal(events.length, 1);
+    assert.equal(events[0]?.event, "lead_form_success");
+    assert.equal(events[0]?.submissionId, SUBMISSION);
+    assert.equal(events[0]?.visitorId, VISITOR);
+    assert.equal(events[0]?.sessionId, SESSION);
+    assert.equal(events[0]?.currentPath, "/contact/");
+    assert.equal(events[0]?.formSource, "contact_form");
+    assert.equal(events[0]?.conversionKind, "accepted_lead");
+    assert.equal("engaged" in (events[0] ?? {}), false);
+    assert.doesNotMatch(JSON.stringify(events[0]), /jane@example.com|Jane Homeowner|4175550100|chimney/);
+
+    const duplicate = await submitLead(leadInput());
+    assert.equal(duplicate.ok, true);
+    assert.equal(duplicate.ok && duplicate.duplicate, true);
+    assert.equal(events.length, 2);
+    assert.equal(events[1]?.event, "lead_form_success");
+    assert.equal(events[1]?.submissionId, SUBMISSION);
+    assert.notEqual(events[1]?.eventId, events[0]?.eventId);
+
+    events.length = 0;
+    globalThis.fetch = (async (url) => {
+      if (String(url).includes("/api/site-events")) {
+        events.push({ event: "lead_form_success" });
+        return new Response("{}", { status: 202 });
+      }
+      return new Response(JSON.stringify({ ok: false, code: "storage_unavailable" }), {
+        status: 503,
+        headers: { "content-type": "application/json" },
+      });
+    }) as typeof fetch;
+    const failed = await submitLead(leadInput());
+    assert.equal(failed.ok, false);
+    assert.equal(events.length, 0);
+  });
+});

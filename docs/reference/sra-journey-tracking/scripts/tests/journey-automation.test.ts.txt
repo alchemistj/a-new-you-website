@@ -1,0 +1,98 @@
+import assert from "node:assert/strict";
+import { afterEach, describe, it } from "node:test";
+import { Window } from "happy-dom";
+import { automationDetected, journeyAutomationForPayload } from "../../src/lib/measurement/automation.ts";
+import { collectPageView, resetMeasurementForTests } from "../../src/lib/measurement/collect.ts";
+
+const VISITOR = "visitor-11111111-1111-4111-8111-111111111111";
+const SESSION = "session-11111111-1111-4111-8111-111111111111";
+
+afterEach(() => {
+  resetMeasurementForTests();
+  delete (globalThis as { window?: unknown }).window;
+  delete (globalThis as { document?: unknown }).document;
+});
+
+describe("journey automation flag", () => {
+  it("matches webdriver, HeadlessChrome, and an empty language list", () => {
+    assert.equal(automationDetected({ webdriver: true, userAgent: "Mozilla/5.0", languages: ["en-US"] }), true);
+    assert.equal(
+      automationDetected({
+        webdriver: false,
+        userAgent: "Mozilla/5.0 HeadlessChrome/120.0.0.0",
+        languages: ["en-US"],
+      }),
+      true,
+    );
+    assert.equal(automationDetected({ webdriver: false, userAgent: "Mozilla/5.0", languages: [] }), true);
+    assert.equal(
+      automationDetected({ webdriver: false, userAgent: "Mozilla/5.0 Chrome/120.0.0.0", languages: ["en-US"] }),
+      false,
+    );
+    assert.equal(automationDetected(null), false);
+    assert.equal(journeyAutomationForPayload({ webdriver: true, languages: ["en-US"] }), true);
+    assert.equal(
+      journeyAutomationForPayload({ webdriver: false, userAgent: "Mozilla/5.0 Chrome/120.0.0.0", languages: ["en-US"] }),
+      false,
+    );
+  });
+
+  it("sends automation true for each rule and omits the key otherwise", async () => {
+    const cases: Array<{ webdriver: boolean; userAgent: string; languages: string[]; sent: boolean }> = [
+      { webdriver: false, userAgent: "Mozilla/5.0 Chrome/120.0.0.0", languages: ["en-US"], sent: false },
+      { webdriver: true, userAgent: "Mozilla/5.0 Chrome/120.0.0.0", languages: ["en-US"], sent: true },
+      {
+        webdriver: false,
+        userAgent: "Mozilla/5.0 HeadlessChrome/120.0.0.0",
+        languages: ["en-US"],
+        sent: true,
+      },
+      { webdriver: false, userAgent: "Mozilla/5.0 Chrome/120.0.0.0", languages: [], sent: true },
+    ];
+
+    for (const testCase of cases) {
+      resetMeasurementForTests();
+      const win = new Window({
+        url: "https://www.sraroofs.com/contact/",
+        settings: { disableJavaScriptFileLoading: true, handleDisabledFileLoadingAsSuccess: true },
+      });
+      Object.defineProperty(win.navigator, "webdriver", {
+        configurable: true,
+        get: () => testCase.webdriver,
+      });
+      Object.defineProperty(win.navigator, "userAgent", {
+        configurable: true,
+        get: () => testCase.userAgent,
+      });
+      Object.defineProperty(win.navigator, "languages", {
+        configurable: true,
+        get: () => testCase.languages,
+      });
+      win.document.cookie = `ff_vid=${VISITOR}`;
+      win.document.cookie = `ff_sid=${SESSION}`;
+      (globalThis as typeof globalThis & { window: Window }).window = win;
+      (globalThis as typeof globalThis & { document: Document }).document = win.document as unknown as Document;
+
+      let body = "";
+      const result = await collectPageView({
+        sendBeacon: (_url, data) => {
+          if (typeof data === "string") body = data;
+          else if (data instanceof Blob) {
+            void data.text().then((text) => {
+              body = text;
+            });
+          }
+          return true;
+        },
+      });
+      await new Promise((resolve) => setTimeout(resolve, 0));
+      assert.equal(result.sent, true);
+      const payload = JSON.parse(body) as Record<string, unknown>;
+      assert.equal(payload.visitorId, VISITOR);
+      assert.equal(payload.sessionId, SESSION);
+      if (testCase.sent) assert.equal(payload.automation, true);
+      else assert.equal("automation" in payload, false);
+      assert.equal(JSON.stringify(payload).includes('"automation":false'), false);
+    }
+  });
+});

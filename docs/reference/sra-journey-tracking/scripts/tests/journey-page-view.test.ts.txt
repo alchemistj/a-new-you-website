@@ -1,0 +1,494 @@
+import assert from "node:assert/strict";
+import { afterEach, describe, it } from "node:test";
+import { Window } from "happy-dom";
+import {
+  captureAttributionOnEntry,
+  clearStoredAttributionForTests,
+} from "../../src/lib/attribution/storage.ts";
+import {
+  resetJourneyTrackingForTests,
+  startJourneyTracking,
+} from "../../src/lib/measurement/bootstrap.ts";
+import {
+  beginPageEngagement,
+  buildMeasurementEvent,
+  collectMeasurementEvent,
+  collectPageView,
+  pageViewEventIdFor,
+  resetMeasurementForTests,
+  resolveSessionChannel,
+  shouldSkipLocalJourneySend,
+  signalPageEngaged,
+} from "../../src/lib/measurement/collect.ts";
+import {
+  JOURNEY_ENGAGED_ENABLED,
+  SESSION_CHANNEL_KEY,
+  deriveSessionChannel,
+  stripUnknownAndPii,
+} from "../../src/lib/measurement/contract.ts";
+import { watchEngagedSignal } from "../../src/lib/measurement/engaged.ts";
+
+const VISITOR = "visitor-11111111-1111-4111-8111-111111111111";
+const SESSION = "session-11111111-1111-4111-8111-111111111111";
+
+type BeaconCall = { url: string; body: string };
+
+function memoryStorage(): Storage {
+  const map = new Map<string, string>();
+  return {
+    get length() {
+      return map.size;
+    },
+    clear() {
+      map.clear();
+    },
+    getItem(key: string) {
+      return map.has(key) ? map.get(key)! : null;
+    },
+    key(index: number) {
+      return [...map.keys()][index] ?? null;
+    },
+    removeItem(key: string) {
+      map.delete(key);
+    },
+    setItem(key: string, value: string) {
+      map.set(key, value);
+    },
+  };
+}
+
+function setIdentityCookies(win: Window, visitor = VISITOR, session = SESSION) {
+  win.document.cookie = `ff_vid=${visitor}`;
+  win.document.cookie = `ff_sid=${session}`;
+}
+
+function installWindow(url: string, referrer: string) {
+  const win = new Window({
+    url,
+    settings: {
+      disableJavaScriptFileLoading: true,
+      handleDisabledFileLoadingAsSuccess: true,
+    },
+  });
+  Object.defineProperty(win.document, "referrer", {
+    configurable: true,
+    get: () => referrer,
+  });
+  Object.defineProperty(win.document, "readyState", {
+    configurable: true,
+    get: () => "complete",
+  });
+  const calls: BeaconCall[] = [];
+  win.navigator.sendBeacon = (beaconUrl: string | URL, data?: BodyInit | null) => {
+    calls.push({
+      url: String(beaconUrl),
+      body: typeof data === "string" ? data : data instanceof Blob ? "" : "",
+    });
+    if (data instanceof Blob) {
+      const pending = data.text().then((body) => {
+        calls[calls.length - 1]!.body = body;
+      });
+      void pending;
+    }
+    return true;
+  };
+  (globalThis as typeof globalThis & { window: Window }).window = win;
+  (globalThis as typeof globalThis & { document: Document }).document =
+    win.document as unknown as Document;
+  return { win, calls };
+}
+
+async function beaconBodies(calls: BeaconCall[]): Promise<Array<Record<string, unknown>>> {
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  return calls.map((call) => JSON.parse(call.body) as Record<string, unknown>);
+}
+
+afterEach(() => {
+  resetJourneyTrackingForTests();
+  resetMeasurementForTests();
+  clearStoredAttributionForTests();
+  delete (globalThis as { window?: unknown }).window;
+  delete (globalThis as { document?: unknown }).document;
+});
+
+describe("journey page view", () => {
+  it("sends one page_view per load and one more after a bfcache restore", async () => {
+    const { win, calls } = installWindow(
+      "https://www.sraroofs.com/springfield/roof-repair/?utm_source=google&utm_medium=organic&email=jane@example.com",
+      "https://www.google.com/search?q=roof+repair",
+    );
+    win.localStorage.setItem("sra_visitor_id_v1", "visitor-should-not-be-sent");
+    win.sessionStorage.setItem("sra_session_id_v1", "session-should-not-be-sent");
+    setIdentityCookies(win);
+    captureAttributionOnEntry("/springfield/roof-repair/", "?utm_source=google&utm_medium=organic&email=jane@example.com");
+
+    startJourneyTracking();
+    startJourneyTracking();
+    let bodies = await beaconBodies(calls);
+    assert.equal(bodies.length, 1);
+    assert.equal(bodies[0]?.event, "page_view");
+    assert.equal(bodies[0]?.visitorId, VISITOR);
+    assert.equal(bodies[0]?.sessionId, SESSION);
+    assert.equal(bodies[0]?.currentPath, "/springfield/roof-repair/");
+    assert.equal(bodies[0]?.landingPath, "/springfield/roof-repair/");
+    assert.equal(bodies[0]?.channel, "organic");
+    assert.equal(bodies[0]?.citySlug, "springfield");
+    assert.equal(bodies[0]?.serviceSlug, "roof-repair");
+    assert.equal(bodies[0]?.environment, "production");
+    assert.equal(bodies[0]?.siteKey, "sra-roofing-website");
+    assert.equal("engaged" in (bodies[0] ?? {}), false);
+    assert.doesNotMatch(JSON.stringify(bodies[0]), /jane@example.com|Jane|417/);
+    assert.equal(calls[0]?.url, "/api/site-events/");
+
+    // happy-dom aliases PageTransitionEvent to Event, which drops `persisted`.
+    const restore = new win.Event("pageshow");
+    Object.defineProperty(restore, "persisted", { value: true });
+    win.dispatchEvent(restore);
+    bodies = await beaconBodies(calls);
+    assert.equal(bodies.length, 2);
+    assert.equal(bodies[1]?.event, "page_view");
+    assert.equal(bodies[1]?.sessionId, SESSION);
+    assert.notEqual(bodies[1]?.eventId, bodies[0]?.eventId);
+    assert.deepEqual(JSON.parse(win.sessionStorage.getItem(SESSION_CHANNEL_KEY) ?? ""), {
+      sid: SESSION,
+      channel: "organic",
+    });
+  });
+
+  it("keeps the first page's channel for the rest of the session", async () => {
+    const { win, calls } = installWindow(
+      "https://www.sraroofs.com/springfield/roof-repair/",
+      "https://www.google.com/",
+    );
+    setIdentityCookies(win);
+    captureAttributionOnEntry("/springfield/roof-repair/", "");
+    await collectPageView();
+
+    resetJourneyTrackingForTests();
+    win.happyDOM.setURL("https://www.sraroofs.com/contact/");
+    Object.defineProperty(win.document, "referrer", {
+      configurable: true,
+      get: () => "https://www.sraroofs.com/springfield/roof-repair/",
+    });
+    captureAttributionOnEntry("/contact/", "");
+    await collectPageView();
+
+    const bodies = await beaconBodies(calls);
+    assert.equal(bodies.length, 2);
+    assert.equal(bodies[0]?.channel, "organic");
+    assert.equal(bodies[1]?.channel, "organic");
+    assert.equal(bodies[1]?.currentPath, "/contact/");
+    assert.equal(bodies[0]?.sessionId, bodies[1]?.sessionId);
+  });
+
+  it("uses fetch keepalive when sendBeacon is unavailable", async () => {
+    const { win } = installWindow("https://www.sraroofs.com/", "");
+    const sent: Array<{ keepalive?: boolean; body: string }> = [];
+    Object.defineProperty(win.navigator, "sendBeacon", {
+      configurable: true,
+      value: undefined,
+    });
+    const fetchImpl = (async (_url: string | URL | Request, init?: RequestInit) => {
+      sent.push({ keepalive: init?.keepalive, body: String(init?.body) });
+      return new Response("{}", { status: 202 });
+    }) as typeof fetch;
+    setIdentityCookies(win);
+    captureAttributionOnEntry("/", "");
+    const result = await collectPageView({ fetchImpl, sendBeacon: undefined });
+    assert.equal(result.sent, true);
+    assert.equal(sent[0]?.keepalive, true);
+    assert.equal(JSON.parse(sent[0]?.body ?? "{}").event, "page_view");
+  });
+});
+
+describe("journey channel", () => {
+  it("classifies paid, organic, referral, and direct, and never treats this site as a referral", () => {
+    assert.equal(deriveSessionChannel({ gclid: "click" }), "paid");
+    assert.equal(deriveSessionChannel({ gbraid: "g" }), "paid");
+    assert.equal(deriveSessionChannel({ wbraid: "w" }), "paid");
+    assert.equal(deriveSessionChannel({ msclkid: "m" }), "paid");
+    assert.equal(deriveSessionChannel({ utmMedium: "cpc" }), "paid");
+    assert.equal(deriveSessionChannel({ utmMedium: "ppc" }), "paid");
+    assert.equal(deriveSessionChannel({ utmMedium: "paid" }), "paid");
+    assert.equal(deriveSessionChannel({ utmMedium: "paidsearch" }), "paid");
+    assert.equal(deriveSessionChannel({ utmMedium: "cpm" }), "direct");
+    assert.equal(deriveSessionChannel({ referrer: "https://www.google.com/search?q=roof" }), "organic");
+    assert.equal(deriveSessionChannel({ referrer: "https://www.bing.com/search" }), "organic");
+    assert.equal(deriveSessionChannel({ referrer: "https://search.yahoo.com/search" }), "organic");
+    assert.equal(deriveSessionChannel({ referrer: "https://duckduckgo.com/" }), "organic");
+    assert.equal(deriveSessionChannel({ referrer: "https://www.ecosia.org/search" }), "organic");
+    assert.equal(deriveSessionChannel({ referrer: "https://news.example.com/story" }), "referral");
+    assert.equal(deriveSessionChannel({ referrer: null }), "direct");
+    assert.equal(
+      deriveSessionChannel({
+        referrer: "https://www.sraroofs.com/contact/",
+        currentHost: "www.sraroofs.com",
+      }),
+      "direct",
+    );
+    assert.equal(
+      deriveSessionChannel({
+        referrer: "https://sraroofs.com/",
+        currentHost: "www.sraroofs.com",
+      }),
+      "direct",
+    );
+    assert.equal(
+      deriveSessionChannel({
+        referrer: "https://sra-roofing-website-git-preview.vercel.app/contact/",
+        currentHost: "sra-roofing-website-git-preview.vercel.app",
+      }),
+      "direct",
+    );
+  });
+
+  it("stores the first channel and ignores a later paid click", () => {
+    const storage = memoryStorage();
+    assert.equal(
+      resolveSessionChannel({ referrer: "https://www.google.com/", sessionId: SESSION }, storage),
+      "organic",
+    );
+    assert.equal(
+      resolveSessionChannel(
+        { gclid: "later-click", referrer: "https://news.example.com/a", sessionId: SESSION },
+        storage,
+      ),
+      "organic",
+    );
+    assert.deepEqual(JSON.parse(storage.getItem(SESSION_CHANNEL_KEY) ?? ""), {
+      sid: SESSION,
+      channel: "organic",
+    });
+  });
+
+  it("decides the channel again when ff_sid changes", () => {
+    const storage = memoryStorage();
+    assert.equal(
+      resolveSessionChannel({ referrer: "https://www.google.com/", sessionId: SESSION }, storage),
+      "organic",
+    );
+    const nextSession = "ffsid-22222222-2222-4222-8222-222222222222";
+    assert.equal(
+      resolveSessionChannel(
+        { gclid: "new-click", referrer: "https://news.example.com/a", sessionId: nextSession },
+        storage,
+      ),
+      "paid",
+    );
+    assert.deepEqual(JSON.parse(storage.getItem(SESSION_CHANNEL_KEY) ?? ""), {
+      sid: nextSession,
+      channel: "paid",
+    });
+  });
+
+  it("does not send from localhost or 127.0.0.1 unless the test flag is set", async () => {
+    assert.equal(shouldSkipLocalJourneySend("127.0.0.1"), true);
+    assert.equal(shouldSkipLocalJourneySend("localhost"), true);
+    assert.equal(shouldSkipLocalJourneySend("www.sraroofs.com"), false);
+
+    const blocked = installWindow("http://127.0.0.1:4173/contact/", "");
+    setIdentityCookies(blocked.win);
+    const skipped = await collectPageView();
+    assert.equal(skipped.sent, false);
+    assert.equal(skipped.ok, true);
+    if (skipped.ok) assert.equal(skipped.skipped, "local_development");
+    assert.equal(blocked.calls.length, 0);
+
+    blocked.win.__SRA_JOURNEY_SEND_LOCAL__ = true;
+    resetMeasurementForTests();
+    const sent = await collectPageView();
+    assert.equal(sent.sent, true);
+    const bodies = await beaconBodies(blocked.calls);
+    assert.equal(bodies.length, 1);
+    assert.equal(blocked.calls[0]?.url, "/api/site-events/");
+  });
+
+  it("swallows a rejected send instead of rejecting the caller", async () => {
+    const { win } = installWindow("https://www.sraroofs.com/contact/", "");
+    setIdentityCookies(win);
+    const result = await collectPageView({
+      sendBeacon: () => {
+        throw new Error("beacon failed");
+      },
+      fetchImpl: () => Promise.reject(new Error("ECONNREFUSED")),
+    });
+    assert.equal(result.ok, false);
+    assert.equal(result.sent, false);
+    if (!result.ok) assert.equal(result.error, "network_error");
+  });
+});
+
+describe("journey identity cookies", () => {
+  it("still sends the stored SRA ids when ff_vid or ff_sid is missing or invalid", async () => {
+    const { win, calls } = installWindow("https://www.sraroofs.com/contact/", "https://www.google.com/");
+    win.localStorage.setItem("sra_visitor_id_v1", VISITOR);
+    win.sessionStorage.setItem("sra_session_id_v1", SESSION);
+    captureAttributionOnEntry("/contact/", "");
+    const missing = await collectPageView();
+    assert.equal(missing.ok, true);
+    assert.equal(missing.sent, true);
+    let bodies = await beaconBodies(calls);
+    assert.equal(bodies.length, 1);
+    assert.equal(bodies[0]?.visitorId, VISITOR);
+    assert.equal(bodies[0]?.sessionId, SESSION);
+    assert.equal(bodies[0]?.event, "page_view");
+    assert.deepEqual(JSON.parse(win.sessionStorage.getItem(SESSION_CHANNEL_KEY) ?? ""), {
+      sid: SESSION,
+      channel: "organic",
+    });
+
+    resetMeasurementForTests();
+    const otherVisitor = "ffvid-22222222-2222-4222-8222-222222222222";
+    win.document.cookie = `ff_vid=${otherVisitor}`;
+    const oneCookie = await collectPageView();
+    assert.equal(oneCookie.sent, true);
+    bodies = await beaconBodies(calls);
+    assert.equal(bodies.length, 2);
+    assert.equal(bodies[1]?.visitorId, VISITOR);
+    assert.equal(bodies[1]?.sessionId, SESSION);
+    assert.notEqual(bodies[1]?.visitorId, otherVisitor);
+
+    resetMeasurementForTests();
+    const cookieSession = "ffsid-33333333-3333-4333-8333-333333333333";
+    win.document.cookie = "ff_vid=no";
+    win.document.cookie = `ff_sid=${cookieSession}`;
+    const invalid = await collectPageView();
+    assert.equal(invalid.sent, true);
+    bodies = await beaconBodies(calls);
+    assert.equal(bodies[2]?.visitorId, VISITOR);
+    assert.equal(bodies[2]?.sessionId, SESSION);
+    assert.notEqual(bodies[2]?.sessionId, cookieSession);
+  });
+});
+
+describe("journey engaged flag", () => {
+  it("sends one follow-up per page view and reuses that page view's eventId", async () => {
+    assert.equal(JOURNEY_ENGAGED_ENABLED, true);
+    const { win, calls } = installWindow("https://www.sraroofs.com/contact/", "");
+    setIdentityCookies(win);
+    captureAttributionOnEntry("/contact/", "");
+    const token = beginPageEngagement("/contact/");
+    const first = await collectPageView();
+    assert.equal(first.sent, true);
+    let bodies = await beaconBodies(calls);
+    assert.equal(bodies.length, 1);
+    assert.equal("engaged" in (bodies[0] ?? {}), false);
+    const eventId = String(bodies[0]?.eventId);
+    assert.equal(signalPageEngaged(token), "follow-up");
+    assert.equal(pageViewEventIdFor(token), eventId);
+
+    const followUp = await collectMeasurementEvent(
+      buildMeasurementEvent("page_view", {
+        currentPath: "/contact/",
+        engaged: true,
+        eventId,
+      }),
+    );
+    assert.equal(followUp.sent, true);
+    bodies = await beaconBodies(calls);
+    assert.equal(bodies.length, 2);
+    assert.equal(bodies[1]?.event, "page_view");
+    assert.equal(bodies[1]?.eventId, eventId);
+    assert.equal(bodies[1]?.engaged, true);
+    assert.equal(signalPageEngaged(token), "already");
+
+    const again = await collectMeasurementEvent(
+      buildMeasurementEvent("page_view", {
+        currentPath: "/contact/",
+        engaged: true,
+        eventId,
+      }),
+    );
+    assert.equal(again.sent, false);
+    if (again.ok) assert.equal(again.duplicate, true);
+    bodies = await beaconBodies(calls);
+    assert.equal(bodies.length, 2);
+    assert.equal(bodies.filter((body) => body.engaged === true).length, 1);
+  });
+
+  it("puts engaged on the original page view when the signal arrives first", async () => {
+    const { win, calls } = installWindow("https://www.sraroofs.com/contact/", "");
+    setIdentityCookies(win);
+    captureAttributionOnEntry("/contact/", "");
+    const token = beginPageEngagement("/contact/");
+    assert.equal(signalPageEngaged(token), "pending");
+    const result = await collectPageView();
+    assert.equal(result.sent, true);
+    const bodies = await beaconBodies(calls);
+    assert.equal(bodies.length, 1);
+    assert.equal(bodies[0]?.engaged, true);
+    assert.equal(signalPageEngaged(token), "already");
+  });
+
+  it("keeps a pending engaged mark for the page view when another event is built first", async () => {
+    const { win, calls } = installWindow("https://www.sraroofs.com/contact/", "");
+    setIdentityCookies(win);
+    captureAttributionOnEntry("/contact/", "");
+    const token = beginPageEngagement("/contact/");
+    assert.equal(signalPageEngaged(token), "pending");
+    const call = buildMeasurementEvent("click_to_call", { currentPath: "/contact/" });
+    assert.equal("engaged" in call, false);
+    const result = await collectPageView();
+    assert.equal(result.sent, true);
+    const bodies = await beaconBodies(calls);
+    assert.equal(bodies.length, 1);
+    assert.equal(bodies[0]?.event, "page_view");
+    assert.equal(bodies[0]?.engaged, true);
+  });
+
+  it("does nothing before scroll, tap, key press, or 10 visible seconds", () => {
+    const { win } = installWindow("https://www.sraroofs.com/contact/", "");
+    const calls: string[] = [];
+    const scheduled: Array<{ fn: () => void; ms: number }> = [];
+    win.setTimeout = ((fn: TimerHandler, ms?: number) => {
+      if (typeof fn === "function") scheduled.push({ fn, ms: ms ?? 0 });
+      return 1;
+    }) as typeof win.setTimeout;
+    win.clearTimeout = (() => {
+      scheduled.length = 0;
+    }) as typeof win.clearTimeout;
+
+    const stop = watchEngagedSignal(() => {
+      calls.push("engaged");
+    });
+    assert.equal(calls.length, 0);
+    assert.equal(scheduled.length, 1);
+    assert.equal(scheduled[0]?.ms, 10_000);
+
+    scheduled[0]?.fn();
+    assert.deepEqual(calls, ["engaged"]);
+    assert.equal(scheduled.length, 0);
+    stop();
+
+    const taps: string[] = [];
+    const stopTap = watchEngagedSignal(() => {
+      taps.push("engaged");
+    });
+    assert.equal(taps.length, 0);
+    win.dispatchEvent(new win.Event("scroll"));
+    win.dispatchEvent(new win.Event("pointerdown"));
+    win.dispatchEvent(new win.Event("touchstart"));
+    win.dispatchEvent(new win.KeyboardEvent("keydown", { key: "Tab" }));
+    assert.deepEqual(taps, ["engaged"]);
+    stopTap();
+
+    const stripped = stripUnknownAndPii({
+      event: "page_view",
+      currentPath: "/contact/",
+      email: "jane@example.com",
+      phone: "(417) 555-0100",
+      name: "Jane Homeowner",
+      engaged: true,
+      automation: false,
+      message: "Leak near the chimney.",
+    });
+    assert.equal(stripped.engaged, true);
+    assert.equal("automation" in stripped, false);
+    assert.equal("email" in stripped, false);
+    assert.equal("phone" in stripped, false);
+    assert.equal("name" in stripped, false);
+    const dropped = stripUnknownAndPii({ event: "page_view", engaged: false });
+    assert.equal("engaged" in dropped, false);
+    assert.doesNotMatch(JSON.stringify(stripped), /jane@example.com|555-0100|Jane Homeowner|chimney/);
+  });
+});
