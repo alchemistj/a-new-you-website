@@ -25,6 +25,7 @@ const badges = Object.entries(badgeFiles)
     return { meta: m.default, alt: badgeAlt[base] ?? base.replace(/[-_]+/g, ' ').trim() };
   });
 const year = new Date().getFullYear();
+const contactAt = (href: string) => (href === '/contact/' ? { 'data-ff-cta-location': 'footer' } : {});
 ---
 
 <footer class="site-footer">
@@ -35,7 +36,7 @@ const year = new Date().getFullYear();
         {site.address.street}<br />
         {site.address.city}, {site.address.region} {site.address.postalCode}
       </address>
-      <p><a href={site.phone.tel}>{site.phone.display}</a></p>
+      <p><a href={site.phone.tel} data-ff-cta-location="footer">{site.phone.display}</a></p>
       <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
       <p class="footer-social">
         <a href={site.social.instagram} rel="noopener" target="_blank">Instagram</a>
@@ -55,13 +56,13 @@ const year = new Date().getFullYear();
       nav.footerServices.length > 0 && (
         <nav class="footer-col" aria-label="Services">
           <p class="footer-title">Services</p>
-          <ul>{nav.footerServices.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+          <ul>{nav.footerServices.map((l) => <li><a href={l.href} {...contactAt(l.href)}>{l.label}</a></li>)}</ul>
         </nav>
       )
     }
     <nav class="footer-col" aria-label="Company">
       <p class="footer-title">Company</p>
-      <ul>{nav.footerCompany.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+      <ul>{nav.footerCompany.map((l) => <li><a href={l.href} {...contactAt(l.href)}>{l.label}</a></li>)}</ul>
     </nav>
   </div>
   <div class="container footer-base">

@@ -1,4 +1,4 @@
-import { JOURNEY_ENGAGED_ENABLED } from "./contract";
+import { JOURNEY_ENGAGED_ENABLED } from './contract';
 
 const VISIBLE_MS = 10_000;
 
@@ -9,7 +9,7 @@ const VISIBLE_MS = 10_000;
  */
 export function watchEngagedSignal(onEngaged: () => void = () => undefined): () => void {
   if (!JOURNEY_ENGAGED_ENABLED) return () => undefined;
-  if (typeof window === "undefined" || typeof document === "undefined") return () => undefined;
+  if (typeof window === 'undefined' || typeof document === 'undefined') return () => undefined;
   return attachEngagedListeners(onEngaged);
 }
 
@@ -27,7 +27,7 @@ function attachEngagedListeners(onEngaged: () => void): () => void {
   };
 
   const armVisible = () => {
-    if (done || document.visibilityState === "hidden") return;
+    if (done || document.visibilityState === 'hidden') return;
     visibleStarted = Date.now();
     const remaining = Math.max(0, VISIBLE_MS - visibleMs);
     timer = window.setTimeout(finish, remaining);
@@ -41,23 +41,23 @@ function attachEngagedListeners(onEngaged: () => void): () => void {
   };
 
   const onVisibility = () => {
-    if (document.visibilityState === "hidden") pauseVisible();
+    if (document.visibilityState === 'hidden') pauseVisible();
     else armVisible();
   };
 
-  window.addEventListener("scroll", finish, { passive: true });
-  window.addEventListener("pointerdown", finish, { passive: true });
-  window.addEventListener("touchstart", finish, { passive: true });
-  window.addEventListener("keydown", finish);
-  document.addEventListener("visibilitychange", onVisibility);
+  window.addEventListener('scroll', finish, { passive: true });
+  window.addEventListener('pointerdown', finish, { passive: true });
+  window.addEventListener('touchstart', finish, { passive: true });
+  window.addEventListener('keydown', finish);
+  document.addEventListener('visibilitychange', onVisibility);
   armVisible();
 
   function cleanup() {
-    window.removeEventListener("scroll", finish);
-    window.removeEventListener("pointerdown", finish);
-    window.removeEventListener("touchstart", finish);
-    window.removeEventListener("keydown", finish);
-    document.removeEventListener("visibilitychange", onVisibility);
+    window.removeEventListener('scroll', finish);
+    window.removeEventListener('pointerdown', finish);
+    window.removeEventListener('touchstart', finish);
+    window.removeEventListener('keydown', finish);
+    document.removeEventListener('visibilitychange', onVisibility);
     window.clearTimeout(timer);
   }
 

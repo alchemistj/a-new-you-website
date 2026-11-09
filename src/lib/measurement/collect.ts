@@ -1,4 +1,4 @@
-import { getStoredAttribution } from "../attribution/storage";
+import { getStoredAttribution } from '../attribution/storage';
 import {
   JOURNEY_ENGAGED_ENABLED,
   MEASUREMENT_CONTRACT_VERSION,
@@ -21,12 +21,12 @@ import {
   type MeasurementEnvironment,
   type MeasurementEvent,
   type MeasurementEventName,
-} from "./contract";
-import { journeyAutomationForPayload } from "./automation";
-import { readCookieValue, resolveJourneyIds } from "./identity";
+} from './contract';
+import { journeyAutomationForPayload } from './automation';
+import { readCookieValue, resolveJourneyIds } from './identity';
 
 const OPAQUE_ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._:-]{7,127}$/;
-const EVENT_SENT_PREFIX = "sra_measure_event_v1:";
+const EVENT_SENT_PREFIX = 'ff_measure_event_v1:';
 
 export type CollectInit = {
   endpoint?: string;
@@ -79,17 +79,17 @@ export function pageViewEventIdFor(token: number): string | null {
  * Mark this page view engaged. Returns "follow-up" when the page view already
  * left without the flag, so the caller sends one follow-up event.
  */
-export function signalPageEngaged(token: number): "follow-up" | "pending" | "already" {
+export function signalPageEngaged(token: number): 'follow-up' | 'pending' | 'already' {
   if (!pageEngagement || pageEngagement.token !== token || pageEngagement.sent) {
-    return "already";
+    return 'already';
   }
   if (!pageEngagement.pageViewSent) {
     pageEngagement.pending = true;
-    return "pending";
+    return 'pending';
   }
   pageEngagement.sent = true;
   pageEngagement.pending = false;
-  return "follow-up";
+  return 'follow-up';
 }
 
 function consumeEngaged(path: string): true | undefined {
@@ -109,22 +109,22 @@ function claimExplicitEngaged(path: string): void {
 }
 
 function eventSentKey(eventId: string, engaged: boolean): string {
-  return `${EVENT_SENT_PREFIX}${eventId}${engaged ? ":engaged" : ""}`;
+  return `${EVENT_SENT_PREFIX}${eventId}${engaged ? ':engaged' : ''}`;
 }
 
 function randomEventId(): string {
   try {
-    if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
-      return `sra-${crypto.randomUUID()}`;
+    if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
+      return `ff-${crypto.randomUUID()}`;
     }
   } catch {
     // Older browsers fall through to an opaque id.
   }
-  return `sra-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
+  return `ff-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
 }
 
 function sessionStorageOrUndefined(): Storage | undefined {
-  if (typeof window === "undefined") return undefined;
+  if (typeof window === 'undefined') return undefined;
   try {
     return window.sessionStorage;
   } catch {
@@ -133,12 +133,12 @@ function sessionStorageOrUndefined(): Storage | undefined {
 }
 
 function textOrNull(value: string | null | undefined): string | null {
-  const trimmed = value?.trim() || "";
+  const trimmed = value?.trim() || '';
   return trimmed ? trimmed : null;
 }
 
 function opaqueId(value: string | null | undefined): string | null {
-  const trimmed = value?.trim() || "";
+  const trimmed = value?.trim() || '';
   if (!trimmed || !OPAQUE_ID_PATTERN.test(trimmed)) return null;
   return trimmed.slice(0, 128);
 }
@@ -174,17 +174,17 @@ export function resolveSessionChannel(
   return channel;
 }
 
-function deviceClass(): MeasurementEvent["device"] {
-  if (typeof window === "undefined") return "unknown";
+function deviceClass(): MeasurementEvent['device'] {
+  if (typeof window === 'undefined') return 'unknown';
   const width = window.innerWidth;
-  if (!Number.isFinite(width) || width <= 0) return "unknown";
-  return width < 768 ? "mobile" : "desktop";
+  if (!Number.isFinite(width) || width <= 0) return 'unknown';
+  return width < 768 ? 'mobile' : 'desktop';
 }
 
 function domSlug(name: string): string | null {
-  if (typeof document === "undefined" || typeof document.querySelector !== "function") return null;
-  const value = document.querySelector(`[data-sra-${name}]`)?.getAttribute(`data-sra-${name}`);
-  const trimmed = value?.trim().toLowerCase() || "";
+  if (typeof document === 'undefined' || typeof document.querySelector !== 'function') return null;
+  const value = document.querySelector(`[data-ff-${name}]`)?.getAttribute(`data-ff-${name}`);
+  const trimmed = value?.trim().toLowerCase() || '';
   return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(trimmed) ? trimmed : null;
 }
 
@@ -200,8 +200,8 @@ export function buildMeasurementEvent(
   });
   const currentPath =
     pathOnly(extra.currentPath) ||
-    pathOnly(typeof window !== "undefined" ? window.location.pathname : "/") ||
-    "/";
+    pathOnly(typeof window !== 'undefined' ? window.location.pathname : '/') ||
+    '/';
   const pathContext = contextFromPath(currentPath);
   const gclid = textOrNull(extra.gclid ?? stored.gclid);
   const gbraid = textOrNull(extra.gbraid ?? stored.gbraid);
@@ -211,7 +211,7 @@ export function buildMeasurementEvent(
   const referrer = referrerWithoutQuery(extra.referrer ?? stored.referrer);
   const currentHost =
     init.currentHost ||
-    (typeof window !== "undefined" ? window.location.hostname : "");
+    (typeof window !== 'undefined' ? window.location.hostname : '');
   const visitorId = identity.visitorId;
   const sessionId = identity.sessionId;
   const channel =
@@ -224,7 +224,7 @@ export function buildMeasurementEvent(
   // Only a page_view takes a pending engaged mark, so an early tap-to-call
   // can't carry it away from the page view it belongs to.
   const engaged =
-    extra.engaged === true || (event === "page_view" && consumeEngaged(currentPath))
+    extra.engaged === true || (event === 'page_view' && consumeEngaged(currentPath))
       ? true
       : undefined;
   if (extra.engaged === true) claimExplicitEngaged(currentPath);
@@ -233,7 +233,7 @@ export function buildMeasurementEvent(
 
   const entry = validEntry(
     extra.entry ??
-      readCookieValue(typeof document !== "undefined" ? document.cookie : null, FF_ENTRY_COOKIE),
+      readCookieValue(typeof document !== 'undefined' ? document.cookie : null, FF_ENTRY_COOKIE),
   );
 
   const built: MeasurementEvent = {
@@ -257,14 +257,14 @@ export function buildMeasurementEvent(
     msclkid,
     channel,
     device: extra.device ?? deviceClass(),
-    citySlug: extra.citySlug ?? domSlug("city-slug") ?? pathContext.citySlug,
-    serviceSlug: extra.serviceSlug ?? domSlug("service-slug") ?? pathContext.serviceSlug,
+    citySlug: extra.citySlug ?? domSlug('city-slug') ?? pathContext.citySlug,
+    serviceSlug: extra.serviceSlug ?? domSlug('service-slug') ?? pathContext.serviceSlug,
     ctaLocation: textOrNull(extra.ctaLocation),
     formSource: textOrNull(extra.formSource),
-    submissionId: event === "lead_form_success" ? opaqueId(extra.submissionId) : null,
+    submissionId: null,
     conversionKind: extra.conversionKind ?? conversionKindForEvent(event),
     attributionConfidence:
-      extra.attributionConfidence ?? (clickObserved ? "observed" : "inferred"),
+      extra.attributionConfidence ?? (clickObserved ? 'observed' : 'inferred'),
     ...(engaged ? { engaged: true as const } : {}),
     ...(automation ? { automation: true as const } : {}),
     ...(entry ? { entry } : {}),
@@ -274,7 +274,7 @@ export function buildMeasurementEvent(
 
 function endpointFor(candidate?: string): string {
   const endpoint = candidate?.trim() || MEASUREMENT_INGEST_PATH;
-  return endpoint.startsWith("/") && !endpoint.startsWith("//")
+  return endpoint.startsWith('/') && !endpoint.startsWith('//')
     ? endpoint
     : MEASUREMENT_INGEST_PATH;
 }
@@ -282,18 +282,18 @@ function endpointFor(candidate?: string): string {
 function journeyHostname(init: CollectInit): string {
   const fromInit = init.currentHost?.trim();
   if (fromInit) return fromInit;
-  if (typeof window !== "undefined") return window.location.hostname;
-  return "";
+  if (typeof window !== 'undefined') return window.location.hostname;
+  return '';
 }
 
-/** Local preview has no collector. Tests opt in with `__SRA_JOURNEY_SEND_LOCAL__`. */
+/** Local preview has no collector. Tests opt in with `__FF_JOURNEY_SEND_LOCAL__`. */
 export function shouldSkipLocalJourneySend(hostname: string): boolean {
   const host = hostname.trim().toLowerCase();
   const local =
-    host === "localhost" || host === "127.0.0.1" || host === "[::1]" || host === "::1";
+    host === 'localhost' || host === '127.0.0.1' || host === '[::1]' || host === '::1';
   if (!local) return false;
-  if (typeof window === "undefined") return true;
-  return window.__SRA_JOURNEY_SEND_LOCAL__ !== true;
+  if (typeof window === 'undefined') return true;
+  return window.__FF_JOURNEY_SEND_LOCAL__ !== true;
 }
 
 async function postBody(
@@ -302,17 +302,17 @@ async function postBody(
   init: CollectInit,
 ): Promise<boolean> {
   const nav =
-    typeof window !== "undefined" && window.navigator
+    typeof window !== 'undefined' && window.navigator
       ? window.navigator
-      : typeof navigator !== "undefined"
+      : typeof navigator !== 'undefined'
         ? navigator
         : undefined;
   const sendBeacon = init.sendBeacon || nav?.sendBeacon?.bind(nav);
   if (sendBeacon) {
     try {
       const payload =
-        typeof Blob !== "undefined"
-          ? new Blob([body], { type: "text/plain;charset=UTF-8" })
+        typeof Blob !== 'undefined'
+          ? new Blob([body], { type: 'text/plain;charset=UTF-8' })
           : body;
       if (sendBeacon(endpoint, payload)) return true;
     } catch {
@@ -320,12 +320,12 @@ async function postBody(
     }
   }
 
-  const fetchImpl = init.fetchImpl || (typeof fetch === "function" ? fetch : undefined);
+  const fetchImpl = init.fetchImpl || (typeof fetch === 'function' ? fetch : undefined);
   if (!fetchImpl) return false;
   try {
     const response = await fetchImpl(endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body,
       keepalive: true,
     });
@@ -340,11 +340,11 @@ export async function collectMeasurementEvent(
   init: CollectInit = {},
 ): Promise<CollectResult> {
   if (shouldSkipLocalJourneySend(journeyHostname(init))) {
-    return { ok: true, sent: false, skipped: "local_development" };
+    return { ok: true, sent: false, skipped: 'local_development' };
   }
   const payload = stripUnknownAndPii(event as unknown as Record<string, unknown>);
   if (!JOURNEY_ENGAGED_ENABLED) delete payload.engaged;
-  if (hasPiiLeak(payload)) return { ok: true, sent: false, skipped: "pii" };
+  if (hasPiiLeak(payload)) return { ok: true, sent: false, skipped: 'pii' };
   const endpoint = endpointFor(init.endpoint);
   const storage = sessionStorageOrUndefined();
   // The engaged follow-up shares its page view's eventId, so dedupe it apart.
@@ -359,7 +359,7 @@ export async function collectMeasurementEvent(
   try {
     sent = await postBody(endpoint, body, init);
   } catch {
-    sent = false;
+    // postBody already returns false; a throw still means the event was not sent.
   }
   if (sent) {
     try {
@@ -369,18 +369,18 @@ export async function collectMeasurementEvent(
     }
     return { ok: true, sent: true };
   }
-  return { ok: false, sent: false, error: "network_error" };
+  return { ok: false, sent: false, error: 'network_error' };
 }
 
 export async function collectPageView(init: CollectInit = {}): Promise<CollectResult> {
-  const path = pathOnly(typeof window !== "undefined" ? window.location.pathname : "/") || "/";
+  const path = pathOnly(typeof window !== 'undefined' ? window.location.pathname : '/') || '/';
   if (pageViewSentForLoad) {
     if (pageEngagement?.path === path) pageEngagement.pageViewSent = true;
     return { ok: true, sent: false, duplicate: true };
   }
   pageViewSentForLoad = true;
   if (pageEngagement?.path === path) pageEngagement.pageViewSent = true;
-  const event = buildMeasurementEvent("page_view", { currentPath: path }, init);
+  const event = buildMeasurementEvent('page_view', { currentPath: path }, init);
   if (pageEngagement?.path === path) pageEngagement.pageViewEventId = event.eventId;
   return collectMeasurementEvent(event, init);
 }
@@ -419,39 +419,17 @@ export function collectClickToCall(
   init: CollectInit = {},
 ): Promise<CollectResult> {
   return collectMeasurementEvent(
-    buildMeasurementEvent("click_to_call", { ctaLocation: extra.ctaLocation ?? null }, init),
+    buildMeasurementEvent('click_to_call', { ctaLocation: extra.ctaLocation ?? null }, init),
     init,
   );
 }
 
-export function collectSchedulerOpened(init: CollectInit = {}): Promise<CollectResult> {
-  return collectMeasurementEvent(buildMeasurementEvent("scheduler_opened", {}, init), init);
-}
-
-export function collectLeadFormSuccess(
-  extra: {
-    eventId?: string | null;
-    submissionId?: string | null;
-    visitorId?: string | null;
-    sessionId?: string | null;
-    formSource?: string | null;
-    currentPath?: string | null;
-  },
+export function collectContactClick(
+  extra: { ctaLocation?: string | null } = {},
   init: CollectInit = {},
 ): Promise<CollectResult> {
   return collectMeasurementEvent(
-    buildMeasurementEvent(
-      "lead_form_success",
-      {
-        eventId: extra.eventId || undefined,
-        submissionId: extra.submissionId ?? null,
-        visitorId: extra.visitorId ?? null,
-        sessionId: extra.sessionId ?? null,
-        formSource: extra.formSource ?? null,
-        currentPath: extra.currentPath || undefined,
-      },
-      init,
-    ),
+    buildMeasurementEvent('contact_click', { ctaLocation: extra.ctaLocation ?? null }, init),
     init,
   );
 }

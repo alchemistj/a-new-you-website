@@ -1,5 +1,5 @@
 const MAX_FORWARD_BODY_BYTES = 32_000;
-export const CLIENT_USER_AGENT_HEADER = "x-ff-client-user-agent";
+export const CLIENT_USER_AGENT_HEADER = 'x-ff-client-user-agent';
 export const MAX_CLIENT_USER_AGENT_CHARS = 1024;
 
 export function capClientUserAgent(value: string): string {
@@ -8,52 +8,52 @@ export function capClientUserAgent(value: string): string {
 
 /** Isolated Reports collect ingest. The browser never calls this URL. */
 export const REPORTS_MEASUREMENT_COLLECT_URL =
-  "https://ff-reports-analytics.vercel.app/api/measurement/collect";
+  'https://ff-reports-analytics.vercel.app/api/measurement/collect';
 
-export const MEASUREMENT_SITE_KEY = "sra-roofing-website";
+export const MEASUREMENT_SITE_KEY = 'a-new-you-website';
 
 export const MEASUREMENT_ACCEPTED_CONTRACT_VERSIONS = [
-  "ff-measure.v1",
-  "ff-measurement-v1",
+  'ff-measure.v1',
+  'ff-measurement-v1',
 ] as const;
 
 /** Reports rejects any other key. `engaged` and `automation` are included only when true. */
 export const MEASUREMENT_FORWARD_KEYS = [
-  "contractVersion",
-  "siteKey",
-  "environment",
-  "event",
-  "eventId",
-  "occurredAt",
-  "visitorId",
-  "sessionId",
-  "landingPath",
-  "currentPath",
-  "referrer",
-  "utmSource",
-  "utmMedium",
-  "utmCampaign",
-  "gclid",
-  "gbraid",
-  "wbraid",
-  "msclkid",
-  "channel",
-  "device",
-  "citySlug",
-  "serviceSlug",
-  "ctaLocation",
-  "formSource",
-  "submissionId",
-  "conversionKind",
-  "attributionConfidence",
-  "engaged",
-  "automation",
-  "entry",
+  'contractVersion',
+  'siteKey',
+  'environment',
+  'event',
+  'eventId',
+  'occurredAt',
+  'visitorId',
+  'sessionId',
+  'landingPath',
+  'currentPath',
+  'referrer',
+  'utmSource',
+  'utmMedium',
+  'utmCampaign',
+  'gclid',
+  'gbraid',
+  'wbraid',
+  'msclkid',
+  'channel',
+  'device',
+  'citySlug',
+  'serviceSlug',
+  'ctaLocation',
+  'formSource',
+  'submissionId',
+  'conversionKind',
+  'attributionConfidence',
+  'engaged',
+  'automation',
+  'entry',
 ] as const;
 
 const ALLOWED_KEYS = new Set<string>(MEASUREMENT_FORWARD_KEYS);
 
-export type MeasurementForwardEnvironment = "production" | "preview" | "development";
+export type MeasurementForwardEnvironment = 'production' | 'preview' | 'development';
 
 export type ForwardMeasurementResult = {
   status: number;
@@ -62,38 +62,38 @@ export type ForwardMeasurementResult = {
 };
 
 export function serializeMeasurementBody(body: unknown): string {
-  if (typeof body === "string") return body;
-  if (typeof Buffer !== "undefined" && Buffer.isBuffer(body)) {
-    return body.toString("utf8");
+  if (typeof body === 'string') return body;
+  if (typeof Buffer !== 'undefined' && Buffer.isBuffer(body)) {
+    return body.toString('utf8');
   }
-  if (body == null) return "";
-  if (typeof body === "object") return JSON.stringify(body);
+  if (body == null) return '';
+  if (typeof body === 'object') return JSON.stringify(body);
   return String(body);
 }
 
 export function measurementHeaderValue(
   value: string | string[] | undefined,
 ): string {
-  if (Array.isArray(value)) return value[0]?.trim() || "";
-  return typeof value === "string" ? value.trim() : "";
+  if (Array.isArray(value)) return value[0]?.trim() || '';
+  return typeof value === 'string' ? value.trim() : '';
 }
 
 export function environmentFromVercelEnv(
   vercelEnv: string | undefined,
 ): MeasurementForwardEnvironment {
-  if (vercelEnv === "production") return "production";
-  if (vercelEnv === "preview") return "preview";
-  return "development";
+  if (vercelEnv === 'production') return 'production';
+  if (vercelEnv === 'preview') return 'preview';
+  return 'development';
 }
 
-/** Production measurement is only the public www host. Apex and previews are not. */
-export function isProductionSraOrigin(origin: string): boolean {
+/** Production measurement is only the public apex host. www and previews are not. */
+export function isProductionSiteOrigin(origin: string): boolean {
   const trimmed = origin.trim();
   if (!trimmed) return false;
   try {
     const url = new URL(trimmed);
-    if (url.protocol !== "https:") return false;
-    return url.hostname.toLowerCase() === "www.sraroofs.com";
+    if (url.protocol !== 'https:') return false;
+    return url.hostname.toLowerCase() === 'anewyouwoman.com';
   } catch {
     return false;
   }
@@ -102,13 +102,13 @@ export function isProductionSraOrigin(origin: string): boolean {
 export function measurementCollectHealth() {
   return {
     ok: true,
-    ingest: "/api/site-events/",
+    ingest: '/api/site-events/',
     upstream: REPORTS_MEASUREMENT_COLLECT_URL,
     siteKey: MEASUREMENT_SITE_KEY,
     acceptedContractVersions: [...MEASUREMENT_ACCEPTED_CONTRACT_VERSIONS],
-    canonicalContractVersion: "ff-measure.v1",
-    methods: ["POST"],
-    originRewrite: "none",
+    canonicalContractVersion: 'ff-measure.v1',
+    methods: ['POST'],
+    originRewrite: 'none',
   };
 }
 
@@ -116,7 +116,7 @@ function jsonResult(status: number, body: unknown): ForwardMeasurementResult {
   return {
     status,
     body: JSON.stringify(body),
-    contentType: "application/json",
+    contentType: 'application/json',
   };
 }
 
@@ -125,16 +125,16 @@ function skipped(reason: string): ForwardMeasurementResult {
     ok: true,
     stored: false,
     skipped: reason,
-    originRewrite: "none",
+    originRewrite: 'none',
   });
 }
 
 function isForwardScalar(value: unknown): boolean {
   return (
     value === null ||
-    typeof value === "string" ||
-    typeof value === "number" ||
-    typeof value === "boolean"
+    typeof value === 'string' ||
+    typeof value === 'number' ||
+    typeof value === 'boolean'
   );
 }
 
@@ -147,7 +147,7 @@ export function allowlistMeasurementPayload(
     if (!Object.prototype.hasOwnProperty.call(input, key)) continue;
     const value = input[key];
     if (!isForwardScalar(value)) continue;
-    if ((key === "engaged" || key === "automation") && value !== true) continue;
+    if ((key === 'engaged' || key === 'automation') && value !== true) continue;
     out[key] = value;
   }
   return out;
@@ -156,7 +156,7 @@ export function allowlistMeasurementPayload(
 /**
  * Forward a same-origin measurement POST to Reports collect.
  * Sets `environment` from `VERCEL_ENV`. A production event is forwarded only
- * when that environment is production and the Origin host is www.sraroofs.com.
+ * when that environment is production and the Origin host is anewyouwoman.com.
  * Preview and local events are forwarded with their own environment, never
  * rewritten to production. Origin is forwarded as-is.
  */
@@ -168,25 +168,25 @@ export async function forwardMeasurementCollect(input: {
   fetchImpl?: typeof fetch;
 }): Promise<ForwardMeasurementResult> {
   const raw = serializeMeasurementBody(input.body);
-  if (Buffer.byteLength(raw, "utf8") > MAX_FORWARD_BODY_BYTES) {
-    return jsonResult(413, { error: "Payload too large" });
+  if (Buffer.byteLength(raw, 'utf8') > MAX_FORWARD_BODY_BYTES) {
+    return jsonResult(413, { error: 'Payload too large' });
   }
 
   let parsed: unknown;
   try {
     parsed = raw ? JSON.parse(raw) : null;
   } catch {
-    return jsonResult(400, { ok: false, error: "Malformed JSON body" });
+    return jsonResult(400, { ok: false, error: 'Malformed JSON body' });
   }
-  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
-    return jsonResult(400, { ok: false, error: "Malformed JSON body" });
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    return jsonResult(400, { ok: false, error: 'Malformed JSON body' });
   }
 
   const payload = allowlistMeasurementPayload(parsed as Record<string, unknown>);
   const environment = environmentFromVercelEnv(input.vercelEnv);
-  const origin = input.origin?.trim() || "";
-  if (environment === "production" && !isProductionSraOrigin(origin)) {
-    return skipped("non_production_host");
+  const origin = input.origin?.trim() || '';
+  if (environment === 'production' && !isProductionSiteOrigin(origin)) {
+    return skipped('non_production_host');
   }
 
   payload.siteKey = MEASUREMENT_SITE_KEY;
@@ -196,25 +196,25 @@ export async function forwardMeasurementCollect(input: {
   }
 
   const headers: Record<string, string> = {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   };
   if (origin) headers.Origin = origin;
-  const clientUserAgent = capClientUserAgent(input.userAgent || "");
+  const clientUserAgent = capClientUserAgent(input.userAgent || '');
   if (clientUserAgent) headers[CLIENT_USER_AGENT_HEADER] = clientUserAgent;
 
   const fetchImpl = input.fetchImpl ?? fetch;
   try {
     const response = await fetchImpl(REPORTS_MEASUREMENT_COLLECT_URL, {
-      method: "POST",
+      method: 'POST',
       headers,
       body: JSON.stringify(payload),
     });
     return {
       status: response.status,
       body: await response.text(),
-      contentType: response.headers.get("content-type") || "application/json",
+      contentType: response.headers.get('content-type') || 'application/json',
     };
   } catch {
-    return jsonResult(502, { ok: false, error: "Upstream unavailable" });
+    return jsonResult(502, { ok: false, error: 'Upstream unavailable' });
   }
 }

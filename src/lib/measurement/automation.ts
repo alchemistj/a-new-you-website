@@ -5,8 +5,8 @@ export type AutomationNavigator = {
 };
 
 function currentNavigator(): AutomationNavigator | undefined {
-  if (typeof window !== "undefined" && window.navigator) return window.navigator;
-  if (typeof navigator !== "undefined") return navigator;
+  if (typeof window !== 'undefined' && window.navigator) return window.navigator;
+  if (typeof navigator !== 'undefined') return navigator;
   return undefined;
 }
 
@@ -16,7 +16,7 @@ export function automationDetected(nav?: AutomationNavigator | null): boolean {
   if (!source) return false;
   return (
     source.webdriver === true ||
-    /HeadlessChrome/.test(source.userAgent ?? "") ||
+    /HeadlessChrome/.test(source.userAgent ?? '') ||
     source.languages?.length === 0
   );
 }

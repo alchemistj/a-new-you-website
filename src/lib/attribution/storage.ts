@@ -4,20 +4,20 @@ import {
   sanitizeAttributionSnapshot,
   type AttributionSnapshot,
   type AttributionTouch,
-} from "./allowlist";
+} from './allowlist';
 
-const STORAGE_KEY = "sra_attribution_v1";
-const VISITOR_ID_KEY = "sra_visitor_id_v1";
-const SESSION_ID_KEY = "sra_session_id_v1";
+const STORAGE_KEY = 'ff_attribution_v1';
+const VISITOR_ID_KEY = 'ff_visitor_id_v1';
+const SESSION_ID_KEY = 'ff_session_id_v1';
 const ATTRIBUTION_MAX_AGE_MS = 90 * 24 * 60 * 60 * 1000;
 
 function canUseStorage(): boolean {
-  return typeof window !== "undefined" && typeof window.localStorage !== "undefined";
+  return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
 }
 
 function randomAnonymousId(prefix: string): string {
   try {
-    if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
+    if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
       return `${prefix}-${crypto.randomUUID()}`;
     }
   } catch {
@@ -90,14 +90,14 @@ export function captureAttributionOnEntry(pathname: string, search: string): Att
   const fromQuery = extractAttributionFromSearch(search);
   const hasQuery = hasAttributionParams(search);
   const capturedAt = new Date().toISOString();
-  const localStorage = typeof window !== "undefined" ? window.localStorage : undefined;
+  const localStorage = typeof window !== 'undefined' ? window.localStorage : undefined;
   const visitorId = existing?.visitor_id ||
-    readOrCreateId(localStorage, VISITOR_ID_KEY, "visitor");
+    readOrCreateId(localStorage, VISITOR_ID_KEY, 'visitor');
   const sessionStorage =
-    typeof window !== "undefined" ? window.sessionStorage : undefined;
-  const sessionId = readOrCreateId(sessionStorage, SESSION_ID_KEY, "session");
+    typeof window !== 'undefined' ? window.sessionStorage : undefined;
+  const sessionId = readOrCreateId(sessionStorage, SESSION_ID_KEY, 'session');
   const referrer =
-    (typeof document !== "undefined" ? document.referrer || null : null) ||
+    (typeof document !== 'undefined' ? document.referrer || null : null) ||
     existing?.referrer ||
     null;
 

@@ -1,7 +1,7 @@
-export const MEASUREMENT_CONTRACT_VERSION = "ff-measure.v1";
-export const MEASUREMENT_SITE_KEY = "sra-roofing-website";
-export const MEASUREMENT_INGEST_PATH = "/api/site-events/";
-export const SESSION_CHANNEL_KEY = "sra_session_channel_v1";
+export const MEASUREMENT_CONTRACT_VERSION = 'ff-measure.v1';
+export const MEASUREMENT_SITE_KEY = 'a-new-you-website';
+export const MEASUREMENT_INGEST_PATH = '/api/site-events/';
+export const SESSION_CHANNEL_KEY = 'ff_session_channel_v1';
 
 /**
  * Engaged (first scroll, tap, key press, or 10 seconds visible) is on.
@@ -10,21 +10,20 @@ export const SESSION_CHANNEL_KEY = "sra_session_channel_v1";
 export const JOURNEY_ENGAGED_ENABLED = true;
 
 export const MEASUREMENT_EVENT_NAMES = [
-  "page_view",
-  "click_to_call",
-  "lead_form_success",
-  "scheduler_opened",
+  'page_view',
+  'click_to_call',
+  'contact_click',
 ] as const;
 
 export type MeasurementEventName = (typeof MEASUREMENT_EVENT_NAMES)[number];
-export type MeasurementChannel = "paid" | "organic" | "direct" | "referral";
-export type MeasurementEnvironment = "production" | "preview" | "development" | "test";
+export type MeasurementChannel = 'paid' | 'organic' | 'direct' | 'referral';
+export type MeasurementEnvironment = 'production' | 'preview' | 'development' | 'test';
 export type MeasurementConversionKind =
-  | "interaction"
-  | "accepted_lead"
-  | "booking_open"
-  | "booking_complete";
-export type MeasurementAttributionConfidence = "observed" | "inferred" | "unknown";
+  | 'interaction'
+  | 'accepted_lead'
+  | 'booking_open'
+  | 'booking_complete';
+export type MeasurementAttributionConfidence = 'observed' | 'inferred' | 'unknown';
 
 export type MeasurementEvent = {
   contractVersion: typeof MEASUREMENT_CONTRACT_VERSION;
@@ -46,7 +45,7 @@ export type MeasurementEvent = {
   wbraid: string | null;
   msclkid: string | null;
   channel: MeasurementChannel;
-  device: "mobile" | "desktop" | "unknown";
+  device: 'mobile' | 'desktop' | 'unknown';
   citySlug: string | null;
   serviceSlug: string | null;
   ctaLocation: string | null;
@@ -63,103 +62,88 @@ export type MeasurementEvent = {
 };
 
 export const MEASUREMENT_ALLOWED_KEYS = [
-  "contractVersion",
-  "siteKey",
-  "environment",
-  "event",
-  "eventId",
-  "occurredAt",
-  "visitorId",
-  "sessionId",
-  "landingPath",
-  "currentPath",
-  "referrer",
-  "utmSource",
-  "utmMedium",
-  "utmCampaign",
-  "gclid",
-  "gbraid",
-  "wbraid",
-  "msclkid",
-  "channel",
-  "device",
-  "citySlug",
-  "serviceSlug",
-  "ctaLocation",
-  "formSource",
-  "submissionId",
-  "conversionKind",
-  "attributionConfidence",
-  "engaged",
-  "automation",
-  "entry",
+  'contractVersion',
+  'siteKey',
+  'environment',
+  'event',
+  'eventId',
+  'occurredAt',
+  'visitorId',
+  'sessionId',
+  'landingPath',
+  'currentPath',
+  'referrer',
+  'utmSource',
+  'utmMedium',
+  'utmCampaign',
+  'gclid',
+  'gbraid',
+  'wbraid',
+  'msclkid',
+  'channel',
+  'device',
+  'citySlug',
+  'serviceSlug',
+  'ctaLocation',
+  'formSource',
+  'submissionId',
+  'conversionKind',
+  'attributionConfidence',
+  'engaged',
+  'automation',
+  'entry',
 ] as const;
 
 /** Entry tag cookie set by middleware on vanity paths (FF Reports spec 56). */
-export const FF_ENTRY_COOKIE = "ff_entry";
+export const FF_ENTRY_COOKIE = 'ff_entry';
 const ENTRY_PATTERN = /^[a-z0-9]+-[a-z0-9-]+$/;
 
 /** A valid ff_entry value, or null. Lowercase source-label, at most 64 characters. */
 export function validEntry(value: string | null | undefined): string | null {
-  const trimmed = value?.trim() ?? "";
+  const trimmed = value?.trim() ?? '';
   if (!trimmed || trimmed.length > 64 || !ENTRY_PATTERN.test(trimmed)) return null;
   return trimmed;
 }
 
-const PAID_MEDIUMS = new Set(["cpc", "ppc", "paid", "paidsearch"]);
-const SEARCH_LABELS = new Set(["google", "bing", "yahoo", "duckduckgo", "ecosia"]);
-const OWN_HOSTS = new Set(["sraroofs.com", "www.sraroofs.com"]);
-const CITY_SLUGS = new Set(["springfield"]);
-const NON_SERVICE_SLUGS = new Set([
-  "contact",
-  "about",
-  "owner",
-  "faq",
-  "blog",
-  "agreement",
-  "privacy-policy",
-  "terms-of-service",
-  "sms-opt-in",
-]);
+const PAID_MEDIUMS = new Set(['cpc', 'ppc', 'paid', 'paidsearch']);
+const SEARCH_LABELS = new Set(['google', 'bing', 'yahoo', 'duckduckgo', 'ecosia']);
+const OWN_HOSTS = new Set(['anewyouwoman.com', 'www.anewyouwoman.com']);
 
 const IDENTIFIER_KEYS = new Set([
-  "eventId",
-  "visitorId",
-  "sessionId",
-  "submissionId",
+  'eventId',
+  'visitorId',
+  'sessionId',
+  'submissionId',
 ]);
 
 const EMAIL_PATTERN = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
 const PHONE_PATTERN = /\+?1?[\s.-]?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}/;
 const OPAQUE_ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._:-]{7,127}$/;
-const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 export function conversionKindForEvent(
-  event: MeasurementEventName,
+  _event: MeasurementEventName,
 ): MeasurementConversionKind {
-  if (event === "lead_form_success") return "accepted_lead";
-  if (event === "scheduler_opened") return "booking_open";
-  return "interaction";
+  return 'interaction';
 }
 
 export function measurementEnvironment(
-  hostname = typeof window !== "undefined" ? window.location.hostname : "",
+  hostname = typeof window !== 'undefined' ? window.location.hostname : '',
 ): MeasurementEnvironment {
   const host = hostname.trim().toLowerCase();
-  if (host === "www.sraroofs.com") return "production";
-  if (host.endsWith(".vercel.app")) return "preview";
-  return "development";
+  if (host === 'anewyouwoman.com') return 'production';
+  if (host.endsWith('.vercel.app')) return 'preview';
+  return 'development';
 }
 
 export function pathOnly(value: string | null | undefined): string | null {
-  const trimmed = value?.trim() || "";
+  const trimmed = value?.trim() || '';
   if (!trimmed) return null;
   try {
-    const relative = trimmed.startsWith("/") && !trimmed.startsWith("//");
-    const url = relative ? new URL(trimmed, "https://www.sraroofs.com") : new URL(trimmed);
-    if (!relative && url.protocol !== "http:" && url.protocol !== "https:") return null;
-    const pathname = url.pathname || "/";
-    if (!pathname.startsWith("/") || pathname.includes("?") || pathname.includes("#")) return null;
+    const relative = trimmed.startsWith('/') && !trimmed.startsWith('//');
+    const url = relative ? new URL(trimmed, 'https://anewyouwoman.com') : new URL(trimmed);
+    if (!relative && url.protocol !== 'http:' && url.protocol !== 'https:') return null;
+    const pathname = url.pathname || '/';
+    if (!pathname.startsWith('/') || pathname.includes('?') || pathname.includes('#')) return null;
     return pathname.slice(0, 500);
   } catch {
     return null;
@@ -168,11 +152,11 @@ export function pathOnly(value: string | null | undefined): string | null {
 
 /** Origin plus path. Query strings stay out of the referrer; click ids have their own fields. */
 export function referrerWithoutQuery(value: string | null | undefined): string | null {
-  const trimmed = value?.trim() || "";
+  const trimmed = value?.trim() || '';
   if (!trimmed) return null;
   try {
     const url = new URL(trimmed);
-    if (url.protocol !== "http:" && url.protocol !== "https:") return null;
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return null;
     return `${url.origin}${url.pathname}`.slice(0, 500);
   } catch {
     return null;
@@ -180,28 +164,30 @@ export function referrerWithoutQuery(value: string | null | undefined): string |
 }
 
 export function referrerHostname(value: string | null | undefined): string | null {
-  const trimmed = value?.trim() || "";
+  const trimmed = value?.trim() || '';
   if (!trimmed) return null;
   try {
     const url = new URL(trimmed);
-    if (url.protocol !== "http:" && url.protocol !== "https:") return null;
-    return url.hostname.toLowerCase().replace(/\.+$/, "") || null;
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return null;
+    return url.hostname.toLowerCase().replace(/\.+$/, '') || null;
   } catch {
     return null;
   }
 }
 
 export function isOwnMeasurementHost(host: string, currentHost?: string | null): boolean {
-  const normalized = host.toLowerCase().replace(/\.+$/, "");
+  const normalized = host.toLowerCase().replace(/\.+$/, '');
   if (OWN_HOSTS.has(normalized)) return true;
-  const current = currentHost?.trim().toLowerCase().replace(/\.+$/, "") || "";
+  // Preview deployments never count as referrals, on this host or any other.
+  if (normalized.endsWith('.vercel.app')) return true;
+  const current = currentHost?.trim().toLowerCase().replace(/\.+$/, '') || '';
   return Boolean(current) && normalized === current;
 }
 
 export function isSearchEngineHost(host: string): boolean {
   return host
     .toLowerCase()
-    .split(".")
+    .split('.')
     .filter(Boolean)
     .some((label) => SEARCH_LABELS.has(label));
 }
@@ -215,27 +201,21 @@ export function deriveSessionChannel(input: {
   referrer?: string | null;
   currentHost?: string | null;
 }): MeasurementChannel {
-  if (input.gclid || input.gbraid || input.wbraid || input.msclkid) return "paid";
-  const medium = (input.utmMedium || "").trim().toLowerCase();
-  if (PAID_MEDIUMS.has(medium)) return "paid";
+  if (input.gclid || input.gbraid || input.wbraid || input.msclkid) return 'paid';
+  const medium = (input.utmMedium || '').trim().toLowerCase();
+  if (PAID_MEDIUMS.has(medium)) return 'paid';
   const host = referrerHostname(input.referrer);
-  if (!host || isOwnMeasurementHost(host, input.currentHost)) return "direct";
-  if (isSearchEngineHost(host)) return "organic";
-  return "referral";
+  if (!host || isOwnMeasurementHost(host, input.currentHost)) return 'direct';
+  if (isSearchEngineHost(host)) return 'organic';
+  return 'referral';
 }
 
-export function contextFromPath(pathname: string): {
+/** This site has no city segment in its URLs, so both slugs stay empty. */
+export function contextFromPath(_pathname: string): {
   citySlug: string | null;
   serviceSlug: string | null;
 } {
-  const parts = pathOnly(pathname)?.split("/").filter(Boolean) ?? [];
-  const city = parts[0]?.toLowerCase() ?? "";
-  if (!CITY_SLUGS.has(city)) return { citySlug: null, serviceSlug: null };
-  const service = parts[1]?.toLowerCase() ?? "";
-  if (!service || NON_SERVICE_SLUGS.has(service) || !SLUG_PATTERN.test(service)) {
-    return { citySlug: city, serviceSlug: null };
-  }
-  return { citySlug: city, serviceSlug: service };
+  return { citySlug: null, serviceSlug: null };
 }
 
 function stringLooksLikeContact(key: string | null, value: string): boolean {
@@ -245,11 +225,11 @@ function stringLooksLikeContact(key: string | null, value: string): boolean {
 }
 
 export function hasPiiLeak(value: unknown): boolean {
-  if (typeof value === "string") return stringLooksLikeContact(null, value);
-  if (!value || typeof value !== "object") return false;
+  if (typeof value === 'string') return stringLooksLikeContact(null, value);
+  if (!value || typeof value !== 'object') return false;
   for (const [key, nested] of Object.entries(value as Record<string, unknown>)) {
     if (/^(name|email|phone|tel|address|message)$/i.test(key)) return true;
-    if (typeof nested === "string" && stringLooksLikeContact(key, nested)) return true;
+    if (typeof nested === 'string' && stringLooksLikeContact(key, nested)) return true;
   }
   return false;
 }
@@ -260,9 +240,9 @@ export function stripUnknownAndPii(input: Record<string, unknown>): Record<strin
     if (!Object.prototype.hasOwnProperty.call(input, key)) continue;
     const value = input[key];
     if (value === undefined) continue;
-    if ((key === "engaged" || key === "automation") && value !== true) continue;
-    if (typeof value === "string" && stringLooksLikeContact(key, value)) continue;
-    if (value !== null && typeof value === "object") continue;
+    if ((key === 'engaged' || key === 'automation') && value !== true) continue;
+    if (typeof value === 'string' && stringLooksLikeContact(key, value)) continue;
+    if (value !== null && typeof value === 'object') continue;
     out[key] = value;
   }
   return out;
@@ -270,13 +250,13 @@ export function stripUnknownAndPii(input: Record<string, unknown>): Record<strin
 
 export function isMeasurementEventName(value: unknown): value is MeasurementEventName {
   return (
-    typeof value === "string" &&
+    typeof value === 'string' &&
     (MEASUREMENT_EVENT_NAMES as readonly string[]).includes(value)
   );
 }
 
 export function isSessionChannel(value: string | null | undefined): value is MeasurementChannel {
-  return value === "paid" || value === "organic" || value === "direct" || value === "referral";
+  return value === 'paid' || value === 'organic' || value === 'direct' || value === 'referral';
 }
 
 /** Channel is fixed for one `ff_sid` and decided again when that cookie changes. */
@@ -284,12 +264,12 @@ export function parseStoredSessionChannel(
   raw: string | null | undefined,
   sessionId: string | null | undefined,
 ): MeasurementChannel | null {
-  const sid = sessionId?.trim() || "";
+  const sid = sessionId?.trim() || '';
   if (!raw || !sid) return null;
   try {
     const parsed = JSON.parse(raw) as { sid?: unknown; channel?: unknown };
     if (parsed.sid !== sid) return null;
-    return typeof parsed.channel === "string" && isSessionChannel(parsed.channel)
+    return typeof parsed.channel === 'string' && isSessionChannel(parsed.channel)
       ? parsed.channel
       : null;
   } catch {

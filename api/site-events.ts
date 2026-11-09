@@ -2,14 +2,14 @@ import {
   forwardMeasurementCollect,
   measurementCollectHealth,
   measurementHeaderValue,
-} from "../server/lib/forwardMeasurementCollect.js";
+} from '../server/lib/forwardMeasurementCollect.js';
 
 /**
  * Same-origin journey-event proxy. The browser posts here. This function
  * forwards the allowlisted payload to Reports. GET is a local health probe
  * and does not write a row.
  */
-export const config = { runtime: "nodejs" };
+export const config = { runtime: 'nodejs' };
 
 type NodeHeaders = Record<string, string | string[] | undefined>;
 type NodeRequest = {
@@ -26,15 +26,15 @@ type NodeResponse = {
 function isNodeResponse(value: unknown): value is NodeResponse {
   return Boolean(
     value &&
-      typeof value === "object" &&
-      typeof (value as NodeResponse).end === "function" &&
-      typeof (value as NodeResponse).setHeader === "function",
+      typeof value === 'object' &&
+      typeof (value as NodeResponse).end === 'function' &&
+      typeof (value as NodeResponse).setHeader === 'function',
   );
 }
 
 function headerFrom(headers: Headers | NodeHeaders | undefined, name: string): string {
-  if (!headers) return "";
-  if (typeof (headers as Headers).get === "function") {
+  if (!headers) return '';
+  if (typeof (headers as Headers).get === 'function') {
     return measurementHeaderValue((headers as Headers).get(name) ?? undefined);
   }
   const record = headers as NodeHeaders;
@@ -49,19 +49,19 @@ export async function handleSiteEvents(input: {
   vercelEnv?: string;
   fetchImpl?: typeof fetch;
 }): Promise<{ status: number; body: string; contentType: string }> {
-  const method = (input.method || "GET").toUpperCase();
-  if (method === "GET") {
+  const method = (input.method || 'GET').toUpperCase();
+  if (method === 'GET') {
     return {
       status: 200,
       body: JSON.stringify(measurementCollectHealth()),
-      contentType: "application/json",
+      contentType: 'application/json',
     };
   }
-  if (method !== "POST") {
+  if (method !== 'POST') {
     return {
       status: 405,
-      body: JSON.stringify({ ok: false, error: "Method not allowed." }),
-      contentType: "application/json",
+      body: JSON.stringify({ ok: false, error: 'Method not allowed.' }),
+      contentType: 'application/json',
     };
   }
   return forwardMeasurementCollect({
@@ -77,18 +77,18 @@ export default async function handler(
   requestOrReq: Request | NodeRequest,
   res?: NodeResponse,
 ): Promise<Response | void> {
-  const isWeb = typeof Request !== "undefined" && requestOrReq instanceof Request;
+  const isWeb = typeof Request !== 'undefined' && requestOrReq instanceof Request;
   const method = isWeb
     ? requestOrReq.method
     : (requestOrReq as NodeRequest).method;
   const origin = isWeb
-    ? measurementHeaderValue(requestOrReq.headers.get("origin") ?? undefined)
-    : headerFrom((requestOrReq as NodeRequest).headers, "origin");
+    ? measurementHeaderValue(requestOrReq.headers.get('origin') ?? undefined)
+    : headerFrom((requestOrReq as NodeRequest).headers, 'origin');
   const userAgent = isWeb
-    ? measurementHeaderValue(requestOrReq.headers.get("user-agent") ?? undefined)
-    : headerFrom((requestOrReq as NodeRequest).headers, "user-agent");
+    ? measurementHeaderValue(requestOrReq.headers.get('user-agent') ?? undefined)
+    : headerFrom((requestOrReq as NodeRequest).headers, 'user-agent');
   let body: unknown = isWeb ? undefined : (requestOrReq as NodeRequest).body;
-  if (isWeb && requestOrReq.method === "POST") {
+  if (isWeb && requestOrReq.method === 'POST') {
     body = await requestOrReq.text();
   }
 
@@ -102,17 +102,17 @@ export default async function handler(
 
   if (res && isNodeResponse(res)) {
     res.statusCode = result.status;
-    res.setHeader("Content-Type", result.contentType);
-    res.setHeader("Cache-Control", "no-store");
-    if (result.status === 405) res.setHeader("Allow", "GET, POST");
+    res.setHeader('Content-Type', result.contentType);
+    res.setHeader('Cache-Control', 'no-store');
+    if (result.status === 405) res.setHeader('Allow', 'GET, POST');
     res.end(result.body);
     return;
   }
 
   const headers = new Headers({
-    "Content-Type": result.contentType,
-    "Cache-Control": "no-store",
+    'Content-Type': result.contentType,
+    'Cache-Control': 'no-store',
   });
-  if (result.status === 405) headers.set("Allow", "GET, POST");
+  if (result.status === 405) headers.set('Allow', 'GET, POST');
   return new Response(result.body, { status: result.status, headers });
 }

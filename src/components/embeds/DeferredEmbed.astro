@@ -21,7 +21,7 @@ const def = EMBEDS[embed];
   aria-busy="true"
   style={`--embed-h-m:${def.heightMobile}px;--embed-h-d:${def.heightDesktop}px`}
 >
-  <noscript><a href={def.fallback.href}>{def.fallback.label}</a></noscript>
+  <noscript><a href={def.fallback.href} {...def.fallback.href.startsWith('tel:') ? { 'data-ff-cta-location': 'financing' } : {}}>{def.fallback.label}</a></noscript>
 </div>
 
 <style is:global>

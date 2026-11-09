@@ -75,6 +75,11 @@ const ld = jsonLd.map((o) => JSON.stringify(o).replace(/</g, '\\u003c'));
     <SiteFooter />
     <MobileBar />
     <ThirdPartyLoaders />
+    <!-- Deferred module. Page views wait for load and do not sit in the atf gap. -->
+    <script>
+      import { bootJourneyTracking } from '../lib/measurement/boot';
+      bootJourneyTracking();
+    </script>
     <script is:inline>
       (function () {
         const h = document.getElementById('site-header');

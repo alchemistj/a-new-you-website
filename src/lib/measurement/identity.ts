@@ -1,7 +1,7 @@
 const OPAQUE_ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._:-]{7,127}$/;
 
-export const FF_VID_COOKIE = "ff_vid";
-export const FF_SID_COOKIE = "ff_sid";
+export const FF_VID_COOKIE = 'ff_vid';
+export const FF_SID_COOKIE = 'ff_sid';
 
 export type JourneyIdentity = {
   visitorId: string;
@@ -9,7 +9,7 @@ export type JourneyIdentity = {
 };
 
 function validIdentityId(value: string | undefined): string | null {
-  const trimmed = value?.trim() || "";
+  const trimmed = value?.trim() || '';
   if (!trimmed || !OPAQUE_ID_PATTERN.test(trimmed)) return null;
   return trimmed.slice(0, 128);
 }
@@ -21,8 +21,8 @@ export function readCookieValue(
 ): string | null {
   if (!cookieHeader) return null;
   const values: string[] = [];
-  for (const part of cookieHeader.split(";")) {
-    const separator = part.indexOf("=");
+  for (const part of cookieHeader.split(';')) {
+    const separator = part.indexOf('=');
     if (separator < 0) continue;
     const key = part.slice(0, separator).trim();
     if (key !== name) continue;
@@ -31,7 +31,7 @@ export function readCookieValue(
     try {
       decoded = decodeURIComponent(raw);
     } catch {
-      decoded = raw;
+      // Keep the raw value so validation can reject it.
     }
     values.push(decoded);
   }
@@ -41,10 +41,10 @@ export function readCookieValue(
 
 /**
  * Both cookies are required together. A missing or invalid one means the
- * caller uses the stored SRA ids and still sends.
+ * caller uses the stored ids and still sends.
  */
 export function readJourneyIdentity(
-  cookieHeader: string | null | undefined = typeof document !== "undefined" ? document.cookie : null,
+  cookieHeader: string | null | undefined = typeof document !== 'undefined' ? document.cookie : null,
 ): JourneyIdentity | null {
   const visitorId = readCookieValue(cookieHeader, FF_VID_COOKIE);
   const sessionId = readCookieValue(cookieHeader, FF_SID_COOKIE);
@@ -53,7 +53,7 @@ export function readJourneyIdentity(
 }
 
 /**
- * Cookie pair when both are valid. Otherwise the stored SRA pair, never a mix
+ * Cookie pair when both are valid. Otherwise the stored pair, never a mix
  * of one cookie and one stored id.
  */
 export function resolveJourneyIds(fallback: {

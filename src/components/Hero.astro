@@ -21,7 +21,7 @@ const cta = hero.primaryCta ?? { label: site.booking.label, href: site.booking.h
     {hero.subhead && <p class="subhead">{hero.subhead}</p>}
     <div class="hero-ctas">
       <ScheduleButton class="btn btn-light" label={cta.label} href={cta.href} />
-      <CallButton class="btn btn-ghost" />
+      <CallButton class="btn btn-ghost" location="hero" />
     </div>
   </div>
 </section>

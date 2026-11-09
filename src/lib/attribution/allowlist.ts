@@ -1,15 +1,15 @@
 export const ATTRIBUTION_QUERY_KEYS = [
-  "utm_source",
-  "utm_medium",
-  "utm_campaign",
-  "utm_term",
-  "utm_content",
-  "utm_id",
-  "gclid",
-  "gbraid",
-  "wbraid",
-  "msclkid",
-  "fbclid",
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_term',
+  'utm_content',
+  'utm_id',
+  'gclid',
+  'gbraid',
+  'wbraid',
+  'msclkid',
+  'fbclid',
 ] as const;
 
 export type AttributionQueryKey = (typeof ATTRIBUTION_QUERY_KEYS)[number];
@@ -33,9 +33,8 @@ export type AttributionTouch = {
 
 export type AttributionSnapshot = AttributionTouch & {
   /**
-   * These fields are optional for backwards-compatible lead fixtures and
-   * non-browser callers. The production collector always supplies them;
-   * FF Reports rejects visit events that omit either identifier.
+   * These fields are optional for backwards-compatible fixtures and
+   * non-browser callers. The production collector always supplies them.
    */
   visitor_id?: string;
   session_id?: string;
@@ -74,7 +73,7 @@ function readQueryValue(params: URLSearchParams, key: AttributionQueryKey): stri
 }
 
 export function extractAttributionFromSearch(search: string): Partial<AttributionSnapshot> {
-  const params = new URLSearchParams(search.startsWith("?") ? search : `?${search}`);
+  const params = new URLSearchParams(search.startsWith('?') ? search : `?${search}`);
   const partial: Partial<AttributionSnapshot> = {};
   for (const key of ATTRIBUTION_QUERY_KEYS) {
     const value = readQueryValue(params, key);
@@ -108,7 +107,7 @@ export function sanitizeAttributionSnapshot(
 ): AttributionSnapshot {
   const safe = input ?? {};
   const safeId = (value: string | null | undefined) =>
-    value ? trimValue(value, ANONYMOUS_ID_LIMIT) : "";
+    value ? trimValue(value, ANONYMOUS_ID_LIMIT) : '';
   return {
     ...sanitizeTouch(safe),
     visitor_id: safeId(safe.visitor_id),
@@ -119,14 +118,6 @@ export function sanitizeAttributionSnapshot(
 }
 
 export function hasAttributionParams(search: string): boolean {
-  const params = new URLSearchParams(search.startsWith("?") ? search : `?${search}`);
+  const params = new URLSearchParams(search.startsWith('?') ? search : `?${search}`);
   return ATTRIBUTION_QUERY_KEYS.some((key) => Boolean(readQueryValue(params, key)));
-}
-
-export function hasPaidClickParams(search: string): boolean {
-  const params = new URLSearchParams(search.startsWith("?") ? search : `?${search}`);
-  return ["gclid", "msclkid"].some((key) => {
-    const value = params.get(key);
-    return Boolean(value && value.trim().length <= FIELD_LIMITS[key as AttributionQueryKey]);
-  });
 }

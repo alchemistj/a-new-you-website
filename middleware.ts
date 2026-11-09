@@ -1,18 +1,22 @@
 /**
  * First-party visitor and session cookies for journey tracking.
- * Vendored from FF Split Testing `createWebsiteRuntimeContext` /
- * `buildSetCookie` / `classifyBot`: default names `ff_vid` and `ff_sid`
- * only, on canonical HTML GET/HEAD. No rewrite. The only redirect and the only
- * other cookie (`ff_entry`) belong to ENTRY_REDIRECTS below.
+ * Vendored from the SRA Roofing middleware (FF Split Testing visitor/session
+ * cookies). Default names `ff_vid` and `ff_sid` only, on canonical HTML
+ * GET/HEAD. Bots get `ff_bot=1` instead. No vanity redirects until a Business
+ * Profile link is provided: ENTRY_REDIRECTS stays empty, and the entry-cookie
+ * code stays so one can be added later.
  */
 
-export const FF_VID_COOKIE = "ff_vid";
-export const FF_SID_COOKIE = "ff_sid";
+export const FF_VID_COOKIE = 'ff_vid';
+export const FF_SID_COOKIE = 'ff_sid';
+export const FF_BOT_COOKIE = 'ff_bot';
 
 /** 180 days, matching the website runtime visitor window. */
 export const FF_VID_MAX_AGE_SECONDS = 180 * 24 * 60 * 60;
 /** 30 minutes, rewritten on every eligible HTML request so the window slides. */
 export const FF_SID_MAX_AGE_SECONDS = 30 * 60;
+/** 2 minutes. Bots are marked instead of being given visitor cookies. */
+export const FF_BOT_MAX_AGE_SECONDS = 2 * 60;
 
 const CONTEXT_ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._:-]{7,127}$/;
 
@@ -23,7 +27,7 @@ const CONTEXT_ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._:-]{7,127}$/;
  */
 export const config = {
   matcher: [
-    "/((?!api/|_astro/|images/|fonts/|scripts/|documents/|assets/|page-data/|favicon|robots\\.txt|sitemap|llms).*)",
+    '/((?!api/|_astro/|images/|fonts/|scripts/|documents/|assets/|page-data/|favicon|robots\\.txt|sitemap|llms).*)',
   ],
 };
 
@@ -78,40 +82,40 @@ const BOT_PATTERNS = [
 ];
 
 const STATIC_EXTENSIONS = [
-  ".js",
-  ".css",
-  ".png",
-  ".jpg",
-  ".jpeg",
-  ".gif",
-  ".svg",
-  ".webp",
-  ".ico",
-  ".woff",
-  ".woff2",
-  ".ttf",
-  ".map",
-  ".avif",
-  ".xml",
-  ".txt",
-  ".json",
-  ".pdf",
-  ".mjs",
-  ".html",
-  ".webmanifest",
+  '.js',
+  '.css',
+  '.png',
+  '.jpg',
+  '.jpeg',
+  '.gif',
+  '.svg',
+  '.webp',
+  '.ico',
+  '.woff',
+  '.woff2',
+  '.ttf',
+  '.map',
+  '.avif',
+  '.xml',
+  '.txt',
+  '.json',
+  '.pdf',
+  '.mjs',
+  '.html',
+  '.webmanifest',
 ];
 
 function continueWithoutChange(setCookies: readonly string[] = []): Response {
   const headers = new Headers();
-  headers.set("x-middleware-next", "1");
-  for (const cookie of setCookies) headers.append("set-cookie", cookie);
+  headers.set('x-middleware-next', '1');
+  for (const cookie of setCookies) headers.append('set-cookie', cookie);
   return new Response(null, { headers });
 }
 
 function collapsePath(pathname: string): string {
-  if (!pathname) return "/";
-  const withSlash = pathname.startsWith("/") ? pathname : `/${pathname}`;
-  return withSlash.replace(/\/{2,}/g, "/");
+  if (!pathname) return '/';
+  const withSlash = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  return withSlash.replace(/\/{2,}/g, '/');
 }
 
 function decodeBoundedPath(path: string): string | null {
@@ -136,16 +140,16 @@ function decodeBoundedPath(path: string): string | null {
 
 function isIgnoredCollapsedPath(path: string): boolean {
   const lower = path.toLowerCase();
-  if (lower === "/api" || lower.startsWith("/api/")) return true;
-  if (lower === "/_astro" || lower.startsWith("/_astro/")) return true;
-  if (lower === "/images" || lower.startsWith("/images/")) return true;
-  if (lower === "/fonts" || lower.startsWith("/fonts/")) return true;
-  if (lower === "/scripts" || lower.startsWith("/scripts/")) return true;
-  if (lower === "/documents" || lower.startsWith("/documents/")) return true;
-  if (lower === "/assets" || lower.startsWith("/assets/")) return true;
-  if (lower === "/page-data" || lower.startsWith("/page-data/")) return true;
-  if (lower === "/favicon.ico" || lower.startsWith("/favicon")) return true;
-  if (lower === "/robots.txt") return true;
+  if (lower === '/api' || lower.startsWith('/api/')) return true;
+  if (lower === '/_astro' || lower.startsWith('/_astro/')) return true;
+  if (lower === '/images' || lower.startsWith('/images/')) return true;
+  if (lower === '/fonts' || lower.startsWith('/fonts/')) return true;
+  if (lower === '/scripts' || lower.startsWith('/scripts/')) return true;
+  if (lower === '/documents' || lower.startsWith('/documents/')) return true;
+  if (lower === '/assets' || lower.startsWith('/assets/')) return true;
+  if (lower === '/page-data' || lower.startsWith('/page-data/')) return true;
+  if (lower === '/favicon.ico' || lower.startsWith('/favicon')) return true;
+  if (lower === '/robots.txt') return true;
   if (/^\/sitemap.*\.xml$/.test(lower)) return true;
   if (/^\/llms.*\.txt$/.test(lower)) return true;
   return STATIC_EXTENSIONS.some((extension) => lower.endsWith(extension));
@@ -157,11 +161,11 @@ export function isCanonicalHtmlPath(pathname: string): boolean {
   if (isIgnoredCollapsedPath(path)) return false;
   const decoded = decodeBoundedPath(path);
   if (decoded === null || isIgnoredCollapsedPath(decoded)) return false;
-  return path === "/" || path.endsWith("/");
+  return path === '/' || path.endsWith('/');
 }
 
 function isBotUserAgent(userAgent: string | null): boolean {
-  const ua = userAgent?.trim() ?? "";
+  const ua = userAgent?.trim() ?? '';
   if (!ua) return false;
   return BOT_PATTERNS.some((pattern) => pattern.test(ua));
 }
@@ -169,8 +173,8 @@ function isBotUserAgent(userAgent: string | null): boolean {
 function parseCookies(header: string | null): Map<string, string[]> {
   const result = new Map<string, string[]>();
   if (!header) return result;
-  for (const part of header.split(";")) {
-    const separator = part.indexOf("=");
+  for (const part of header.split(';')) {
+    const separator = part.indexOf('=');
     if (separator < 0) continue;
     const key = part.slice(0, separator).trim();
     const raw = part.slice(separator + 1).trim();
@@ -200,11 +204,11 @@ function readPrimaryCookie(cookies: Map<string, string[]>, name: string): string
 function buildSetCookie(name: string, value: string, maxAge: number): string {
   return [
     `${name}=${encodeURIComponent(value)}`,
-    "Path=/",
+    'Path=/',
     `Max-Age=${maxAge}`,
-    "SameSite=Lax",
-    "Secure",
-  ].join("; ");
+    'SameSite=Lax',
+    'Secure',
+  ].join('; ');
 }
 
 function newIdentityId(): string | null {
@@ -217,25 +221,23 @@ function newIdentityId(): string | null {
 }
 
 function isPrefetch(request: Request): boolean {
-  const purpose = `${request.headers.get("purpose") ?? ""} ${request.headers.get("sec-purpose") ?? ""}`;
+  const purpose = `${request.headers.get('purpose') ?? ''} ${request.headers.get('sec-purpose') ?? ''}`;
   return /prefetch|prerender/i.test(purpose);
 }
 
 /**
  * Entry redirects: exact, case-sensitive paths that 308 to a canonical page.
  * Humans also get the `ff_entry` cookie naming where they came in. Keys are the
- * no-slash form; the trailing-slash variant is handled too. To add another
- * entry, add one line here and to MIDDLEWARE_OWNED_REDIRECTS in
- * scripts/lib/legacy-bulk-redirects.mjs (a test keeps the two in step).
+ * no-slash form; the trailing-slash variant is handled too.
+ * Empty until Josh gives the Business Profile link. Do not add a redirect here
+ * without that link.
  */
-export const FF_ENTRY_COOKIE = "ff_entry";
+export const FF_ENTRY_COOKIE = 'ff_entry';
 export const FF_ENTRY_MAX_AGE_SECONDS = 30 * 60;
-export const ENTRY_REDIRECTS: Readonly<Record<string, { destination: string; entry: string }>> = {
-  "/Springfield": { destination: "/springfield/", entry: "gbp-springfield" },
-};
+export const ENTRY_REDIRECTS: Readonly<Record<string, { destination: string; entry: string }>> = {};
 
 function entryRedirectFor(pathname: string) {
-  const key = pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+  const key = pathname.length > 1 && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
   return Object.prototype.hasOwnProperty.call(ENTRY_REDIRECTS, key) ? ENTRY_REDIRECTS[key] : null;
 }
 
@@ -247,15 +249,15 @@ function entryRedirect(
   const method = request.method.toUpperCase();
   const headers = new Headers({
     location: `${rule.destination}${url.search}`,
-    "cache-control": "private, no-store",
+    'cache-control': 'private, no-store',
   });
   const human =
-    (method === "GET" || method === "HEAD") &&
+    (method === 'GET' || method === 'HEAD') &&
     !isPrefetch(request) &&
-    !isBotUserAgent(request.headers.get("user-agent"));
+    !isBotUserAgent(request.headers.get('user-agent'));
   if (human) {
     headers.append(
-      "set-cookie",
+      'set-cookie',
       buildSetCookie(FF_ENTRY_COOKIE, rule.entry, FF_ENTRY_MAX_AGE_SECONDS),
     );
   }
@@ -268,13 +270,17 @@ export default function middleware(request: Request): Response {
   if (rule) return entryRedirect(request, url, rule);
 
   const method = request.method.toUpperCase();
-  if (method !== "GET" && method !== "HEAD") return continueWithoutChange();
+  if (method !== 'GET' && method !== 'HEAD') return continueWithoutChange();
 
   if (!isCanonicalHtmlPath(url.pathname)) return continueWithoutChange();
   if (isPrefetch(request)) return continueWithoutChange();
-  if (isBotUserAgent(request.headers.get("user-agent"))) return continueWithoutChange();
+  if (isBotUserAgent(request.headers.get('user-agent'))) {
+    return continueWithoutChange([
+      buildSetCookie(FF_BOT_COOKIE, '1', FF_BOT_MAX_AGE_SECONDS),
+    ]);
+  }
 
-  const cookies = parseCookies(request.headers.get("cookie"));
+  const cookies = parseCookies(request.headers.get('cookie'));
   const existingVisitor = readPrimaryCookie(cookies, FF_VID_COOKIE);
   const existingSession = readPrimaryCookie(cookies, FF_SID_COOKIE);
   const visitorId = existingVisitor ?? newIdentityId();

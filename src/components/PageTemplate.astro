@@ -27,7 +27,7 @@ const { page } = Astro.props;
       <section class="section" id="contact-details">
         <div class="container contact-details">
           <p>
-            <a class="contact-phone" href={site.phone.tel}>{site.phone.display}</a>
+            <a class="contact-phone" href={site.phone.tel} data-ff-cta-location="main">{site.phone.display}</a>
           </p>
           <address>
             {site.address.street}<br />
