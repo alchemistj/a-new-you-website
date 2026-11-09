@@ -1,0 +1,16 @@
+---
+// Sticky bottom bar on phones (below md): Call, Chat, Schedule (Rule 6). Hidden from md up.
+// Chat opens the LeadConnector panel (loaded on tap); without JS it links to the contact page.
+import { site } from '../data/site';
+---
+
+<div class="mobile-bar" role="region" aria-label="Quick actions">
+  <a class="btn btn-outline" href={site.phone.tel}>{site.phone.mobileLabel}</a>
+  <a class="btn btn-outline" href="/contact/" data-open-chat>Chat</a>
+  <a class="btn btn-primary" href={site.booking.href} target="_blank" rel="noopener">Schedule</a>
+</div>
+
+<script>
+  import { initChatButtons } from './embeds/chat-widget';
+  initChatButtons(document, window);
+</script>

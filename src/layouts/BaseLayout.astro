@@ -1,0 +1,118 @@
+---
+// Base layout (build contract). Props: title, description, path, hero?, jsonLd?, noindex?.
+// Source order follows SOP sections 2 and 2a: skip link, then the .atf block (hero photo first,
+// then header, hero text, then the .atf-ready marker), then <main>, footer, mobile bar.
+import '../styles/global.css';
+import type { PageCopy } from '../types/page';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import MobileBar from '../components/MobileBar.astro';
+import Hero from '../components/Hero.astro';
+import ThirdPartyLoaders from '../components/embeds/ThirdPartyLoaders.astro';
+import { heroDataUri } from '../lib/images';
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  hero?: PageCopy['hero'];
+  jsonLd?: object[];
+  noindex?: boolean;
+}
+const { title, description, path, hero, jsonLd = [], noindex = false } = Astro.props;
+const canonical = new URL(path, site.url).href;
+const photo = hero?.image ? await heroDataUri(hero.image, hero.imagePosition) : undefined;
+const ld = jsonLd.map((o) => JSON.stringify(o).replace(/</g, '\\u003c'));
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="theme-color" content="#8e3393" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    {ld.map((j) => <script type="application/ld+json" set:html={j} />)}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="atf">
+      {
+        photo && (
+          <img
+            class="atf-photo"
+            src={photo.uri}
+            alt={hero?.image?.alt ?? ''}
+            width={photo.width}
+            height={photo.height}
+            loading="eager"
+            decoding="sync"
+            fetchpriority="high"
+            style={hero?.imagePosition ? `object-position:${hero.imagePosition}` : undefined}
+            data-ff-lcp-hero
+          />
+        )
+      }
+      <SiteHeader path={path} />
+      {hero && <Hero hero={hero} photo={Boolean(photo)} />}
+      <span class="atf-ready" hidden></span>
+    </div>
+    <slot name="after-hero" />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter />
+    <MobileBar />
+    <ThirdPartyLoaders />
+    <script is:inline>
+      (function () {
+        const h = document.getElementById('site-header');
+        if (!h) return;
+        const m = document.getElementById('menu');
+        let last = window.scrollY;
+        let up = 0;
+        let ticking = false;
+        function show() { h.classList.remove('is-hidden'); up = 0; }
+        function update() {
+          ticking = false;
+          const y = window.scrollY;
+          const d = y - last;
+          last = y;
+          if ((m && m.open) || h.contains(document.activeElement) || y <= 0) { show(); return; }
+          if (d > 0) {
+            up = 0;
+            if (y > h.offsetHeight) h.classList.add('is-hidden');
+          } else if (d < 0) {
+            up -= d;
+            if (up >= 10) show();
+          }
+        }
+        window.addEventListener('scroll', function () {
+          if (!ticking) { ticking = true; requestAnimationFrame(update); }
+        }, { passive: true });
+        h.addEventListener('focusin', show);
+        if (m) {
+          m.addEventListener('toggle', function () { if (m.open) show(); });
+          m.addEventListener('click', function (e) {
+            const t = e.target;
+            if (t && t.closest && t.closest('a')) m.open = false;
+          });
+          document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && m.open) { m.open = false; m.querySelector('summary').focus(); }
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

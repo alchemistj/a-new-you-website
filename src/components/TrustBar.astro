@@ -1,0 +1,27 @@
+---
+// Trust bar directly under the hero (Rule 9). Credentials come from the brief only; no star
+// ratings or review counts. One line on desktop: award, founder, pounds lost, one call link. (Destination clinic: no service-area towns.)
+// Phones get two short lines: name, then the call link.
+import { Image } from 'astro:assets';
+import { site, awards, poundsLost } from '../data/site';
+import torchColor from '../assets/brand/torch-award-color.webp';
+
+---
+
+<section class="trust-bar" aria-label="About the clinic">
+  <div class="trust-inner">
+    {awards.map((a) => (
+      <span class="award-logo">
+        <Image src={torchColor} alt={a.label} height={44} densities={[1, 2]} format="webp" loading="eager" decoding="async" />
+      </span>
+    ))}
+    <span class="dot md-only" aria-hidden="true">&middot;</span>
+    <span class="strong">{site.founder.name}</span>
+    <span class="dot md-only" aria-hidden="true">&middot;</span>
+    <span class="md-only">{poundsLost} lbs lost with A New You</span>
+    <span class="dot md-only" aria-hidden="true">&middot;</span>
+    <a class="trust-phone" href={site.phone.tel}>
+      Call&nbsp;<span class="md:hidden">{site.founder.shortName}</span><span class="hidden md:inline">{site.phone.display}</span>
+    </a>
+  </div>
+</section>

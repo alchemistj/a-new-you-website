@@ -1,0 +1,917 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
+  "trailingSlash": true,
+  "headers": [
+    {
+      "source": "/_astro/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/((?!_astro/|images/).*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:path(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.anewyouwoman.com"
+        }
+      ],
+      "destination": "https://anewyouwoman.com/:path",
+      "statusCode": 301
+    },
+    {
+      "source": "/botox-in-springfield-mo/",
+      "destination": "/botox/",
+      "statusCode": 301
+    },
+    {
+      "source": "/botox-in-springfield-mo",
+      "destination": "/botox/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cryolypolysis/",
+      "destination": "/cryolipolysis/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cryolypolysis",
+      "destination": "/cryolipolysis/",
+      "statusCode": 301
+    },
+    {
+      "source": "/female-sexual-disfunction-disorder/",
+      "destination": "/female-sexual-dysfunction-disorder/",
+      "statusCode": 301
+    },
+    {
+      "source": "/female-sexual-disfunction-disorder",
+      "destination": "/female-sexual-dysfunction-disorder/",
+      "statusCode": 301
+    },
+    {
+      "source": "/thyroid-optimization/",
+      "destination": "/menopause/",
+      "statusCode": 301
+    },
+    {
+      "source": "/thyroid-optimization",
+      "destination": "/menopause/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pcos-management/",
+      "destination": "/menopause/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pcos-management",
+      "destination": "/menopause/",
+      "statusCode": 301
+    },
+    {
+      "source": "/semaglutide-in-springfield-mo/",
+      "destination": "/semaglutide/",
+      "statusCode": 301
+    },
+    {
+      "source": "/semaglutide-in-springfield-mo",
+      "destination": "/semaglutide/",
+      "statusCode": 301
+    },
+    {
+      "source": "/weight-loss-in-springfield/",
+      "destination": "/weight-loss/",
+      "statusCode": 301
+    },
+    {
+      "source": "/weight-loss-in-springfield",
+      "destination": "/weight-loss/",
+      "statusCode": 301
+    },
+    {
+      "source": "/unveiling-the-ppotential-of-ppeptides-for-wweight-lloss/",
+      "destination": "/unveiling-the-potential-of-peptides-for-weight-loss/",
+      "statusCode": 301
+    },
+    {
+      "source": "/unveiling-the-ppotential-of-ppeptides-for-wweight-lloss",
+      "destination": "/unveiling-the-potential-of-peptides-for-weight-loss/",
+      "statusCode": 301
+    },
+    {
+      "source": "/botox%ef%b8%8f-botulinum-toxin-type-a-why-inject-poison-into-your-body/",
+      "destination": "/botox-botulinum-toxin-type-a-why-inject-poison-into-your-body/",
+      "statusCode": 301
+    },
+    {
+      "source": "/botox%ef%b8%8f-botulinum-toxin-type-a-why-inject-poison-into-your-body",
+      "destination": "/botox-botulinum-toxin-type-a-why-inject-poison-into-your-body/",
+      "statusCode": 301
+    },
+    {
+      "source": "/botox️-botulinum-toxin-type-a-why-inject-poison-into-your-body/",
+      "destination": "/botox-botulinum-toxin-type-a-why-inject-poison-into-your-body/",
+      "statusCode": 301
+    },
+    {
+      "source": "/botox️-botulinum-toxin-type-a-why-inject-poison-into-your-body",
+      "destination": "/botox-botulinum-toxin-type-a-why-inject-poison-into-your-body/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cryolipolysis-coolsculpting%ef%b8%8f-is-it-right-for-me/",
+      "destination": "/cryolipolysis-coolsculpting-is-it-right-for-me/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cryolipolysis-coolsculpting%ef%b8%8f-is-it-right-for-me",
+      "destination": "/cryolipolysis-coolsculpting-is-it-right-for-me/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cryolipolysis-coolsculpting️-is-it-right-for-me/",
+      "destination": "/cryolipolysis-coolsculpting-is-it-right-for-me/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cryolipolysis-coolsculpting️-is-it-right-for-me",
+      "destination": "/cryolipolysis-coolsculpting-is-it-right-for-me/",
+      "statusCode": 301
+    },
+    {
+      "source": "/upcoming-events/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/upcoming-events",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/events/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/events",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/events/hormone-optimization/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/events/hormone-optimization",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/events/anti-aging-12-12-24/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/events/anti-aging-12-12-24",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/events/hormone-optimization-12-03-24/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/events/hormone-optimization-12-03-24",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/events/kick-the-sugar-12-19-24/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/events/kick-the-sugar-12-19-24",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/events/hormone-optimization-seminar/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/events/hormone-optimization-seminar",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/events/anti-aging-seminar/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/events/anti-aging-seminar",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/placeholder/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/placeholder",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ticket-receipt/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ticket-receipt",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ticket-details/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ticket-details",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/upcoming-events/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/upcoming-events",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/health-and-wellness/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/health-and-wellness",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/uncategorized/hormone-optimization/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/uncategorized/hormone-optimization",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/peptides/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/peptides",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/uncategorized/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/uncategorized",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/weight-loss/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/weight-loss",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/a-new-you-womens-clinic/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/a-new-you-womens-clinic",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/anewyouwomensclinic/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/anewyouwomensclinic",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/anti-aging/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/anti-aging",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/appetite-control/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/appetite-control",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/bhrt/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/bhrt",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/bio/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/bio",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/biohacking/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/biohacking",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/bioidentical/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/bioidentical",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/bioidenticalhrt-hormonebalance-menopauserelief-healthyaging-womenshealth-bioidenticalhormones-naturalhormonetherapy-anewyouwomensclinic/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/bioidenticalhrt-hormonebalance-menopauserelief-healthyaging-womenshealth-bioidenticalhormones-naturalhormonetherapy-anewyouwomensclinic",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/fat/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/fat",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/fat-loss/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/fat-loss",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/fat-weight-lvisceral/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/fat-weight-lvisceral",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/functional-medicine/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/functional-medicine",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/glp-1/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/glp-1",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/hormone-health/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/hormone-health",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/hormone-imbalance/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/hormone-imbalance",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/hormone-replacement/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/hormone-replacement",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/hormones/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/hormones",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/immune-boost/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/immune-boost",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/insulin-resistance/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/insulin-resistance",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/lean-muscle/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/lean-muscle",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/medical-weight-loss/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/medical-weight-loss",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/menopause/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/menopause",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/metabolic-health/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/metabolic-health",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/metabolism/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/metabolism",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/morpheus8/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/morpheus8",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/naturalhormonetherapy/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/naturalhormonetherapy",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/obesity-treatment/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/obesity-treatment",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/ozempic/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/ozempic",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/peptide-therapy/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/peptide-therapy",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/peptides/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/peptides",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/perimenopause/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/perimenopause",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/renewal/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/renewal",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/semaglutide/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/semaglutide",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/skinny-shot/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/skinny-shot",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/sleep/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/sleep",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/supplementation/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/supplementation",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/sustainable-weight-loss/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/sustainable-weight-loss",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/tirzepatide/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/tirzepatide",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/visceral/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/visceral",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/weight-loss/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/weight-loss",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/weight-loss-clinic/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/weight-loss-clinic",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/lucinda/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/lucinda",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/anewyouwomen/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/anewyouwomen",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/:path*",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/:path*",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/:path*",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/sitemap_index.xml/",
+      "destination": "/sitemap.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/sitemap_index.xml",
+      "destination": "/sitemap.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/about",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/aesthetics",
+      "destination": "/aesthetics/",
+      "statusCode": 301
+    },
+    {
+      "source": "/biote",
+      "destination": "/biote/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/botox",
+      "destination": "/botox/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cryolipolysis",
+      "destination": "/cryolipolysis/",
+      "statusCode": 301
+    },
+    {
+      "source": "/customer-reviews",
+      "destination": "/customer-reviews/",
+      "statusCode": 301
+    },
+    {
+      "source": "/faq",
+      "destination": "/faq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/female-sexual-dysfunction-disorder",
+      "destination": "/female-sexual-dysfunction-disorder/",
+      "statusCode": 301
+    },
+    {
+      "source": "/financing",
+      "destination": "/financing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/image-skincare",
+      "destination": "/image-skincare/",
+      "statusCode": 301
+    },
+    {
+      "source": "/menopause",
+      "destination": "/menopause/",
+      "statusCode": 301
+    },
+    {
+      "source": "/mens-health",
+      "destination": "/mens-health/",
+      "statusCode": 301
+    },
+    {
+      "source": "/nutrametrix",
+      "destination": "/nutrametrix/",
+      "statusCode": 301
+    },
+    {
+      "source": "/perimenopause",
+      "destination": "/perimenopause/",
+      "statusCode": 301
+    },
+    {
+      "source": "/semaglutide",
+      "destination": "/semaglutide/",
+      "statusCode": 301
+    },
+    {
+      "source": "/styku",
+      "destination": "/styku/",
+      "statusCode": 301
+    },
+    {
+      "source": "/subscription-plans",
+      "destination": "/subscription-plans/",
+      "statusCode": 301
+    },
+    {
+      "source": "/vaginal-rejuvenation",
+      "destination": "/vaginal-rejuvenation/",
+      "statusCode": 301
+    },
+    {
+      "source": "/weight-loss",
+      "destination": "/weight-loss/",
+      "statusCode": 301
+    }
+  ]
+}

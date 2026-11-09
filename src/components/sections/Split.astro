@@ -1,0 +1,28 @@
+---
+// Wrapper for a text section that may carry an image. With an image it is a two-column grid
+// (photo about 43%), text first on mobile, same height as the text beside it. `side` is where the
+// photo goes; the renderer alternates it right, left, right...
+import type { ImageRef } from '../../types/page';
+import MediaImage from './MediaImage.astro';
+
+interface Props {
+  image?: ImageRef;
+  side?: 'left' | 'right';
+}
+const { image, side = 'right' } = Astro.props;
+---
+
+{
+  image ? (
+    <div class:list={['split', 'has-media', side === 'left' && 'media-left']}>
+      <div class="split-text">
+        <slot />
+      </div>
+      <div class="split-media">
+        <MediaImage image={image} />
+      </div>
+    </div>
+  ) : (
+    <slot />
+  )
+}

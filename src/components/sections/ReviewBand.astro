@@ -1,0 +1,19 @@
+---
+// One review on its own full-width band (Rule 4.2). Name is first name + last initial.
+interface Props {
+  quote: string;
+  name: string;
+  city?: string;
+  onTeal?: boolean;
+}
+const { quote, name, city, onTeal = false } = Astro.props;
+---
+
+<section class:list={['band', 'band-review', onTeal && 'on-teal']} aria-label="Customer review">
+  <div class="container">
+    <blockquote class="review">
+      <p>{quote}</p>
+      <footer><cite>{name}{city ? `, ${city}` : ''}</cite></footer>
+    </blockquote>
+  </div>
+</section>

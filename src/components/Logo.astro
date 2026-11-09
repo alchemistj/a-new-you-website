@@ -1,0 +1,15 @@
+---
+// Inline logo (Rule 5): the live site only has a raster logo (no SVG exists), so this is a 2.9KB AVIF
+// sized for a 150x37 box at 2x, inlined as a data URI by the build (?inline). No external src.
+import logo from '../assets/brand/logo.avif?inline';
+import { site } from '../data/site';
+---
+
+<img
+  src={logo}
+  alt={site.name}
+  width="150"
+  height="37"
+  decoding="sync"
+  class="logo-img"
+/>

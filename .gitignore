@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.astro/
+.vercel/
+.test-dist/
+.env
+.env.*
+.claude/
+.DS_Store
+*.log

@@ -1,0 +1,27 @@
+---
+import Split from './Split.astro';
+import { rich } from '../../lib/rich';
+import type { ImageRef } from '../../types/page';
+
+interface Props {
+  id?: string;
+  heading?: string;
+  intro?: string;
+  items: string[];
+  outro?: string;
+  image?: ImageRef;
+  side?: 'left' | 'right';
+}
+const { id, heading, intro, items, outro, image, side } = Astro.props;
+---
+
+<section class="section" id={id}>
+  <div class="container">
+    <Split image={image} side={side}>
+      {heading && <h2>{heading}</h2>}
+      {intro && <p class="intro" set:html={rich(intro)} />}
+      <ul class:list={['checklist', !image && items.length >= 6 && 'cols-2']}>{items.map((i) => <li set:html={rich(i)} />)}</ul>
+      {outro && <p set:html={rich(outro)} />}
+    </Split>
+  </div>
+</section>

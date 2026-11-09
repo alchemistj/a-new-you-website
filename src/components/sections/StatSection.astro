@@ -1,0 +1,99 @@
+---
+// One big number with its label (the live homepage's "Pounds Lost With A New You" counter).
+// The server HTML always holds the FINAL value (no-JS, crawlers, screen readers). A tiny script
+// swaps the visible digits to 0 just before the stat scrolls into view, then counts up once (when
+// at least 60% of it is on screen) over
+// ~2s (ease-out, requestAnimationFrame). Skipped under prefers-reduced-motion. The digits' width is
+// pinned from the final value first, so nothing shifts while they change.
+interface Props {
+  id?: string;
+  heading: string;
+  value: string;
+  unit?: string;
+}
+const { id, heading, value, unit } = Astro.props;
+const target = Number(value.replace(/[^0-9.]/g, ''));
+---
+
+<section class="section stat" id={id}>
+  <div class="container stat-inner">
+    <h2>{heading}</h2>
+    <p class="stat-value">
+      <span class="sr-only">{value}{unit ? ` ${unit}` : ''}</span>
+      <span class="stat-num" aria-hidden="true" data-count-to={target} data-final={value}>{value}</span>
+      {unit && <span class="stat-unit" aria-hidden="true"> {unit}</span>}
+    </p>
+  </div>
+</section>
+
+<style>
+  .stat-inner { text-align: center; }
+  .stat-value {
+    font-family: var(--font-heading, inherit);
+    font-weight: 600;
+    font-size: clamp(3.5rem, 12vw, 5.5rem);
+    line-height: 1;
+    color: var(--color-primary);
+    margin: 0.25rem 0 0;
+  }
+  .stat-num {
+    display: inline-block;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-unit { font-size: 0.4em; color: var(--color-dark); }
+</style>
+
+<script>
+  const nodes = document.querySelectorAll<HTMLElement>('.stat-num[data-count-to]');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (nodes.length && !reduce && 'IntersectionObserver' in window) {
+    const fmt = new Intl.NumberFormat('en-US');
+    // Step 1 (just before it scrolls in): pin the width to the final number and show 0, so the
+    // visitor never sees "1,805" drop to 0. Step 2 (once it is really on screen): count up.
+    const prep = (el: HTMLElement) => {
+      if (el.dataset.prepped) return;
+      el.dataset.prepped = '1';
+      el.style.minWidth = `${el.getBoundingClientRect().width}px`;
+      el.textContent = '0';
+    };
+    const run = (el: HTMLElement) => {
+      prep(el);
+      const to = Number(el.dataset.countTo);
+      const final = el.dataset.final ?? fmt.format(to);
+      const dur = 2000;
+      const t0 = performance.now();
+      const tick = (now: number) => {
+        const p = Math.min(1, (now - t0) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = p >= 1 ? final : fmt.format(Math.round(to * eased));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const near = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          near.unobserve(e.target);
+          prep(e.target as HTMLElement);
+        }
+      },
+      { rootMargin: '0px 0px 300px 0px', threshold: 0 },
+    );
+    const inView = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          inView.unobserve(e.target);
+          run(e.target as HTMLElement);
+        }
+      },
+      { threshold: 0.6 },
+    );
+    nodes.forEach((n) => {
+      near.observe(n);
+      inView.observe(n);
+    });
+  }
+</script>

@@ -1,0 +1,91 @@
+---
+// Click-to-load video facade. No remote thumbnail and no third-party request on page load.
+// Pass `poster` (a local image URL, e.g. from astro:assets) to show a photo behind the play button.
+interface Props {
+  provider: 'youtube' | 'vimeo';
+  videoId: string;
+  title: string;
+  poster?: string;
+  class?: string;
+}
+
+const { provider, videoId, title, poster, class: className } = Astro.props;
+const watchUrl =
+  provider === 'youtube' ? `https://www.youtube.com/watch?v=${videoId}` : `https://vimeo.com/${videoId}`;
+---
+
+<div class:list={['video-facade', className]}>
+  <button
+    type="button"
+    class="video-facade__button"
+    data-video-facade
+    data-provider={provider}
+    data-video-id={videoId}
+    data-title={title}
+    aria-label={`Play video: ${title}`}
+  >
+    {poster && <img src={poster} alt="" width="1280" height="720" loading="lazy" decoding="async" />}
+    <span class="video-facade__play" aria-hidden="true">
+      <svg viewBox="0 0 68 48" width="68" height="48" focusable="false"
+        ><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.2 34 .2 34 .2S12.8.2 7.5 1.7a8.5 8.5 0 0 0-6 6C0 13 0 24 0 24s0 11 1.5 16.3a8.5 8.5 0 0 0 6 6C12.8 47.8 34 47.8 34 47.8s21.2 0 26.5-1.5a8.5 8.5 0 0 0 6-6C68 35 68 24 68 24s0-11-1.5-16.3z" fill="#212121" fill-opacity=".85"></path><path d="M45 24 27 14v20" fill="#fff"></path></svg
+      >
+    </span>
+    <span class="video-facade__title">{title}</span>
+  </button>
+  <noscript><a href={watchUrl}>Watch: {title}</a></noscript>
+</div>
+
+<style is:global>
+  .video-facade {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    background: #1a1a1a;
+    overflow: hidden;
+  }
+  .video-facade__button {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+  }
+  .video-facade__button img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .video-facade__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .video-facade__title {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0.75rem;
+    text-align: left;
+    font-size: 0.875rem;
+    text-shadow: 0 1px 2px rgb(0 0 0 / 0.7);
+  }
+  .video-facade iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
+
+<script>
+  import { initVideoFacades } from './video-facade-client';
+  initVideoFacades(document);
+</script>

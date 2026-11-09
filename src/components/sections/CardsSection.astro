@@ -1,0 +1,57 @@
+---
+// Cards are for short, scannable items only (Rule 4.1). Photo cards (rounded photo, title under)
+// when the cards carry images; otherwise text cards. A card with an href is one big link.
+import { Image } from 'astro:assets';
+import { rich } from '../../lib/rich';
+import { resolveBodyImage } from '../../lib/images';
+import type { ImageRef } from '../../types/page';
+
+interface Props {
+  id?: string;
+  heading?: string;
+  intro?: string;
+  cards: { title: string; text?: string; href?: string; image?: ImageRef }[];
+}
+const { id, heading, intro, cards } = Astro.props;
+const withImages = cards.some((c) => c.image);
+const metas = await Promise.all(cards.map((c) => (c.image ? resolveBodyImage(c.image) : undefined)));
+---
+
+<section class="section" id={id}>
+  <div class="container">
+    {heading && <h2>{heading}</h2>}
+    {intro && <p class="intro" set:html={rich(intro)} />}
+    {
+      withImages ? (
+        <div class="cards-photo">
+          {cards.map((c, i) => {
+            const inner = (
+              <>
+                {metas[i] && c.image && (
+                  <div class="card-img">
+                    <Image src={metas[i]!} alt={c.image.alt} width={420} format="webp" quality={72} loading="lazy" decoding="async" />
+                  </div>
+                )}
+                <h3>{c.title}</h3>
+              </>
+            );
+            return c.href ? <a class="card-photo" href={c.href}>{inner}</a> : <div class="card-photo">{inner}</div>;
+          })}
+        </div>
+      ) : (
+        <div class="cards">
+          {cards.map((c) =>
+            c.href && !c.text ? (
+              <a class="card card-link" href={c.href}>{c.title}</a>
+            ) : (
+              <div class="card">
+                <h3>{c.href ? <a href={c.href}>{c.title}</a> : c.title}</h3>
+                {c.text && <p set:html={rich(c.text)} />}
+              </div>
+            ),
+          )}
+        </div>
+      )
+    }
+  </div>
+</section>

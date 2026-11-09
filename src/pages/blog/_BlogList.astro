@@ -1,0 +1,95 @@
+---
+// One page of the blog index. Used by /blog/ (page 1) and /blog/page/N/ (pages 2+).
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { breadcrumbJsonLd } from '../../lib/seo/jsonld';
+import { POSTS_PER_PAGE, blogPath, dateFormat, getPosts, loadImage, pagePath } from './_blog';
+
+interface Props {
+  page: number;
+}
+const { page } = Astro.props;
+
+const all = await getPosts();
+const totalPages = Math.ceil(all.length / POSTS_PER_PAGE);
+const slice = all.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE);
+const cards = await Promise.all(slice.map(async (post) => ({ post, image: await loadImage(post.data.heroImage?.src) })));
+
+// Title and description are the live site's /blog/ meta tags (they stay until Cindy supplies new ones).
+const baseTitle = 'Explore Blogs for Sermorelin & Phentermine Injections';
+const title = page > 1 ? `${baseTitle} (Page ${page})` : baseTitle;
+const description =
+  'Explore the potential of sermorelin and phentermine injections along with the breakthrough tirzepatide for weight loss through our informative blogs. Read now!';
+const path = pagePath(page);
+const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+---
+
+<BaseLayout title={title} description={description} path={path} jsonLd={[breadcrumbJsonLd(path, 'Blog')]}>
+  <section class="blog-index mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">
+    <h1 class="text-3xl font-bold sm:text-4xl">Blog</h1>
+    <ul class="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3" role="list">
+      {
+        cards.map(({ post, image }, i) => (
+          <li class="flex flex-col">
+            {image && (
+              <a href={blogPath(post.id)} tabindex="-1" aria-hidden="true" class="block overflow-hidden">
+                <Image
+                  src={image}
+                  alt=""
+                  width={640}
+                  height={420}
+                  widths={[320, 480, 640]}
+                  sizes="(min-width: 1024px) 384px, (min-width: 640px) 50vw, 100vw"
+                  loading={page === 1 && i < 3 ? 'eager' : 'lazy'}
+                  class="aspect-[3/2] w-full object-cover"
+                />
+              </a>
+            )}
+            <p class="mt-3 text-sm opacity-70">
+              <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>{dateFormat.format(post.data.pubDate)}</time>
+            </p>
+            <h2 class="mt-1 text-xl font-semibold leading-snug">
+              <a href={blogPath(post.id)} class="hover:underline">
+                {post.data.title}
+              </a>
+            </h2>
+            <p class="mt-2">{post.data.description}</p>
+            <p class="mt-3">
+              <a href={blogPath(post.id)} class="font-semibold underline">
+                Read more<span class="sr-only">: {post.data.title}</span>
+              </a>
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+
+    {
+      totalPages > 1 && (
+        <nav aria-label="Blog pages" class="mt-12 flex flex-wrap items-center justify-center gap-2">
+          {page > 1 && (
+            <a href={pagePath(page - 1)} rel="prev" class="px-3 py-2 underline">
+              Previous
+            </a>
+          )}
+          {pages.map((n) =>
+            n === page ? (
+              <span aria-current="page" class="px-3 py-2 font-bold">
+                {n}
+              </span>
+            ) : (
+              <a href={pagePath(n)} class="px-3 py-2 underline">
+                {n}
+              </a>
+            ),
+          )}
+          {page < totalPages && (
+            <a href={pagePath(page + 1)} rel="next" class="px-3 py-2 underline">
+              Next
+            </a>
+          )}
+        </nav>
+      )
+    }
+  </section>
+</BaseLayout>

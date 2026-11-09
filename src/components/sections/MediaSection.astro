@@ -1,0 +1,24 @@
+---
+// kind: 'video' and kind: 'embed'. Both render helper D's components, which load late.
+import VideoFacade from '../embeds/VideoFacade.astro';
+import DeferredEmbed from '../embeds/DeferredEmbed.astro';
+import { rich } from '../../lib/rich';
+
+interface Props {
+  id?: string;
+  heading?: string;
+  intro?: string;
+  video?: { provider: 'youtube' | 'vimeo'; videoId: string; title: string };
+  embed?: 'ghl-form' | 'ghl-quiz' | 'cherry' | 'map';
+}
+const { id, heading, intro, video, embed } = Astro.props;
+---
+
+<section class:list={['section', embed && 'band-embed']} id={id}>
+  <div class="container">
+    {heading && <h2>{heading}</h2>}
+    {intro && <p class="intro" set:html={rich(intro)} />}
+    {video && <VideoFacade provider={video.provider} videoId={video.videoId} title={video.title} />}
+    {embed && <DeferredEmbed embed={embed} />}
+  </div>
+</section>
