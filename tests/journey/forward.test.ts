@@ -64,7 +64,7 @@ describe('forwardMeasurementCollect', () => {
     expect(forwardedUrl).toBe(REPORTS_MEASUREMENT_COLLECT_URL);
     expect(forwardedOrigin).toBe('https://anewyouwoman.com');
     expect(forwardedBody).toBeTruthy();
-    expect(forwardedBody?.siteKey).toBe('a-new-you-website');
+    expect(forwardedBody?.siteKey).toBe('a-new-you');
     expect(forwardedBody?.siteKey).toBe(MEASUREMENT_SITE_KEY);
     expect(forwardedBody?.environment).toBe('production');
     expect(forwardedBody?.event).toBe('page_view');
@@ -165,7 +165,7 @@ describe('forwardMeasurementCollect', () => {
 
   it('keeps GET health local and names the collect upstream', async () => {
     expect(measurementCollectHealth().originRewrite).toBe('none');
-    expect(measurementCollectHealth().siteKey).toBe('a-new-you-website');
+    expect(measurementCollectHealth().siteKey).toBe('a-new-you');
     const health = await handleSiteEvents({ method: 'GET' });
     expect(health.status).toBe(200);
     expect(JSON.parse(health.body).upstream).toBe(REPORTS_MEASUREMENT_COLLECT_URL);

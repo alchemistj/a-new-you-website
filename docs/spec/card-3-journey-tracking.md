@@ -22,7 +22,7 @@ SRA-only validators.
 
 ## What this site needs
 
-- **siteKey:** `a-new-you-website`. Production host: `anewyouwoman.com`. Replace every SRA
+- **siteKey:** `a-new-you` (the FF Reports project slug; Reports rejects any other key). Production host: `anewyouwoman.com`. Replace every SRA
   host and key.
 - **Identity cookies:** `ff_vid` (180 days) and `ff_sid` (30 minutes, renewed on each page
   load), set by `middleware.ts` on HTML page requests only. Never set them on assets,
@@ -62,7 +62,7 @@ SRA-only validators.
   - the middleware sets the cookies on HTML only, never on assets, `/api/` or bots, and
     sets `ff_bot=1` for bots
   - the forwarder sends `x-ff-client-user-agent` and forces `siteKey` to
-    `a-new-you-website`
+    `a-new-you`
   - `engaged` reuses the page view's `eventId`
 - Required checks, all green: `npm test`, `npm run lint`, `npm run build`,
   `node scripts/build-vercel-json.mjs --check`, `git diff --check`.

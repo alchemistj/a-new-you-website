@@ -1,5 +1,5 @@
 export const MEASUREMENT_CONTRACT_VERSION = 'ff-measure.v1';
-export const MEASUREMENT_SITE_KEY = 'a-new-you-website';
+export const MEASUREMENT_SITE_KEY = 'a-new-you';
 export const MEASUREMENT_INGEST_PATH = '/api/site-events/';
 export const SESSION_CHANNEL_KEY = 'ff_session_channel_v1';
 

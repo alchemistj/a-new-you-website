@@ -10,7 +10,7 @@ export function capClientUserAgent(value: string): string {
 export const REPORTS_MEASUREMENT_COLLECT_URL =
   'https://ff-reports-analytics.vercel.app/api/measurement/collect';
 
-export const MEASUREMENT_SITE_KEY = 'a-new-you-website';
+export const MEASUREMENT_SITE_KEY = 'a-new-you';
 
 export const MEASUREMENT_ACCEPTED_CONTRACT_VERSIONS = [
   'ff-measure.v1',
