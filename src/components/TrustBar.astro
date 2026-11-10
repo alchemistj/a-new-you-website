@@ -12,7 +12,7 @@ import torchColor from '../assets/brand/torch-award-color.webp';
   <div class="trust-inner">
     {awards.map((a) => (
       <span class="award-logo">
-        <Image src={torchColor} alt={a.label} height={44} densities={[1, 2]} format="webp" loading="eager" decoding="async" />
+        <Image src={torchColor} alt={a.label} height={44} densities={[1, 2]} format="webp" quality={65} loading="eager" decoding="async" />
       </span>
     ))}
     <span class="dot md-only" aria-hidden="true">&middot;</span>
