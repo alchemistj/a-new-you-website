@@ -29,7 +29,7 @@ const metas = await Promise.all(cards.map((c) => (c.image ? resolveBodyImage(c.i
               <>
                 {metas[i] && c.image && (
                   <div class="card-img">
-                    <Image src={metas[i]!} alt={c.image.alt} width={420} format="webp" quality={72} loading="lazy" decoding="async" />
+                    <Image src={metas[i]!} alt={c.image.alt} width={420} widths={[240, 360, 480, 720]} sizes="(min-width: 768px) 360px, 50vw" format="webp" quality={72} loading="lazy" decoding="async" />
                   </div>
                 )}
                 <h3>{c.title}</h3>

@@ -19,7 +19,7 @@ const { id, heading, paragraphs = [] } = Astro.props;
     {paragraphs.map((p) => <p set:html={rich(p)} />)}
     <div class="cta-actions">
       <ScheduleButton class="btn btn-light" />
-      <CallButton class="btn btn-ghost" digits />
+      <CallButton class="btn btn-ghost" digits location="cta_band" />
     </div>
   </div>
 </section>

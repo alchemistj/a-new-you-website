@@ -7,11 +7,13 @@ interface Props {
   class?: string;
   digits?: boolean;
   label?: string;
+  /** Journey click_to_call location. Omitted when the surrounding region supplies it. */
+  location?: string;
 }
-const { class: cls = 'btn btn-outline', digits = false, label = site.phone.mobileLabel } = Astro.props;
+const { class: cls = 'btn btn-outline', digits = false, label = site.phone.mobileLabel, location } = Astro.props;
 ---
 
-<a class={cls} href={site.phone.tel}>
+<a class={cls} href={site.phone.tel} {...location ? { 'data-ff-cta-location': location } : {}}>
   {
     digits ? (
       <span>{site.phone.display}</span>

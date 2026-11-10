@@ -14,6 +14,8 @@ interface Props {
 const { path } = Astro.props;
 const nav = await getNav();
 const cur = (href: string) => (href === path ? { 'aria-current': 'page' as const } : {});
+const contactAt = (href: string, place: string) =>
+  href === '/contact/' ? { 'data-ff-cta-location': place } : {};
 ---
 
 <header class="site-header" id="site-header">
@@ -21,7 +23,7 @@ const cur = (href: string) => (href === path ? { 'aria-current': 'page' as const
     <div class="header-wrap">
       <p class="topbar-serving">Serving {cityConfig.displayName}</p>
       <nav aria-label="Secondary" class="topbar-nav">
-        {nav.topBarLinks.map((l) => <a href={l.href} {...cur(l.href)}>{l.label}</a>)}
+        {nav.topBarLinks.map((l) => <a href={l.href} {...cur(l.href)} {...contactAt(l.href, 'header')}>{l.label}</a>)}
       </nav>
     </div>
   </div>
@@ -32,9 +34,9 @@ const cur = (href: string) => (href === path ? { 'aria-current': 'page' as const
         {nav.quickLinks.map((l) => <a href={l.href} {...cur(l.href)}>{l.label}</a>)}
       </nav>
       <div class="header-actions">
-        <a class="header-phone" href={site.phone.tel}>{site.phone.display}</a>
+        <a class="header-phone" href={site.phone.tel} data-ff-cta-location="header">{site.phone.display}</a>
         <ScheduleButton class="btn btn-primary header-cta" />
-        <CallButton class="btn btn-outline header-call" />
+        <CallButton class="btn btn-outline header-call" location="header" />
         <details class="menu" id="menu">
           <summary class="menu-btn" aria-label="Menu" aria-controls="menu-panel">
             <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -43,11 +45,11 @@ const cur = (href: string) => (href === path ? { 'aria-current': 'page' as const
           </summary>
           <div class="menu-panel" id="menu-panel">
             <nav aria-label="Menu">
-              {nav.topBarLinks.map((l) => <a href={l.href} {...cur(l.href)}>{l.label}</a>)}
+              {nav.topBarLinks.map((l) => <a href={l.href} {...cur(l.href)} {...contactAt(l.href, 'mobile_menu')}>{l.label}</a>)}
               <hr />
-              {nav.quickLinks.map((l) => <a href={l.href} {...cur(l.href)}>{l.label}</a>)}
+              {nav.quickLinks.map((l) => <a href={l.href} {...cur(l.href)} {...contactAt(l.href, 'mobile_menu')}>{l.label}</a>)}
               <hr />
-              <a href={site.phone.tel}>{site.phone.display}</a>
+              <a href={site.phone.tel} data-ff-cta-location="mobile_menu">{site.phone.display}</a>
             </nav>
             <ScheduleButton class="btn btn-primary menu-cta" />
           </div>

@@ -12,7 +12,7 @@ import torchColor from '../assets/brand/torch-award-color.webp';
   <div class="trust-inner">
     {awards.map((a) => (
       <span class="award-logo">
-        <Image src={torchColor} alt={a.label} height={44} densities={[1, 2]} format="webp" loading="eager" decoding="async" />
+        <Image src={torchColor} alt={a.label} height={44} densities={[1, 2]} format="webp" quality={65} loading="eager" decoding="async" />
       </span>
     ))}
     <span class="dot md-only" aria-hidden="true">&middot;</span>
@@ -20,7 +20,7 @@ import torchColor from '../assets/brand/torch-award-color.webp';
     <span class="dot md-only" aria-hidden="true">&middot;</span>
     <span class="md-only">{poundsLost} lbs lost with A New You</span>
     <span class="dot md-only" aria-hidden="true">&middot;</span>
-    <a class="trust-phone" href={site.phone.tel}>
+    <a class="trust-phone" href={site.phone.tel} data-ff-cta-location="trust_bar">
       Call&nbsp;<span class="md:hidden">{site.founder.shortName}</span><span class="hidden md:inline">{site.phone.display}</span>
     </a>
   </div>
