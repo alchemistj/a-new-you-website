@@ -1,5 +1,7 @@
 Hi Josh and Charis,
 
+> Superseded by `services-and-seo-priorities-from-cindy-2026-11-16.md` (Nov 16, 2026). Kept for history.
+
 Here is the updated services list we discussed for local SEO and keyword work. I’ve grouped the concerns we address directly under the related services so you can connect our service terminology with the language people may actually use when searching.
 
 One important distinction for SEO: although our name is A New You Women’s Clinic and women’s health is our primary focus, we also care for men. Men can access our hormone, weight-management, metabolic-health, healthy-aging, peptide, aesthetic, skin-health and body-contouring services. Vaginal wellness is, of course, specific to women.

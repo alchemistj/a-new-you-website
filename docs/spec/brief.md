@@ -106,8 +106,10 @@ redirects or links for them yet. Don't link them from the nav, footer or body.
     hormone pellets on /faq/).
   - Write a title and meta description only where they are missing or wrong.
   - Log every change in the page's `changes` array.
-- **Cindy's focus.** Her services list (`docs/reference/anewyouwoman-services-from-cindy.md`) is
-  client-supplied copy. Its headings, service names and concern bullets may be added to the matching
+- **Cindy's focus.** Her services list is client-supplied copy. The current version is
+  `docs/reference/services-and-seo-priorities-from-cindy-2026-11-16.md` (Nov 16, which also sets the local
+  SEO priorities: urinary incontinence and vaginal wellness first). It replaces
+  `docs/reference/anewyouwoman-services-from-cindy.md` (Sep 30). Its headings, service names and concern bullets may be added to the matching
   existing page, word for word. Nothing else new may be written.
 - **Vaginal wellness page.** Remove every ThermiVa and "laser vaginal tightening" mention. Add Cindy's
   vaginal wellness, VTone, FormaV, Morpheus8V and Combination EmpowerRF sections. Keep the rest of the
