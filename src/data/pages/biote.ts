@@ -7,9 +7,9 @@ export const page: PageCopy = {
   publish: true,
   oldUrls: [],
   seo: {
-    title: 'Biote Certified Provider - Unlock Hormonal Optimization',
+    title: "BioTE Hormone Pellets in Springfield, MO | A New You Women's Clinic",
     description:
-      "Optimize your hormones with BioTE. A New You Women's Clinic is a certified BioTE provider and can help you discover your path to hormone optimization.",
+      "A New You Women's Clinic is a certified BioTE provider in Springfield, MO. Hormone pellet therapy to help you find your path to hormone optimization.",
   },
   hero: {
     h1: 'Your Certified BioTE Provider in Springfield, MO',

@@ -14,7 +14,7 @@ export const page: PageCopy = {
   seo: {
     title: "Professional Skincare in Springfield, MO | A New You Women's Clinic",
     description:
-      'We offer professional skincare products selected to support your skin’s needs and your treatment plan.',
+      "Professional skincare products in Springfield, MO, selected at A New You Women's Clinic to support your skin's needs and your treatment plan.",
   },
   hero: {
     h1: 'Professional Skincare in Springfield, MO',

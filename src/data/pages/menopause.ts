@@ -7,11 +7,12 @@ export const page: PageCopy = {
   publish: true,
   oldUrls: ['/thyroid-optimization/', '/pcos-management/'],
   seo: {
-    title: 'Effective Menopause Emotional Symptoms Treatment',
+    title: "Menopause Treatment in Springfield, MO | A New You Women's Clinic",
     description:
-      'Are you suffering from menopausal weight gain issues? Check out our safe and secure menopause emotional symptom treatment at A New You Women’s Clinic. Call us!',
+      "Menopause treatment in Springfield, MO for hot flashes, sleep, mood and weight changes. Personalized hormone care at A New You Women's Clinic. Book a consult.",
   },
   hero: {
+    eyebrow: 'Menopause Treatment in Springfield, MO',
     h1: "You Don't Have to Suffer Just Because It's Normal.",
     subhead:
       "Perimenopause and menopause are normal phases of every woman's life. But that doesn't mean you have to accept the suffering that comes with it.",
@@ -148,8 +149,8 @@ export const page: PageCopy = {
     'Live H2 under the H1 is now the hero subhead (same words).',
     'Title and description kept as live (not wrong, though the title lacks the brand and Springfield). Josh may want the standard "[Service] in Springfield, MO | A New You Women\'s Clinic" format.',
     'Added Cindy\'s Women\'s Hormone Optimization & Menopause Care section word for word: category heading as a cards overview, Perimenopause & Menopause Evaluation concerns, BHRT "Services may include" and "Concerns" lists, Hormone Laboratory Testing & Monitoring concerns. Her all-caps category heading is set in title case. Her "Hormone Optimization / Total Wellness Memberships" blurb is not on this page (not in the mapping).',
-    'Images: hero is what-is-menopause (the page\'s OG image); hormone-replacement-therapy photo sits beside the HRT section.',
-    'No testimonial quotes were found in this page\'s content, so no review bands.',
+    "Images: hero is what-is-menopause (the page's OG image); hormone-replacement-therapy photo sits beside the HRT section.",
+    "No testimonial quotes were found in this page's content, so no review bands.",
     'Hero image changed to the live hero photo (Perimenopausal-and-Menopausal-Symptoms-1, three women in scrubs outdoors); the what-is-menopause photo is no longer used.',
   ],
 };

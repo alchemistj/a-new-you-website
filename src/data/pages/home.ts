@@ -8,11 +8,12 @@ export const page: PageCopy = {
   publish: true,
   oldUrls: [],
   seo: {
-    title: "A New You Women's Clinic | Med Spa in Springfield, MO",
+    title: "Women's Clinic in Springfield, MO | A New You Women's Clinic",
     description:
       "Semaglutide, Botox & hormone therapy in Springfield, MO. A New You Women's Clinic — personalized care. Schedule your consult today.",
   },
   hero: {
+    eyebrow: "Women's Clinic in Springfield, MO",
     h1: 'Take Control of How You Age',
     subhead:
       "It's not all in your head. Your symptoms are REAL, and treatment options are available. Your journey to a healthy new you is within reach.",
@@ -151,7 +152,7 @@ export const page: PageCopy = {
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
     'Restored the live "Pounds Lost With A New You" counter as a static 1,805 lbs (live Elementor counter data-to-value=1805; it showed 0 only before its JS ran).',
-    'Homepage service cards reordered to Cindy\'s priority order: Female Sexual Dysfunction card (which links to the vaginal page on the live site, so it now links to /vaginal-rejuvenation/) first, then Menopause, Weight Loss, Men\'s Health, Aesthetics. Live order was Weight Loss, Aesthetics, Menopause, Female Sexual Dysfunction, Men\'s Health. Card titles and wording unchanged.',
+    "Homepage service cards reordered to Cindy's priority order: Female Sexual Dysfunction card (which links to the vaginal page on the live site, so it now links to /vaginal-rejuvenation/) first, then Menopause, Weight Loss, Men's Health, Aesthetics. Live order was Weight Loss, Aesthetics, Menopause, Female Sexual Dysfunction, Men's Health. Card titles and wording unchanged.",
     'Removed the "Pounds Lost With A New You" heading and its 0 lbs counter.',
     'Removed the Black Friday coupon text and the "#ShareASale" text (they live in the footer, not in the page content).',
     'Quiz: not embedded (Josh, 2 Nov). The hero\'s one button, "Take Our Free 2-Minute Quiz", links to the Aesthetic Record survey, as on the live site. Schedule an Appointment stays in the header and mobile bar.',

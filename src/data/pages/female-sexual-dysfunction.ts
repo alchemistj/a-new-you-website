@@ -7,12 +7,12 @@ export const page: PageCopy = {
   publish: true,
   oldUrls: ['/female-sexual-disfunction-disorder/'],
   seo: {
-    title: 'Female Sexual Dysfunction Disorder Clinic in Springfield MO',
+    title: 'Female Sexual Dysfunction Treatment in Springfield, MO',
     description:
-      'We are here to provide effective female sexual dysfunction disorder treatments at “A New You Women’s Clinic,” which helps to improve your quality of life.',
+      "Female sexual dysfunction treatment in Springfield, MO at A New You Women's Clinic, helping women improve their quality of life. Book a private consult.",
   },
   hero: {
-    h1: 'Female Sexual Dysfunction Disorder',
+    h1: 'Female Sexual Dysfunction Treatment in Springfield, MO',
     subhead:
       'Persistent, recurrent problems with sexual response, desire, orgasm or pain that distress you or strains your relationship with your partner —are known as female sexual dysfunction.',
     image: {
@@ -123,7 +123,7 @@ export const page: PageCopy = {
     'Removed the YouTube video VhBl3dHT5SY: it is an ElementsKit (WordPress plugin) promo video left over from the theme template, not a clinic video.',
     'Typo fix: "Disfunction" to "Dysfunction" in the H1. The old slug /female-sexual-disfunction-disorder/ is kept as an oldUrl.',
     'Removed duplicates: the first "Physical conditions..." bullet appeared twice on the live page and is kept once; "A New You Women’s Clinic A New You Women’s Clinic" in the closing paragraph is kept once.',
-    'Added Cindy\'s Vaginal Wellness Consultation & Evaluation concerns that are sexual-health or intimacy concerns, word for word (Painful sex, Discomfort with intimacy, Decreased sensation, Sexual-health changes, Low desire). Her other concerns in that list are on the vaginal-wellness page.',
+    "Added Cindy's Vaginal Wellness Consultation & Evaluation concerns that are sexual-health or intimacy concerns, word for word (Painful sex, Discomfort with intimacy, Decreased sensation, Sexual-health changes, Low desire). Her other concerns in that list are on the vaginal-wellness page.",
     'YouTube video VhBl3dHT5SY is a video section placed where the live embed was. Its title ("Female Sexual Dysfunction Disorder") is an accessibility label I chose from the page H1; not visible copy.',
     'Live H1 is also the title; hero subhead is the first live paragraph.',
     'The two last bullets of "characterized by at least one of the following" were sentences, not symptoms; they are the closing text of that list.',

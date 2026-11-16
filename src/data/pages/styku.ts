@@ -14,7 +14,7 @@ export const page: PageCopy = {
   seo: {
     title: "Styku 3D Body Scanning in Springfield, MO | A New You Women's Clinic",
     description:
-      'Styku 3D body scanning helps us track changes in body measurements and estimated body composition over time.',
+      "Styku 3D body scanning in Springfield, MO. A New You Women's Clinic tracks changes in your body measurements and estimated body composition over time.",
   },
   hero: {
     h1: 'Styku 3D Body Scanning in Springfield, MO',
