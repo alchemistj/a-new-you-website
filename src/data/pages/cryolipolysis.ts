@@ -7,12 +7,12 @@ export const page: PageCopy = {
   publish: true,
   oldUrls: ['/cryolypolysis/'],
   seo: {
-    title: 'Cryolipolysis Fat Freezing & Body Slimming Treatments',
+    title: "Cryolipolysis Fat Freezing in Springfield, MO | A New You Women's Clinic",
     description:
-      'Achieve your non surgical body contouring goals with the help of our non invasive cryolipolysis fat freezing, reduction, and body slimming treatments. Call us!',
+      "Non-invasive cryolipolysis fat freezing and body slimming treatments in Springfield, MO at A New You Women's Clinic. Call us to book a consult.",
   },
   hero: {
-    h1: 'Cryolipolysis the Best Way for Body Slimming',
+    h1: 'Cryolipolysis Fat Freezing in Springfield, MO',
     subhead: 'Sit back, relax, and say goodbye to stubborn fat FreezeFats PRO',
     image: {
       src: 'pages/cryolipolysis/hero.jpg',
@@ -40,7 +40,7 @@ export const page: PageCopy = {
     {
       kind: 'prose',
       heading: 'Reshape Your Body Figure',
-      paragraphs: ['You\'ll love your cryolipolysis results every time you look in the mirror.'],
+      paragraphs: ["You'll love your cryolipolysis results every time you look in the mirror."],
       image: {
         src: 'pages/cryolipolysis/procedure.jpg',
         alt: 'A provider in purple gloves holds a handheld cooling device against a patient’s abdomen',
@@ -115,10 +115,10 @@ export const page: PageCopy = {
   changes: [
     'H1 was all lowercase ("cryolipolysis the best way for body slimming"); set in title case. Other all-caps headings ("HOW CRYOLIPOLYSIS WORK?", "RESHAPE YOUR BODY FIGURE", "WHERE DOES THE FAT GO?", "NON-INVASIVE,NON-SURGERY", "MULTIPLE TREATMENT Areas Sculpting The Body") are set in title case; "NON-INVASIVE,NON-SURGERY" gets a space after the comma.',
     'oldUrl is /cryolypolysis/ (misspelled slug); the new route is /cryolipolysis/.',
-    'Added Cindy\'s Cryolipolysis concerns word for word as a list section.',
+    "Added Cindy's Cryolipolysis concerns word for word as a list section.",
     'The live testimonial (" I received my first treatment yesterday. It was so much more than I expected. I highly recommend ") has no reviewer name on the page, so it is not shown as a review band (reviews need first name + last initial). Josh to supply a name or drop it.',
     'Dropped the quote-marked label "Introduction" and the empty "Treatment Area" heading (no content under them), and the live "Schedule an appointment" button text (kept as the CTA heading "Schedule an Appointment").',
-    'The live page\'s six-step fat-cell process was an unlabeled bullet list; it is a steps section with the bullet text as step titles.',
+    "The live page's six-step fat-cell process was an unlabeled bullet list; it is a steps section with the bullet text as step titles.",
     'Kept live wording exactly, including its errors ("How Cryolipolysis Work?", "First of all.Gel pad attach", "Cooling is applied,causing", "lush out fat cells", "What will my results be ?"). They are not on the brief\'s typo list; Josh to decide.',
     'Kept the live claim "typically between 20% to 40%" and "gone for good". Flagged for Josh.',
     'Photos come from the live media library files named for cryolipolysis (Elementor backgrounds, not in the page HTML). Hero file is only 680 px wide; a larger original may be needed.',

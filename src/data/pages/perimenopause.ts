@@ -7,12 +7,12 @@ export const page: PageCopy = {
   publish: true,
   oldUrls: [],
   seo: {
-    title: 'Perimenopause Treatment for Sleep Disturbance Disorder',
+    title: "Perimenopause Treatment in Springfield, MO | A New You Women's Clinic",
     description:
-      'Check out our comprehensive perimenopause treatment solutions to alleviate sleep disturbance disorder & enhance your well-being. Book your appointment with us!',
+      "Perimenopause treatment in Springfield, MO for sleep problems, mood swings and irregular cycles. Personalized care at A New You Women's Clinic. Book a consult.",
   },
   hero: {
-    h1: 'Perimenopause',
+    h1: 'Perimenopause Treatment in Springfield, MO',
     image: {
       src: 'pages/perimenopause/hero.jpg',
       alt: 'A gray-haired provider in black scrubs talks with a blonde patient in a treatment room',
@@ -65,7 +65,7 @@ export const page: PageCopy = {
     'Removed all template filler: the "Service Key Features" and "Our Services" blocks, the weight-loss-plan line ("our medical providers will customize a weight loss plan..."), "dietary restrictions / health concerns / lifestyle to development", "Lets get Best Nutrition & wellness Of Your By Our Expert Personal Coach Team", "Personality Coach", "Free Consultation 24 Hours", all 7 Lorem ipsum blocks, the "Home / Perimenopause" breadcrumb text and the Group-1/Group-3 template images.',
     'The live closing line appeared twice (a paragraph and an H4); it is kept once, as the final CTA heading. "schedule an appointment" button is the hero and CTA booking button.',
     'Kept the live paragraphs word for word, including their odd wording and stray commas ("slow, metabolism", "loss of breast, fullness", "is the sensation of menstrual cycles"). These look like garbled text, but fixing them would mean guessing. Josh to decide.',
-    'Added Cindy\'s Perimenopause & Menopause Evaluation concerns word for word.',
+    "Added Cindy's Perimenopause & Menopause Evaluation concerns word for word.",
     'Hero photo is the live media-library file named Perimenopausal-and-Menopausal-Symptoms (not in the page HTML; the live page had only template icons). Josh to confirm.',
     'Title and description kept as live.',
   ],

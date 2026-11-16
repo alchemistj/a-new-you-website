@@ -9,7 +9,7 @@ export const page: PageCopy = {
   seo: {
     title: "Men’s Health in Springfield, MO | A New You Women's Clinic",
     description:
-      "Feeling off? A New You Women's Clinic helps men restore performance and confidence with testosterone therapy, anti-aging peptides, ED support, and weight loss.",
+      "Men's health in Springfield, MO: testosterone therapy, anti-aging peptides, ED support and weight loss at A New You Women's Clinic. Feel like yourself again.",
   },
   hero: {
     h1: 'Men’s Health in Springfield, MO',
@@ -35,7 +35,7 @@ export const page: PageCopy = {
         'And now? Our men’s health program was built with them in mind. For the man who gives everything and finally wants to feel good again.',
         'So, if you’re tired, foggy, frustrated, or just not feeling like yourself anymore…',
         'It’s more common than you think.',
-        'And while you might be wondering if it’s “just aging,” the truth is: there’s always a reason. At A New You Women\'s Clinic, we help men in Springfield reclaim their energy, strength, and edge—without guesswork or gimmicks.',
+        "And while you might be wondering if it’s “just aging,” the truth is: there’s always a reason. At A New You Women's Clinic, we help men in Springfield reclaim their energy, strength, and edge—without guesswork or gimmicks.",
       ],
     },
     {
@@ -156,7 +156,7 @@ export const page: PageCopy = {
     {
       kind: 'review',
       quote:
-        'All I can say is WOW ! I have used the Hormone injections, biweekly and weekly and even twice / week but still had the rollercoaster ups and downs. The Bio- T pellets absolutely eliminate those ups and downs between injections! It\'s a complete change ! No more injections, no more spikes and valleys in my testosterone levels. And the staff at A New You is absolutely amazing! A friendly environment, amazing staff and the owner is there Every day to talk to her clients. Highly recommend 10/10',
+        "All I can say is WOW ! I have used the Hormone injections, biweekly and weekly and even twice / week but still had the rollercoaster ups and downs. The Bio- T pellets absolutely eliminate those ups and downs between injections! It's a complete change ! No more injections, no more spikes and valleys in my testosterone levels. And the staff at A New You is absolutely amazing! A friendly environment, amazing staff and the owner is there Every day to talk to her clients. Highly recommend 10/10",
       name: 'Jesse S.',
     },
     {
@@ -195,11 +195,11 @@ export const page: PageCopy = {
     },
     {
       kind: 'list',
-      heading: 'Why Men Choose A New You Women\'s Clinic',
+      heading: "Why Men Choose A New You Women's Clinic",
       intro: 'You don’t need a six-pack. You need someone who has your back.',
       items: [
         'No judgment. No fluff. Just straight answers and real support.',
-        'Custom plans for your body, not someone else\'s algorithm.',
+        "Custom plans for your body, not someone else's algorithm.",
         'Nurse-led care with decades of experience in hormone health and human behavior.',
         'Functional medicine meets first-responder grit. We treat performance the way it should be: inside-out.',
       ],
@@ -215,7 +215,7 @@ export const page: PageCopy = {
     },
     {
       kind: 'cta',
-      heading: 'Book Now | A New You Women\'s Clinic – Springfield, MO',
+      heading: "Book Now | A New You Women's Clinic – Springfield, MO",
       paragraphs: [
         'You’re not broken. You’re not alone. You just need care that listens.',
         'If you’re in or near Springfield, MO and ready to feel like yourself again, we invite you to take the first step today.',

@@ -15,9 +15,9 @@ export const page: PageCopy = {
   publish: true,
   oldUrls: [],
   seo: {
-    title: "nutraMetrix - A New You Women's Clinic",
+    title: "nutraMetrix Products in Springfield, MO | A New You Women's Clinic",
     description:
-      "A New You Women's Clinic proudly provides high-quality products from nutraMetrix to help support your healthy lifestyle.",
+      "A New You Women's Clinic in Springfield, MO proudly provides high-quality nutraMetrix products to help support your healthy lifestyle.",
   },
   hero: {
     h1: 'Proudly Offering nutraMetrix® Products',

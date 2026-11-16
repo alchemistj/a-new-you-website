@@ -7,7 +7,7 @@ export const page: PageCopy = {
   publish: true,
   oldUrls: [],
   seo: {
-    title: 'Subscription Plans for Ozempic & Medspa in Springfield MO',
+    title: 'Weight Loss & Wellness Memberships in Springfield, MO',
     description:
       'Discover our exclusive subscription plans featuring semaglutide, medspa, and ozempic treatments in Springfield, MO, which help to elevate your wellness journey.',
   },
@@ -134,7 +134,7 @@ export const page: PageCopy = {
     'Description lines such as "Does not include", "Member Benefit" and "Medications such as..." were separate paragraphs; they are the closing text of each kept list section with the same words. The legacy "Subscription cost annual" and "Non-subscription" price lines were removed on 3 Nov 2026 with those offers.',
     'Title and description kept as live (they mention Ozempic, which the live page used); Josh may want to review.',
     'Live wording errors in the removed subscription blocks ("well being .", "schedule your initial consultation today.", "a exclusive blend", "Lipo- trim", "body‘s") left with those offers on 3 Nov 2026.',
-    'The Weight Loss Membership list here differs from the $99 membership description on the weight-loss page and from Cindy\'s Weight Loss Membership list; all three kept as supplied.',
+    "The Weight Loss Membership list here differs from the $99 membership description on the weight-loss page and from Cindy's Weight Loss Membership list; all three kept as supplied.",
     'Cindy\'s "Hormone Optimization / Total Wellness Memberships" blurb was not added (not in the mapping; the live memberships already cover it).',
     'Hero photo added: the live page banner is the same group photo used on weight-loss (medical-weight-loss-in-Springfield-MO).',
   ],
