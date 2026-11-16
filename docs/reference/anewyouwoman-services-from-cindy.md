@@ -1,6 +1,6 @@
-Hi Josh and Charis,
-
 > Superseded by `services-and-seo-priorities-from-cindy-2026-11-16.md` (Nov 16, 2026). Kept for history.
+
+Hi Josh and Charis,
 
 Here is the updated services list we discussed for local SEO and keyword work. I’ve grouped the concerns we address directly under the related services so you can connect our service terminology with the language people may actually use when searching.
 
