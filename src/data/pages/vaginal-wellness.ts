@@ -268,9 +268,10 @@ export const page: PageCopy = {
       ],
     },
   ],
-  related: ['female-sexual-dysfunction', 'menopause', 'perimenopause'],
+  related: ['female-sexual-dysfunction', 'menopause', 'perimenopause', 'urinary-incontinence'],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Rogersville'],
   changes: [
+    '17 Nov 2026: added urinary-incontinence to related so the new urinary incontinence page cross-links here. No other copy on this page changed.',
     '4 Nov 2026, Cindy approved via review doc (all word for word): hero subhead, the evaluation-focused sentence after her intro (replaces draft B; device descriptions stay in their own sections), the FAQ answer on vaginal looseness, and the individualized-pricing sentence in the Custom Plans section. Earlier DRAFT notes are superseded.',
     '4 Nov 2026, Cindy: leave pricing off this page for now. Removed the $1,500 to $3,500 range and "Payment plans are available."; the cost heading became the existing live subheading "Custom Plans That Fit Your Body and Your Budget".',
     'Design QA: removed the link-less overview cards of Cindy service names; the same names head the grouped Cindy lists below.',

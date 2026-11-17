@@ -13,7 +13,7 @@ const out = process.argv[2] ?? new URL('../../docs/client/website-copy.html', im
 
 // Page order in the doc: home, then Cindy's priority services, other services, company pages.
 const ORDER = [
-  'home', 'vaginal-wellness', 'menopause', 'perimenopause', 'weight-loss', 'semaglutide', 'mens-health',
+  'home', 'vaginal-wellness', 'urinary-incontinence', 'menopause', 'perimenopause', 'weight-loss', 'semaglutide', 'mens-health',
   'female-sexual-dysfunction', 'botox', 'aesthetics', 'cryolipolysis', 'styku', 'biote', 'memberships',
   'financing', 'image-skincare', 'nutrametrix', 'about', 'customer-reviews', 'faq', 'contact',
 ];
@@ -25,7 +25,10 @@ const abs = (href) => (href.startsWith('/') ? `https://anewyouwoman.com${href}` 
 const rich = (s) => {
   let h = esc(s);
   h = h.replace(/&lt;(\/?)(strong|em|b|i)&gt;/g, '<$1$2>');
-  h = h.replace(/&lt;a href="([^"]+)"&gt;(.*?)&lt;\/a&gt;/g, (_, href, t) => `<a href="${abs(href)}">${t}</a>`);
+  h = h.replace(
+    /&lt;a href="([^"]+)"((?: (?:target|rel)="[^"]*")*)&gt;(.*?)&lt;\/a&gt;/g,
+    (_, href, attrs, t) => `<a href="${abs(href)}"${attrs}>${t}</a>`,
+  );
   h = h.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, t, href) => `<a href="${abs(href)}">${t}</a>`);
   return h;
 };
