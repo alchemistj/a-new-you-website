@@ -323,6 +323,11 @@ export const page: PageCopy = {
       ],
     },
     {
+      kind: 'review',
+      quote: "I’ve worked with Lucinda for a couple of years—everything from facials to hormones and peptides and also VTone. I recommend her services 100 percent. She’s a very caring and knowledgeable provider! And I am pretty sure she could painlessly draw blood blindfolded if needed—she’s that good! She goes above and beyond in all she does.",
+      name: 'Laura W.',
+    },
+    {
       kind: 'prose',
       heading: "FormaV Uses Warmth to Treat Vaginal Tissue",
       paragraphs: [
@@ -374,6 +379,11 @@ export const page: PageCopy = {
         "Severe pain, heavy bleeding, sudden weakness, or other rapidly worsening symptoms also require prompt evaluation.",
         "Don’t wait for a routine vaginal wellness appointment.",
       ],
+    },
+    {
+      kind: 'review',
+      quote: "A New You Women's Clinic is amazing! I've had several facial treatments over the last few years and each one was fabulous. I'm now seeing Cindy for my health and hormone needs. Cindy has the knowledge to get to the cause of the issues. She is very caring, takes the time to listen, and she asks a lot of questions.  Whatever you need from your head to your hooha, Cindy can take care of you.",
+      name: 'Sheree S.',
     },
     {
       kind: 'prose',
@@ -488,6 +498,7 @@ export const page: PageCopy = {
   related: ['vaginal-wellness', 'menopause', 'perimenopause'],
   serviceArea: ['Springfield', 'Nixa', 'Ozark', 'Republic', 'Rogersville'],
   changes: [
+    '17 Nov 2026, Claude QA (Josh asked): added two 5-star Google reviews, word for word from docs/reference/google-reviews-2026-11-17.csv. Laura W. (mentions VTone) goes after the VTone section; Sheree S. ("head to your hooha") goes before the closing section. Names are shown as first name plus last initial.',
     "New page. Body copy is Cindy's file docs/client/urinary-incontinence-copy-from-cindy.md, word for word. Bold lines are strong, the italic line is em, and her long dashes and sign-off are unchanged.",
     "Hero photo is the existing vaginal-wellness consultation photo: a provider in black scrubs talking with a patient at a desk. Alt text describes that photo. Primary CTA is the standard Schedule an Appointment booking link.",
     "FAQ questions are new. Every answer is her own sentences, copied exactly.",
