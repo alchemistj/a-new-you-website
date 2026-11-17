@@ -20,6 +20,15 @@ describe('nav.ts', () => {
 
   it('header has the four priority quick links', () => {
     expect(nav.quickLinks.map((l) => l.href)).toEqual(['/vaginal-rejuvenation/', '/menopause/', '/weight-loss/', '/mens-health/']);
+    expect(nav.quickLinks.some((l) => l.href === '/urinary-incontinence/')).toBe(false);
+  });
+
+  it('lists Urinary Incontinence in footer services, right after Vaginal Wellness', () => {
+    const slugs = Object.keys(nav.serviceLabels);
+    const vaginal = slugs.indexOf('vaginal-wellness');
+    expect(vaginal).toBeGreaterThanOrEqual(0);
+    expect(slugs[vaginal + 1]).toBe('urinary-incontinence');
+    expect(nav.serviceLabels['urinary-incontinence']).toBe('Urinary Incontinence');
   });
 
   it('footer company list includes professional skincare and nutraMetrix', () => {

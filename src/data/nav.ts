@@ -26,6 +26,7 @@ export const topBarLinks: NavLink[] = [
 /** Short labels for service pages (slug -> label), in footer order. */
 export const serviceLabels: Record<string, string> = {
   'vaginal-wellness': 'Vaginal Wellness',
+  'urinary-incontinence': 'Urinary Incontinence',
   menopause: 'Menopause',
   perimenopause: 'Perimenopause',
   'weight-loss': 'Weight Loss',

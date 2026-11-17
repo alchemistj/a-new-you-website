@@ -33,6 +33,7 @@ const EXPECTED = [
   'menopause',
   'perimenopause',
   'vaginal-wellness',
+  'urinary-incontinence',
   'female-sexual-dysfunction',
   'mens-health',
   'biote',
@@ -58,7 +59,7 @@ function collectImages(value: unknown, out: { src: string; alt: string }[] = [])
 }
 
 describe('page copy files', () => {
-  it('has exactly the 21 published pages', () => {
+  it('has exactly the 22 published pages', () => {
     expect(pages.map((p) => p.slug).sort()).toEqual([...EXPECTED].sort());
     for (const p of pages) expect(p.publish).toBe(true);
   });

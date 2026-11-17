@@ -904,6 +904,11 @@
       "statusCode": 301
     },
     {
+      "source": "/urinary-incontinence",
+      "destination": "/urinary-incontinence/",
+      "statusCode": 301
+    },
+    {
       "source": "/vaginal-rejuvenation",
       "destination": "/vaginal-rejuvenation/",
       "statusCode": 301
