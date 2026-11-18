@@ -102,6 +102,10 @@ const host = (embed: string) => {
   return el;
 };
 
+async function settle() {
+  await new Promise((resolve) => setTimeout(resolve, 0));
+}
+
 describe('DeferredEmbed', () => {
   it('makes no request on load and registers passive once listeners', () => {
     const h = host('ghl-form');
@@ -116,12 +120,13 @@ describe('DeferredEmbed', () => {
     }
   });
 
-  it('loads every embed on first interaction, with the form_embed.js helper for GHL', () => {
+  it('loads every embed on first interaction, with the form_embed.js helper for GHL', async () => {
     const form = host('ghl-form');
     const map = host('map');
     const env = makeEnv([form, map]);
     initDeferredEmbeds(env.doc, env.win);
     env.fire('wheel');
+    await settle();
     expect(form.children[0].src).toBe('https://link.aestheticrecord.com/widget/form/H2deelST8Z9WKwPJ5WTe');
     expect(form.children[0].attrs['data-form-id']).toBe('H2deelST8Z9WKwPJ5WTe');
     expect(map.children[0].src).toContain('output=embed');
@@ -130,33 +135,37 @@ describe('DeferredEmbed', () => {
     expect(env.handlers.scroll ?? []).toHaveLength(0);
   });
 
-  it('loads one embed when it enters the viewport, leaving the others', () => {
+  it('loads one embed when it enters the viewport, leaving the others', async () => {
     const quiz = host('ghl-quiz');
     const map = host('map');
     const env = makeEnv([quiz, map]);
     initDeferredEmbeds(env.doc, env.win);
     expect(env.observed).toEqual([quiz, map]);
     env.intersect(quiz);
+    await settle();
     expect(quiz.children[0].src).toBe('https://link.aestheticrecord.com/widget/survey/NgxRM6NWFTi1Q8AS8XFU');
     expect(map.children).toHaveLength(0);
   });
 
-  it('loads an embed only once', () => {
+  it('loads an embed only once', async () => {
     const quiz = host('ghl-quiz');
     const env = makeEnv([quiz]);
     initDeferredEmbeds(env.doc, env.win);
     env.intersect(quiz);
+    await settle();
     env.intersect(quiz);
     env.fire('keydown');
+    await settle();
     expect(quiz.children).toHaveLength(1);
     expect(env.body.children).toHaveLength(1);
   });
 
-  it('boots Cherry with the live config', () => {
+  it('boots Cherry with the live config', async () => {
     const cherry = host('cherry');
     const env = makeEnv([cherry]);
     initDeferredEmbeds(env.doc, env.win);
     env.fire('touchstart');
+    await settle();
     expect(cherry.children[0].id).toBe('all');
     expect(env.head.children[0].src).toBe('https://files.withcherry.com/widgets/widget.js');
     const queued = env.win._hw.q[0];

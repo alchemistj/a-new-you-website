@@ -17,6 +17,16 @@ export const MEASUREMENT_ACCEPTED_CONTRACT_VERSIONS = [
   'ff-measurement-v1',
 ] as const;
 
+/** Journey event names this server will forward. Anything else is dropped. */
+export const MEASUREMENT_FORWARD_EVENTS = [
+  'page_view',
+  'click_to_call',
+  'contact_click',
+  'lead_form_success',
+] as const;
+
+const FORWARD_EVENTS = new Set<string>(MEASUREMENT_FORWARD_EVENTS);
+
 /** Reports rejects any other key. `engaged` and `automation` are included only when true. */
 export const MEASUREMENT_FORWARD_KEYS = [
   'contractVersion',
@@ -180,6 +190,11 @@ export async function forwardMeasurementCollect(input: {
   }
   if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
     return jsonResult(400, { ok: false, error: 'Malformed JSON body' });
+  }
+
+  const eventName = (parsed as { event?: unknown }).event;
+  if (typeof eventName !== 'string' || !FORWARD_EVENTS.has(eventName)) {
+    return skipped('event_not_allowlisted');
   }
 
   const payload = allowlistMeasurementPayload(parsed as Record<string, unknown>);

@@ -39,6 +39,8 @@ export type Section =
   | { kind: 'video'; id?: string; heading?: string; provider: 'youtube' | 'vimeo'; videoId: string; title: string }
   /** Third-party embeds, loaded on first interaction or when scrolled into view (Rule 10). */
   | { kind: 'embed'; id?: string; embed: 'ghl-form' | 'ghl-quiz' | 'cherry' | 'map'; heading?: string; intro?: string }
+  /** Native contact form. Rendered in the server HTML; JavaScript posts the lead. */
+  | { kind: 'contact-form'; id?: string; heading?: string }
   /** Logos/badges row (awards, BBB). Images must be local. */
   | { kind: 'badges'; id?: string; heading?: string; badges: ImageRef[] }
   /** One big number with a label (e.g. "Pounds Lost With A New You" / "1,805" / "lbs"). Static, no count-up. */

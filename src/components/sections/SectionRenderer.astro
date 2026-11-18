@@ -19,6 +19,7 @@ import CtaBand from './CtaBand.astro';
 import RelatedBand from './RelatedBand.astro';
 import CindyGroup from './CindyGroup.astro';
 import Tone from './Tone.astro';
+import ContactForm from '../forms/ContactForm.astro';
 import { getPublishedPage } from '../../lib/pages';
 import { labelForSlug } from '../../lib/nav';
 
@@ -97,6 +98,7 @@ const relatedAt = firstFaq >= 0 ? firstFaq : blocks.length;
             {s.kind === 'pricing' && <PricingSection {...s} />}
             {s.kind === 'video' && <MediaSection id={s.id} heading={s.heading} video={s} />}
             {s.kind === 'embed' && <MediaSection id={s.id} heading={s.heading} intro={s.intro} embed={s.embed} />}
+            {s.kind === 'contact-form' && <ContactForm id={s.id} heading={s.heading} />}
             {s.kind === 'badges' && <BadgesSection {...s} />}
             {s.kind === 'stat' && <StatSection {...s} />}
           </Tone>

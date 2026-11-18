@@ -261,7 +261,7 @@ export function buildMeasurementEvent(
     serviceSlug: extra.serviceSlug ?? domSlug('service-slug') ?? pathContext.serviceSlug,
     ctaLocation: textOrNull(extra.ctaLocation),
     formSource: textOrNull(extra.formSource),
-    submissionId: null,
+    submissionId: textOrNull(extra.submissionId),
     conversionKind: extra.conversionKind ?? conversionKindForEvent(event),
     attributionConfidence:
       extra.attributionConfidence ?? (clickObserved ? 'observed' : 'inferred'),
@@ -399,7 +399,7 @@ export function resetMeasurementForTests(): void {
       const keys: string[] = [];
       for (let index = 0; index < storage.length; index += 1) {
         const key = storage.key(index);
-        if (key?.startsWith(EVENT_SENT_PREFIX)) keys.push(key);
+        if (key?.startsWith(EVENT_SENT_PREFIX) || key?.startsWith(LEAD_SENT_PREFIX)) keys.push(key);
       }
       for (const key of keys) storage.removeItem(key);
     }
@@ -432,4 +432,51 @@ export function collectContactClick(
     buildMeasurementEvent('contact_click', { ctaLocation: extra.ctaLocation ?? null }, init),
     init,
   );
+}
+
+const LEAD_SENT_PREFIX = 'ff_measure_lead_v1:';
+
+/** Stable event id so one Central Forms lead id is sent once. */
+export function leadFormSuccessEventId(leadId: string): string {
+  const safe = leadId.replace(/[^A-Za-z0-9._:-]/g, '').slice(0, 100);
+  const id = `ff-lead-${safe}`;
+  return id.length >= 8 ? id.slice(0, 128) : '';
+}
+
+/**
+ * Journey event for one accepted Central Forms lead. Carries ff_vid, ff_sid,
+ * the path and the lead id. No name, email, phone or message.
+ */
+export async function collectLeadFormSuccess(
+  leadId: string,
+  init: CollectInit = {},
+): Promise<CollectResult> {
+  const submissionId = textOrNull(leadId);
+  const eventId = submissionId ? leadFormSuccessEventId(submissionId) : '';
+  if (!submissionId || !eventId) return { ok: false, sent: false, error: 'missing_id' };
+
+  const storage = sessionStorageOrUndefined();
+  const onceKey = `${LEAD_SENT_PREFIX}${submissionId}`;
+  try {
+    if (storage?.getItem(onceKey)) return { ok: true, sent: false, duplicate: true };
+  } catch {
+    // Continue; collectMeasurementEvent still dedupes on the stable event id.
+  }
+
+  const result = await collectMeasurementEvent(
+    buildMeasurementEvent(
+      'lead_form_success',
+      { submissionId, eventId, formSource: 'main-contact' },
+      init,
+    ),
+    init,
+  );
+  if (result.ok && result.sent) {
+    try {
+      storage?.setItem(onceKey, '1');
+    } catch {
+      // The event was still sent.
+    }
+  }
+  return result;
 }

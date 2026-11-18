@@ -13,6 +13,7 @@ export const MEASUREMENT_EVENT_NAMES = [
   'page_view',
   'click_to_call',
   'contact_click',
+  'lead_form_success',
 ] as const;
 
 export type MeasurementEventName = (typeof MEASUREMENT_EVENT_NAMES)[number];
@@ -121,8 +122,9 @@ const PHONE_PATTERN = /\+?1?[\s.-]?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}/;
 const OPAQUE_ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._:-]{7,127}$/;
 
 export function conversionKindForEvent(
-  _event: MeasurementEventName,
+  event: MeasurementEventName,
 ): MeasurementConversionKind {
+  if (event === 'lead_form_success') return 'accepted_lead';
   return 'interaction';
 }
 
