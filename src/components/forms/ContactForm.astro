@@ -1,0 +1,97 @@
+---
+import { site } from '../../data/site';
+import {
+  FORM_BUTTON_LABEL,
+  FORM_LOADING_MESSAGE,
+  FORM_NOSCRIPT_MESSAGE,
+  FORM_SUCCESS_MESSAGE,
+  LABEL_EMAIL,
+  LABEL_FIRST_NAME,
+  LABEL_LAST_NAME,
+  LABEL_MESSAGE,
+  LABEL_PHONE,
+  LABEL_SERVICES,
+  SMS_CONSENT_WORDING,
+} from '../../lib/forms/contactFormCopy';
+
+interface Props {
+  id?: string;
+  heading?: string;
+}
+const { id = 'contact-form', heading } = Astro.props;
+const headingId = `${id}-heading`;
+---
+
+<section class="section" id={id} data-contact-form>
+  <div class="container">
+    {heading && <h2 id={headingId}>{heading}</h2>}
+    <p class="form-success" data-form-success role="status" hidden>{FORM_SUCCESS_MESSAGE}</p>
+    <form
+      class="contact-form"
+      method="post"
+      action={`/contact/#${id}`}
+      novalidate
+      aria-labelledby={heading ? headingId : undefined}
+    >
+      <p class="form-loading" data-form-loading>
+        {FORM_LOADING_MESSAGE}{' '}
+        <a href={site.phone.tel}>{site.phone.display}</a>
+      </p>
+      <noscript>
+        <p>
+          {FORM_NOSCRIPT_MESSAGE}{' '}
+          <a href={site.phone.tel}>{site.phone.display}</a>
+        </p>
+      </noscript>
+
+      <label class="field">
+        <span>{LABEL_FIRST_NAME} <span class="req">(required)</span></span>
+        <input name="firstName" type="text" autocomplete="given-name" required maxlength="99" />
+      </label>
+      <label class="field">
+        <span>{LABEL_LAST_NAME} <span class="req">(required)</span></span>
+        <input name="lastName" type="text" autocomplete="family-name" required maxlength="99" />
+      </label>
+      <label class="field">
+        <span>{LABEL_PHONE} <span class="req">(required)</span></span>
+        <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="50" />
+      </label>
+      <label class="field">
+        <span>{LABEL_EMAIL} <span class="req">(required)</span></span>
+        <input name="email" type="email" autocomplete="email" required maxlength="320" />
+      </label>
+      <label class="field">
+        <span>{LABEL_SERVICES} <span class="req">(required)</span></span>
+        <input name="servicesInterested" type="text" autocomplete="off" required maxlength="2000" />
+      </label>
+      <label class="field">
+        <span>{LABEL_MESSAGE}</span>
+        <textarea name="message" rows="5" maxlength="5000"></textarea>
+      </label>
+      <label class="consent">
+        <input name="smsConsent" type="checkbox" value="Yes" />
+        <span>{SMS_CONSENT_WORDING}</span>
+      </label>
+      <div class="contact-honeypot" aria-hidden="true">
+        <label>
+          Company website
+          <input name="companyWebsite" type="text" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
+      <p class="form-status" data-form-status role="alert" hidden>
+        <span data-form-status-text></span>
+        {' '}
+        <a href={site.phone.tel}>{site.phone.display}</a>
+      </p>
+      <p class="form-actions">
+        <button class="btn btn-primary" type="submit" disabled>{FORM_BUTTON_LABEL}</button>
+      </p>
+    </form>
+  </div>
+</section>
+
+<script>
+  import { bindContactForm } from './contact-form-client';
+  const root = document.querySelector('[data-contact-form]');
+  if (root) bindContactForm(root);
+</script>

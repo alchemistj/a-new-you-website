@@ -24,7 +24,7 @@ export const page: PageCopy = {
     },
   },
   sections: [
-    { kind: 'embed', id: 'contact-form', embed: 'ghl-form', heading: 'Leave a Message For us' },
+    { kind: 'contact-form', id: 'contact-form', heading: 'Leave a Message For us' },
     {
       kind: 'cards',
       id: 'contact-details',
@@ -42,8 +42,8 @@ export const page: PageCopy = {
     'Removed the Lorem ipsum intro paragraph.',
     'Address shown as in the brief ("1426 E Bradford Pkwy, Suite C, Springfield, MO 65804"); the live body said "1426 East Bradford Parkway, Springfield, MO 65804" without the suite.',
     'Phone shown as "(417) 605-2153" with tel:+14176052153; the live page showed "+ (417)605-2153" with a malformed tel link.',
-    'The live page had "Get In Touch" as both H2 and H1; only the H1 is kept. "Leave a Message For us" is the heading of the ghl-form embed (live capitalization kept).',
-    'GoHighLevel form (H2deelST8Z9WKwPJ5WTe) is the ghl-form embed and the Google Maps iframe is the map embed; both are placeholders in this data, rendered by the embed components.',
+    'The live page had "Get In Touch" as both H2 and H1; only the H1 is kept. "Leave a Message For us" is the heading of the contact form (live capitalization kept).',
+    'The GoHighLevel form iframe is replaced by the native contact form (Josh, 18 Nov 2026). The Google Maps iframe stays the map embed.',
     'Facebook and Instagram icon links are dropped here (the footer carries the socials).',
     'Hero photo is the live media-library file contact-us-banner (1920x480 banner).',
   ],
