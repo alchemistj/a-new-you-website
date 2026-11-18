@@ -1,0 +1,317 @@
+import { z } from "zod";
+import { getCityPhoneDisplay, getCityPhoneHref } from "@/data/cityConfig";
+import { createClientSubmissionId } from "@/lib/clientSubmissionId";
+import {
+  addCustomField,
+  customField,
+  FORMS_CLIENT_KEY,
+  FORMS_FORM_KEY,
+  FORMS_SITE_KEY,
+  getFormsLeadEndpoint,
+  mapFormsLeadResponse,
+  resolveFormsPageUrl,
+  type FormsCustomField,
+  type FormsLeadRequest,
+  type FormsLeadResponse,
+} from "@/lib/formsLead";
+
+export type LeadCaptureInsert = {
+  full_name: string;
+  phone: string;
+  email: string;
+  city: string | null;
+  message: string | null;
+  service_needed: string | null;
+  source_page: string;
+  sms_consent: boolean;
+  status: "new";
+  city_slug?: string | null;
+  city_name?: string | null;
+  page_path?: string | null;
+  referrer?: string | null;
+  service_slug?: string | null;
+  phone_displayed?: string | null;
+  phone_href?: string | null;
+};
+
+export type LeadCaptureContext = {
+  sourcePage: string;
+  citySlug?: string;
+  cityName?: string;
+  pagePath?: string;
+  referrer?: string;
+  serviceSlug?: string;
+  phoneDisplayed?: string;
+  phoneHref?: string;
+};
+
+/** Abort the Forms lead request if it has not settled within this deadline. */
+export const LEAD_CAPTURE_TIMEOUT_MS = 45_000;
+
+export const LEAD_TIMEOUT_MESSAGE =
+  "We could not confirm your request went through. Please try again; sending again will not create a duplicate.";
+
+export const LEAD_OFFLINE_MESSAGE = "Check your connection and try again.";
+
+export const LEAD_RATE_LIMIT_MESSAGE = "Wait a minute and try again.";
+
+export const LEAD_INVALID_FIELDS_MESSAGE = "Check your name, phone and email.";
+
+export const LEAD_GENERIC_FAILURE_MESSAGE =
+  "Something went wrong sending your request. Please call David directly.";
+
+export type LeadCaptureFailureReason =
+  | "not_configured"
+  | "validation"
+  | "network"
+  | "timeout"
+  | "rate_limited"
+  | "invalid_request";
+
+export type LeadCaptureResult =
+  | { ok: true; accepted: false; acceptedId?: undefined }
+  | { ok: true; accepted: true; acceptedId: string }
+  | {
+      ok: false;
+      reason: LeadCaptureFailureReason;
+      message: string;
+    };
+
+export type SubmitLeadCaptureOptions = {
+  /** Test hook. Production uses {@link LEAD_CAPTURE_TIMEOUT_MS}. */
+  timeoutMs?: number;
+};
+
+const phoneDigits = (value: string) => value.replace(/\D/g, "");
+
+export const contactFormSchema = z.object({
+  fullName: z.string().trim().min(2, "Enter your full name."),
+  phone: z
+    .string()
+    .trim()
+    .min(1, "Enter a phone number.")
+    .refine((value) => phoneDigits(value).length >= 10, "Enter a valid 10-digit phone number."),
+  email: z.string().trim().email("Enter a valid email address."),
+  city: z.string().trim().optional(),
+  serviceNeeded: z.string().trim().optional(),
+  message: z.string().trim().max(5000, "Message is too long.").optional(),
+  smsConsent: z.boolean().refine((value) => value === true, {
+    message: "Consent is required to submit this form.",
+  }),
+  /** Honeypot signal — forwarded to shared Forms for server-side classification. */
+  companyWebsite: z.string(),
+  citySlug: z.string().optional(),
+  cityName: z.string().optional(),
+  pagePath: z.string().optional(),
+  referrer: z.string().optional(),
+  sourcePage: z.string().optional(),
+  serviceSlug: z.string().optional(),
+});
+
+export type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+export const contactFormDefaultValues: ContactFormValues = {
+  fullName: "",
+  phone: "",
+  email: "",
+  city: "",
+  serviceNeeded: "",
+  message: "",
+  smsConsent: false,
+  companyWebsite: "",
+  citySlug: "",
+  cityName: "",
+  pagePath: "",
+  referrer: "",
+  sourcePage: "",
+  serviceSlug: "",
+};
+
+export type LeadTimingPayload = {
+  formStartedAt: string;
+  submittedAt: string;
+  clientSubmissionId: string;
+};
+
+export function toLeadCaptureRow(
+  values: ContactFormValues,
+  context: LeadCaptureContext,
+): LeadCaptureInsert {
+  const sourcePage = context.sourcePage.trim() || values.sourcePage?.trim() || "/contact/";
+  const citySlug = context.citySlug?.trim() || values.citySlug?.trim() || null;
+  const phoneDisplayed =
+    context.phoneDisplayed?.trim() || (citySlug ? getCityPhoneDisplay(citySlug) : null);
+  const phoneHref = context.phoneHref?.trim() || (citySlug ? getCityPhoneHref(citySlug) : null);
+
+  return {
+    full_name: values.fullName.trim(),
+    phone: values.phone.trim(),
+    email: values.email.trim().toLowerCase(),
+    city: values.city?.trim() || null,
+    message: values.message?.trim() || null,
+    service_needed: values.serviceNeeded?.trim() || null,
+    source_page: sourcePage,
+    sms_consent: true,
+    status: "new",
+    city_slug: citySlug,
+    city_name: context.cityName?.trim() || values.cityName?.trim() || null,
+    page_path: context.pagePath?.trim() || values.pagePath?.trim() || null,
+    referrer: context.referrer?.trim() || values.referrer?.trim() || null,
+    service_slug: context.serviceSlug?.trim() || values.serviceSlug?.trim() || null,
+    phone_displayed: phoneDisplayed,
+    phone_href: phoneHref,
+  };
+}
+
+function isAbortError(error: unknown): boolean {
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    "name" in error &&
+    (error as { name?: unknown }).name === "AbortError"
+  );
+}
+
+function visitorHttpFailure(
+  status: number,
+  payload: FormsLeadResponse | null,
+): { reason: Exclude<LeadCaptureFailureReason, "not_configured" | "timeout">; message: string } {
+  const validationMessage =
+    payload?.reason === "validation" && typeof payload.message === "string"
+      ? payload.message.trim()
+      : "";
+  if (validationMessage && payload?.message) {
+    return { reason: "validation", message: payload.message };
+  }
+  if (status === 429 || payload?.code === "rate_limited") {
+    return { reason: "rate_limited", message: LEAD_RATE_LIMIT_MESSAGE };
+  }
+  if (status === 400 || status === 422) {
+    return { reason: "invalid_request", message: LEAD_INVALID_FIELDS_MESSAGE };
+  }
+  return { reason: "network", message: LEAD_GENERIC_FAILURE_MESSAGE };
+}
+
+export function buildFormsLeadPayload(
+  values: ContactFormValues,
+  context: LeadCaptureContext,
+  timing: LeadTimingPayload,
+): FormsLeadRequest {
+  const row = toLeadCaptureRow(values, context);
+  const customFields: Record<string, FormsCustomField> = {};
+  addCustomField(customFields, "city", customField("City", row.city));
+  addCustomField(customFields, "serviceNeeded", customField("Service needed", row.service_needed));
+  addCustomField(
+    customFields,
+    "okToText",
+    customField("OK to text", values.smsConsent ? "Yes" : "No"),
+  );
+
+  return {
+    siteKey: FORMS_SITE_KEY,
+    formKey: FORMS_FORM_KEY,
+    clientSubmissionId: timing.clientSubmissionId,
+    name: row.full_name,
+    email: row.email,
+    phone: row.phone,
+    message: row.message ?? "",
+    customFields,
+    rawPayload: {
+      clientKey: FORMS_CLIENT_KEY,
+      city: row.city,
+      serviceNeeded: row.service_needed,
+      sourcePage: row.source_page,
+      citySlug: row.city_slug,
+      cityName: row.city_name,
+      pagePath: row.page_path,
+      serviceSlug: row.service_slug,
+      phoneDisplayed: row.phone_displayed,
+      phoneHref: row.phone_href,
+      smsConsent: values.smsConsent,
+    },
+    pageUrl: resolveFormsPageUrl(row.source_page, row.page_path),
+    referrer: row.referrer ?? null,
+    utm: {
+      source: "",
+      medium: "",
+      campaign: "",
+      term: "",
+      content: "",
+    },
+    honeypot: values.companyWebsite,
+    formStartedAt: timing.formStartedAt,
+    submittedAt: timing.submittedAt,
+  };
+}
+
+export async function submitLeadCapture(
+  values: ContactFormValues,
+  context: LeadCaptureContext | string = "/contact/",
+  timing?: LeadTimingPayload,
+  options?: SubmitLeadCaptureOptions,
+): Promise<LeadCaptureResult> {
+  const resolvedContext: LeadCaptureContext =
+    typeof context === "string" ? { sourcePage: context } : context;
+
+  const parsed = contactFormSchema.safeParse(values);
+  if (!parsed.success) {
+    return {
+      ok: false,
+      reason: "validation",
+      message: parsed.error.errors[0]?.message ?? "Check the form and try again.",
+    };
+  }
+
+  const endpoint = getFormsLeadEndpoint();
+  const resolvedTiming: LeadTimingPayload = timing ?? {
+    formStartedAt: new Date(0).toISOString(),
+    submittedAt: new Date().toISOString(),
+    clientSubmissionId: createClientSubmissionId(),
+  };
+  const timeoutMs = options?.timeoutMs ?? LEAD_CAPTURE_TIMEOUT_MS;
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => {
+    controller.abort();
+  }, timeoutMs);
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(buildFormsLeadPayload(parsed.data, resolvedContext, resolvedTiming)),
+      signal: controller.signal,
+    });
+
+    let payload: FormsLeadResponse | null = null;
+    try {
+      payload = (await response.json()) as FormsLeadResponse;
+    } catch {
+      payload = null;
+    }
+
+    // Fail closed: HTTP 200 with a missing/non-JSON body must not look like an accepted lead.
+    if (response.ok && payload?.ok === true) {
+      const mapped = mapFormsLeadResponse(payload);
+      if (mapped.accepted && mapped.acceptedId) {
+        return { ok: true, accepted: true, acceptedId: mapped.acceptedId };
+      }
+      return { ok: true, accepted: false };
+    }
+
+    const failure = visitorHttpFailure(response.status, payload);
+    console.error("[forms-lead]", response.status, failure.reason);
+    return { ok: false, reason: failure.reason, message: failure.message };
+  } catch (error) {
+    if (controller.signal.aborted || isAbortError(error)) {
+      console.error("[forms-lead]", "timeout");
+      return { ok: false, reason: "timeout", message: LEAD_TIMEOUT_MESSAGE };
+    }
+    console.error("[forms-lead]", error instanceof Error ? error.name : "request failed");
+    return { ok: false, reason: "network", message: LEAD_OFFLINE_MESSAGE };
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
